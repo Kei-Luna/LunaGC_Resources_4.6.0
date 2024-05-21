@@ -1,0 +1,108 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "LevelAbility_Quest_XiaoDungeonStageReady",
+      "abilityMixins": [
+        {
+          "$type": "StageReadyMixin",
+          "onStageReady": [
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "SpecificGroup",
+              "callParamList": [201032010],
+              "funcName": "stage_ready",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "LevelAbility_Quest_ShougunDungeonStageReady",
+      "abilityMixins": [
+        {
+          "$type": "StageReadyMixin",
+          "onStageReady": [
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "EndlessBladeDecliningEnergy",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "LevelAbility_WQ_JiWuPuMoveOnWater",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_LevelAbility_WQ_JiWuPuMoveOnWater_Flag",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["MoveOnWater_Off", "MoveOnWater_On"]
+        }
+      ],
+      "modifiers": {
+        "MoveOnWater_On": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableAvatarMoveOnWater",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "enable": true
+            }
+          ]
+        },
+        "MoveOnWater_Off": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableAvatarMoveOnWater",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_LevelAbility_WQ_JiWuPuMoveOnWater_Flag",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ],
+      "onRemoved": [
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_LevelAbility_WQ_JiWuPuMoveOnWater_Flag",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  }
+]

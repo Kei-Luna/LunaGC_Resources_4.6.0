@@ -1,0 +1,1357 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_LanV3Race_Rush_GV_Init",
+      "modifiers": {
+        "UNIQUE_Activity_LanV3Race_Rush_EnergyInit": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "AVATAR_LANV3RACE_ENERGY",
+              "useLimitRange": true,
+              "maxValue": 300.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 3.0,
+              "key": "AVATAR_LANV3RACE_ENERGY_MaxChargeCount",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "AVATAR_LANV3RACE_ENERGY_ShowProgress",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_UNIQUE_Activity_LanV3Race_SwitchSkill_Team"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "AVATAR_LANV3RACE_ENERGY",
+              "useLimitRange": true,
+              "maxValue": 300.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_UNIQUE_Activity_LanV3Race_SwitchSkill_Team": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "UNIQUE_UNIQUE_Activity_LanV3Race_SwitchSkill_Avatar"
+            }
+          ]
+        },
+        "UNIQUE_UNIQUE_Activity_LanV3Race_SwitchSkill_Avatar": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "cdDelta": true,
+              "modifierName": "Activity_LanV3Race_Rush_AddSkillInfo"
+            },
+            {
+              "$type": "AttachModifier",
+              "cdDelta": true,
+              "modifierName": "Activity_LanV3Race_Rush_SwitchSkill"
+            },
+            {
+              "$type": "AttachModifier",
+              "cdDelta": true,
+              "modifierName": "Activity_LanV3Race_Rush_SwitchSkill_Air"
+            }
+          ]
+        },
+        "Activity_LanV3Race_Rush_AddSkillInfo": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20341
+            },
+            {
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20342
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20341
+            },
+            {
+              "$type": "RemoveAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20342
+            }
+          ]
+        },
+        "Activity_LanV3Race_Rush_SwitchSkill": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "priority": "Playmode",
+              "skillIndex": 1,
+              "skillID": 20341
+            }
+          ]
+        },
+        "Activity_LanV3Race_Rush_SwitchSkill_Air": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AvatarChangeSkillMixin",
+              "index": 1,
+              "priority": "PlaymodeExtra1",
+              "jumpSkillID": 20342,
+              "flySkillID": 20342,
+              "changeOnAdd": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "modifierName": "UNIQUE_Activity_LanV3Race_Rush_EnergyInit"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_LanV3Race_Rush",
+      "modifiers": {
+        "Activity_LanV3Race_Rush": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["ActivitySkill_CustomSkill01"],
+              "modifierName": "LanV3Race_Rush_InAni",
+              "BILMCNCKIAO": ""
+            }
+          ]
+        },
+        "LanV3Race_Rush_InAni": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TriggerPostProcessEffectMixin",
+              "postEffectAssetName": "PostEffect_Skiff_Sprint",
+              "duration": 0.0
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "LanV3Race_Rush_Timer"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "target": "Team",
+              "ratio": -100.0,
+              "key": "AVATAR_LANV3RACE_ENERGY",
+              "useLimitRange": true,
+              "maxValue": 300.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "LanV3Race_Rush_NoGravity"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "LanV3Race_Rush_Eat_Coin"
+            },
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Activity_LanV3Race_Fireworks_Rush_In",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 20341,
+              "amount": 1.0,
+              "costStaminaRatio": 1.0
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 20342,
+              "amount": 1.0,
+              "costStaminaRatio": 1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 2.5
+                    },
+                    "useRotation": true
+                  },
+                  "size": {
+                    "x": 6.0,
+                    "y": 3.0,
+                    "z": 6.0
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "LanV3_Rush_Attack",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 0.0,
+                    "damage": 0.0,
+                    "attackType": "None",
+                    "damageExtra": 0.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV0"
+                  }
+                }
+              },
+              "targetType": "AllExceptSelf"
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "shapeName": "SectorR23D90H10",
+                "campTargetType": "Enemy",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_LanV3_Race_Lock_Asist_Mark",
+                  "ratio": 1.0
+                }
+              ],
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_LanV3_Race_Lock_Asist_Mark",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "DebugLog",
+                  "content": "11111111turndirection"
+                },
+                {
+                  "$type": "SetGlobalPos",
+                  "target": "Target",
+                  "key": "_ABILITY_LanV3_Race_Lock_Asist_Pos",
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "useRotation": true
+                  },
+                  "setTarget": false
+                },
+                {
+                  "$type": "TurnDirectionToPos",
+                  "toPos": {
+                    "$type": "MKLCDCJFOHO",
+                    "positionKey": "_ABILITY_LanV3_Race_Lock_Asist_Pos",
+                    "directionKey": ""
+                  }
+                }
+              ]
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 420000025,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              }
+            },
+            {
+              "$type": "TriggerSetVisible"
+            },
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "passThrough": true
+            },
+            {
+              "$type": "EnableHDMesh",
+              "hdMeshKey": "Default"
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "forces": ["RushMoveType", "InertiaType"]
+            },
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "ignoreAirGY": true
+            },
+            {
+              "$type": "FixedAvatarRushMove",
+              "toPos": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 20.0
+                },
+                "useRotation": true
+              },
+              "MBHPLECOEKG": 0.75,
+              "animatorStateIDs": ["ActivitySkill_CustomSkill01"],
+              "overrideMoveCollider": "",
+              "isInAir": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Activity_LanV3Race_Fireworks_Rush_Out",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerSetVisible",
+              "cdDelta": true,
+              "visible": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 420000025
+              },
+              "modifierName": "UNIQUE_LanV3_RushBulletEff"
+            },
+            {
+              "$type": "KillGadget",
+              "cdDelta": true,
+              "gadgetInfo": {
+                "configID": 420000025
+              }
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "forces": ["RushMoveType", "InertiaType", "FixedRushMoveType"]
+            },
+            {
+              "$type": "FixedAvatarRushMove",
+              "toPos": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.20000000298023224,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "MBHPLECOEKG": 1.0,
+              "overrideMoveCollider": "",
+              "isInAir": true
+            },
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHDMesh",
+              "canBeHandledOnRecover": true,
+              "enable": true,
+              "hdMeshKey": "Default"
+            }
+          ],
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "targetPredicates": [
+                {
+                  "$type": "EMFOAGGLKKH",
+                  "tag": "Activity_AttackableBallon"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Other",
+                  "modifierName": "Kill_Ribbon_Ball"
+                }
+              ]
+            }
+          ]
+        },
+        "Kill_Ribbon_Ball": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "Activity_AttackableBallon_NeedKill",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "LanV3Race_Rush_Timer": {
+          "modifierName": "",
+          "duration": 0.800000011920929,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Self",
+                  "logic": "LesserOrEqual",
+                  "ratio": 2.0
+                }
+              ],
+              "value": "CustomSkill_End_Drop"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Self",
+                  "ratio": 2.0
+                }
+              ],
+              "value": "CustomSkill_End_Fly"
+            },
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "target": "Self",
+                  "logic": "LesserOrEqual",
+                  "ratio": 2.0
+                },
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "GLELJBPONCJ",
+                      "filters": ["Water"],
+                      "offset": {
+                        "y": -0.20000000298023224
+                      }
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "LanV3Race_Rush_NoGravity"
+            }
+          ]
+        },
+        "LanV3Race_Rush_NoGravity": {
+          "modifierName": "",
+          "duration": 1.4500000476837158,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AddGravityScale": -2.0
+          },
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "forces": ["RushMoveType", "InertiaType"]
+            },
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "ignoreAirGY": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetVelocityIgnoreAirGY"
+            }
+          ]
+        },
+        "LanV3Race_Rush_Eat_Coin": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 10,
+                "sortType": "Nearest",
+                "tag": "IS_COIN"
+              },
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "target": "Target",
+                  "predicates": [
+                    {
+                      "$type": "JOLJOHDJLNF",
+                      "logic": "LesserOrEqual",
+                      "compareType": "XYZ",
+                      "ratio": 9.0,
+                      "PHMALDNHHLD": ""
+                    }
+                  ],
+                  "ratio": 1.0,
+                  "key": "GV_Picked",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Activity_LanV3Race_Rush"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Caster",
+          "targetPredicates": [
+            {
+              "$type": "ByAny",
+              "predicates": [
+                {
+                  "$type": "BCJCFHPMKLB",
+                  "logic": "Equal",
+                  "ratio": true,
+                  "parameter": "&CanUseSkill"
+                },
+                {
+                  "$type": "BCJCFHPMKLB",
+                  "logic": "Equal",
+                  "ratio": true,
+                  "parameter": "&CanUseAirSkill"
+                }
+              ]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "ratio": 210.0
+            }
+          ]
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_LanV3Race_Rush_Bullet",
+      "modifiers": {
+        "UNIQUE_LanV3_RushBulletEff": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 0.8500000238418579,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Activity_LanV3Race_Fireworks_Rush_Loop",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "targetPredicates": [
+                {
+                  "$type": "EMFOAGGLKKH",
+                  "tag": "Activity_AttackableBallon"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Other",
+                  "modifierName": "Kill_Ribbon_Ball"
+                }
+              ]
+            }
+          ]
+        },
+        "Kill_Ribbon_Ball": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "Activity_AttackableBallon_NeedKill",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_LanV3_RushBulletEff"
+        }
+      ],
+      "onRemoved": [
+        {
+          "$type": "KillSelf"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "radius": 3.5
+            },
+            "attackInfo": {
+              "attackTag": "LanV3_Rush_Attack",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 0.0,
+                "damage": 0.0,
+                "attackType": "None",
+                "damageExtra": 0.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV0"
+              }
+            }
+          },
+          "targetType": "AllExceptSelf"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_LanV3BoatGame_State_Driver",
+      "modifiers": {
+        "LanV3BoatGame_Playmode_Switch": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "ChangePlayMode",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "toPlayMode": "LanternRiteV3Boat"
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "ChangePlayMode",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "FFFGBBHBKGB": "LanternRiteV3Boat"
+                }
+              ]
+            }
+          ]
+        },
+        "LanV3BoatGame_Vehicle_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "modifierName": "LanV3BoatGame_WeakNet_Protect"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "modifierName": "Sprint_Attack_Handler"
+            }
+          ]
+        },
+        "Sprint_Attack_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Sprint"],
+              "modifierName": "Sprint_Attack",
+              "BILMCNCKIAO": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 100.0,
+              "key": "_ABILITY_LanV3BoatGame_Skill_Energy",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_ABILITY_LanV3BoatGame_Skill_Energy",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Sprint_Attack": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onAdded": [
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "Owner",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "filterByFrame": true,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "direction": {
+                      "$type": "ConfigDirectionByEntity",
+                      "angleOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "useRotation": true
+                  },
+                  "radius": 3.5
+                },
+                "attackInfo": {
+                  "attackTag": "Skiff_Sprint",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 1.0,
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 25.0,
+                    "attackType": "Melee",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "Owner",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "filterByFrame": true,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "direction": {
+                      "$type": "ConfigDirectionByEntity",
+                      "angleOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "useRotation": true
+                  },
+                  "radius": 3.5
+                },
+                "attackInfo": {
+                  "attackTag": "Skiff_Sprint",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 1.0,
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 25.0,
+                    "attackType": "Melee",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "OnVehicleIn_Checker_Avatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "modifierName": "LanV3BoatGame_WeakNet_Protect"
+            }
+          ],
+          "onVehicleIn": [
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "modifierName": "LanV3BoatGame_WeakNet_Protect"
+            }
+          ]
+        },
+        "LanV3BoatGame_Skill_Transfer": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "SGV_BoatV3_CollectItemNum",
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Vehicle",
+                  "cdDelta": true,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Team",
+                      "key": "SGV_BoatV3_CollectItemNum",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ],
+                  "modifierName": "LanV3Boat_Stamina_Recover"
+                },
+                {
+                  "$type": "CopyGlobalValue",
+                  "cdDelta": true,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Team",
+                      "key": "SGV_BoatV3_Ghost",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "srcTarget": "Team",
+                  "dstTarget": "Team",
+                  "srcKey": "SGV_BoatV3_SkillIndex",
+                  "dstKey": "_ABILITY_BoatV3_SkillIndex_Team"
+                }
+              ]
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "globalValueTarget": "Team",
+              "globalValueKey": "_ABILITY_BoatV3_SkillIndex_Team",
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5],
+              "modifierNameSteps": [
+                "LanV3Boat_Skill_Origin",
+                "LanV3Boat_Skill_Stamina_Recover",
+                "LanV3Boat_Skill_Shield",
+                "LanV3Boat_Skill_Absorb",
+                "LanV3Boat_Skill_Vortex",
+                "LanV3Boat_Skill_RushMove",
+                "LanV3Boat_Skill_Mire",
+                "LanV3Boat_Skill_Ghost"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_BoatV3_SkillIndex_Team",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "LanV3BoatGame_Ghost_Hanlder": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "globalValueTarget": "Team",
+              "globalValueKey": "SGV_BoatV3_Ghost",
+              "valueSteps": [0.5, 1.5],
+              "modifierNameSteps": ["LanV3Boat_Ghost_Team"]
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "RemoveModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "SGV_BoatV3_Ghost",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "LanV3Boat_Ghost_Team"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "target": "Vehicle",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "SGV_BoatV3_Ghost",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "value": "OutLine_Off",
+              "mpTriggerOnRemote": true
+            }
+          ]
+        },
+        "LanV3Boat_Ghost_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 7.0,
+              "key": "_ABILITY_BoatV3_SkillIndex_Team",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Vehicle",
+              "cdDelta": true,
+              "modifierName": "LanV3Boat_Ghost_Boat"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_BoatV3_SkillIndex_Team",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "LanV3Boat_Ghost_Boat": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.15000000596046448,
+          "modifierMixins": [
+            {
+              "$type": "EntityDitherMixin",
+              "ditherValue": 0.5,
+              "cutInTime": 0.10000000149011612,
+              "cutOutTime": 0.20000000298023224,
+              "forceUpdateAtStart": true
+            },
+            {
+              "$type": "VelocityForceMixin",
+              "excludeForces": ["WindZoneType", "SpeedupType"]
+            }
+          ],
+          "state": "Invincible",
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "target": "Vehicle",
+              "rotationDampTime": "Eff_Activity_LanV3BoatGame_Ghost",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "LanV3Boat_Ghost_Boat_IsGhostToEnemy"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "LanV3Boat_Ghost_Boat_IsGhostToAllied"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_LanV3BoatGame_Stamina_Recover"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_LanV3BoatGame_Shield"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_LanV3BoatGame_Coin_Absorb"
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "target": "Vehicle",
+              "canBeHandledOnRecover": true,
+              "value": "OutLine_Off"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "target": "Vehicle",
+              "rotationDampTime": "Eff_Activity_LanV3BoatGame_Ghost",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "target": "Vehicle",
+              "canBeHandledOnRecover": true,
+              "value": "OutLine_Off",
+              "mpTriggerOnRemote": true
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "target": "Vehicle",
+              "canBeHandledOnRecover": true,
+              "value": "OutLine_On"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "target": "Vehicle",
+              "canBeHandledOnRecover": true,
+              "value": "OutLine_On",
+              "mpTriggerOnRemote": true
+            }
+          ]
+        },
+        "LanV3Boat_Ghost_Boat_IsGhostToEnemy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "IsGhostToEnemy"
+        },
+        "LanV3Boat_Ghost_Boat_IsGhostToAllied": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "IsGhostToAllied"
+        },
+        "LanV3BoatGame_WeakNet_Protect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["BoatRaceGear"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "SGV_BoatV3_HP",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "SGV_BoatV3_Ghost",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "TempImmune",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_ABILITY_BoatV3_In_Shield_State",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "target": "Team",
+                  "ratio": 7.0,
+                  "key": "_ABILITY_BoatV3_SkillIndex_Team",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        "LanV3Boat_Skill_Origin": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VehicleSkillDepotChangeMixin",
+              "targetVehicleIDs": [45001003],
+              "skillDepotId": 99001002
+            }
+          ]
+        },
+        "LanV3Boat_Skill_Mire": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VehicleSkillDepotChangeMixin",
+              "targetVehicleIDs": [45001003],
+              "skillDepotId": 99001003
+            }
+          ]
+        },
+        "LanV3Boat_Skill_Absorb": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VehicleSkillDepotChangeMixin",
+              "targetVehicleIDs": [45001003],
+              "skillDepotId": 99001004
+            }
+          ]
+        },
+        "LanV3Boat_Skill_Vortex": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VehicleSkillDepotChangeMixin",
+              "targetVehicleIDs": [45001003],
+              "skillDepotId": 99001006
+            }
+          ]
+        },
+        "LanV3Boat_Skill_Stamina_Recover": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VehicleSkillDepotChangeMixin",
+              "targetVehicleIDs": [45001003],
+              "skillDepotId": 99001008
+            }
+          ]
+        },
+        "LanV3Boat_Skill_RushMove": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VehicleSkillDepotChangeMixin",
+              "targetVehicleIDs": [45001003],
+              "skillDepotId": 99001007
+            }
+          ]
+        },
+        "LanV3Boat_Skill_Shield": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VehicleSkillDepotChangeMixin",
+              "targetVehicleIDs": [45001003],
+              "skillDepotId": 99001005
+            }
+          ]
+        },
+        "LanV3Boat_Skill_Ghost": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VehicleSkillDepotChangeMixin",
+              "targetVehicleIDs": [45001003],
+              "skillDepotId": 99001009
+            }
+          ]
+        },
+        "LanV3Boat_Stamina_Recover": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ReviveStamina",
+              "ratio": 240.0
+            },
+            {
+              "$type": "FireEffect",
+              "target": "Vehicle",
+              "rotationDampTime": "Eff_Activity_LanV3BoatGame_Stamina_Recover",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "modifierName": "LanV3BoatGame_Skill_Transfer"
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "modifierName": "LanV3BoatGame_Ghost_Hanlder"
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "modifierName": "LanV3BoatGame_Vehicle_Handler"
+        },
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "modifierName": "OnVehicleIn_Checker_Avatar"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  }
+]

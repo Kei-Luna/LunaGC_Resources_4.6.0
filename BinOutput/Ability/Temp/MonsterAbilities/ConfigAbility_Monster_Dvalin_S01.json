@@ -1,0 +1,3918 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_Enviroment",
+      "modifiers": {
+        "SpecialSkyBox": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "EnviroFollowRotateMixin",
+              "deactiveOnCutsecneName": "ART/Cutscene/Cs_MDAQ022_KaeyaArrived_Part1_Convert"
+            },
+            {
+              "$type": "DvalinS01PathEffsMixin",
+              "effectStart": 4,
+              "effectEnd": 3,
+              "effInfos": [
+                {
+                  "flyState": 1,
+                  "effectName": "Eff_Monster_Dvalin_S01_Cloud01",
+                  "rangeMax": 0.0,
+                  "rangeMin": 0.0,
+                  "eularMax": 0.0
+                }
+              ]
+            },
+            {
+              "$type": "DvalinS01PathEffsMixin",
+              "effectStart": 4,
+              "effectEnd": 6,
+              "effInfos": [
+                {
+                  "effectName": "Eff_Monster_Dvalin_S01_Cloud02",
+                  "rangeMax": 0.0,
+                  "rangeMin": 0.0,
+                  "eularMax": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        "WaitForAvatarReady": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "StageReadyMixin",
+              "onStageReady": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "CurTeamAvatars",
+                  "modifierName": "AvatarControlSettings"
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "WaitForAvatarReady"
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "NAJIKBFMDPH"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "CurTeamAvatars",
+                  "modifierName": "AvatarControlSettings"
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "WaitForAvatarReady"
+                }
+              ]
+            }
+          ]
+        },
+        "AvatarControlSettings": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "modifierMixins": [
+            {
+              "$type": "AvatarLockForwardFlyMixin",
+              "worldForward": {
+                "z": 1.0
+              },
+              "flySpeedScale": 0.75,
+              "flyBackSpeedScale": 4.0,
+              "eularRawInput": {
+                "x": -90.0
+              }
+            },
+            {
+              "$type": "AirFlowMixin",
+              "gadgetID": 42901002,
+              "campTargetType": "All",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              }
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": -999999.0
+          },
+          "onAdded": [
+            {
+              "$type": "ChangePlayMode",
+              "canBeHandledOnRecover": true,
+              "toPlayMode": "DvalinS01FlyState"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetKeepInAirVelocityForce",
+              "setEnable": true
+            },
+            {
+              "$type": "EnableAvatarFlyStateTrail"
+            },
+            {
+              "$type": "ForceAirStateFly",
+              "isActive": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WaitForAvatarReady"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SpecialSkyBox"
+        },
+        {
+          "$type": "CreateGadget",
+          "born": {
+            "$type": "IKBDMAPPAIK",
+            "worldPos": {
+              "y": 50.0,
+              "z": -80.0
+            },
+            "worldFwd": {
+              "z": 1.0
+            }
+          },
+          "gadgetID": 42901008,
+          "byServer": true
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "ShowReminder",
+          "id": 20010017
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_Update_Moving_Center",
+      "abilityMixins": [
+        {
+          "$type": "BoxClampWindZoneMixin",
+          "size": {
+            "x": 20.0,
+            "y": 12.0,
+            "z": 2.0
+          },
+          "born": {
+            "$type": "ConfigBornBySelf"
+          },
+          "attracForceStrength": 50.0,
+          "maxStrengthRange": 2.0
+        },
+        {
+          "$type": "DvalinS01BoxMoxeMixin"
+        },
+        {
+          "$type": "StageReadyMixin",
+          "onStageReady": [
+            {
+              "$type": "AvatarEnterCameraShot",
+              "cameraMoveCfgPath": "Camera_Dungeon_Dvalin_S01_Overlook"
+            }
+          ]
+        }
+      ],
+      "onAdded": [
+        {
+          "$type": "AvatarEnterCameraShot",
+          "canBeHandledOnRecover": true,
+          "predicates": [
+            {
+              "$type": "NAJIKBFMDPH"
+            }
+          ],
+          "cameraMoveCfgPath": "Camera_Dungeon_Dvalin_S01_Overlook"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_StateCommon",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "PROCESS_STATE",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5, 100.0],
+          "modifierNameSteps": [
+            "PROCESS_STATE_None",
+            "PROCESS_STATE_DogFight",
+            "PROCESS_STATE_Pursue"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "HPBAR_STATE",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.0, 1.0, 2.0, 100.0],
+          "modifierNameSteps": [
+            "HPBAR_STATE_NoHPBar",
+            "HPBAR_STATE_ShowHPBarWithLock",
+            "HPBAR_STATE_ShowHPBarNoLock"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "DFM_STATE",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.0, 1.0, 2.0, 100.0],
+          "modifierNameSteps": [
+            "DFM_STATE_DogFightFlyNoSteer",
+            "DFM_STATE_DogFightFlyWithSteer",
+            "DFM_STATE_NormalFly"
+          ]
+        }
+      ],
+      "modifiers": {
+        "PROCESS_STATE_None": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "PushDvalinS01Process",
+              "canBeHandledOnRecover": true,
+              "time": 1.0,
+              "toPercentage": 20.0,
+              "vector": {
+                "z": 50.0
+              },
+              "attenuation": 2.0
+            }
+          ]
+        },
+        "PROCESS_STATE_DogFight": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "PushDvalinS01Process",
+              "canBeHandledOnRecover": true,
+              "time": 1.0,
+              "vector": {
+                "z": 50.0
+              },
+              "attenuation": 2.0
+            }
+          ]
+        },
+        "PROCESS_STATE_Pursue": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "PushDvalinS01Process",
+              "canBeHandledOnRecover": true,
+              "time": 3.0,
+              "toPercentage": 100.0,
+              "vector": {
+                "z": 50.0
+              },
+              "attenuation": 2.0
+            }
+          ]
+        },
+        "HPBAR_STATE_NoHPBar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ShowUICombatBar",
+              "canBeHandledOnRecover": true,
+              "fore": true
+            }
+          ]
+        },
+        "HPBAR_STATE_ShowHPBarWithLock": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "StageReadyMixin",
+              "onStageReady": [
+                {
+                  "$type": "ShowUICombatBar",
+                  "show": true,
+                  "fore": true
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_LockOn",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ShowUICombatBar",
+              "canBeHandledOnRecover": true,
+              "predicates": [
+                {
+                  "$type": "NAJIKBFMDPH"
+                }
+              ],
+              "show": true,
+              "fore": true
+            }
+          ]
+        },
+        "HPBAR_STATE_ShowHPBarNoLock": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "StageReadyMixin",
+              "onStageReady": [
+                {
+                  "$type": "ShowUICombatBar",
+                  "show": true,
+                  "fore": true
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "ShowUICombatBar",
+              "canBeHandledOnRecover": true,
+              "predicates": [
+                {
+                  "$type": "NAJIKBFMDPH"
+                }
+              ],
+              "show": true,
+              "fore": true
+            }
+          ]
+        },
+        "DFM_STATE_DogFightFlyNoSteer": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "isDFM",
+              "ratio": true
+            },
+            {
+              "$type": "SetDvalinS01FlyState",
+              "canBeHandledOnRecover": true
+            }
+          ]
+        },
+        "DFM_STATE_DogFightFlyWithSteer": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "isDFM",
+              "ratio": true
+            },
+            {
+              "$type": "SetDvalinS01FlyState",
+              "canBeHandledOnRecover": true,
+              "toState": 1
+            }
+          ]
+        },
+        "DFM_STATE_NormalFly": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "isDFM"
+            },
+            {
+              "$type": "SetDvalinS01FlyState",
+              "canBeHandledOnRecover": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetSelfAttackTarget",
+          "target": "CurLocalAvatar"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_StateController",
+      "abilityMixins": [
+        {
+          "$type": "StageReadyMixin",
+          "onStageReady": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "STAGE_ALREADY_BEGIN",
+                  "ratio": 1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "S1_1"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "S1_HpDetect"
+                },
+                {
+                  "$type": "AddGlobaltriggerID",
+                  "ratio": 1.0,
+                  "key": "STAGE_ALREADY_BEGIN",
+                  "useLimitRange": true,
+                  "maxValue": 1.0,
+                  "minValue": 1.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "STAGE_STATE",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.0, 0.5, 1.5, 100.0],
+          "modifierNameSteps": ["None", "S1_2", "S1_3"]
+        }
+      ],
+      "modifiers": {
+        "S1_HpDetect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToHPPercentMixin",
+              "valueSteps": [0.6000000238418579, 0.15000000596046448],
+              "modifierNameSteps": [
+                "None",
+                "UNIQUE_ChangeStage1",
+                "UNIQUE_ChangeStage2"
+              ]
+            }
+          ]
+        },
+        "UNIQUE_ChangeStage1": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CHANGESTAGE1_",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "ratio": 2.0,
+              "key": "STAGE_STATE",
+              "useLimitRange": true,
+              "maxValue": 2.0,
+              "minValue": 2.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_CHANGESTAGE1_",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            }
+          ]
+        },
+        "UNIQUE_ChangeStage2": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CHANGESTAGE2_",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "ratio": 2.0,
+              "key": "STAGE_STATE",
+              "useLimitRange": true,
+              "maxValue": 2.0,
+              "minValue": 2.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_CHANGESTAGE2_",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            }
+          ]
+        },
+        "S1_1": {
+          "modifierName": "",
+          "duration": 18.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AvatarEnterCameraShot",
+              "cameraMoveCfgPath": "Camera_Monster_Dvalin_S01_LookAtSeal"
+            },
+            {
+              "$type": "ShowReminder",
+              "id": 20010004
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "target": "CurLocalAvatar",
+              "ratio": 0.0,
+              "key": "AVATAR_SHOOT_MODE",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "PROCESS_STATE",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "STAGE_STATE",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "DFM_STATE",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "HPBAR_STATE",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42901048
+              },
+              "ratio": 0.0,
+              "key": "AIRFLOW_STATE",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Pursue_Timer"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "STAGE_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            }
+          ]
+        },
+        "Pursue_Timer": {
+          "modifierName": "",
+          "duration": 3.0,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "PROCESS_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            }
+          ]
+        },
+        "S1_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "PROCESS_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "target": "CurLocalAvatar",
+              "ratio": 1.0,
+              "key": "AVATAR_SHOOT_MODE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "HPBAR_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "DFM_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42901048
+              },
+              "ratio": 1.0,
+              "key": "AIRFLOW_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_Seal_Hit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "SealOnBeingHit"
+            }
+          ]
+        },
+        "S1_3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "StageReadyMixin",
+              "onStageReady": [
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SPEEDUP_ALREADY",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "AddGlobaltriggerID",
+                      "ratio": 6.0,
+                      "key": "PURSUE_STAGE",
+                      "useLimitRange": true,
+                      "maxValue": 6.0,
+                      "minValue": 6.0
+                    },
+                    {
+                      "$type": "AddGlobaltriggerID",
+                      "ratio": 1.0,
+                      "key": "SPEEDUP_ALREADY",
+                      "useLimitRange": true,
+                      "maxValue": 1.0,
+                      "minValue": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+              "globalValueKey": "PURSUE_STAGE",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 100.0],
+              "modifierNameSteps": [
+                "None",
+                "Pursue_Stage_1",
+                "Pursue_Stage_2",
+                "Pursue_Stage_3",
+                "Pursue_Stage_4",
+                "Pursue_Stage_5",
+                "Pursue"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "PURSUE_STAGE",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 2.0,
+              "key": "DFM_STATE",
+              "useLimitRange": true,
+              "maxValue": 2.0,
+              "minValue": 2.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "target": "CurLocalAvatar",
+              "ratio": 1.0,
+              "key": "AVATAR_SHOOT_MODE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 2.0,
+              "key": "HPBAR_STATE",
+              "useLimitRange": true,
+              "maxValue": 2.0,
+              "minValue": 2.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42901048
+              },
+              "ratio": 2.0,
+              "key": "AIRFLOW_STATE",
+              "useLimitRange": true,
+              "maxValue": 2.0,
+              "minValue": 2.0
+            }
+          ]
+        },
+        "None": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Pursue": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 2.0,
+              "key": "PROCESS_STATE",
+              "useLimitRange": true,
+              "maxValue": 2.0,
+              "minValue": 2.0
+            },
+            {
+              "$type": "ActCameraRadialBlur",
+              "cameraRadialBlur": {
+                "power": 2.0,
+                "blurTime": 1.0,
+                "fadeTime": 2.0
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "BarrageTimer"
+            }
+          ]
+        },
+        "Pursue_Stage_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "PROCESS_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "DFM_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            },
+            {
+              "$type": "ActCameraRadialBlur",
+              "cameraRadialBlur": {
+                "power": 2.0,
+                "blurTime": 1.0,
+                "fadeTime": 0.75
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "modifierName": "PursueEffect"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "TrackBullet"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "EnergyBullet"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "WindRing"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "S1_2_Timer"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "WindRingReminder"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "STAGE_STATE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "target": "CurLocalAvatar",
+              "ratio": 1.0,
+              "key": "AVATAR_SHOOT_MODE",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            }
+          ]
+        },
+        "S1_2_Timer": {
+          "modifierName": "",
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "PURSUE_STAGE",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Pursue_Stage_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "PushDvalinS01Process",
+              "canBeHandledOnRecover": true,
+              "time": 1.0,
+              "toPercentage": 20.0,
+              "vector": {
+                "z": 50.0
+              },
+              "attenuation": 2.0
+            },
+            {
+              "$type": "ActCameraRadialBlur",
+              "cameraRadialBlur": {
+                "power": 2.0,
+                "blurTime": 1.0,
+                "fadeTime": 0.75
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "modifierName": "PursueEffect"
+            }
+          ]
+        },
+        "Pursue_Stage_3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "PushDvalinS01Process",
+              "canBeHandledOnRecover": true,
+              "time": 1.0,
+              "toPercentage": 40.0,
+              "vector": {
+                "z": 50.0
+              },
+              "attenuation": 2.0
+            },
+            {
+              "$type": "ActCameraRadialBlur",
+              "cameraRadialBlur": {
+                "power": 2.0,
+                "blurTime": 1.0,
+                "fadeTime": 0.75
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "modifierName": "PursueEffect"
+            }
+          ]
+        },
+        "Pursue_Stage_4": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "PushDvalinS01Process",
+              "canBeHandledOnRecover": true,
+              "time": 1.0,
+              "toPercentage": 60.0,
+              "vector": {
+                "z": 50.0
+              },
+              "attenuation": 2.0
+            },
+            {
+              "$type": "ActCameraRadialBlur",
+              "cameraRadialBlur": {
+                "power": 2.0,
+                "blurTime": 1.0,
+                "fadeTime": 0.75
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "modifierName": "PursueEffect"
+            }
+          ]
+        },
+        "Pursue_Stage_5": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "PushDvalinS01Process",
+              "canBeHandledOnRecover": true,
+              "time": 1.0,
+              "toPercentage": 80.0,
+              "vector": {
+                "z": 50.0
+              },
+              "attenuation": 2.0
+            },
+            {
+              "$type": "ActCameraRadialBlur",
+              "cameraRadialBlur": {
+                "power": 2.0,
+                "blurTime": 1.0,
+                "fadeTime": 0.75
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "modifierName": "PursueEffect"
+            }
+          ]
+        },
+        "BarrageTimer": {
+          "modifierName": "",
+          "duration": 27.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TrackBullet_Process"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "EnergyBullet_Process"
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "_DISTANCE_TRACKBULLET_",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "_DISTANC_ENERGYBULLET_",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TrackBullet"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "EnergyBullet"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "WindRing"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "WindRingReminder"
+            }
+          ]
+        },
+        "TrackBullet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 4.0,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Dvalin_S01_TrackBullet"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Dvalin_S01_TrackBullet"
+            }
+          ]
+        },
+        "WindRing": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 12.0,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Dvalin_S01_WingRing"
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_REMINDER_WINDRING_FIRSTTIME_",
+                  "ratio": 1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ShowReminder",
+                  "id": 20010012
+                },
+                {
+                  "$type": "AddGlobaltriggerID",
+                  "ratio": 1.0,
+                  "key": "_REMINDER_WINDRING_FIRSTTIME_",
+                  "useLimitRange": true,
+                  "maxValue": 1.0,
+                  "minValue": 1.0
+                }
+              ]
+            }
+          ]
+        },
+        "EnergyBullet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 3.0,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Dvalin_S01_EnergyBullet"
+            }
+          ]
+        },
+        "TrackBullet_Process": {
+          "modifierName": "",
+          "duration": 27.200000762939453,
+          "bonusCritical": 100.0,
+          "thinkInterval": 4.0,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Dvalin_S01_TrackBullet_Process"
+            }
+          ]
+        },
+        "EnergyBullet_Process": {
+          "modifierName": "",
+          "duration": 27.200000762939453,
+          "bonusCritical": 100.0,
+          "thinkInterval": 3.0,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Dvalin_S01_EnergyBullet_Process"
+            }
+          ]
+        },
+        "SealOnBeingHit": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_Seal_HitLoop",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "PursueEffect": {
+          "modifierName": "",
+          "duration": 3.0,
+          "bonusCritical": 100.0,
+          "onThinkInterval": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_SpeedUp",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "WindRingReminder": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 36.0,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "PURSUE_STAGE",
+                  "ratio": 6.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ShowReminder",
+                  "id": 20010015
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onKill": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_Seal_Explode",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_AirGun",
+      "modifiers": {
+        "Shoot": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+              "globalValueKey": "AVATAR_SHOOT_MODE",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [0.0, 1.0, 100.0],
+              "modifierNameSteps": ["NormalMode", "ShootMode"]
+            }
+          ]
+        },
+        "NormalMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AvatarChangeSkillMixin",
+              "priority": "Playmode",
+              "jumpSkillID": 20001,
+              "flySkillID": 20001
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Shooting"
+            }
+          ]
+        },
+        "ShootMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "StageReadyMixin",
+              "onStageReady": [
+                {
+                  "$type": "AvatarEnterFocus",
+                  "cameraFollowLower": {
+                    "y": 1.0,
+                    "z": -4.5
+                  },
+                  "cameraFollowUpper": {
+                    "y": 1.0,
+                    "z": -4.5
+                  },
+                  "cameraFastFocusMode": true,
+                  "dragButtonName": "Skill1",
+                  "assistance": {
+                    "ps4": {},
+                    "ps5": {},
+                    "other": {
+                      "useGyro": true
+                    }
+                  },
+                  "BPJCLAEPBPL": ""
+                }
+              ]
+            },
+            {
+              "$type": "AvatarChangeSkillMixin",
+              "priority": "Playmode",
+              "jumpSkillID": 20002,
+              "flySkillID": 20002,
+              "changeOnAdd": true
+            },
+            {
+              "$type": "ButtonHoldChargeMixin",
+              "skillID": 20002,
+              "chargeTime": 9999.0,
+              "secondChargeTime": 999999.0,
+              "OnBeginUncharged": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Shooting"
+                }
+              ],
+              "OnReleaseUncharged": [
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "Shooting"
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "Dvalin_S01_AirGun_onAdded!!!!!!"
+            },
+            {
+              "$type": "AvatarEnterFocus",
+              "canBeHandledOnRecover": true,
+              "predicates": [
+                {
+                  "$type": "NAJIKBFMDPH"
+                }
+              ],
+              "cameraFollowLower": {
+                "y": 1.0,
+                "z": -4.5
+              },
+              "cameraFollowUpper": {
+                "y": 1.0,
+                "z": -4.5
+              },
+              "cameraFastFocusMode": true,
+              "dragButtonName": "Skill1",
+              "assistance": {
+                "ps4": {},
+                "ps5": {},
+                "other": {
+                  "useGyro": true
+                }
+              },
+              "BPJCLAEPBPL": ""
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_AirGun_Loop",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AvatarExitFocus"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Shooting"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_AirGun_AS",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Shooting": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S02_AirGun_Empty",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S02_AirGun_Loop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901012,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 1.0,
+                  "randomAngleVer": 1.0,
+                  "attachPointName": "FocusAnchor"
+                }
+              }
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901012,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 1.0,
+                  "randomAngleVer": 1.0,
+                  "attachPointName": "FocusAnchor"
+                }
+              }
+            },
+            {
+              "$type": "ActCameraShake",
+              "cameraShake": {
+                "shakeRange": 0.009999999776482582,
+                "shakeTime": 0.11999999731779099
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddAvatarSkillInfo",
+          "skillID": 20001
+        },
+        {
+          "$type": "AddAvatarSkillInfo",
+          "skillID": 20002
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Shoot"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S02_AirGun_Bullet",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S02_AirGun_Trail",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S02_AirGun_Explode",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_AirGun_Explode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint"
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAbility",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "STAGE_STATE",
+              "ratio": 1.0,
+              "compareType": "LessAndEqual"
+            }
+          ],
+          "abilityName": "Dvalin_S01_BeHit"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 1.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 20.0,
+                "strikeType": "Blunt",
+                "damageExtra": 1.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV1",
+                "hitHaltTimeScale": 0.05000000074505806
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "shakeRange": 0.11999999731779099,
+                "shakeTime": 0.11999999731779099
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_BeHit",
+      "modifiers": {
+        "LockHp": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "LockHP"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "LockHp"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "LoseHP",
+          "KECHKKGGAPF": 0.009999999776482582,
+          "MIIHJFFDKKC": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_ChargeDummy",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "AIRFLOW_STATE",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.0, 1.0, 2.0, 100.0],
+          "modifierNameSteps": [
+            "AIRFLOW_STATE_NoAirFlow",
+            "AIRFLOW_STATE_AirFlow_01",
+            "AIRFLOW_STATE_AirFlow_02"
+          ]
+        }
+      ],
+      "modifiers": {
+        "AIRFLOW_STATE_NoAirFlow": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "AIRFLOW_STATE_AirFlow_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "CurLocalAvatar",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_AirFlow",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "AIRFLOW_STATE_AirFlow_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "CurLocalAvatar",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_AirFlow02",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": 0.0,
+          "key": "AIRFLOW_STATE",
+          "useLimitRange": true,
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_ChargeDummy_StartCharge",
+      "onAdded": [
+        {
+          "$type": "DamageByAttacktriggerID",
+          "attackInfo": {
+            "attackTag": "",
+            "attenuationTag": "",
+            "attenuationGroup": "default",
+            "attackProperty": {
+              "damagePercentageRatio": 0.0,
+              "bonusCritical": 100.0,
+              "damageExtra": 10.0,
+              "bonusCritical": 0.0
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_TriggerElementBall_Wind",
+      "onAbilityStart": [
+        {
+          "$type": "Randomed",
+          "chance": 0.5,
+          "successActions": [
+            {
+              "$type": "TriggerBullet",
+              "target": "CurLocalAvatar",
+              "bulletID": 42901050,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 20.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "randomAngleHor": 75.0,
+                  "randomAngleVer": 75.0
+                }
+              },
+              "trackTarget": "CurLocalAvatar"
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "TriggerBullet",
+              "target": "CurLocalAvatar",
+              "bulletID": 42901050,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": -20.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "randomAngleHor": 75.0,
+                  "randomAngleVer": 75.0
+                }
+              },
+              "trackTarget": "CurLocalAvatar"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_ElementBall_Wind",
+      "modifiers": {
+        "Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_ElementBall_Wind",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Effect"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_ElementBall_Wind_Absorb",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "radius": 2.0
+            },
+            "attackInfo": {
+              "attackTag": "Dvalin_S01_ElementBall_Wind",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "FKGFPFNOJMN": 0.0
+              }
+            }
+          },
+          "targetType": "AllExceptSelf"
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "Effect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_AirMass_Up",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S02_AirMass",
+          "born": {
+            "$type": "IKBDMAPPAIK",
+            "worldFwd": {
+              "y": 4.5,
+              "z": 5.599999904632568
+            }
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_AirMass_Down",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S02_AirMass",
+          "born": {
+            "$type": "IKBDMAPPAIK",
+            "worldFwd": {
+              "y": -4.5,
+              "z": 5.599999904632568
+            }
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_AirMass_Left",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S02_AirMass",
+          "born": {
+            "$type": "IKBDMAPPAIK",
+            "worldFwd": {
+              "x": -4.5,
+              "z": 5.599999904632568
+            }
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_AirMass_Right",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S02_AirMass",
+          "born": {
+            "$type": "IKBDMAPPAIK",
+            "worldFwd": {
+              "x": 4.5,
+              "z": 5.599999904632568
+            }
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_SpeedUp",
+      "modifiers": {
+        "SpeedUpEffect": {
+          "modifierName": "",
+          "duration": 1.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_Erupt",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_FireBarrage",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "target": "CurLocalAvatar",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_SpeedLine",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_REMINDER_PURSUE_",
+                  "ratio": 1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ShowReminder",
+                  "id": 20010011
+                },
+                {
+                  "$type": "AddGlobaltriggerID",
+                  "ratio": 1.0,
+                  "key": "_REMINDER_PURSUE_",
+                  "useLimitRange": true,
+                  "maxValue": 1.0,
+                  "minValue": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": 6.0,
+          "key": "PURSUE_STAGE",
+          "useLimitRange": true,
+          "maxValue": 6.0,
+          "minValue": 6.0
+        },
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": 1.0,
+          "key": "SPEEDUP_ALREADY",
+          "useLimitRange": true,
+          "maxValue": 1.0,
+          "minValue": 1.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SpeedUpEffect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_WingRing",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "otherTargets": {
+            "$type": "JHKLCAELLHL",
+            "configID": 42901008
+          },
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 50.0
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+              }
+            }
+          },
+          "gadgetID": 42901081,
+          "campID": 4001,
+          "campTargetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_WindRingLauncher_CreateWindRingEmitter",
+      "onAdded": [
+        {
+          "$type": "Randomed",
+          "chance": 0.6000000238418579,
+          "successActions": [
+            {
+              "$type": "Randomed",
+              "chance": 0.699999988079071,
+              "successActions": [
+                {
+                  "$type": "Randomed",
+                  "chance": 0.5,
+                  "successActions": [
+                    {
+                      "$type": "TriggerBullet",
+                      "bulletID": 42901055,
+                      "born": {
+                        "$type": "ConfigBornByAttachPoint",
+                        "bornRandom": {
+                          "$type": "OCDANLJMNNK",
+                          "minRandomRange": 0.0,
+                          "maxRandomRange": 2.0
+                        },
+                        "direction": {
+                          "$type": "ConfigDirectionByEntity",
+                          "angleOffset": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                          }
+                        },
+                        "attachPointName": "BarrageAttach3",
+                        "attachPointTargetType": "Self"
+                      }
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "TriggerBullet",
+                      "bulletID": 42901055,
+                      "born": {
+                        "$type": "ConfigBornByAttachPoint",
+                        "bornRandom": {
+                          "$type": "OCDANLJMNNK",
+                          "minRandomRange": 0.0,
+                          "maxRandomRange": 2.0
+                        },
+                        "direction": {
+                          "$type": "ConfigDirectionByEntity",
+                          "angleOffset": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                          }
+                        },
+                        "attachPointName": "BarrageAttach4",
+                        "attachPointTargetType": "Self"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 42901055,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "bornRandom": {
+                      "$type": "OCDANLJMNNK",
+                      "minRandomRange": 0.0,
+                      "maxRandomRange": 2.0
+                    },
+                    "direction": {
+                      "$type": "ConfigDirectionByEntity",
+                      "angleOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "attachPointName": "BarrageAttach5",
+                    "attachPointTargetType": "Self"
+                  }
+                }
+              ]
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "Randomed",
+              "chance": 0.5,
+              "successActions": [
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 42901055,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "bornRandom": {
+                      "$type": "OCDANLJMNNK",
+                      "minRandomRange": 0.0,
+                      "maxRandomRange": 2.0
+                    },
+                    "direction": {
+                      "$type": "ConfigDirectionByEntity",
+                      "angleOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "attachPointName": "BarrageAttach6",
+                    "attachPointTargetType": "Self"
+                  }
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 42901055,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "bornRandom": {
+                      "$type": "OCDANLJMNNK",
+                      "minRandomRange": 0.0,
+                      "maxRandomRange": 2.0
+                    },
+                    "direction": {
+                      "$type": "ConfigDirectionByEntity",
+                      "angleOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "attachPointName": "BarrageAttach7",
+                    "attachPointTargetType": "Self"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_WindRingEmitter_CreateWindRing",
+      "modifiers": {
+        "BeingHit": {
+          "modifierName": "",
+          "bonusCritical": 7.0,
+          "modifierMixins": [
+            {
+              "$type": "ElementShieldMixin",
+              "elementType": "Wind",
+              "showDamageText": "",
+              "shieldAngle": 360.0,
+              "maxShieldByHPRatio": 1.0,
+              "shieldHP": 0.0,
+              "onShieldBroken": [
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "BeingHit"
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901056,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              }
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "AddElementDurability",
+              "ratio": -1.0,
+              "modifierName": "BeingHit",
+              "useLimitRange": true,
+              "maxValue": 100.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "StartEffect": {
+          "modifierName": "",
+          "duration": 1.2000000476837158,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_WindRingBS",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "LoopEffect"
+            }
+          ]
+        },
+        "LoopEffect": {
+          "modifierName": "",
+          "duration": 11.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_WindRingEmitter",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BeingHit"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "StartEffect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_WindRing_Push",
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_WindRingEmitter_Die",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_WindRing",
+          "effectTempleteID": -1.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "target": "OriginOwner",
+          "ratio": -1.0,
+          "key": "PURSUE_STAGE",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S02_WindRing_Empty",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_TrackBullet",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "otherTargets": {
+            "$type": "JHKLCAELLHL",
+            "configID": 42901008
+          },
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 50.0
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+              }
+            }
+          },
+          "gadgetID": 42901080,
+          "campID": 4001,
+          "campTargetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_TrackBarrageLauncher_TriggerBullet",
+      "modifiers": {
+        "TriggerBullet_Mode1": {
+          "modifierName": "",
+          "duration": 0.5799999833106995,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet1"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_TrackBarrageBS",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet3"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet2"
+            }
+          ]
+        },
+        "TriggerBullet_Mode2": {
+          "modifierName": "",
+          "duration": 0.30000001192092896,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet1"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_TrackBarrageBS",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet2"
+            }
+          ]
+        },
+        "TriggerBullet_Mode3": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet3"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_TrackBarrageBS",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "TriggerBullet1": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901054,
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 30.0,
+                    "y": -90.0,
+                    "z": 0.0
+                  },
+                  "randomAngleHor": 15.0,
+                  "randomAngleVer": 15.0
+                },
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "trackTarget": "CurLocalAvatar"
+            }
+          ]
+        },
+        "TriggerBullet2": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901054,
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 30.0,
+                    "y": 90.0,
+                    "z": 0.0
+                  },
+                  "randomAngleHor": 15.0,
+                  "randomAngleVer": 15.0
+                },
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "trackTarget": "CurLocalAvatar"
+            }
+          ]
+        },
+        "TriggerBullet3": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901054,
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": -90.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "randomAngleHor": 15.0,
+                  "randomAngleVer": 15.0
+                },
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "trackTarget": "CurLocalAvatar"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "Randomed",
+          "chance": 0.5,
+          "successActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "TriggerBulletPos",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 5.0,
+                  "z": 0.0
+                },
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.5
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                },
+                "attachPointName": "BarrageAttach1",
+                "attachPointTargetType": "Self"
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "TriggerBulletPos",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 5.0,
+                  "z": 0.0
+                },
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.5
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                },
+                "attachPointName": "BarrageAttach2",
+                "attachPointTargetType": "Self"
+              }
+            }
+          ]
+        },
+        {
+          "$type": "Randomed",
+          "chance": 0.800000011920929,
+          "successActions": [
+            {
+              "$type": "Randomed",
+              "chance": 0.699999988079071,
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "TriggerBullet_Mode1"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "TriggerBullet_Mode2"
+                }
+              ]
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet_Mode3"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_TrackBullet_Process",
+      "onAdded": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": 0.0,
+          "key": "_DISTANCE_TRACKBULLET_",
+          "useLimitRange": true,
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": -1.0,
+          "key": "_DISTANCE_TRACKBULLET_",
+          "useLimitRange": true,
+          "maxValue": 0.0,
+          "minValue": -4.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDToOverrideMap",
+          "globalValueKey": "_DISTANCE_TRACKBULLET_",
+          "overrideMapKey": "TempCount"
+        },
+        {
+          "$type": "CreateGadget",
+          "otherTargets": {
+            "$type": "JHKLCAELLHL",
+            "configID": 42901008
+          },
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": [60.0, "TempCount", "MUL", 440.0, "ADD"]
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+              }
+            }
+          },
+          "gadgetID": 42901083,
+          "campID": 4001,
+          "campTargetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_TrackBarrageLauncher_TriggerBullet_Process",
+      "modifiers": {
+        "TriggerBullet_Mode1": {
+          "modifierName": "",
+          "duration": 0.5799999833106995,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet1"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_TrackBarrageBS",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet3"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet2"
+            }
+          ]
+        },
+        "TriggerBullet_Mode2": {
+          "modifierName": "",
+          "duration": 0.30000001192092896,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet1"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_TrackBarrageBS",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet2"
+            }
+          ]
+        },
+        "TriggerBullet_Mode3": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet3"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_TrackBarrageBS",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "TriggerBullet1": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901058,
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 30.0,
+                    "y": -90.0,
+                    "z": 0.0
+                  },
+                  "randomAngleHor": 15.0,
+                  "randomAngleVer": 15.0
+                },
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "trackTarget": "CurLocalAvatar"
+            }
+          ]
+        },
+        "TriggerBullet2": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901058,
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 30.0,
+                    "y": 90.0,
+                    "z": 0.0
+                  },
+                  "randomAngleHor": 15.0,
+                  "randomAngleVer": 15.0
+                },
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "trackTarget": "CurLocalAvatar"
+            }
+          ]
+        },
+        "TriggerBullet3": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901058,
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": -90.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "randomAngleHor": 15.0,
+                  "randomAngleVer": 15.0
+                },
+                "positionKey": "TriggerBulletPos",
+                "directionKey": ""
+              },
+              "trackTarget": "CurLocalAvatar"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "Randomed",
+          "chance": 0.5,
+          "successActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "TriggerBulletPos",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 5.0,
+                  "z": 0.0
+                },
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.5
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                },
+                "attachPointName": "BarrageAttach1",
+                "attachPointTargetType": "Self"
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "TriggerBulletPos",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 5.0,
+                  "z": 0.0
+                },
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.5
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity"
+                },
+                "attachPointName": "BarrageAttach2",
+                "attachPointTargetType": "Self"
+              }
+            }
+          ]
+        },
+        {
+          "$type": "Randomed",
+          "chance": 0.800000011920929,
+          "successActions": [
+            {
+              "$type": "Randomed",
+              "chance": 0.699999988079071,
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "TriggerBullet_Mode1"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "TriggerBullet_Mode2"
+                }
+              ]
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerBullet_Mode3"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_EnergyBullet",
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "otherTargets": {
+            "$type": "JHKLCAELLHL",
+            "configID": 42901008
+          },
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 60.0
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+              }
+            }
+          },
+          "gadgetID": 42901079,
+          "campID": 4001,
+          "campTargetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_EnergyBarrageLauncher_TriggerEmitter",
+      "modifiers": {
+        "EnergyBullet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach1",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach2",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach3",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach5",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach6",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach8",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach9",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach10",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach11",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach12",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach13",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach14",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach15",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach16",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach17",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach18",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach19",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901059,
+              "campID": 4001
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "EnergyBullet"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_EnergyBullet_Process",
+      "onAdded": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": 0.0,
+          "key": "_DISTANC_ENERGYBULLET_",
+          "useLimitRange": true,
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": -1.0,
+          "key": "_DISTANC_ENERGYBULLET_",
+          "useLimitRange": true,
+          "maxValue": 0.0,
+          "minValue": -10.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDToOverrideMap",
+          "globalValueKey": "_DISTANC_ENERGYBULLET_",
+          "overrideMapKey": "TempCount"
+        },
+        {
+          "$type": "CreateGadget",
+          "otherTargets": {
+            "$type": "JHKLCAELLHL",
+            "configID": 42901008
+          },
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": [40.0, "TempCount", "MUL", 410.0, "ADD"]
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+              }
+            }
+          },
+          "gadgetID": 42901082,
+          "campID": 4001,
+          "campTargetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_EnergyBarrageLauncher_TriggerEmitter_Process",
+      "modifiers": {
+        "EnergyBullet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach3",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach5",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach6",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach8",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach9",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach10",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach11",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach12",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach13",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach14",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach15",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach16",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach17",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach18",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 0.0,
+                  "maxRandomRange": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "BarrageAttach19",
+                "attachPointTargetType": "Self"
+              },
+              "gadgetID": 42901060,
+              "campID": 4001
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "EnergyBullet"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_BulletEmitter_TriggerBullet",
+      "abilitySpecials": {
+        "RandomTimer": 1.0
+      },
+      "modifiers": {
+        "TriggerBullet": {
+          "modifierName": "",
+          "duration": "RandomTimer",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901053,
+              "born": {
+                "$type": "ConfigBornBySelf"
+              }
+            },
+            {
+              "$type": "KillSelf",
+              "duration": 1.2000000476837158
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 4.0,
+          "triggerIDRangeMin": 1.0,
+          "overrideMapKey": "RandomTimer"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "TriggerBullet"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_BulletEmitter_Process_TriggerBullet",
+      "abilitySpecials": {
+        "RandomTimer": 1.0
+      },
+      "modifiers": {
+        "TriggerBullet": {
+          "modifierName": "",
+          "duration": "RandomTimer",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42901057,
+              "born": {
+                "$type": "ConfigBornBySelf"
+              }
+            },
+            {
+              "$type": "KillSelf",
+              "duration": 1.2000000476837158
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 4.0,
+          "triggerIDRangeMin": 1.0,
+          "overrideMapKey": "RandomTimer"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "TriggerBullet"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_EnergyBullet_Damage",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_EnergyBarrageLoop",
+          "effectTempleteID": -1.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "LoseHP",
+          "target": "CurLocalAvatar",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "OriginOwner",
+              "key": "SGV_DungeonDifficulty",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "OLMENJCGGJJ": 0.009999999776482582,
+          "MIIHJFFDKKC": ""
+        },
+        {
+          "$type": "LoseHP",
+          "target": "CurLocalAvatar",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "OriginOwner",
+              "key": "SGV_DungeonDifficulty",
+              "ratio": 1.0
+            }
+          ],
+          "OLMENJCGGJJ": 0.004999999888241291,
+          "MIIHJFFDKKC": ""
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_EnergyBarrageHit",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Dvalin_S01_TrackBullet_Damage",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_TrackBarrageLoop",
+          "effectTempleteID": -1.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "LoseHP",
+          "target": "CurLocalAvatar",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "OriginOwner",
+              "key": "SGV_DungeonDifficulty",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "OLMENJCGGJJ": 0.004999999888241291,
+          "MIIHJFFDKKC": ""
+        },
+        {
+          "$type": "LoseHP",
+          "target": "CurLocalAvatar",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "OriginOwner",
+              "key": "SGV_DungeonDifficulty",
+              "ratio": 1.0
+            }
+          ],
+          "OLMENJCGGJJ": 0.003000000026077032,
+          "MIIHJFFDKKC": ""
+        },
+        {
+          "$type": "FireEffect",
+          "target": "CurLocalAvatar",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Dvalin_S01_TrackBarrageHit",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  }
+]

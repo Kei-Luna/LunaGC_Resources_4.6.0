@@ -1,0 +1,3966 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "EnterSceneLook_TeamAbility",
+      "modifiers": {
+        "DelayEnter": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_CameraSceneLookGroup_Bellwort"
+            }
+          ]
+        },
+        "UNIQUE_CameraSceneLookGroup_Bellwort": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "EnterSceneLookMixin",
+              "lookAtTag": "SceneLook",
+              "followOffset": {
+                "x": 1.690000057220459,
+                "y": 0.41999998688697815,
+                "z": -2.5
+              },
+              "fov": 50.0,
+              "deadZoneWidth": 0.04500000178813934,
+              "deadZoneHeight": 0.07999999821186066,
+              "softZoneWidth": 0.18000000715255737,
+              "softZoneHeight": 0.3199999928474426
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AvatarExitFocus",
+              "keepRotation": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DelayEnter"
+        }
+      ],
+      "onRemoved": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_CameraSceneLookGroup_Bellwort"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Prop_EnterSceneLook_01_Ability",
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "SceneLook"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "NahidaDungeonQuest_TeamAbility",
+      "modifiers": {
+        "NahidaOverrideSkill": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToNormalizedTimeMixin",
+              "stateID": "Nahida_ElementalArt_Click",
+              "modifierName": "NahidaDungeonQuest_Click_Strike",
+              "normalizeStart": 0.4000000059604645,
+              "BILMCNCKIAO": ""
+            },
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": [
+                "Nahida_ElementalArt_Move",
+                "Nahida_ElementalArt_Loop",
+                "Nahida_ElementalArt_Hold"
+              ],
+              "modifierName": "NahidaDungeonQuest_RayCast_Handler",
+              "BILMCNCKIAO": ""
+            }
+          ]
+        },
+        "Avatar_Nahida_RayCast_Quest_Gadget_Call": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "CallQuest"
+            }
+          ]
+        },
+        "NahidaDungeonQuest_RayCast_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByAimMixin",
+              "entityTypes": ["Gadget"],
+              "colliderNodeName": "PRIVATE_RayCast",
+              "MFDNAKOAAHI": -1.0,
+              "actionQueue": [
+                {
+                  "$type": "AttachModifier",
+                  "target": "Other",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": ["Gadget"]
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "IS_NAHIDA_QUEST_CALL_GADGET",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "modifierName": "Lock_Eff"
+                }
+              ],
+              "onLeaveScopeActionQueue": [
+                {
+                  "$type": "RemoveModifier",
+                  "target": "Other",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": ["Gadget"]
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "IS_NAHIDA_QUEST_CALL_GADGET",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "modifierName": "Lock_Eff"
+                }
+              ],
+              "onRemoveActionQueue": [
+                {
+                  "$type": "RemoveModifier",
+                  "target": "Other",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": ["Gadget"]
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "IS_NAHIDA_QUEST_CALL_GADGET",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "modifierName": "Lock_Eff"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "target": "Other",
+                  "predicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": ["Gadget"]
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "IS_NAHIDA_QUEST_CALL_GADGET",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "modifierName": "Avatar_Nahida_RayCast_Quest_Gadget_Call"
+                }
+              ]
+            }
+          ]
+        },
+        "Lock_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Avatar_Loli_Catalyst_Nahida_ElementalArt_Ray_Tag_Npc",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "NahidaDungeonQuest_Click_Strike": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "shapeName": "SectorR4D120H4",
+                "campTargetType": "All",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Gadget"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "IS_NAHIDA_QUEST_CALL_GADGET",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "CallQuest"
+            }
+          ]
+        },
+        "CallQuest": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "GV_Quest_Call",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "NahidaOverrideSkill"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "VoidSearching_TeamAbility",
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "modifierName": "VoidSearchingTick"
+        }
+      ],
+      "modifiers": {
+        "VoidSearchingTick": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "NBGLPIMPCLL",
+                  "bodyType": "BODY_BOY"
+                }
+              ],
+              "modifierName": "VoidSearchingTickBoy"
+            },
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "NBGLPIMPCLL",
+                  "bodyType": "BODY_GIRL"
+                }
+              ],
+              "modifierName": "VoidSearchingTickGirl"
+            }
+          ]
+        },
+        "VoidSearchingTickBoy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_VoidSearching",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_Setted",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "tag": "IS_VOID_SEARCHING_TARGET"
+              },
+              "predicatesForeach": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "compareType": "XYZ",
+                  "ratio": 10.0,
+                  "PHMALDNHHLD": ""
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "GV_Setted",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "GV_Setted",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "parameter": "State",
+                  "attachPoint": "",
+                  "type": "Int",
+                  "value": 202,
+                  "healLimitedByCasterMaxHPRatio": "Eff_Quest_VoidSearching"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "tag": "IS_VOID_SEARCHING_TARGET"
+              },
+              "predicatesForeach": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "compareType": "XYZ",
+                  "ratio": 20.0,
+                  "PHMALDNHHLD": ""
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "GV_Setted",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "GV_Setted",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "parameter": "State",
+                  "attachPoint": "",
+                  "type": "Int",
+                  "value": 201,
+                  "healLimitedByCasterMaxHPRatio": "Eff_Quest_VoidSearching"
+                }
+              ]
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "GV_Setted",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_VoidSearching"
+            }
+          ]
+        },
+        "VoidSearchingTickGirl": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_VoidSearching_PlayGirl",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_Setted",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "tag": "IS_VOID_SEARCHING_TARGET"
+              },
+              "predicatesForeach": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "compareType": "XYZ",
+                  "ratio": 10.0,
+                  "PHMALDNHHLD": ""
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "GV_Setted",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "GV_Setted",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "parameter": "State",
+                  "attachPoint": "",
+                  "type": "Int",
+                  "value": 202,
+                  "healLimitedByCasterMaxHPRatio": "Eff_Quest_VoidSearching_PlayGirl"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "tag": "IS_VOID_SEARCHING_TARGET"
+              },
+              "predicatesForeach": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "compareType": "XYZ",
+                  "ratio": 20.0,
+                  "PHMALDNHHLD": ""
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "GV_Setted",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "GV_Setted",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "SendEffectTrigger",
+                  "parameter": "State",
+                  "attachPoint": "",
+                  "type": "Int",
+                  "value": 201,
+                  "healLimitedByCasterMaxHPRatio": "Eff_Quest_VoidSearching_PlayGirl"
+                }
+              ]
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "GV_Setted",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_VoidSearching_PlayGirl"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "GrassGadget_ThreeState",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Normal"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 200,
+          "modifierName": "Excited"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 300,
+          "modifierName": "Destory"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 301,
+          "modifierName": "DeathDestory"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "GrassState",
+          "valueSteps": [-10.0, 10.0, 210.0, 310.0],
+          "modifierNameSteps": ["NormalShow", "ExcitedShow", "DestoryShow"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_DeathZoneState",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": ["EnterDeathZone"]
+        }
+      ],
+      "abilitySpecials": {
+        "ExcitedDuration": 1.0
+      },
+      "modifiers": {
+        "GoToDestoryState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 300.0,
+              "key": "GrassState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "state": 300
+            }
+          ]
+        },
+        "EnterDeathZone": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 300.0,
+              "key": "GrassState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "state": 301
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ChangeGadgetState"
+            }
+          ]
+        },
+        "GrassStateManage": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ModifyElementDecrateMixin",
+              "group": "ThreeStateGrass"
+            }
+          ]
+        },
+        "ChangeExcitedDuration": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "GV_ExcitedDuration",
+              "overrideMapKey": "ExcitedDuration"
+            }
+          ]
+        },
+        "Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionBySelfElementReactionMixin",
+              "reactionTypes": ["Overdose"],
+              "actionQueue": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 200.0,
+                  "key": "GrassState",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "ChangeGadgetState",
+                  "state": 200
+                }
+              ]
+            },
+            {
+              "$type": "DeathZoneMixin",
+              "disactiveHaloTrigger": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "GrassState",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GrassState",
+                      "ratio": 301.0
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "GrassState",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "BAAFGCJBAPM",
+                  "element": "Fire",
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 300.0,
+                  "key": "GrassState",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "ChangeGadgetState",
+                  "state": 300
+                }
+              ]
+            }
+          ]
+        },
+        "Excited": {
+          "modifierName": "",
+          "duration": "ExcitedDuration",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 200.0,
+              "key": "GrassState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "EnableWisdomImpact",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GrassState",
+                  "ratio": 200.0
+                },
+                {
+                  "$type": "NJMOCHPJIKO",
+                  "gadgetState": 200
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "GrassState",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "ChangeGadgetState"
+                }
+              ]
+            }
+          ]
+        },
+        "Destory": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 300.0,
+              "key": "GrassState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "BAAFGCJBAPM",
+                  "element": "Grass",
+                  "durability": 10.0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "GrassState",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "ChangeGadgetState"
+                }
+              ]
+            }
+          ]
+        },
+        "DeathDestory": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 301.0,
+              "key": "GrassState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_DeathZoneState",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "ratio": 0.0,
+              "key": "GrassState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_DeathZoneState",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ]
+            }
+          ]
+        },
+        "NormalShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "InitGrass"
+            },
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Gadget",
+              "GGGADBNBNDN": "_ConversionStateChange",
+              "ratio": 0.0,
+              "useCurve": true,
+              "lerpTime": 2.0
+            }
+          ]
+        },
+        "ExcitedShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "InitGrass"
+            },
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Gadget",
+              "GGGADBNBNDN": "_ConversionStateChange",
+              "ratio": 2.0,
+              "useCurve": true,
+              "lerpTime": 2.0
+            }
+          ]
+        },
+        "DestoryShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Gadget",
+              "GGGADBNBNDN": "_ConversionStateChange",
+              "ratio": -2.0,
+              "useCurve": true,
+              "lerpTime": 2.0
+            }
+          ]
+        },
+        "InitGrass": {
+          "modifierName": "",
+          "elementType": "Grass",
+          "bonusCritical": 50.0,
+          "modifierMixins": [
+            {
+              "$type": "SelfAddDurabilityMixin",
+              "ratio": 10.0,
+              "useLimitRange": true,
+              "maxValue": 50.0,
+              "thinkInterval": 0.5
+            }
+          ],
+          "retainWhenDurabilityIsZero": true
+        },
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachAbilityStateResistance",
+          "resistanceListID": 14005
+        },
+        {
+          "$type": "AttachAbilityStateResistance",
+          "resistanceListID": 14002
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "GrassStateManage"
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "GV_ExcitedDuration",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ChangeExcitedDuration"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "NJMOCHPJIKO",
+              "gadgetState": 202
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_DeathZoneState",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "modifierName": "GoToDestoryState"
+        },
+        {
+          "$type": "DisableAffectedByWorld",
+          "disableWeatherEffect": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "TransparentGadget_Ability",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "TransparentState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 200,
+          "modifierName": "ToShowState"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "ShowState",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": ["ShowState"]
+        }
+      ],
+      "modifiers": {
+        "TransparentState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn",
+          "onAdded": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "InvisibleMat",
+              "GGGADBNBNDN": "_DissoveThreshold",
+              "ratio": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "ShowState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": ["WisdomImpact01"]
+                    },
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": ["WisdomImpact02"]
+                    },
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": ["WisdomImpact03"]
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "ShowState",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "ChangeGadgetState",
+                  "state": 200
+                },
+                {
+                  "$type": "DoWatcherSystemAction",
+                  "target": "Target",
+                  "watcherId": 81251
+                },
+                {
+                  "$type": "DoWatcherSystemAction",
+                  "target": "TargetOriginOwner",
+                  "watcherId": 81251
+                }
+              ]
+            }
+          ]
+        },
+        "ToShowState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "ShowState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "ShowState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "matName": "InvisibleMat",
+              "GGGADBNBNDN": "_DissoveThreshold",
+              "ratio": 1.0,
+              "useCurve": true,
+              "lerpCurveIndex": 1,
+              "lerpTime": 1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "NJMOCHPJIKO"
+                }
+              ]
+            }
+          ],
+          "ratio": 1.0,
+          "key": "ShowState",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "TransparentGadget"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_GrapplingHookPoint_01_Ability",
+      "abilityMixins": [
+        {
+          "$type": "ScanEntityMixin",
+          "tag": "GrapplingHook"
+        }
+      ],
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrappleHook_01_Appear",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "GrapplingHookPoint"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_GrapplingHookPoint_SanBin01",
+      "abilityMixins": [
+        {
+          "$type": "GrapplingHookPointMixin"
+        }
+      ],
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrappleHook_01_Appear",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "GrapplingHookPoint"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "GrapplingHookSkill_Ability",
+      "abilityMixins": [
+        {
+          "$type": "CheckScanEntityMixin",
+          "tag": "GrapplingHook",
+          "onEnterHookArea": [
+            {
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20043
+            },
+            {
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20044
+            },
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "modifierName": "Hook_SwitchAirSkill"
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_GrapplingHookSkill_ExtraTeamAbility"
+            },
+            {
+              "$type": "DoWatcherSystemAction",
+              "watcherId": 10014,
+              "authorityOnly": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "LeaveHookArea",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onExitHookArea": [
+            {
+              "$type": "RemoveAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20043
+            },
+            {
+              "$type": "RemoveAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20044
+            },
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "Hook_SwitchAirSkill"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "LeaveHookArea",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_GrapplingHookSkill_ExtraTeamAbility"
+            }
+          ],
+          "activateSkillKey": "AVATAR_GrapplingHookSkill"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_ABILITY_GrapplingHookSkill_Step",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 3.9000000953674316],
+          "modifierNameSteps": [
+            "Blank",
+            "UNIQUE_GrapplingHookSkill_GrassCoreEffect"
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["ActivitySkill_GrapplingHook"],
+          "modifierName": "UNIQUE_GrapplingHookSkill_SkillHandler",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "UNIQUE_GrapplingHookSkill_ExtraTeamAbility": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "priority": "Auto",
+              "OHMHKPOPGMI": 20014
+            }
+          ]
+        },
+        "UNIQUE_GrapplingHookSkill_RecoverHandler": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_GrapplingHookSkill_Step",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_GrapplingHookSkill_PreSkill"
+            },
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_GrapplingHookSkill_ThrowHook"
+            },
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_GrapplingHookSkill_SkillStart"
+            }
+          ]
+        },
+        "UNIQUE_GrapplingHookSkill_SkillHandler": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_GrapplingHookSkill_Step",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [0.5, 1.5, 3.5],
+              "modifierNameSteps": [
+                "UNIQUE_GrapplingHookSkill_PreSkill",
+                "UNIQUE_GrapplingHookSkill_ThrowHook"
+              ]
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_GrapplingHookSkill_Step",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [2.5, 4.5],
+              "modifierNameSteps": ["UNIQUE_GrapplingHookSkill_SkillStart"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_ABILITY_GrapplingHookSkill_Step",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_GrapplingHookSkill_Step",
+                  "ratio": 3.0,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "ratio": 0.0,
+              "key": "_ABILITY_GrapplingHookSkill_Step",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Hook_SwitchAirSkill": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AvatarChangeSkillMixin",
+              "index": -1,
+              "priority": "Playmode",
+              "jumpSkillID": 20044,
+              "flySkillID": 20044
+            },
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Fly", "Fall"],
+              "modifierName": "ChangePlayMode_FlyMark",
+              "isCheckOnAttach": true,
+              "BILMCNCKIAO": ""
+            },
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Jump"],
+              "modifierName": "ChangePlayMode_JumpMark_Handler",
+              "isCheckOnAttach": true,
+              "BILMCNCKIAO": ""
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_GrapplingHookSkill_JoypadAirSkill_Mark",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-0.5, 0.5, 5.5],
+              "modifierNameSteps": ["Blank", "ChangePlayModeForJoypad"]
+            }
+          ]
+        },
+        "ChangePlayModeForJoypad": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ChangePlayMode",
+              "cdDelta": true,
+              "muteRemoteAction": true,
+              "toPlayMode": "GrapplingHook"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ChangePlayMode",
+              "cdDelta": true,
+              "muteRemoteAction": true,
+              "FFFGBBHBKGB": "GrapplingHook"
+            }
+          ]
+        },
+        "ChangePlayMode_FlyMark": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_GrapplingHookSkill_JoypadAirSkill_Mark",
+              "useLimitRange": true,
+              "maxValue": 5.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "_ABILITY_GrapplingHookSkill_JoypadAirSkill_Mark",
+              "useLimitRange": true,
+              "maxValue": 5.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "ChangePlayMode_JumpMark_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.699999988079071,
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "ChangePlayMode_JumpMark"
+            }
+          ]
+        },
+        "ChangePlayMode_JumpMark": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_GrapplingHookSkill_JoypadAirSkill_Mark",
+              "useLimitRange": true,
+              "maxValue": 5.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "_ABILITY_GrapplingHookSkill_JoypadAirSkill_Mark",
+              "useLimitRange": true,
+              "maxValue": 5.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_GrapplingHookSkill_PreSkill": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_EndureDelta": 0.0
+          },
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "RushMoveOnGround"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_StreamingOptimization"
+            },
+            {
+              "$type": "DoWatcherSystemAction",
+              "watcherId": 81260,
+              "authorityOnly": true
+            }
+          ]
+        },
+        "RushMoveOnGround": {
+          "modifierName": "",
+          "duration": 0.05999999865889549,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_EndureDelta": 0.0
+          },
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "ratio": 0.5
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "RemoveVelocityForce",
+                  "forces": ["RushMoveType", "InertiaType"]
+                },
+                {
+                  "$type": "FixedAvatarRushMove",
+                  "toPos": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.5,
+                      "z": 0.0
+                    }
+                  },
+                  "MBHPLECOEKG": 0.05000000074505806,
+                  "maxRange": 2.0,
+                  "animatorStateIDs": ["ActivitySkill_GrapplingHook"],
+                  "overrideMoveCollider": "",
+                  "isInAir": true
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveVelocityForce",
+              "forces": ["RushMoveType", "InertiaType"]
+            },
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 1.0,
+              "key": "Avatar_HookVisible",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_GrapplingHookSkill_Step",
+                  "ratio": 1.0
+                }
+              ],
+              "ratio": 2.0,
+              "key": "_ABILITY_GrapplingHookSkill_Step",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_GrapplingHookSkill_ThrowHook": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ThrowGrapplingHookMixin",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Grapple_01_Line",
+              "positionKey": "_GrapplingHook_TargetPos",
+              "onHookReached": [
+                {
+                  "$type": "SetGlobalValue",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_GrapplingHookSkill_Step",
+                      "ratio": 2.0
+                    }
+                  ],
+                  "ratio": 3.0,
+                  "key": "_ABILITY_GrapplingHookSkill_Step",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "HookEffectTrigger"
+                }
+              ],
+              "effectPattern": true
+            },
+            {
+              "$type": "GrapplingHookMoveStayInPlaceMixin"
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0.0
+          }
+        },
+        "UNIQUE_GrapplingHookSkill_SkillStart": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "GrapplingHookMoveMixin",
+              "onArrived": [
+                {
+                  "$type": "SetGlobalValue",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_ABILITY_GrapplingHookSkill_Step",
+                      "ratio": 3.0
+                    }
+                  ],
+                  "ratio": 4.0,
+                  "key": "_ABILITY_GrapplingHookSkill_Step",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "GrapplingHook_ArrivedRushMove"
+                }
+              ],
+              "upForceValue": 5.0,
+              "upForceTime": 1.0,
+              "arriveDistance": 0.5
+            },
+            {
+              "$type": "ModifyCameraMaxDistanceMixin",
+              "maxDistance": 10.0,
+              "resetToMaxOnStart": true,
+              "lerpInDuration": 0.20000000298023224,
+              "lerpOutDuration": 0.699999988079071
+            },
+            {
+              "$type": "TriggerPostProcessEffectMixin",
+              "postEffectAssetName": "PostEffect_Skiff_Sprint",
+              "duration": 0.0
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "GrapplingHookRushMove",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_GrapplingHookSkill_Step",
+                  "ratio": 3.0
+                }
+              ],
+              "toPos": {
+                "$type": "MKLCDCJFOHO",
+                "offset": {
+                  "x": 0.0,
+                  "y": -0.5,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "AIJHOFHPJJB",
+                  "directionKey": "_GrapplingHook_TargetDir"
+                },
+                "positionKey": "_GrapplingHook_TargetPos",
+                "directionKey": ""
+              },
+              "speed": 15.0,
+              "accSpeed": 10.0,
+              "maxSpeed": 20.0,
+              "animatorStateIDs": [
+                "ActivitySkill_GrapplingHook",
+                "Fly",
+                "Standby",
+                "Run"
+              ],
+              "isInAir": true
+            },
+            {
+              "$type": "AttachModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_GrapplingHookSkill_Step",
+                  "ratio": 3.0
+                }
+              ],
+              "modifierName": "Camera_Blur"
+            },
+            {
+              "$type": "DebugLog",
+              "content": "!!!!!!!!!!!Camera_Blur!!!!!!!!!!"
+            }
+          ]
+        },
+        "UNIQUE_GrapplingHookSkill_HookHideHanlde": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "Avatar_HookVisible",
+              "actions": [
+                {
+                  "$type": "TriggerSetVisible",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "Avatar_HookVisible",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "Avatar_HookVisible",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "TriggerSetVisible",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "visible": true
+            }
+          ]
+        },
+        "UNIQUE_GrapplingHookSkill_GrassCoreEffect": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AddGravityScale": -2.0
+          },
+          "onAdded": [
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "ignoreAirGY": true
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Grapple_01_MoveIn",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Grapple_01_Moving",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "$type": "AIJHOFHPJJB",
+                  "directionKey": "_GrapplingHook_TargetDir"
+                }
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_GrapplingHookSkill_HookHideHanlde"
+            },
+            {
+              "$type": "AttachModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_GrapplingHookSkill_HookHideHanlde"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "cdDelta": true
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "cdDelta": true,
+              "forces": ["RushMoveType", "InertiaType"]
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Grapple_01_MoveOut",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "modifierName": "GrapplingHook_SkillCharge"
+            }
+          ]
+        },
+        "GrapplingHook_SkillCharge": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 100.0,
+              "key": "AVATAR_GrapplingHookSkill",
+              "useLimitRange": true,
+              "maxValue": 100.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "GrapplingHook_ArrivedRushMove": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AddGravityScale": -2.0
+          },
+          "onAdded": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "cdDelta": true
+            },
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "ignoreAirGY": true
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "forces": ["InertiaType", "GrapplingHookMoveType"]
+            },
+            {
+              "$type": "FixedAvatarRushMove",
+              "target": "CurLocalAvatar",
+              "toPos": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                }
+              },
+              "MBHPLECOEKG": 0.05000000074505806,
+              "maxRange": 0.5,
+              "animatorStateIDs": ["ActivitySkill_GrapplingHook", "DropDown"],
+              "overrideMoveCollider": "",
+              "isInAir": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetVelocityIgnoreAirGY"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "GrapplingHook_Drop"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_ABILITY_GrapplingHookSkill_Step",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Camera_Blur": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CameraBlurMixin",
+              "cameraRadialBlur": {
+                "power": 1.0,
+                "fadeTime": 0.10000000149011612
+              }
+            }
+          ]
+        },
+        "UNIQUE_StreamingOptimization": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 4.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "StreamingModifierMixin"
+            }
+          ]
+        },
+        "GrapplingHook_Init": {
+          "stacking": "MultipleRefresh",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 1.0
+          },
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_ABILITY_GrapplingHookSkill_Step",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "GrapplingHook_Drop"
+            },
+            {
+              "$type": "SetVelocityIgnoreAirGY",
+              "cdDelta": true
+            },
+            {
+              "$type": "RemoveVelocityForce",
+              "forces": [
+                "RushMoveType",
+                "InertiaType",
+                "FixedRushMoveType",
+                "SpeedupType",
+                "GrapplingHookMoveType"
+              ]
+            }
+          ]
+        },
+        "HookEffectTrigger": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "muteRemoteAction": true,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrappleHook_01_Active",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "_GrapplingHook_TargetPos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Get",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Grapple_01_Line"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_ABILITY_GrapplingHookSkill_Step",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_GrapplingHookSkill_RecoverHandler"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ClearGlobalPos",
+          "key": "_GrapplingHook_TargetPos"
+        },
+        {
+          "$type": "Predicated",
+          "otherTargets": {
+            "$type": "PBJFBODBNLD",
+            "topLimit": 1,
+            "tag": "GrapplingHook"
+          },
+          "successActions": [
+            {
+              "$type": "DebugLog",
+              "content": "TD:Hook AbilityStart!!!"
+            },
+            {
+              "$type": "SetGlobalPos",
+              "target": "Target",
+              "key": "_GrapplingHook_TargetPos",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "setTarget": false
+            },
+            {
+              "$type": "SetGlobalDir",
+              "target": "Target",
+              "key": "_GrapplingHook_TargetDir",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "$type": "KPKEFLCHOHD",
+                  "namedTransform": ""
+                }
+              },
+              "setTarget": false
+            },
+            {
+              "$type": "SetSelfAttackTarget",
+              "target": "Target",
+              "turnToTargetImmediately": true
+            },
+            {
+              "$type": "EntityDoSkill",
+              "skillID": 20044
+            },
+            {
+              "$type": "EntityDoSkill",
+              "skillID": 20043
+            }
+          ]
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrapplingHook_Init"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "GrapplingHookSkill_AvatarAbility_Dummy",
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "GrapplingHookSkill_Ability_Dummy",
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "DynamicAbility_DeathZone",
+      "abilityMixins": [
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "SGV_DeathZone_ErosionLevel",
+          "actions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "RefreshLevelNumAndModifier"
+            }
+          ]
+        },
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "modifierName": "UNIQUE_Life_Point_Search"
+        },
+        {
+          "$type": "LocalAvatarsMixin",
+          "modifierName": "UNIQUE_FirstRefreshLevelNumAndModifier"
+        }
+      ],
+      "abilitySpecials": {
+        "DeathZoneMaxHPRarioEachLevel": 0.0949999988079071,
+        "DeathZoneSubHurRate": 0.03999999910593033,
+        "DeathZoneLevelNum": 1.0,
+        "DeathZoneExtraAttackCD": 3.0
+      },
+      "modifiers": {
+        "RefreshLevelNumAndModifier": {
+          "stacking": "MultipleRefresh",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 1.0
+          },
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "SGV_DeathZone_ErosionLevel",
+              "overrideMapKey": "DeathZoneLevelNum"
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_DynamicAbility_DeathZone_Debuff_Avatar"
+            }
+          ]
+        },
+        "UNIQUE_FirstRefreshLevelNumAndModifier": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "target": "Team",
+              "globalValueKey": "SGV_DeathZone_ErosionLevel",
+              "overrideMapKey": "DeathZoneLevelNum"
+            },
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_DynamicAbility_DeathZone_Debuff_Avatar"
+            }
+          ]
+        },
+        "UNIQUE_DeathZoneController": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "SGV_DeathZone_ErosionLevel",
+              "valueSteps": [9.5, 11.0],
+              "modifierNameSteps": [
+                "UNIQUE_DynamicAbility_DeathZone_LoseHp_Logic"
+              ]
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "DeathZoneGV_ExtraAttack",
+              "valueSteps": [0.5, 10.0],
+              "modifierNameSteps": ["UNIQUE_DeathZone_ExtraAttack"]
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "DeathZoneGV_ExtraHeal",
+              "valueSteps": [0.5, 10.0],
+              "modifierNameSteps": ["UNIQUE_DeathZone_ExtraHeal"]
+            }
+          ]
+        },
+        "UNIQUE_DynamicAbility_DeathZone_Debuff_Avatar": {
+          "stacking": "MultipleRefresh",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 1.0
+          },
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_MaxHPRatio": [
+              0.0,
+              1.0,
+              "DeathZoneMaxHPRarioEachLevel",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_FireSubHurtDelta": [
+              0.0,
+              1.0,
+              "DeathZoneSubHurRate",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_ElecSubHurtDelta": [
+              0.0,
+              1.0,
+              "DeathZoneSubHurRate",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WaterSubHurtDelta": [
+              0.0,
+              1.0,
+              "DeathZoneSubHurRate",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_GrassSubHurtDelta": [
+              0.0,
+              1.0,
+              "DeathZoneSubHurRate",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WindSubHurtDelta": [
+              0.0,
+              1.0,
+              "DeathZoneSubHurRate",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_IceSubHurtDelta": [
+              0.0,
+              1.0,
+              "DeathZoneSubHurRate",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_RockSubHurtDelta": [
+              0.0,
+              1.0,
+              "DeathZoneSubHurRate",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_PhysicalSubHurtDelta": [
+              0.0,
+              1.0,
+              "DeathZoneSubHurRate",
+              "MUL",
+              "DeathZoneLevelNum",
+              "MUL",
+              "SUB"
+            ]
+          },
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "TDAbility_DynamicAbility_DeathZone: 角色在死域内综合效果"
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "UNIQUE_DynamicAbility_DeathZone_LoseHp_Logic": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 10.0,
+          "state": "UnlockFrequencyLimit",
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UNIQUE_DynamicAbility_DeathZone_LoseHp"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "modifierName": "UNIQUE_DynamicAbility_DeathZone_LoseHp"
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        },
+        "UNIQUE_DynamicAbility_DeathZone_LoseHp": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 9.0,
+          "bonusCritical": 100.0,
+          "thinkInterval": 2.0,
+          "onAdded": [
+            {
+              "$type": "LoseHP",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "CKJNCONHFNH"
+                    }
+                  ]
+                },
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "OLMENJCGGJJ": 1.0,
+              "enableInvincible": true,
+              "disableWhenLoading": true,
+              "useMeta": true,
+              "MIIHJFFDKKC": ""
+            },
+            {
+              "$type": "LoseHP",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "CKJNCONHFNH"
+                },
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "OLMENJCGGJJ": 1.0,
+              "enableInvincible": true,
+              "disableWhenLoading": true,
+              "useMeta": true,
+              "MIIHJFFDKKC": ""
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "LoseHP",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "CKJNCONHFNH"
+                    }
+                  ]
+                },
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "OLMENJCGGJJ": 1.0,
+              "enableInvincible": true,
+              "disableWhenLoading": true,
+              "useMeta": true,
+              "MIIHJFFDKKC": ""
+            },
+            {
+              "$type": "LoseHP",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "CKJNCONHFNH"
+                },
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "OLMENJCGGJJ": 1.0,
+              "enableInvincible": true,
+              "disableWhenLoading": true,
+              "useMeta": true,
+              "MIIHJFFDKKC": ""
+            }
+          ]
+        },
+        "UNIQUE_DeathZone_ExtraAttack": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "DeathZoneExtraAttackCD",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddRegionalPlayVarValue",
+              "varType": "DeathZoneExtraErosion",
+              "addValue": 10.0
+            },
+            {
+              "$type": "FireEffect",
+              "target": "CurLocalAvatar",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_MaranaNexus_Skill_Hit",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "DoWatcherSystemAction",
+              "watcherId": 10011,
+              "authorityOnly": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "DeathZoneGV_ExtraAttack",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_DeathZone_ExtraHeal": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DeathZoneRegionalPlayMixin"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AddRegionalPlayVarValue",
+              "varType": "DeathZoneExtraErosion",
+              "addValue": -10.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "DeathZoneGV_ExtraHeal",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_Life_Point_Search": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "tag": "IS_Life_Point"
+              },
+              "predicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "compareType": "XYZ",
+                  "ratio": 6.5,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "modifierName": "UNIQUE_LifePointBuff"
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_LifePointBuff": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "modifierMixins": [
+            {
+              "$type": "DeathZoneRegionalPlayMixin"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AddRegionalPlayVarValue",
+              "varType": "DeathZoneExtraErosion",
+              "addValue": -10.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "DeathZoneGV_ExtraAttack",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "DeathZoneGV_ExtraHeal",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_DeathZoneController"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "RefreshLevelNumAndModifier"
+        },
+        {
+          "$type": "DoWatcherSystemAction",
+          "watcherId": 10010,
+          "authorityOnly": true
+        }
+      ],
+      "onRemoved": [
+        {
+          "$type": "RemoveModifier",
+          "target": "CurTeamAvatars",
+          "cdDelta": true,
+          "modifierName": "UNIQUE_DynamicAbility_DeathZone_Debuff_Avatar"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Tree_GrassSeedCreate_01_Buff",
+      "abilityMixins": [
+        {
+          "$type": "WidgetMpSupportMixin",
+          "succActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Other",
+              "modifierName": "AddGrassSeed"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 2.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ExecuteGadgetLua",
+              "param1": 70310198,
+              "maxValue": 1
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "AddGrassSeed": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DoWatcherSystemAction",
+              "watcherId": 10009,
+              "authorityOnly": true
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "modifierName": "UNIQUE_GrassSeedCreate_Team_Handle_Big"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "target": "Team",
+              "ratio": 3.0,
+              "key": "_GrassSeedCreate_Count",
+              "useLimitRange": true,
+              "maxValue": 3.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "modifierName": "UNIQUE_GrassSeedCreate_Team_Handle"
+            }
+          ]
+        },
+        "UNIQUE_GrassSeedCreate_Team_Handle": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 30.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_GrassSeedCreate_Count",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-10.0, 0.5, 1.5, 2.5, 3.5],
+              "modifierNameSteps": [
+                "Blank",
+                "GrassSeedCreate_Effect_Lv1_Team",
+                "GrassSeedCreate_Effect_Lv2_Team",
+                "GrassSeedCreate_Effect_Lv3_Team"
+              ]
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_GrassSeedCreate_Count",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-10.0, 0.5, 3.5],
+              "modifierNameSteps": ["Blank", "GrassSeedCreate_Team_ExtraAttack"]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "DebugLog",
+              "content": "草种子Buff遭到卸载"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_GrassSeedCreate_Count",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_GrassSeedCreate_ExtraAttack": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["ExtraAttack"]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Gadget", "Monster", "Gear", "Platform"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "_GrassSeedCreate_AttackCD",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "_GrassSeedCreate_Count",
+                  "ratio": 1.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "target": "Team",
+                  "cdDelta": true,
+                  "key": "_GrassSeedDummy_BornPos",
+                  "born": {
+                    "$type": "PNCLIHNAPNL",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    }
+                  }
+                },
+                {
+                  "$type": "CreateGadget",
+                  "target": "Team",
+                  "cdDelta": true,
+                  "born": {
+                    "$type": "MKLCDCJFOHO",
+                    "positionKey": "_GrassSeedDummy_BornPos",
+                    "directionKey": ""
+                  },
+                  "gadgetID": 70310208,
+                  "campID": 5001,
+                  "campTargetType": "All"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "cdDelta": true,
+                  "modifierName": "GrassSeedCreate_CreateSeed"
+                }
+              ]
+            }
+          ]
+        },
+        "GrassSeedCreate_CreateSeed": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "topLimit": 1,
+                "configID": 70310208
+              },
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "_GrassSeedCreate_AttackCD",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Other",
+                  "targetPredicates": [
+                    {
+                      "$type": "JOLJOHDJLNF",
+                      "logic": "LesserOrEqual",
+                      "ratio": 5.0,
+                      "PHMALDNHHLD": ""
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "TriggerBullet",
+                      "target": "Other",
+                      "cdDelta": true,
+                      "bulletID": 70310207,
+                      "born": {
+                        "$type": "ConfigBornByAttachPoint",
+                        "offset": {
+                          "x": 0.0,
+                          "y": -1.0,
+                          "z": 0.0
+                        },
+                        "direction": {
+                          "$type": "KPKEFLCHOHD",
+                          "angleOffsetCorrect": {
+                            "x": -90.0,
+                            "y": 0.0,
+                            "z": 45.0
+                          },
+                          "useCorrectDir": true,
+                          "namedTransform": ""
+                        },
+                        "attachPointName": "Neck",
+                        "attachPointTargetType": "Self"
+                      },
+                      "trackTarget": "Other"
+                    },
+                    {
+                      "$type": "AddGlobalValue",
+                      "target": "Team",
+                      "cdDelta": true,
+                      "ratio": -1.0,
+                      "key": "_GrassSeedCreate_Count",
+                      "useLimitRange": true,
+                      "maxValue": 3.0,
+                      "minValue": 0.0
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "TriggerBullet",
+                      "target": "Other",
+                      "cdDelta": true,
+                      "bulletID": 70310207,
+                      "born": {
+                        "$type": "ConfigBornBySelf",
+                        "offset": {
+                          "x": 1.0,
+                          "y": 1.5,
+                          "z": 0.0
+                        },
+                        "direction": {
+                          "$type": "KPKEFLCHOHD",
+                          "angleOffsetCorrect": {
+                            "x": -45.0,
+                            "y": 90.0,
+                            "z": 0.0
+                          },
+                          "useCorrectDir": true,
+                          "namedTransform": ""
+                        }
+                      },
+                      "trackTarget": "Other"
+                    },
+                    {
+                      "$type": "AddGlobalValue",
+                      "target": "Team",
+                      "cdDelta": true,
+                      "ratio": -1.0,
+                      "key": "_GrassSeedCreate_Count",
+                      "useLimitRange": true,
+                      "maxValue": 3.0,
+                      "minValue": 0.0
+                    }
+                  ]
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "cdDelta": true,
+                  "modifierName": "GrassSeedCreate_AreaGrassDamage_Timer"
+                }
+              ]
+            }
+          ]
+        },
+        "GrassSeedCreate_AreaGrassDamage_Timer": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_GrassSeedCreate_AttackCD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_GrassSeedCreate_AttackCD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "GrassSeedCreate_Team_ExtraAttack": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_GrassSeedCreate_ExtraAttack"
+            }
+          ]
+        },
+        "GrassSeedCreate_Effect_Lv1_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "GrassSeedCreate_Effect_Lv1"
+            }
+          ]
+        },
+        "GrassSeedCreate_Effect_Lv2_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "GrassSeedCreate_Effect_Lv2"
+            }
+          ]
+        },
+        "GrassSeedCreate_Effect_Lv3_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "GrassSeedCreate_Effect_Lv3"
+            }
+          ]
+        },
+        "GrassSeedCreate_Effect_Lv1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrassSeed_01_Idle01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "GrassSeedCreate_Effect_Lv2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrassSeed_01_Idle02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "GrassSeedCreate_Effect_Lv3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrassSeed_01_Idle03",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Tree_GrassSeedCreate_02_Buff",
+      "abilityMixins": [
+        {
+          "$type": "WidgetMpSupportMixin",
+          "succActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Other",
+              "modifierName": "AddGrassSeed"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 2.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ExecuteGadgetLua",
+              "param1": 70310198,
+              "maxValue": 2
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "AddGrassSeed": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "modifierName": "UNIQUE_GrassSeedCreate_Team_Handle"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "ratio": 1.0,
+              "key": "_GrassSeedCreate_Count_Big",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "modifierName": "UNIQUE_GrassSeedCreate_Team_Handle_Big"
+            }
+          ]
+        },
+        "UNIQUE_GrassSeedCreate_Team_Handle_Big": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 30.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_GrassSeedCreate_Count_Big",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-10.0, 0.5, 1.5],
+              "modifierNameSteps": ["Blank", "GrassSeedCreate_Effect_Big_Team"]
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_GrassSeedCreate_Count_Big",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-10.0, 0.5, 3.5],
+              "modifierNameSteps": [
+                "Blank",
+                "GrassSeedCreate_Team_ExtraAttack_Big"
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "DebugLog",
+              "content": "大型草种子Buff遭到卸载"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_GrassSeedCreate_Count_Big",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "GrassSeedCreate_Team_ExtraAttack_Big": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "UNIQUE_GrassSeedCreate_ExtraAttack_Big"
+            }
+          ]
+        },
+        "UNIQUE_GrassSeedCreate_ExtraAttack_Big": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["ExtraAttack"]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Gadget", "Monster", "Gear", "Platform"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "_GrassSeedCreate_Count_Big",
+                  "ratio": 1.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "target": "Team",
+                  "cdDelta": true,
+                  "key": "_GrassSeedDummy_BornPos",
+                  "born": {
+                    "$type": "PNCLIHNAPNL",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    }
+                  }
+                },
+                {
+                  "$type": "CreateGadget",
+                  "target": "Team",
+                  "cdDelta": true,
+                  "born": {
+                    "$type": "MKLCDCJFOHO",
+                    "positionKey": "_GrassSeedDummy_BornPos",
+                    "directionKey": ""
+                  },
+                  "gadgetID": 70310208,
+                  "campID": 1001,
+                  "campTargetType": "All"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "cdDelta": true,
+                  "modifierName": "GrassSeedCreate_CreateSeed"
+                }
+              ]
+            }
+          ]
+        },
+        "GrassSeedCreate_CreateSeed": {
+          "modifierName": "",
+          "duration": 0.15000000596046448,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "topLimit": 1,
+                "configID": 70310208
+              },
+              "cdDelta": true,
+              "successActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Other",
+                  "targetPredicates": [
+                    {
+                      "$type": "JOLJOHDJLNF",
+                      "logic": "LesserOrEqual",
+                      "ratio": 5.0,
+                      "PHMALDNHHLD": ""
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "TriggerBullet",
+                      "target": "Other",
+                      "cdDelta": true,
+                      "bulletID": 70310209,
+                      "born": {
+                        "$type": "ConfigBornByAttachPoint",
+                        "offset": {
+                          "x": 0.0,
+                          "y": -1.0,
+                          "z": 0.0
+                        },
+                        "direction": {
+                          "$type": "KPKEFLCHOHD",
+                          "angleOffsetCorrect": {
+                            "x": -90.0,
+                            "y": 0.0,
+                            "z": 45.0
+                          },
+                          "useCorrectDir": true,
+                          "namedTransform": ""
+                        },
+                        "attachPointName": "Neck",
+                        "attachPointTargetType": "Self"
+                      },
+                      "trackTarget": "Other"
+                    },
+                    {
+                      "$type": "SetGlobalValue",
+                      "target": "Team",
+                      "ratio": 0.0,
+                      "key": "_GrassSeedCreate_Count_Big",
+                      "maxValue": 0.0,
+                      "minValue": 0.0
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "TriggerBullet",
+                      "target": "Other",
+                      "cdDelta": true,
+                      "bulletID": 70310209,
+                      "born": {
+                        "$type": "ConfigBornBySelf",
+                        "offset": {
+                          "x": 1.0,
+                          "y": 1.5,
+                          "z": 0.0
+                        },
+                        "direction": {
+                          "$type": "HAEIKNNFLFO",
+                          "angleOffsetCorrect": {
+                            "x": -45.0,
+                            "y": 90.0,
+                            "z": 0.0
+                          },
+                          "PDKJDHJIEJB": ""
+                        }
+                      },
+                      "trackTarget": "Other"
+                    },
+                    {
+                      "$type": "SetGlobalValue",
+                      "target": "Team",
+                      "ratio": 0.0,
+                      "key": "_GrassSeedCreate_Count_Big",
+                      "maxValue": 0.0,
+                      "minValue": 0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "GrassSeedCreate_Effect_Big_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "GrassSeedCreate_Effect_Big"
+            }
+          ]
+        },
+        "GrassSeedCreate_Effect_Big": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrassSeed_02_Idle01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Tree_GrassSeedCreate_01_State",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "_EnableInteract",
+          "valueSteps": [0.5, 1.5, 2.5],
+          "modifierNameSteps": ["Active", "PickUpGrassSeed"]
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "EnableInteract"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "CannotInteract"
+        }
+      ],
+      "modifiers": {
+        "RecoverHandle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_EnableInteract",
+                  "ratio": 2.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Active": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusTwig_01_Seed",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableGadgetInteeMp",
+              "enable": true
+            }
+          ]
+        },
+        "PickUpGrassSeed": {
+          "modifierName": "",
+          "duration": 5.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusTwig_01_Gather",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableGadgetInteeMp"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_EnableInteract",
+                  "ratio": 2.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "EnableInteract": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusTwig_01_Active",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "CannotInteract": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "RecoverHandle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Tree_GrassSeedCreate_02_State",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "_EnableInteract",
+          "valueSteps": [0.5, 1.5, 2.5],
+          "modifierNameSteps": ["Active", "PickUpGrassSeed"]
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "MusicState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "EnableInteract"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "CannotInteract"
+        }
+      ],
+      "modifiers": {
+        "RecoverHandle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onReconnect": [
+            {
+              "$type": "SetGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_EnableInteract",
+                  "ratio": 2.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Active": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusTwig_02_Seed",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableGadgetInteeMp",
+              "enable": true
+            }
+          ]
+        },
+        "PickUpGrassSeed": {
+          "modifierName": "",
+          "duration": 5.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusTwig_02_Gather",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableGadgetInteeMp"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_EnableInteract",
+                  "ratio": 2.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "MusicState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWidgetMusicGameMixin",
+              "musicId": 7,
+              "range": 8.0,
+              "onSuccess": [
+                {
+                  "$type": "ChangeGadgetState",
+                  "state": 201
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Leaf",
+              "GGGADBNBNDN": "_EmissionStrength",
+              "ratio": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusTwig_02_Lock",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusTwig_02_Unlock",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "EnableInteract": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Leaf",
+              "GGGADBNBNDN": "_EmissionStrength",
+              "ratio": 3.5,
+              "useCurve": true,
+              "lerpTime": 2.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusTwig_02_Active",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "CannotInteract": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_EnableInteract",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "RecoverHandle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_GrassSeedBullet_01_Damage",
+      "abilitySpecials": {
+        "RandomTimeRatio": 0.0,
+        "VelocityRatio": 19.0,
+        "ElementLevelCo": 1.0,
+        "DamageRatio": 2.0
+      },
+      "modifiers": {
+        "BulletEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrassSeed_01_Attack",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "predicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "ratio": 5.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "valueRangeMax": 0.4000000059604645,
+              "valueRangeMin": 0.20000000298023224,
+              "overrideMapKey": "RandomTimeRatio"
+            },
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "predicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "ratio": 5.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "valueRangeMax": 0.6000000238418579,
+              "valueRangeMin": 0.30000001192092896,
+              "overrideMapKey": "RandomTimeRatio"
+            }
+          ]
+        },
+        "Timer": {
+          "modifierName": "",
+          "duration": "RandomTimeRatio",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "AngularVelocityUp"
+            }
+          ]
+        },
+        "SetVisble": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetVisible",
+              "visible": true
+            }
+          ]
+        },
+        "AngularVelocityUp": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_BulletMoveAngularVelocityRatio": "VelocityRatio"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "ElementLevelCo",
+          "type": "ElementLevelCo"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BulletEffect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SetVisble"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Timer"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrassSeed_01_Hit",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 1.0
+            },
+            "attackInfo": {
+              "attackTag": "GrassSeed",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentageRatio": 0.0,
+                "elementType": "Grass",
+                "bonusCritical": 25.0,
+                "ignoreAttackerProperty": true,
+                "strikeType": "Pierce",
+                "attackType": "Range",
+                "damageExtra": [
+                  "ElementLevelCo",
+                  "DamageRatio",
+                  "MUL"
+                ],
+                "trueDamage": true,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3"
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_GrassSeedBullet_02_Damage",
+      "abilitySpecials": {
+        "RandomTimeRatio": 0.0,
+        "VelocityRatio": 19.0,
+        "ElementLevelCo": 1.0,
+        "DamageRatio": 5.0
+      },
+      "modifiers": {
+        "BulletEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrassSeed_02_Attack",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "predicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "ratio": 5.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "valueRangeMax": 0.4000000059604645,
+              "valueRangeMin": 0.20000000298023224,
+              "overrideMapKey": "RandomTimeRatio"
+            },
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "predicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "ratio": 5.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "valueRangeMax": 0.6000000238418579,
+              "valueRangeMin": 0.30000001192092896,
+              "overrideMapKey": "RandomTimeRatio"
+            }
+          ]
+        },
+        "Timer": {
+          "modifierName": "",
+          "duration": "RandomTimeRatio",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "AngularVelocityUp"
+            }
+          ]
+        },
+        "SetVisble": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetVisible",
+              "visible": true
+            }
+          ]
+        },
+        "AngularVelocityUp": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_BulletMoveAngularVelocityRatio": "VelocityRatio"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "ElementLevelCo",
+          "type": "ElementLevelCo"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BulletEffect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SetVisble"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Timer"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GrassSeed_02_Hit",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "cdDelta": true,
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 6.0
+            },
+            "attackInfo": {
+              "attackTag": "GrassSeedBig",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentageRatio": 0.0,
+                "elementType": "Grass",
+                "bonusCritical": 25.0,
+                "ignoreAttackerProperty": true,
+                "strikeType": "Pierce",
+                "attackType": "Range",
+                "damageExtra": [
+                  "ElementLevelCo",
+                  "DamageRatio",
+                  "MUL"
+                ],
+                "trueDamage": true,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV5"
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Prop_GrassSeedDummy_01_Ability",
+      "modifiers": {
+        "BeHitState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["GrassSeed", "GrassSeedBig"]
+                }
+              ],
+              "modifierName": "DeathCall"
+            }
+          ]
+        },
+        "DeathCall": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "GrassSeed_Dummy",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "GrassSeedChecker_Destory",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_DeathZoneState",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": ["ExitDeathZone"]
+        }
+      ],
+      "modifiers": {
+        "ExitDeathZone": {
+          "modifierName": "",
+          "duration": 3.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DeathZoneMixin",
+              "disactiveHaloTrigger": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "SelfDestory",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "SelfDestory",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "BeHitState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "SetGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["GrassSeed", "GrassSeedBig"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "CanDestoryBySeed",
+                  "ratio": 1.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "SelfDestory",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitState"
+        }
+      ]
+    }
+  }
+]

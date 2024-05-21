@@ -1,0 +1,1517 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Ani_WaterWheel_Pullback_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "WheelNormalState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 101,
+          "modifierName": "WheelLockState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 102,
+          "modifierName": "WheelUnlockState"
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "globalValueKey": "gv_RotationDelta",
+          "valueSteps": [
+            -9999.0, -0.009999999776482582, 0.009999999776482582, 9999.0
+          ],
+          "modifierNameSteps": [
+            "AnticlockwiseRotateEffect",
+            "NoRotateEffect",
+            "ClockwiseRotateEffect"
+          ]
+        }
+      ],
+      "modifiers": {
+        "WheelNormalState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": "Default"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_02_Loop_Left",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_02_Loop_Left"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_02_Loop_Right",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_02_Loop_Right"
+            }
+          ]
+        },
+        "WheelLockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": "Default"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Item_SpecialTreasureBox_LockIdle",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "LockEffectNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Item_SpecialTreasureBox_Unlock",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "LockEffectNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "WheelUnlockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": "Default"
+            }
+          ]
+        },
+        "AnticlockwiseRotateEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_02_Loop_Left"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_02_Loop_Left"
+            }
+          ]
+        },
+        "NoRotateEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "ClockwiseRotateEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_02_Loop_Right"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_02_Loop_Right"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Ani_WaterWheel_Adjust_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "WheelNormalState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 101,
+          "modifierName": "WheelLockState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 102,
+          "modifierName": "WheelUnlockState"
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "globalValueKey": "gv_RotationDelta",
+          "valueSteps": [
+            -9999.0, -0.009999999776482582, 0.009999999776482582, 9999.0
+          ],
+          "modifierNameSteps": [
+            "AnticlockwiseRotateEffect",
+            "NoRotateEffect",
+            "ClockwiseRotateEffect"
+          ]
+        }
+      ],
+      "modifiers": {
+        "WheelNormalState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": "Default"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Loop_Left",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Loop_Left"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Loop_Right",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Loop_Right"
+            }
+          ]
+        },
+        "WheelLockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": "Default"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Item_SpecialTreasureBox_LockIdle",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "LockEffectNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Item_SpecialTreasureBox_Unlock",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "LockEffectNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "WheelUnlockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": "Default"
+            }
+          ]
+        },
+        "AnticlockwiseRotateEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Loop_Left"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Loop_Left"
+            }
+          ]
+        },
+        "NoRotateEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "ClockwiseRotateEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Loop_Right"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Loop_Right"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Ani_WheelAlignTarget_01",
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "AutoAlignTarget"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Ani_WaterWheel_ConnectNode_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 101,
+          "modifierName": "LockState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "DefaultState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 102,
+          "modifierName": "TakeawayState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "FinishState"
+        }
+      ],
+      "modifiers": {
+        "LockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_AS",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["WheelNode"],
+              "setEnable": true
+            }
+          ]
+        },
+        "DefaultState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_AS",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_Loop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["WheelNode"],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_Disappear",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "TakeawayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["WheelNode"]
+            }
+          ]
+        },
+        "FinishState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["WheelNode"]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "DynamicAbility_Carry_WheelNode",
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "modifierName": "CarryNodeEffect"
+        }
+      ],
+      "modifiers": {
+        "CarryNodeEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "globalValueTarget": "Team",
+              "globalValueKey": "SGV_WheelNode_Count",
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+              "modifierNameSteps": ["Empty", "OneNode", "TwoNodes"],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "OneNode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_Idel_01",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Die",
+              "attachPoint": "",
+              "type": "Bool",
+              "value": 1,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_Idel_01"
+            }
+          ]
+        },
+        "TwoNodes": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_Idel_02",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Die",
+              "attachPoint": "",
+              "type": "Bool",
+              "value": 1,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_Idel_02"
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_Enshrine_WheelNode",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "NormalState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 101,
+          "modifierName": "LockState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 102,
+          "modifierName": "UnlockState"
+        }
+      ],
+      "modifiers": {
+        "NormalState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": "Default"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "UNIQUE_Node1"
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_MaxNodeCount",
+                  "ratio": 2.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "UNIQUE_Node2"
+                }
+              ]
+            }
+          ]
+        },
+        "LockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "globalValueKey": "gv_WheelNodeCount",
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+              "modifierNameSteps": ["NoNode", "OneNode", "TwoNodes"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Item_SpecialTreasureBox_LockIdle",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "LockEffectNode"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "gv_IsLocked",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Item_SpecialTreasureBox_Unlock",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "LockEffectNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "UnlockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "globalValueKey": "gv_WheelNodeCount",
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+              "modifierNameSteps": ["NoNode", "OneNode", "TwoNodes"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "gv_IsLocked",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "NoNode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 6,
+              "BGFMCENBKJD": "Default"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_BlockNodeEnshrine",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_EnergyWheel_Arrow",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "ConnectPoint1Arrow"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Node1"]
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_BlockNodeEnshrine",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_MaxNodeCount",
+                  "ratio": 2.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_EnergyWheel_Arrow",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "ConnectPoint2Arrow"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_MaxNodeCount",
+                  "ratio": 2.0
+                }
+              ],
+              "transformNames": ["Node2"]
+            }
+          ]
+        },
+        "OneNode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 7,
+              "BGFMCENBKJD": "Default"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "UNIQUE_Node1"
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_BlockNodeEnshrine",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_MaxNodeCount",
+                  "ratio": 2.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_EnergyWheel_Arrow",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "ConnectPoint2Arrow"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_MaxNodeCount",
+                  "ratio": 2.0
+                }
+              ],
+              "transformNames": ["Node2"]
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_MaxNodeCount",
+                      "ratio": 2.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "TwoNodes": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 4,
+              "BGFMCENBKJD": "Default"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyWheel_03_Unlock",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ChangeGadgetState"
+            }
+          ]
+        },
+        "UNIQUE_Node1": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Node1"],
+              "setEnable": true
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_Set",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "ConnectPoint1Effect"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "UNIQUE_Node2": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Node2"],
+              "setEnable": true
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlRoot_01_Set",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "ConnectPoint2Effect"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "CopyGlobalValue",
+          "srcKey": "SGV_InitNodeCount",
+          "dstKey": "gv_WheelNodeCount"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            },
+            {
+              "$type": "DNNDJFLKHLB"
+            },
+            {
+              "$type": "NJMOCHPJIKO",
+              "target": "Self",
+              "gadgetState": 102
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "SGV_BlockNodeEnshrine",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "TargetTeam",
+                  "key": "SGV_WheelNode_Count",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "LevelBankRemoveStuff",
+                  "target": "Target",
+                  "OBFIHCGHAHJ": 10008,
+                  "GKAEFCDIDHO": "WheelNode",
+                  "count": 1.0,
+                  "tag": 1
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "ratio": 1.0,
+                  "key": "gv_WheelNodeCount",
+                  "useLimitRange": true,
+                  "maxValue": 2.0,
+                  "minValue": 0.0
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "TargetTeam",
+                  "key": "SGV_WheelNode_Count",
+                  "ratio": 2.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "LevelBankRemoveStuff",
+                  "target": "Target",
+                  "OBFIHCGHAHJ": 10008,
+                  "GKAEFCDIDHO": "WheelNode",
+                  "count": 2.0,
+                  "tag": 1
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "ratio": 2.0,
+                  "key": "gv_WheelNodeCount",
+                  "useLimitRange": true,
+                  "maxValue": 2.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_WaterWheel_WindmillWheel_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "DefaultState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "LockState"
+        },
+        {
+          "$type": "BroadcastGVMixin",
+          "sgvIDKey": "SGV_WheelDriveTag",
+          "broadcastGVKey": "gv_Rotation"
+        },
+        {
+          "$type": "BroadcastGVMixin",
+          "sgvIDKey": "SGV_WheelDriveTag",
+          "broadcastGVKey": "gv_RotationDelta"
+        },
+        {
+          "$type": "BroadcastGVMixin",
+          "sgvIDKey": "SGV_WheelDriveTag_Other",
+          "broadcastGVKey": "gv_Rotation"
+        },
+        {
+          "$type": "BroadcastGVMixin",
+          "sgvIDKey": "SGV_WheelDriveTag_Other",
+          "broadcastGVKey": "gv_RotationDelta"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "gv_RotationDelta",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [
+            -0.5,
+            0.05000000074505806,
+            [0.9900000095367432, "SpeedThreshold", "MUL"],
+            [2.0, "SpeedThreshold", "MUL"]
+          ],
+          "modifierNameSteps": [
+            "WindmillWheel_unfinish",
+            "WindmillWheel_process",
+            "WindmillWheel_finished"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "FlowerWheel_activeDuration": 5.0,
+        "SpeedThreshold": 1.0
+      },
+      "PAFDPAGAOGO": [
+        "SGV_InitRound",
+        "SGV_PullbackAcc",
+        "SGV_ClockwiseMaxRound",
+        "SGV_AnticlockwiseMaxRound",
+        "SGV_OneRoundTime",
+        "SGV_PullbackTime",
+        "SGV_LongPushForceAcc",
+        "SGV_ShortPushForceAcc",
+        "gv_FrictionAcc"
+      ],
+      "modifiers": {
+        "WindmillWheel_unfinish": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "gv_WindmillWheel_RotationEff",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "NJMOCHPJIKO",
+                      "target": "Self",
+                      "gadgetState": 901
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "WindmillWheel_process": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "gv_WindmillWheel_RotationEff",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "WindmillWheel_finished": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "gv_RotationDelta",
+              "overrideMapKey": "SpeedThreshold"
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "NJMOCHPJIKO",
+                      "target": "Self",
+                      "gadgetState": 901
+                    }
+                  ]
+                }
+              ],
+              "state": 202
+            }
+          ]
+        },
+        "DelayApplyController": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_WaterWheel_Controller_WindmillWheel"
+            }
+          ]
+        },
+        "UNIQUE_WaterWheel_Controller_WindmillWheel": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "SprayGunDriveWheelMixin",
+              "APKFJPLGLGN": "SGV_InitRound",
+              "FMCMONLJFMC": "SGV_LongPushForceAcc",
+              "BMNKLDEPOOD": "SGV_ShortPushForceAcc",
+              "PEPEHIOFNPF": "gv_FrictionAcc",
+              "AIDJPFEAIMP": "SGV_PullbackAcc",
+              "PGHBPGJHLPE": "SGV_ClockwiseMaxRound",
+              "CHLKBELEMNL": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "ClockwiseEndStuck"
+                }
+              ],
+              "MDHGCJDHCDF": "SGV_AnticlockwiseMaxRound",
+              "ENLPBNEFABO": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "AntiClockwiseEndStuck"
+                }
+              ],
+              "AHBLABKLBMI": "Wheel",
+              "ANNLAJDBFHC": "gv_IsLocked",
+              "MNPKKGLJEEH": "gv_ConnectType",
+              "MFGHNANMNGL": "gv_Rotation",
+              "CIMOJAMMEPI": "SGV_IsDeltaSync",
+              "CEBEJAEHNLD": "gv_RotationDelta",
+              "FPKBPELIDBO": "SGV_OneRoundTime",
+              "HAJOHEPHHCM": "SGV_PullbackTime"
+            }
+          ]
+        },
+        "ClockwiseEndStuck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "gv_ConnectType",
+                  "ratio": 3.0
+                }
+              ],
+              "value": "WheelClockwiseEnd"
+            },
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "gv_Rotation",
+                  "ratio": "SGV_ClockwiseMaxRound",
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "modifierName": "ClockwiseEndStuck"
+            }
+          ]
+        },
+        "AntiClockwiseEndStuck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "gv_ConnectType",
+                  "ratio": 4.0
+                }
+              ],
+              "value": "WheelAntiClockwiseEnd"
+            },
+            {
+              "$type": "RemoveModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "gv_Rotation",
+                  "ratio": [0.0, "SGV_AnticlockwiseMaxRound", "SUB"],
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "modifierName": "AntiClockwiseEndStuck"
+            }
+          ]
+        },
+        "DefaultState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["ConnectPoint1"],
+              "setEnable": true
+            }
+          ]
+        },
+        "LockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["ConnectPoint1"]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "gv_WindmillWheel_RotationEff",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "WaterWheel"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "DelayApplyController"
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_SpeedThreshold",
+          "overrideMapKey": "SpeedThreshold"
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_FlowerWheel_activeDuration",
+          "overrideMapKey": "FlowerWheel_activeDuration"
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": ["SpeedThreshold", "FlowerWheel_activeDuration", "DIV"],
+          "key": "gv_FrictionAcc",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_WaterWheel_WindmillWheel_effectController_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 901,
+          "modifierName": "DisappearState"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "gv_WindmillWheel_RotationEff",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["noRotationEff", "RotationEff"],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "modifiers": {
+        "RotationEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_FDrotating_01_Spin",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "noRotationEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "appearEffect": {
+          "modifierName": "",
+          "duration": 1.5,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "NHJJKMPNMJP": true,
+              "AKKOIFEFBPF": 0.0,
+              "BGFMCENBKJD": ""
+            },
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "AKKOIFEFBPF": 1.2000000476837158,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "DisappearState": {
+          "modifierName": "",
+          "duration": 0.6000000238418579,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "EffectController"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_FDrotating_01_Disappear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "LockEffectNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Disappear_2"
+            }
+          ]
+        },
+        "Disappear_2": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "EffectController": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_FDrotating_01_Appear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "LockEffectNode"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_FDrotating_01_Normal",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "appearEffect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "EffectController"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_WaterWheel_WindmillWheel_effectController_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 901,
+          "modifierName": "DisappearState"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "gv_WindmillWheel_RotationEff",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["noRotationEff", "RotationEff"],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "modifiers": {
+        "RotationEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_FDrotating_01_Spin_Water",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "noRotationEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "appearEffect": {
+          "modifierName": "",
+          "duration": 1.5,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "NHJJKMPNMJP": true,
+              "AKKOIFEFBPF": 0.0,
+              "BGFMCENBKJD": ""
+            },
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "AKKOIFEFBPF": 1.2000000476837158,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "DisappearState": {
+          "modifierName": "",
+          "duration": 0.6000000238418579,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "EffectController"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_FDrotating_01_Disappear_Water",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Disappear_2"
+            }
+          ]
+        },
+        "Disappear_2": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "EffectController": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_FDrotating_01_Appear_Water",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_FDrotating_01_Normal_Water",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "appearEffect"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "EffectController"
+        }
+      ]
+    }
+  }
+]

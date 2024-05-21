@@ -1,0 +1,306 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Hatchet_AnimatorSteer",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Slash01_AB"],
+          "endNormalizedTime": 0.8500000238418579,
+          "angularSpeed": 150.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackTraceMixin",
+          "steerStateIDs": ["Slash02"],
+          "startNormalizedTime": 0.34299999475479126,
+          "endNormalizedTime": 0.4129999876022339,
+          "angularSpeed": 80.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Slash02_AB"],
+          "endNormalizedTime": 0.699999988079071,
+          "angularSpeed": 150.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ThrowSand_BS"],
+          "startNormalizedTime": 0.0860000029206276,
+          "endNormalizedTime": 0.1899999976158142,
+          "angularSpeed": 400.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ThrowSand"],
+          "startNormalizedTime": 0.12099999934434891,
+          "endNormalizedTime": 0.20000000298023224,
+          "angularSpeed": 400.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Alert"],
+          "endNormalizedTime": 0.699999988079071,
+          "angularSpeed": 300.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Crossleg_Alert"],
+          "startNormalizedTime": 0.07400000095367432,
+          "endNormalizedTime": 0.15600000321865082,
+          "angularSpeed": 420.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Crossleg_Alert"],
+          "startNormalizedTime": 0.42800000309944153,
+          "angularSpeed": 270.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Hatchet_Slash_Dist_Calc",
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorTrigger",
+          "predicates": [
+            {
+              "$type": "JOLJOHDJLNF",
+              "target": "SelfAttackTarget",
+              "logic": "Lesser",
+              "ratio": 5.5,
+              "PHMALDNHHLD": ""
+            }
+          ],
+          "minValue": "ExtraSlashTrigger"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Hatchet_ThrowSand",
+      "modifiers": {
+        "ThrowSand_Monitor": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["EremiteThrowSand"]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "modifierName": "Sand_ScreenBlur"
+                }
+              ]
+            }
+          ]
+        },
+        "Sand_ScreenBlur": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": 5.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TriggerPostProcessEffectMixin",
+              "postEffectAssetName": "PostEffect_Monster_Eremite_Hatchet_ThrowSand_ScreenEffect",
+              "duration": 5.0
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DungeonFogEffects",
+              "muteRemoteAction": true,
+              "enable": true,
+              "cameraFogEffectName": "Eff_Monster_Eremite_Hatchet_ThrowSand_ScreenEffect",
+              "playerFogEffectName": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "DungeonFogEffects",
+              "cameraFogEffectName": "",
+              "playerFogEffectName": ""
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "DungeonFogEffects",
+              "cameraFogEffectName": "",
+              "playerFogEffectName": ""
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ThrowSand_Monitor"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -0.30000001192092896
+                }
+              },
+              "height": 1.7000000476837158,
+              "fanAngle": 70.0,
+              "radius": 3.0
+            },
+            "attackInfo": {
+              "attackTag": "EremiteThrowSand",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 0.0,
+                "damage": 0.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "none",
+                "hitImpulseType": "LV1",
+                "muteHitText": true
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_FreePose_Female_Display_Manager",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["Feeding_Idle", "Feeding_Skill"],
+          "modifierName": "FreePose_Display_Fodder",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "Crossleg_OudIdle",
+            "Crossleg_PlayOud_BS",
+            "Crossleg_PlayOud_Loop",
+            "Crossleg_PlayOud_AS"
+          ],
+          "modifierName": "FreePose_Display_Oud",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "CrosslegAlert",
+          "modifierName": "FreePose_Display_Oud_BeforeBroken",
+          "normalizeEnd": 0.2930000126361847,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "poseIDs": [9555],
+          "enterActions": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "StopPlayOud"
+            }
+          ]
+        },
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": ["Crossleg_PlayOud_Loop"],
+          "exitActions": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "StopPlayOud",
+              "ratio": true
+            }
+          ],
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "FreePose_Display_Fodder": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_Freepose_Fodder",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "FreePose_Display_Oud": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_Freepose_Oud_Female",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "FreePose_Display_Oud_BeforeBroken": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_Freepose_Oud_Female",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  }
+]

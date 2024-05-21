@@ -1,0 +1,1543 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "DynamicAbility_Wriothesley_Dungeon_TeamAbility",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Limiter_Count",
+          "valueSteps": [-1.0, 0.5, 1.5, 2.5, 3.5],
+          "modifierNameSteps": [
+            "Blank",
+            "Limiter_Effect_Lv1_Team",
+            "Limiter_Effect_Lv2_Team",
+            "Limiter_Effect_Lv3_Team"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Limiter_Effect_Lv1_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "Limiter_Effect_Lv1"
+            }
+          ]
+        },
+        "Limiter_Effect_Lv2_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "Limiter_Effect_Lv2"
+            }
+          ]
+        },
+        "Limiter_Effect_Lv3_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "Limiter_Effect_Lv3"
+            }
+          ]
+        },
+        "Limiter_Effect_Lv1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Follow_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Limiter_Effect_Lv2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Follow_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Limiter_Effect_Lv3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Follow_03",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Tree_EnergyStation_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Is_Block",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["None", "Block_Station"],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "Is_ReceiveEnergy",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["None_Receive", "Is_Receive"],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Stay0", "Stay90", "Stay180", "Stay270"],
+          "modifierName": "RotateFinish",
+          "isCheckOnAttach": true,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "Is_ReceiveEnergy",
+          "actions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Is_ReceiveEnergy",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_RightPosition",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Is_RoFinish",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "Can_Emission",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "Can_Emission",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "Is_RoFinish",
+          "actions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Is_ReceiveEnergy",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Is_RoFinish",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_RightPosition",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "Can_Emission",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "Can_Emission",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "Can_Emission",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Fade", "Emission"],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "ZeroDegree"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 1,
+          "modifierName": "NinetyDegree"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 2,
+          "modifierName": "OneHundredAndEightyDegree"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 3,
+          "modifierName": "TwoHundredAndSeventyDegree"
+        }
+      ],
+      "modifiers": {
+        "ZeroDegree": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 0.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser"
+            }
+          ]
+        },
+        "NinetyDegree": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser"
+            }
+          ]
+        },
+        "OneHundredAndEightyDegree": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 2.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser"
+            }
+          ]
+        },
+        "TwoHundredAndSeventyDegree": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 3.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser"
+            }
+          ]
+        },
+        "None": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Block_Station": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Lock",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_LockDis",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "None_Receive": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "NHJJKMPNMJP": true,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "Is_Receive": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "NHJJKMPNMJP": true,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "RotateFinish": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "Is_RoFinish",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "Is_RoFinish",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Fade": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Emission": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "LaserManager"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "LaserManager"
+            }
+          ]
+        },
+        "LaserManager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LaserMixin",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser",
+              "onLaserHit": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_IS_ENERGYSTATION",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Target",
+                      "modifierName": "SetReceiveSGV_EnergyStation"
+                    }
+                  ]
+                }
+              ],
+              "onLaserLeave": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_IS_ENERGYSTATION",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "RemoveModifier",
+                      "target": "Target",
+                      "modifierName": "SetReceiveSGV_EnergyStation"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "ShootPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "SetReceiveSGV_EnergyStation": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "Is_ReceiveEnergy",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "Is_ReceiveEnergy",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "_IS_ENERGYSTATION",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "Can_Emission",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "Is_ReceiveEnergy",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "Is_RoFinish",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Tree_EnergyTerminal_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "NormalState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "DeactiveState"
+        }
+      ],
+      "modifiers": {
+        "NormalState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": ""
+            },
+            {
+              "$type": "LaserMixin",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser",
+              "onLaserHit": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_IS_ENERGYSTATION",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Target",
+                      "modifierName": "SetReceiveSGV_EnergyStation"
+                    }
+                  ]
+                }
+              ],
+              "onLaserLeave": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_IS_ENERGYSTATION",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "RemoveModifier",
+                      "target": "Target",
+                      "modifierName": "SetReceiveSGV_EnergyStation"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyStation_01_Laser",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "ShootPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "DeactiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "SetReceiveSGV_EnergyStation": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "Is_ReceiveEnergy",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "Is_ReceiveEnergy",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Tree_EnergyTerminal_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "NoEnergy"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "FullEnergy"
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "Is_ReceiveEnergy",
+          "actions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Is_ReceiveEnergy",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ChangeGadgetState",
+                  "state": 201
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "NoEnergy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "FullEnergy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_EnergyTerminal_01_Active",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "Is_ReceiveEnergy",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "_IS_ENERGYSTATION",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Fd_Property_Ani_Prop_GearTurntable_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "0Degree"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "90Degree"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "180Degree"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 203,
+          "modifierName": "270Degree"
+        }
+      ],
+      "modifiers": {
+        "LightManager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Level_FD_Freminet_Light_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0,
+              "isPlatformDependent": true
+            }
+          ]
+        },
+        "UpManager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "SGV_ArriveRoute",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["None", "UpEffect"],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "LockManager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "SGV_Is_Lock",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["NotLock", "Lock"],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "0Degree": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 0.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GearTurntable_01_Smoke_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "90Degree": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 201.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GearTurntable_01_Smoke_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "180Degree": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 202.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GearTurntable_01_Smoke_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "270Degree": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 203.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GearTurntable_01_Smoke_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "None": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "UpEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GearTurntable_01_Smoke_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "NotLock": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Lock": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Struck"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "LightManager"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UpManager"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "LockManager"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Fd_Property_Ani_Prop_BarrierGate_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Close"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Open"
+        }
+      ],
+      "modifiers": {
+        "Close": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 0.0
+            }
+          ]
+        },
+        "Open": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 201.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Fd_Property_Ani_Prop_BarrierGate_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Close"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Open"
+        }
+      ],
+      "modifiers": {
+        "Close": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 0.0
+            }
+          ]
+        },
+        "Open": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 201.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Fd_Property_Ani_Prop_EnergyOverlookCamera_01",
+      "modifiers": {
+        "EnableCamera": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableGadgetSpecialCamera",
+              "canBeHandledOnRecover": true,
+              "enable": true
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "EnableGadgetSpecialCamera",
+              "canBeHandledOnRecover": true,
+              "enable": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "EnableCamera"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Fd_Property_Ani_Prop_SealValveSwitch_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Normal"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "ValveOpen"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "Active"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 203,
+          "modifierName": "Lock"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 204,
+          "modifierName": "Struck"
+        }
+      ],
+      "modifiers": {
+        "Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "ValveOpen": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Attack",
+              "mpTriggerOnRemote": true
+            }
+          ]
+        },
+        "Active": {
+          "modifierName": "",
+          "duration": 3.5999999046325684,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Attack",
+              "mpTriggerOnRemote": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ChangeGadgetState"
+            }
+          ]
+        },
+        "Lock": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Item_SpecialTreasureBox_LockIdle",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Item_SpecialTreasureBox_Unlock",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Struck": {
+          "modifierName": "",
+          "duration": 1.5,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ChangeGadgetState"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Common_Property_Ani_Prop_FDPipeDoorLargeWriothesley_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Close"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Open"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "AnimatorOpen"
+        }
+      ],
+      "modifiers": {
+        "Close": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 2,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 0.0
+            }
+          ]
+        },
+        "Open": {
+          "modifierName": "",
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_FDPipeDoorLarge_01_Unlcok",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ChangeGadgetState",
+              "state": 202
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_FDPipeDoorLarge_01_Open",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "AnimatorOpen": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 201.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_POI_LaiousiliDungeon_Steam_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Common_Property_Ani_Prop_FDPipeDoorSmallWriothesley_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Close"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Open"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "AnimatorOpen"
+        }
+      ],
+      "modifiers": {
+        "Close": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 2,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 0.0
+            },
+            {
+              "$type": "SetLightColorIntensity",
+              "lightName": "Light1",
+              "targetColor": {
+                "r": 0.30880001187324524,
+                "g": 0.9140999913215637,
+                "b": 1.0,
+                "a": 1.0
+              },
+              "targetIntensity": 1.2000000476837158,
+              "shouldSetColor": true,
+              "shouldSetIntensity": true,
+              "intensityUseCurve": true,
+              "lerpTime": 1.0
+            },
+            {
+              "$type": "SetLightColorIntensity",
+              "lightName": "Light2",
+              "targetColor": {
+                "r": 0.30880001187324524,
+                "g": 0.9140999913215637,
+                "b": 1.0,
+                "a": 1.0
+              },
+              "targetIntensity": 1.2000000476837158,
+              "shouldSetColor": true,
+              "shouldSetIntensity": true,
+              "intensityUseCurve": true,
+              "lerpTime": 1.0
+            }
+          ]
+        },
+        "Open": {
+          "modifierName": "",
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_FDPipeDoorSmall_01_Unlcok",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetLightColorIntensity",
+              "lightName": "Light1",
+              "targetColor": {
+                "r": 0.9043999910354614,
+                "g": 0.2761000096797943,
+                "b": 0.21940000355243683,
+                "a": 1.0
+              },
+              "targetIntensity": 0.6000000238418579,
+              "shouldSetColor": true,
+              "shouldSetIntensity": true,
+              "intensityUseCurve": true,
+              "lerpTime": 1.0
+            },
+            {
+              "$type": "SetLightColorIntensity",
+              "lightName": "Light2",
+              "targetColor": {
+                "r": 0.30880001187324524,
+                "g": 0.9140999913215637,
+                "b": 1.0,
+                "a": 1.0
+              },
+              "shouldSetColor": true,
+              "shouldSetIntensity": true,
+              "intensityUseCurve": true,
+              "lerpTime": 1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ChangeGadgetState",
+              "state": 202
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_FDPipeDoorSmall_01_Open",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "AnimatorOpen": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 201.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Fd_Property_Ani_Prop_SealValveSwitch_03",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Normal"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "ValveOpen"
+        }
+      ],
+      "modifiers": {
+        "Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "ValveOpen": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "SGV_Rotate",
+              "actions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "value": "Attack",
+                  "mpTriggerOnRemote": true
+                }
+              ]
+            },
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        }
+      }
+    }
+  }
+]

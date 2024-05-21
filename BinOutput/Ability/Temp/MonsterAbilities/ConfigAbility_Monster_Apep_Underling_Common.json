@@ -1,0 +1,305 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_Core_Halo",
+      "modifiers": {
+        "Monster_Apep_Underling_Core_Halo_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_Core_Halo",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Apep_Underling_Core_Halo_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_Core_Halo_Ashura",
+      "modifiers": {
+        "Monster_Apep_Underling_Core_Halo_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_Core_Halo02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Apep_Underling_Core_Halo_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_Core_Halo_Shiva",
+      "modifiers": {
+        "Monster_Apep_Underling_Core_Halo_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_Core_Halo02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Apep_Underling_Core_Halo_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_Broadcast",
+      "onAdded": [
+        {
+          "$type": "ResetAIThreatBroadcastRange",
+          "canBeHandledOnRecover": true,
+          "range": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_Summon_Underground",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_MONSTER_Apep_Underling_Underground",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": ["Apep_Underling_Underground_EndTimer"]
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["Born_Underground"],
+          "modifierName": "Underground_State",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Apep_Underling_Underground_EndTimer": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "SGV_Apep_Underling_Underground",
+                  "ratio": 0.0
+                }
+              ],
+              "boolID": "Underground"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "cdDelta": true,
+              "boolID": "Underground"
+            }
+          ]
+        },
+        "Underground_State": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider"]
+                },
+                {
+                  "$type": "HideUIBillBoard",
+                  "hide": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider"],
+                  "setEnable": true
+                },
+                {
+                  "$type": "HideUIBillBoard"
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UnderGround_Invincible"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UnderGround_DenyLockOn"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UnderGround_Invincible"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UnderGround_DenyLockOn"
+            }
+          ]
+        },
+        "UnderGround_Invincible": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "Invincible"
+        },
+        "UnderGround_DenyLockOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        },
+        "ReconnectHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 5.0,
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorBool",
+              "cdDelta": true,
+              "boolID": "Underground"
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "SetAnimatorBool",
+              "cdDelta": true,
+              "boolID": "Underground"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_Apep_Underling_AttackMode",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_SummonPos",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "ReconnectHandler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_ReviveEnergy",
+      "abilityMixins": [
+        {
+          "$type": "ServerCreateGadgetOnKillMixin",
+          "gadgetIDList": [42908212],
+          "campID": 1001,
+          "campTargetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Apep_Underling_ReviveEnergy",
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 1.0,
+          "key": "_MONSTER_Apep_Underling_SpecialGadget",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ReviveElemEnergy",
+          "target": "AllPlayerAvatars",
+          "cdDelta": true,
+          "ratio": 20.0
+        },
+        {
+          "$type": "KillSelf",
+          "duration": 2.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_StoryAdjust",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDNoInitMixin",
+          "globalValueKey": "SGV_DungeonDifficulty",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Difficulty_0", "Difficulty_1"],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "modifiers": {
+        "Difficulty_0": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Difficulty_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_MaxHPRatio": -0.30000001192092896
+          }
+        }
+      },
+      "isDynamicAbility": true
+    }
+  }
+]

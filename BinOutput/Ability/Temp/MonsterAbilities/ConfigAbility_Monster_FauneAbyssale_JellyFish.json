@@ -1,0 +1,1765 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_Larva_Born",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["Standby"],
+          "modifierName": "FauneAbyssale_JellyFish_WalkRandomOffset",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "ApplyCollisionMixin",
+          "FIOJDNLMFOI": ["MoveCollider"]
+        }
+      ],
+      "modifiers": {
+        "FauneAbyssale_JellyFish_WalkRandomOffset": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 0.5,
+              "successActions": [
+                {
+                  "$type": "SetAnimatorInt",
+                  "intID": "RanmdomOffset",
+                  "ratio": 1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "Randomed",
+                  "chance": 0.5,
+                  "successActions": [
+                    {
+                      "$type": "SetAnimatorInt",
+                      "intID": "RanmdomOffset",
+                      "ratio": 2.0
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "SetAnimatorInt",
+                      "intID": "RanmdomOffset",
+                      "ratio": 3.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 2.0,
+          "key": "GV_EnvironmentType",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "FauneAbyssale_JellyFish_HideUIBillBoard",
+      "modifiers": {
+        "FauneAbyssale_HideBillBoard": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "HideUIBillBoard",
+              "hide": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "HideUIBillBoard"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_TriggerBullet",
+      "abilityMixins": [
+        {
+          "$type": "SpacialSteerAttackMixin",
+          "PMJANGFJKIA": ["NormalAttack"],
+          "GNMAFMHMMEJ": 45.0,
+          "LPGHNAFIOJO": -45.0,
+          "angularSpeed": 180.0,
+          "attackTrigger": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42615006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngle": 60.0,
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true,
+            "attachPointName": "BulletNode"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_TriggerBulletLarge",
+      "abilityMixins": [
+        {
+          "$type": "SpacialSteerAttackMixin",
+          "PMJANGFJKIA": ["NormalAttack"],
+          "GNMAFMHMMEJ": 45.0,
+          "LPGHNAFIOJO": -45.0,
+          "angularSpeed": 180.0,
+          "attackTrigger": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42615006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": -0.824999988079071,
+              "z": -0.824999988079071
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngle": 60.0,
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true,
+            "attachPointName": "BulletNode"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_Bullet_Loop",
+      "modifiers": {
+        "UNIQUE_Monster_FauneAbyssale_JellyFish_Bullet_Loop": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "AttachEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_HydroBullet",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "AttachEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_HydroBullet_Trail",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Monster_FauneAbyssale_JellyFish_BulletWarning_Clock": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onRemoved": [
+                {
+                  "$type": "CreateGadget",
+                  "ownerIs": "Owner",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "useRotation": true
+                  },
+                  "gadgetID": 42615008,
+                  "campID": 4001,
+                  "campTargetType": "Alliance"
+                },
+                {
+                  "$type": "KillSelf",
+                  "duration": 0.05000000074505806
+                },
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_HydroTransfer",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Monster_FauneAbyssale_JellyFish_Bullet_Loop"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Monster_FauneAbyssale_JellyFish_BulletWarning_Clock"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_Bullet_Explode",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Monster_FauneAbyssale_JellyFish_BulletWarning_Clock"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_BulletWarning_Loop",
+      "modifiers": {
+        "Monster_FauneAbyssale_JellyFish_BulletWarning_Loop": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_ExplodeBS",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Monster_FauneAbyssale_JellyFish_BulletWarning_Loop"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_Explode",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "Monster_FauneAbyssale_JellyFish_BulletWarning_Loop"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "radius": 2.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Water",
+                "bonusCritical": 25.0,
+                "strikeType": "Default",
+                "damage": 1.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV4",
+                "hitHaltTimeScale": 0.05000000074505806
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_TriggerMagicWaterBall",
+      "abilityMixins": [
+        {
+          "$type": "SpacialSteerAttackMixin",
+          "PMJANGFJKIA": ["Bubble"],
+          "GNMAFMHMMEJ": 45.0,
+          "LPGHNAFIOJO": -45.0,
+          "angularSpeed": 180.0,
+          "attackTrigger": ""
+        },
+        {
+          "$type": "SpacialSteerAttackMixin",
+          "PMJANGFJKIA": ["Bubble_Combo01"],
+          "GNMAFMHMMEJ": 45.0,
+          "LPGHNAFIOJO": -45.0,
+          "angularSpeed": 180.0,
+          "attackTrigger": ""
+        },
+        {
+          "$type": "SpacialSteerAttackMixin",
+          "PMJANGFJKIA": ["Bubble_Combo02"],
+          "GNMAFMHMMEJ": 45.0,
+          "LPGHNAFIOJO": -45.0,
+          "angularSpeed": 180.0,
+          "attackTrigger": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_FauneAbyssale_JellyFish_BeHitByControlledMagicBall": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "LoseHP",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["ControlledMagicBall_Explode"]
+                }
+              ],
+              "OLMENJCGGJJ": 0.17499999701976776,
+              "MIIHJFFDKKC": ""
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_FauneAbyssale_JellyFish_BeHitByControlledMagicBall"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42615028,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngle": 60.0,
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true,
+            "attachPointName": "BulletNode"
+          }
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "KillGadget",
+          "gadgetInfo": {
+            "configID": 42615028
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_MagicWaterBallLoop",
+      "modifiers": {
+        "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallClock": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+              "globalValueKey": "_ABILITY_Monster_JellyFish_03_MagicBall_BeCharged_",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+              "modifierNameSteps": [
+                "Empty",
+                "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallCharging",
+                "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallCharged"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_CanBeAimed_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallCharging": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "MagicWaterBallChargeTimer"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "MagicWaterBallChargeTimer"
+            }
+          ]
+        },
+        "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallCharged": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "ownerIs": "OriginOwner",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "AIJHOFHPJJB",
+                  "directionKey": "_CONTROLLEDMAGICBALLDIR_"
+                },
+                "useRotation": true
+              },
+              "gadgetID": 42615031,
+              "campID": 4001
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "MagicWaterBallChargeTimer": {
+          "modifierName": "",
+          "duration": 2.5,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.600000023841858,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Charge",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ChargeCancle",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "target": "TempTarget",
+              "checkParams": {
+                "EFHKFHFMKIF": "_TempAvatarTarget_"
+              },
+              "modifierName": "EixtAbsorbAbility"
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 2.0,
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_BeCharged_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "EixtAbsorbAbility": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_Charged_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallClock"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "KillGadget",
+          "gadgetInfo": {
+            "configID": 42615029
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_MagicWaterBallExplode",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_BeCharged_",
+              "ratio": 1.0,
+              "compareType": "LessAndEqual"
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallAS",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_BeCharged_",
+              "ratio": 1.0,
+              "compareType": "LessAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "radius": 7.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Water",
+                "bonusCritical": 25.0,
+                "strikeType": "Default",
+                "damage": 1.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV4",
+                "hitHaltTimeScale": 0.05000000074505806
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_Jelly_MagicWaterBall_ExplodeArea",
+      "modifiers": {
+        "Monster_FauneAbyssale_Jelly_MagicWaterBall_ExplodeTimer": {
+          "modifierName": "",
+          "duration": 1.7000000476837158,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Alert",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallAS",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "useRotation": true
+                  },
+                  "radius": 7.5
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 1.0,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Water",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 1.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV4",
+                    "hitHaltTimeScale": 0.05000000074505806
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_FauneAbyssale_Jelly_MagicWaterBall_ExplodeTimer"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_BubbleArray_CreateBubble",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["BubbleArray", "BubbleArray_AS"],
+          "modifierName": "KillBubble",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "RandomTimer01": 0.0,
+        "RandomTimer02": 0.0,
+        "RandomTimer03": 0.0,
+        "RandomTimer04": 0.0,
+        "RandomTimer05": 0.0,
+        "RandomTimer06": 0.0,
+        "RandomTimer07": 0.0,
+        "RandomTimer08": 0.0,
+        "RandomTimer09": 0.0,
+        "RandomTimer10": 0.0
+      },
+      "modifiers": {
+        "KillBubble": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42615030
+              },
+              "modifierName": "BubbleKillSelf"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42615030
+              },
+              "modifierName": "BubbleKillSelf"
+            }
+          ]
+        },
+        "KillBubble_OnChangeAuthority": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onChangeAuthority": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42615030
+              },
+              "modifierName": "BubbleKillSelf"
+            }
+          ]
+        },
+        "BubbleKillSelf": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "CreateBubbleWave01": {
+          "modifierName": "",
+          "duration": "RandomTimer01",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint01"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint01"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave02": {
+          "modifierName": "",
+          "duration": "RandomTimer02",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint02"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint02"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave03": {
+          "modifierName": "",
+          "duration": "RandomTimer03",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint03"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint03"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave04": {
+          "modifierName": "",
+          "duration": "RandomTimer04",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint04"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint04"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave05": {
+          "modifierName": "",
+          "duration": "RandomTimer05",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint05"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint05"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave06": {
+          "modifierName": "",
+          "duration": "RandomTimer06",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint06"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint06"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave07": {
+          "modifierName": "",
+          "duration": "RandomTimer07",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint07"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint07"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave08": {
+          "modifierName": "",
+          "duration": "RandomTimer08",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint08"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint08"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave09": {
+          "modifierName": "",
+          "duration": "RandomTimer09",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint09"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint09"
+              }
+            }
+          ]
+        },
+        "CreateBubbleWave10": {
+          "modifierName": "",
+          "duration": "RandomTimer10",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42615030,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "JOHHBEHLHLO",
+                  "randomAngleHor": 20.0,
+                  "randomAngleVer": 20.0,
+                  "attachPointName": "BubbleArrayAttachPoint10"
+                },
+                "useRotation": true,
+                "attachPointName": "BubbleArrayAttachPoint10"
+              }
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "KillBubble_OnChangeAuthority"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer01"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer02"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer03"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer04"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer05"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer06"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer07"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer08"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer09"
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 0.5,
+          "triggerIDRangeMin": 0.009999999776482582,
+          "overrideMapKey": "RandomTimer10"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave01"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave02"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave03"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave04"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave05"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave06"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave07"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave08"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave09"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CreateBubbleWave10"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "KillGadget",
+          "gadgetInfo": {
+            "configID": 42615030
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_BubbleArrayEffect",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["BubbleArray"],
+          "modifierName": "JellyFish_RemoveBubbleArrayEffect",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "JellyFish_BubbleArrayEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_WaterBallArrayLoop",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "JellyFish_RemoveBubbleArrayEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "JellyFish_BubbleArrayEffect"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "JellyFish_BubbleArrayEffect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_BubbleArray_BubbleLoop",
+      "modifiers": {
+        "UNIQUE_Monster_FauneAbyssale_JellyFish_BubbleArray_BubbleClock": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+              "globalValueKey": "_ABILITY_Monster_JellyFish_03_MagicBall_BeCharged_",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+              "modifierNameSteps": [
+                "Empty",
+                "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallCharging02",
+                "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallCharged02"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_CanBeAimed_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallCharging02": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "MagicWaterBallChargeTimer"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "MagicWaterBallChargeTimer"
+            }
+          ]
+        },
+        "UNIQUE_Monster_FauneAbyssale_JellyFish_MagicWaterBallCharged02": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "ownerIs": "OriginOwner",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "AIJHOFHPJJB",
+                  "directionKey": "_CONTROLLEDMAGICBALLDIR_"
+                },
+                "useRotation": true
+              },
+              "gadgetID": 42615031,
+              "campID": 4001
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "MagicWaterBallChargeTimer": {
+          "modifierName": "",
+          "duration": 2.5,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.600000023841858,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Charge",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ChargeCancle",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "target": "TempTarget",
+              "checkParams": {
+                "EFHKFHFMKIF": "_TempAvatarTarget_"
+              },
+              "modifierName": "EixtAbsorbAbility"
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 2.0,
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_BeCharged_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "EixtAbsorbAbility": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_Charged_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Monster_FauneAbyssale_JellyFish_BubbleArray_BubbleClock"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "KillGadget",
+          "gadgetInfo": {
+            "configID": 42615029
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_JellyFish_BubbleArray_BubbleExplode",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_BeCharged_",
+              "ratio": 1.0,
+              "compareType": "LessAndEqual"
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallAS",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "_ABILITY_Monster_JellyFish_03_MagicBall_BeCharged_",
+              "ratio": 1.0,
+              "compareType": "LessAndEqual"
+            }
+          ],
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "radius": 7.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Water",
+                "bonusCritical": 25.0,
+                "strikeType": "Default",
+                "damage": 1.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV4",
+                "hitHaltTimeScale": 0.05000000074505806
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_FauneAbyssale_Jelly_ControlledMagicBallEmitter_TriggerBullet",
+      "modifiers": {
+        "ControlledMagicBallEmitter_TriggerBullet": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "target": "OriginOwner",
+              "targetPredicates": [
+                {
+                  "$type": "GMHGMKNFHDJ",
+                  "logic": "LesserOrEqual",
+                  "ratio": 60.0,
+                  "isXZ": false,
+                  "namedTransform": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerBullet",
+                  "target": "CasterOriginOwner",
+                  "bulletID": 42615033,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "direction": {
+                      "$type": "JOHHBEHLHLO",
+                      "attachPointName": "RootNode",
+                      "attachPointTargetType": "Self"
+                    },
+                    "useRotation": true,
+                    "attachPointName": "RootNode",
+                    "attachPointTargetType": "Self"
+                  },
+                  "trackTarget": "CasterOriginOwner"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 42615032,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "direction": {
+                      "$type": "JOHHBEHLHLO",
+                      "attachPointName": "RootNode"
+                    },
+                    "useRotation": true,
+                    "attachPointName": "RootNode"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ControlledMagicBallEmitter_TriggerBullet"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ControlledMagicBall_Explode",
+      "modifiers": {
+        "ControlledMagicBall_Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Charged",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallLoop"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "ControlledMagicBall_Effect"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_FauneAbyssale_JellyFish_Larva_MagicWaterBallAS",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.800000011920929,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "radius": 7.5
+            },
+            "attackInfo": {
+              "attackTag": "ControlledMagicBall_Explode",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.0,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Water",
+                "bonusCritical": 50.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3",
+                "hitHaltTimeScale": 0.05000000074505806
+              },
+              "forceCameraShake": true,
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Alliance"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "FauneAbyssale_JellyFish_Larva_FreeSkillsBinding",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [12],
+          "modifierName": "FauneAbyssale_JellyFish_Larva_SyncDanceSource"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [13],
+          "modifierName": "FauneAbyssale_JellyFish_Larva_SyncDanceTarget"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [99],
+          "modifierName": "FauneAbyssale_JellyFish_Larva_MuteFreeSkills"
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["Struggle_Absorbed"],
+          "modifierName": "UNIQUE_FauneAbyssale_JellyFish_BeAbsorbed",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_FauneAbyssale_JellyFish_BeAbsorbed": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0
+        },
+        "FauneAbyssale_JellyFish_Larva_SyncDanceTrigger": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "SyncDanceTrigger"
+            }
+          ]
+        },
+        "FauneAbyssale_JellyFish_Larva_SyncDanceSource": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "FreeState",
+              "minValue": 1
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_ABILITY_FauneAbyssale_JellyFish_FreeState",
+              "useLimitRange": true,
+              "maxValue": 5.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "FauneAbyssale_JellyFish_Larva_SyncDanceTarget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "FreeState",
+              "minValue": 2
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 2.0,
+              "key": "_ABILITY_FauneAbyssale_JellyFish_FreeState",
+              "useLimitRange": true,
+              "maxValue": 5.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "FauneAbyssale_JellyFish_Larva_MuteFreeSkills": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "FreeState",
+              "minValue": 99
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 99.0,
+              "key": "_ABILITY_FauneAbyssale_JellyFish_FreeState",
+              "useLimitRange": true,
+              "maxValue": 99.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "otherTargets": {
+            "$type": "SelectTargetsByShape",
+            "topLimit": 10,
+            "entityTypePriority": ["Monster"],
+            "shapeName": "CircleR20H20",
+            "campTargetType": "AllExceptSelf",
+            "SelectTargetsByShape": 1.0
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FauneAbyssale_JellyFish_FreeState",
+              "ratio": 2.0
+            }
+          ],
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_FauneAbyssale_JellyFish_FreeState",
+              "ratio": 2.0
+            },
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "LMBGIDDHLDM",
+                  "modifierName": "UNIQUE_FauneAbyssale_JellyFish_BeAbsorbed"
+                }
+              ]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "modifierName": "FauneAbyssale_JellyFish_Larva_SyncDanceTrigger"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

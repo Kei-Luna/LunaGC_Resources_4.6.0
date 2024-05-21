@@ -1,0 +1,3080 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_Golden_Hall",
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "modifierName": "Avatar_GoldenHall_Fly"
+        }
+      ],
+      "abilitySpecials": {
+        "tempGV_key_0": 0.0
+      },
+      "modifiers": {
+        "Avatar_GoldenHall_Fly": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["ActivitySkill_CommonMove"],
+              "modifierName": "InFly",
+              "BILMCNCKIAO": ""
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "globalValueKey": "GV_IsInFly",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["GV_IsInFly_0", "GV_IsInFly_1"]
+            },
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "oldPatterns": [
+                "PlayMusic_Lyre_Boy",
+                "PlayMusic_Lyre_Girl",
+                "PlayMusic_Lyre_Boy_AS",
+                "PlayMusic_Lyre_Girl_AS"
+              ],
+              "newPatterns": [
+                "PlayMusic_GoldenHall_Qin_Boy",
+                "PlayMusic_GoldenHall_Qin_Girl",
+                "PlayMusic_GoldenHall_Qin_Boy_AS",
+                "PlayMusic_GoldenHall_Qin_Girl_AS"
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "ratio": 0.0,
+              "key": "GV_IsInFly",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "InFly": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "Golden_Hall InFly onAdd"
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "GV_IsInFly",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "DebugLog",
+              "content": "Golden_Hall InFly onRemoved"
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "GV_IsInFly",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "GV_IsInFly_0": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "KillGadget",
+              "cdDelta": true,
+              "gadgetInfo": {
+                "sortType": "Reversed",
+                "configID": 70330847
+              }
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "KillGadget",
+              "cdDelta": true,
+              "gadgetInfo": {
+                "sortType": "Reversed",
+                "configID": 70330847
+              }
+            }
+          ]
+        },
+        "GV_IsInFly_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LevelCurveMixin",
+              "tag": "RollerCoaster",
+              "CFMEDCKAMND": ["TEST_GV_0", "TEST_GV_1"],
+              "CFDIJGIMEMC": [
+                "StartCustomCameraList",
+                "SetCameraOffset",
+                "SetGroupVariable",
+                "GoToStage3_GoldenHall"
+              ],
+              "ACNHLGPBIED": [
+                [
+                  {
+                    "$type": "DebugLog",
+                    "content": "LevelCurveMixin > StartCustomCameraList"
+                  },
+                  {
+                    "$type": "SetCurveProgressInfoToGlobalValue",
+                    "FLKGJGDIDFO": "TEST_GV_"
+                  },
+                  {
+                    "$type": "Predicated",
+                    "otherTargets": {
+                      "$type": "LOFHFECCCGG",
+                      "topLimit": 1,
+                      "sortType": "Nearest",
+                      "tag": "GoldenHall_Interact_Desk"
+                    },
+                    "successActions": [
+                      {
+                        "$type": "SetGlobalValueToOverrideMap",
+                        "globalValueKey": "TEST_GV_0",
+                        "overrideMapKey": "tempGV_key_0"
+                      },
+                      {
+                        "$type": "SetGlobalValue",
+                        "target": "Other",
+                        "cdDelta": true,
+                        "ratio": "tempGV_key_0",
+                        "key": "Cam_ID",
+                        "maxValue": 0.0,
+                        "minValue": 0.0
+                      },
+                      {
+                        "$type": "AddGlobalValue",
+                        "target": "Other",
+                        "ratio": 1.0,
+                        "key": "Cam_Trigger",
+                        "maxValue": 0.0,
+                        "minValue": 0.0
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "$type": "DebugLog",
+                    "content": "LevelCurveMixin > SetCameraOffset"
+                  },
+                  {
+                    "$type": "SetCurveProgressInfoToGlobalValue",
+                    "FLKGJGDIDFO": "TEST_GV_"
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 0.0
+                      }
+                    ],
+                    "lerpInTime": 1.0,
+                    "APBEMBLINKJ": 0,
+                    "HJLLEOAOJJL": 60.0,
+                    "HDKJMMHFLBM": 60.0,
+                    "fov": 65.0,
+                    "KJIBONOKLBG": true
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 1.0
+                      }
+                    ],
+                    "MKEIGBAKKKM": {
+                      "y": -2.0
+                    },
+                    "ICKPFCFLBJD": {
+                      "y": 10.0
+                    },
+                    "lerpInTime": 2.0,
+                    "APBEMBLINKJ": 0,
+                    "HJLLEOAOJJL": 60.0,
+                    "HDKJMMHFLBM": 60.0,
+                    "fov": 75.0,
+                    "KJIBONOKLBG": true
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 2.0
+                      }
+                    ],
+                    "ICKPFCFLBJD": {
+                      "x": 89.0,
+                      "y": -25.0
+                    },
+                    "lerpInTime": 1.0,
+                    "APBEMBLINKJ": 3,
+                    "HJLLEOAOJJL": 10.0,
+                    "HDKJMMHFLBM": 10.0,
+                    "fov": 75.0,
+                    "KJIBONOKLBG": true
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 3.0
+                      }
+                    ],
+                    "MKEIGBAKKKM": {
+                      "z": -1.0
+                    },
+                    "ICKPFCFLBJD": {
+                      "x": 30.0,
+                      "y": -15.0
+                    },
+                    "lerpInTime": 1.0,
+                    "APBEMBLINKJ": 0,
+                    "HJLLEOAOJJL": 60.0,
+                    "HDKJMMHFLBM": 60.0,
+                    "fov": 75.0,
+                    "KJIBONOKLBG": true
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 4.0
+                      }
+                    ],
+                    "MKEIGBAKKKM": {
+                      "z": -1.0
+                    },
+                    "ICKPFCFLBJD": {
+                      "x": 60.0,
+                      "y": 10.0
+                    },
+                    "lerpInTime": 1.0,
+                    "APBEMBLINKJ": 0,
+                    "HJLLEOAOJJL": 60.0,
+                    "HDKJMMHFLBM": 60.0,
+                    "fov": 75.0,
+                    "KJIBONOKLBG": true
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 5.0
+                      }
+                    ],
+                    "ICKPFCFLBJD": {
+                      "y": 20.0
+                    },
+                    "lerpInTime": 1.0,
+                    "APBEMBLINKJ": 0,
+                    "HJLLEOAOJJL": 60.0,
+                    "HDKJMMHFLBM": 60.0,
+                    "fov": 75.0,
+                    "EGPJPJCOGHC": 6.0,
+                    "KJIBONOKLBG": true
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 6.0
+                      }
+                    ],
+                    "MKEIGBAKKKM": {
+                      "y": -2.0
+                    },
+                    "ICKPFCFLBJD": {
+                      "y": 5.0
+                    },
+                    "lerpInTime": 1.0,
+                    "APBEMBLINKJ": 0,
+                    "HJLLEOAOJJL": 60.0,
+                    "HDKJMMHFLBM": 60.0,
+                    "fov": 75.0,
+                    "EGPJPJCOGHC": 10.0,
+                    "KJIBONOKLBG": true
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 7.0
+                      }
+                    ],
+                    "MKEIGBAKKKM": {
+                      "y": -1.0
+                    },
+                    "ICKPFCFLBJD": {
+                      "y": -10.0
+                    },
+                    "lerpInTime": 1.0,
+                    "APBEMBLINKJ": 0,
+                    "HJLLEOAOJJL": 60.0,
+                    "HDKJMMHFLBM": 60.0,
+                    "fov": 75.0,
+                    "EGPJPJCOGHC": 8.0,
+                    "KJIBONOKLBG": true
+                  },
+                  {
+                    "$type": "TriggerCurveCameraOffset",
+                    "predicates": [
+                      {
+                        "$type": "ByTargetGlobalValue",
+                        "key": "TEST_GV_0",
+                        "ratio": 8.0
+                      }
+                    ],
+                    "lerpInTime": 0.0,
+                    "APBEMBLINKJ": 0,
+                    "HJLLEOAOJJL": 30.0,
+                    "HDKJMMHFLBM": 30.0,
+                    "EGPJPJCOGHC": 8.0,
+                    "KJIBONOKLBG": true
+                  }
+                ],
+                [
+                  {
+                    "$type": "DebugLog",
+                    "content": "LevelCurveMixin > SetGroupVariable"
+                  },
+                  {
+                    "$type": "SetCurveProgressInfoToGlobalValue",
+                    "FLKGJGDIDFO": "TEST_GV_"
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "globalValueKey": "TEST_GV_0",
+                    "overrideMapKey": "TEST_GV_0"
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "globalValueKey": "TEST_GV_1",
+                    "overrideMapKey": "TEST_GV_1"
+                  },
+                  {
+                    "$type": "ServerLuaCall",
+                    "luaCallType": "SpecificGroup",
+                    "callParamList": [511020002],
+                    "funcName": "SLC_GoldenHall_SetVar",
+                    "paramNum": 2,
+                    "param1": 0,
+                    "KEEFCBAAODF": "TEST_GV_1",
+                    "LABHKHBCHFB": 0.0
+                  }
+                ],
+                [
+                  {
+                    "$type": "NotifyUI",
+                    "uiContextName": "GoldenHall",
+                    "message": "GoToStage3",
+                    "stringParam": "1449.86,-404.5424,3566.42|1,0,0"
+                  }
+                ]
+              ]
+            }
+          ],
+          "state": "IsGhostToEnemy",
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "cdDelta": true,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "useRotation": true
+              },
+              "gadgetID": 70330847
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillGadget",
+              "cdDelta": true,
+              "gadgetInfo": {
+                "sortType": "Reversed",
+                "configID": 70330847
+              }
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "GoldenHall_Avatar_Control",
+      "abilityMixins": [
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "ExitCameTrigger",
+          "actions": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "cdDelta": true,
+              "shotType": "LEVEL"
+            }
+          ]
+        },
+        {
+          "$type": "StageReadyMixin",
+          "onStageReady": [
+            {
+              "$type": "DebugLog",
+              "content": "GoldenHall > StageReady"
+            },
+            {
+              "$type": "AddGlobalValueV2",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "ExitCameTrigger",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Stop_Point",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "RollerCoasterStationMixin",
+              "BOKNMKHMMHE": [
+                {
+                  "$type": "DebugLog",
+                  "content": "RollerCoasterStationMixin > OnArrived"
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByAny",
+                      "predicates": [
+                        {
+                          "$type": "NJMOCHPJIKO",
+                          "target": "Self"
+                        },
+                        {
+                          "$type": "ByTargetGlobalValue",
+                          "target": "Self",
+                          "key": "SGV_Stopover",
+                          "ratio": 1.0
+                        }
+                      ]
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "AvatarExitCurveMove",
+                      "target": "CurLocalAvatar"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Bee_Group_02",
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_VABoids_BeeGhostGroupJSDT_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Bee_Group_03",
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_VABoids_BeeGhostGroupJSDTFinal_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_SmallStage_Bee_Group_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_VABoids_BeeGhostGroupJSDTLittle_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onKill": [
+        {
+          "$type": "SendEffectTrigger",
+          "parameter": "FadeOut",
+          "attachPoint": "",
+          "value": 1,
+          "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_VABoids_BeeGhostGroupJSDTLittle_01"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_SuperBigWhale_GoldenHall",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "LevelCurveMixin",
+              "tag": "OceanShip",
+              "CFMEDCKAMND": ["TEST_GV_0", "TEST_GV_1"],
+              "CFDIJGIMEMC": ["SetGroupVariable"],
+              "ACNHLGPBIED": [
+                [
+                  {
+                    "$type": "DebugLog",
+                    "content": "LevelCurveMixin > SetGroupVariable"
+                  },
+                  {
+                    "$type": "SetCurveProgressInfoToGlobalValue",
+                    "FLKGJGDIDFO": "TEST_GV_"
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "globalValueKey": "TEST_GV_0",
+                    "overrideMapKey": "TEST_GV_0"
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "globalValueKey": "TEST_GV_1",
+                    "overrideMapKey": "TEST_GV_1"
+                  },
+                  {
+                    "$type": "ServerLuaCall",
+                    "luaCallType": "SpecificGroup",
+                    "callParamList": [511020002],
+                    "funcName": "SLC_GoldenHall_SetVar",
+                    "paramNum": 2,
+                    "param1": 0,
+                    "KEEFCBAAODF": "TEST_GV_1",
+                    "LABHKHBCHFB": 0.0
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetAnimatorBool",
+          "boolID": "NoFogMat",
+          "ratio": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenWay_Starter",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Normal"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Active"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "DeActive"
+        }
+      ],
+      "modifiers": {
+        "Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GoldenChannelLauncher_Hint",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GoldenChannelLauncher_Active",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Active"
+            }
+          ]
+        },
+        "Active": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "DeActive": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": ""
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "IS_LMS_WHALE_SCAN_TARGET"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_FlashBack_Cam_Follow",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "LookState"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "LookState_2"
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "LookState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetCameraForwardType",
+              "HMDEMMHIMJH": "RootNode",
+              "IHGMLPDPHBJ": "PivotToTarget",
+              "CPCGGPEBLHP": 999.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetCameraForwardType",
+              "HMDEMMHIMJH": "RootNode",
+              "CPCGGPEBLHP": 999.0
+            }
+          ]
+        },
+        "LookState_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetCameraForwardType",
+              "HMDEMMHIMJH": "RootNode",
+              "IHGMLPDPHBJ": "PivotToTarget",
+              "CPCGGPEBLHP": 5.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetCameraForwardType",
+              "HMDEMMHIMJH": "RootNode"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Pigeon_Avatar_Follow",
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.20000000298023224,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PigeonGhostSingle_Idle",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PigeonGhostSingle_Trail_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PigeonGhost_01_Appear",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 201.0
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "IsFlying",
+              "ratio": 1.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 201.0
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "IsFlying",
+              "ratio": 1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Interact_Desk",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Normal"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "DelayEnterQTE"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Main_Stage",
+          "valueSteps": [0.5, 1.5, 2.5],
+          "modifierNameSteps": ["MainStage_1", "MainStage_2"],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "Cam_Trigger",
+          "actions": [
+            {
+              "$type": "AvatarEnterCameraShot",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "Cam_ID",
+                  "ratio": 1.0
+                }
+              ],
+              "cameraMoveCfgPath": "Camera_Gadget_GoldenHall_4",
+              "shotType": "LEVEL"
+            }
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "local_Success_Target": 0.0,
+        "local_Stage_ID": 0.0,
+        "local_GoldenHall_Var": 0.0,
+        "temp_player_stage": 0.0
+      },
+      "modifiers": {
+        "MainStage_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "MainStage_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "NotifyUI",
+              "uiContextName": "GoldenHall",
+              "message": "GoToStage2",
+              "stringParam": ""
+            }
+          ]
+        },
+        "Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "DelayEnterQTE": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "State_QTE"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "GV_Player_Stage",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "State_QTE"
+            }
+          ]
+        },
+        "State_QTE": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToContextMixin",
+              "EGONAFJODKM": {
+                "$type": "GMGMDDMPCJD",
+                "EBBKAHFKMPC": "GoldenHall",
+                "LKLPOOOEBBN": {
+                  "x": 1509.990966796875,
+                  "y": -414.64471435546875,
+                  "z": 3566.3720703125
+                },
+                "PBMCPBIBAEJ": {
+                  "x": -1.0
+                },
+                "MLMOPIPKNPL": "SceneObj_GoldenHall_QTE_Goal",
+                "HHJDGDOBODH": "SceneObj_GoldenHall_QTE_Goal_Fail"
+              }
+            },
+            {
+              "$type": "TimeTrackEventReceiverMixin",
+              "MFLGKANCEPE": "SuccessCheck",
+              "actionQueue": [
+                {
+                  "$type": "DebugLog",
+                  "content": "金色大厅qte SuccessCheck"
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_Success_Counter",
+                      "ratio": "local_Success_Target",
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetTimeTrackEventNoteParamToGlobalValue",
+                      "eventKey": "NextStage",
+                      "globalValueKey": "GV_Player_Stage"
+                    },
+                    {
+                      "$type": "SetGlobalValueToOverrideMap",
+                      "globalValueKey": "GV_Player_Stage",
+                      "overrideMapKey": "local_Stage_ID"
+                    },
+                    {
+                      "$type": "ServerLuaCall",
+                      "luaCallType": "FromGroup",
+                      "funcName": "SLC_GoToNextStage",
+                      "paramNum": 1,
+                      "param1": 0,
+                      "KEEFCBAAODF": 0.0,
+                      "LABHKHBCHFB": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "TimeTrackEventReceiverMixin",
+              "MFLGKANCEPE": "GroupSLC",
+              "actionQueue": [
+                {
+                  "$type": "DebugLog",
+                  "content": "金色大厅qte GroupSLC"
+                },
+                {
+                  "$type": "SetTimeTrackEventNoteParamToGlobalValue",
+                  "eventKey": "GoldenHall_Var",
+                  "globalValueKey": "GV_GoldenHall_Var"
+                },
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "GV_GoldenHall_Var",
+                  "overrideMapKey": "local_GoldenHall_Var"
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "luaCallType": "SpecificGroup",
+                  "callParamList": [511020002],
+                  "funcName": "SLC_GoldenHall_SetVar",
+                  "paramNum": 2,
+                  "param1": 0.0,
+                  "KEEFCBAAODF": "local_GoldenHall_Var",
+                  "LABHKHBCHFB": 0.0
+                }
+              ]
+            },
+            {
+              "$type": "TimeTrackEventReceiverMixin",
+              "MFLGKANCEPE": "CheckSuccAndSLC",
+              "actionQueue": [
+                {
+                  "$type": "DebugLog",
+                  "content": "金色大厅qte CheckSuccAndSLC"
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_Success_Counter",
+                      "ratio": "local_Success_Target",
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ServerLuaCall",
+                      "luaCallType": "FromGroup",
+                      "funcName": "SLC_On_Stage_Succ",
+                      "paramNum": 1,
+                      "param1": 0,
+                      "KEEFCBAAODF": 0.0,
+                      "LABHKHBCHFB": 0.0
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "ServerLuaCall",
+                      "luaCallType": "FromGroup",
+                      "funcName": "SLC_On_Stage_Fail",
+                      "paramNum": 1,
+                      "param1": 0,
+                      "KEEFCBAAODF": 0.0,
+                      "LABHKHBCHFB": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "TimeTrackEventReceiverMixin",
+              "MFLGKANCEPE": "InitSuccessTarget",
+              "actionQueue": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "GV_Success_Counter",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "DebugLog",
+                  "content": "金色大厅qte InitSuccessTarget"
+                },
+                {
+                  "$type": "SetTimeTrackEventNoteParamToGlobalValue",
+                  "eventKey": "TargetSuccessCount",
+                  "globalValueKey": "GV_Success_Target"
+                },
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "GV_Success_Target",
+                  "overrideMapKey": "local_Success_Target"
+                }
+              ]
+            },
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "globalValueKey": "GV_Player_Stage",
+              "valueSteps": [
+                -0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5,
+                11.5
+              ],
+              "modifierNameSteps": [
+                "Blank",
+                "PlayerStage_1",
+                "PlayerStage_2",
+                "PlayerStage_3",
+                "PlayerStage_4",
+                "PlayerStage_5",
+                "PlayerStage_6",
+                "PlayerStage_7",
+                "PlayerStage_8",
+                "PlayerStage_9",
+                "PlayerStage_10",
+                "PlayerStage_11"
+              ],
+              "MFJNNNHGMJD": true
+            },
+            {
+              "$type": "DoActionOnGlobalValueChangeMixin",
+              "globalValueKey": "GV_Player_Stage",
+              "actions": [
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "GV_Player_Stage",
+                  "overrideMapKey": "temp_player_stage"
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "luaCallType": "FromGroup",
+                  "funcName": "SLC_On_PlayerStage_Change",
+                  "paramNum": 1,
+                  "param1": 0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "GV_Player_Stage",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_Player_Stage",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR200",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ],
+              "modifierName": "ExitCamera"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_End_Play",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "DisableFlyObj": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "Eff_On",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "PlayerStage_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 6
+            }
+          ]
+        },
+        "PlayerStage_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 7
+            }
+          ]
+        },
+        "PlayerStage_3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 8
+            }
+          ]
+        },
+        "PlayerStage_4": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 12
+            }
+          ]
+        },
+        "PlayerStage_5": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 13
+            }
+          ]
+        },
+        "PlayerStage_6": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 14
+            }
+          ]
+        },
+        "PlayerStage_7": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 15
+            }
+          ]
+        },
+        "PlayerStage_8": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 16
+            }
+          ]
+        },
+        "PlayerStage_9": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 8
+            }
+          ]
+        },
+        "PlayerStage_10": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 8
+            }
+          ]
+        },
+        "PlayerStage_11": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackPlayerMixin",
+              "ONEECDJINFA": "",
+              "BDGIGGABOIO": 17
+            }
+          ]
+        },
+        "ExitCamera": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "ExitCameTrigger",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "DebugLog",
+              "content": "goldenHall > ExitCameTrigger"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "Cam_ID",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 100.0,
+          "key": "TestQTE_Count",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_Player_Stage",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_Success_Counter",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_Success_Target",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "Cam_Trigger",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "GoldenHall_Interact_Desk"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_QTE_Fly_Point_V2",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "globalValueKey": "Is_Goal_Success",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Blank", "Success"]
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "globalValueKey": "Eff_On",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["NoFire", "FireMat"]
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "GV_Refresh_Trigger",
+          "actions": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Controller"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Controller"
+            }
+          ]
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "SGV_CurveStartTrigger",
+          "actions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "DelayAddFireMat"
+            }
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "local_qteID": 1.0,
+        "local_qte_Group": 1.0,
+        "local_qte_Time": 1.0
+      },
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackEventReceiverMixin",
+              "MFLGKANCEPE": "EventReceiver",
+              "actionQueue": [
+                {
+                  "$type": "DebugLog",
+                  "content": "金色大厅qte Fly_Point qte receive"
+                },
+                {
+                  "$type": "SetTimeTrackEventNoteParamToGlobalValue",
+                  "eventKey": "qteID",
+                  "globalValueKey": "GV_qteID"
+                },
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "GV_qteID",
+                  "overrideMapKey": "local_qteID"
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "luaCallType": "FromGroup",
+                  "funcName": "SLC_Start_QTE",
+                  "paramNum": 1,
+                  "param1": 0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "DelayAddFireMat"
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 4.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102007,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 5.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102008,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 6.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102009,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 7.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102021,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 8.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102022,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 9.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102012,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 10.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102025,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 11.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102026,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 12.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102029,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 13.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102030,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 14.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102004,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 15.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102015,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 16.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102016,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 12.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 17.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102014,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 17.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 18.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102013,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 17.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 19.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102011,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 17.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 20.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102010,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 17.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 21.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102005,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 17.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 22.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102037,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 17.0
+                },
+                {
+                  "$type": "TriggerPlatformCurveMove",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "GV_qteID",
+                      "ratio": 23.0
+                    }
+                  ],
+                  "BPOFBEDPBMA": 901102072,
+                  "CGAOCJDPOOL": 0.0,
+                  "speed": 17.0
+                }
+              ]
+            },
+            {
+              "$type": "TimeTrackEventReceiverMixin",
+              "MFLGKANCEPE": "Event_ShowGoal",
+              "actionQueue": [
+                {
+                  "$type": "DebugLog",
+                  "content": "金色大厅qte Event_ShowGoal"
+                },
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "SGV_QTE_Group_ID",
+                  "overrideMapKey": "local_qte_Group"
+                },
+                {
+                  "$type": "Predicated",
+                  "otherTargets": {
+                    "$type": "LOFHFECCCGG",
+                    "tag": "GoldenHall_QTE_Goal"
+                  },
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_QTE_Group_ID",
+                      "ratio": "local_qte_Group"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Other",
+                      "modifierName": "ShowGoal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "TimeTrackEventReceiverMixin",
+              "MFLGKANCEPE": "Event_StartQTE",
+              "actionQueue": [
+                {
+                  "$type": "DebugLog",
+                  "content": "触发金色大厅qte"
+                },
+                {
+                  "$type": "SetTimeTrackEventNoteParamToGlobalValue",
+                  "eventKey": "QTETime",
+                  "globalValueKey": "GV_QTE_Time"
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_QTE_Time",
+                      "ratio": 0.0
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetOverrideMapValue",
+                      "ratio": 1.5,
+                      "overrideMapKey": "local_qte_Time",
+                      "maxValue": 0.0,
+                      "minValue": 0.0
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "SetGlobalValueToOverrideMap",
+                      "globalValueKey": "GV_QTE_Time",
+                      "overrideMapKey": "local_qte_Time"
+                    }
+                  ]
+                },
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "SGV_QTE_Group_ID",
+                  "overrideMapKey": "local_qte_Group"
+                },
+                {
+                  "$type": "Predicated",
+                  "otherTargets": {
+                    "$type": "LOFHFECCCGG",
+                    "tag": "GoldenHall_QTE_Goal"
+                  },
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "SGV_QTE_Group_ID",
+                      "ratio": "local_qte_Group"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Other",
+                      "modifierName": "ShowQte"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "LevelCurveMixin",
+              "tag": "OceanShip",
+              "CFMEDCKAMND": ["GV_UnderSeaShip_Index"],
+              "CFDIJGIMEMC": [
+                "ShipEnd",
+                "ShowQTE_GoldenHall",
+                "SetGroupVariable"
+              ],
+              "ACNHLGPBIED": [
+                [
+                  {
+                    "$type": "SetGlobalValueV2",
+                    "cdDelta": true,
+                    "ratio": 0.0,
+                    "key": "Eff_On",
+                    "maxValue": 0.0,
+                    "minValue": 0.0
+                  }
+                ],
+                [],
+                [
+                  {
+                    "$type": "DebugLog",
+                    "content": "LevelCurveMixin > SetGroupVariable"
+                  },
+                  {
+                    "$type": "SetCurveProgressInfoToGlobalValue",
+                    "FLKGJGDIDFO": "TEST_GV_"
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "globalValueKey": "TEST_GV_0",
+                    "overrideMapKey": "TEST_GV_0"
+                  },
+                  {
+                    "$type": "SetGlobalValueToOverrideMap",
+                    "globalValueKey": "TEST_GV_1",
+                    "overrideMapKey": "TEST_GV_1"
+                  },
+                  {
+                    "$type": "ServerLuaCall",
+                    "luaCallType": "SpecificGroup",
+                    "callParamList": [511020002],
+                    "funcName": "SLC_GoldenHall_SetVar",
+                    "paramNum": 2,
+                    "param1": 0,
+                    "KEEFCBAAODF": "TEST_GV_1",
+                    "LABHKHBCHFB": 0.0
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        "ShowQte": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "cdDelta": true,
+              "ratio": "local_qte_Time",
+              "key": "GV_QTE_Perfect_Time",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "ratio": 1.0,
+              "key": "GV_ShowQte",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "ShowGoal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "ratio": 1.0,
+              "key": "GV_ShowEff",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "DelayAddFireMat": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "Eff_On",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "NoFire": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "MatState",
+              "ratio": 203.0
+            }
+          ]
+        },
+        "FireMat": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PigeonGhost_01_Appear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "EffRoot"
+              },
+              "scale": 0.4000000059604645,
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_BeeGhost_Idle_Wide",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "renderNames": ["Property_Ani_Prop_BeeGhost_01"],
+              "setEnable": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "MatState",
+              "ratio": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_BeeGhost_01_Disappear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "EffRoot"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Success": {
+          "modifierName": "",
+          "duration": 0.30000001192092896,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PigeonGhostSingle_Active",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "EffRoot"
+              },
+              "scale": 0.4000000059604645,
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "Is_Goal_Success",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "Is_GoldenHall_QTE_Fly_Point"
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "Eff_On",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "Is_Goal_Success",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "GV_Refresh_Trigger",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Controller"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_QTE_Goal",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "globalValueKey": "Is_Goal_Success",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Blank", "Success"]
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "globalValueKey": "GV_ShowQte",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Blank", "QteOn"]
+        },
+        {
+          "$type": "AttachModifierToGlobalValueMixin",
+          "globalValueKey": "GV_ShowEff",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Blank", "ShowEff"]
+        }
+      ],
+      "abilitySpecials": {
+        "local_qte_Group": 1.0,
+        "local_qte_ID": 0.0
+      },
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "ShowEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_MMBubble_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "QteOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "NotifyUI",
+              "uiContextName": "GoldenHall",
+              "message": "show",
+              "stringParam": ""
+            },
+            {
+              "$type": "DebugLog",
+              "content": "金色大厅qte 目标点QteOn"
+            }
+          ]
+        },
+        "Success": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_MMBubble_01"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "cdDelta": true,
+          "ratio": 1.5,
+          "key": "GV_QTE_Perfect_Time",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_QTE_Group_ID",
+          "overrideMapKey": "local_qte_Group"
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 1.0,
+          "key": "QTE_Goal",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "GV_ShowQte",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "GV_ShowEff",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "Is_Goal_Success",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "GoldenHall_QTE_Goal"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "content": "SceneObj_GoldenHall_QTE_Goal > onAbilityStart"
+        },
+        {
+          "$type": "Predicated",
+          "otherTargets": {
+            "$type": "LOFHFECCCGG",
+            "topLimit": 5,
+            "sortType": "Nearest",
+            "tag": "Is_GoldenHall_QTE_Fly_Point"
+          },
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_QTE_Group_ID",
+              "ratio": "local_qte_Group"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Target",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "Is_Goal_Success",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "Is_Goal_Success",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        {
+          "$type": "Predicated",
+          "otherTargets": {
+            "$type": "LOFHFECCCGG",
+            "topLimit": 5,
+            "sortType": "Nearest",
+            "tag": "GoldenHall_Interact_Desk"
+          },
+          "successActions": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "Target",
+              "ratio": 1.0,
+              "key": "GV_Success_Counter",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_QTE_ID",
+          "overrideMapKey": "local_qte_ID"
+        },
+        {
+          "$type": "ServerLuaCall",
+          "luaCallType": "SpecificGroup",
+          "callParamList": [511020002],
+          "funcName": "SLC_On_QTE_Succ",
+          "paramNum": 1,
+          "param1": 0,
+          "KEEFCBAAODF": 0.0,
+          "LABHKHBCHFB": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Bee_Ghost_Platform_01",
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PigeonGhost_01_Appear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "EffRoot"
+              },
+              "scale": 0.4000000059604645,
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_BeeGhost_Idle",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "renderNames": ["Property_Ani_Prop_BeeGhost_01"],
+              "setEnable": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "MatState",
+              "ratio": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Controller"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_BeeGhost_01_Disappear",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "useRotation": true,
+            "attachPointName": "EffRoot"
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "SetAnimatorInt",
+          "intID": "MatState",
+          "ratio": 203.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Stage2_Activate",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Activate"
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Activate": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_POI_Fd_JSDT_Change_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Gate",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "ForceActive"
+        }
+      ],
+      "modifiers": {
+        "Eff_Modifier": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_DeepSea_GoldenHallPortal_01",
+              "effectTempleteID": -1.0,
+              "isPlatformDependent": true
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalValueV2",
+              "ratio": 0.0,
+              "key": "GV_AvatarCount",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR50H50C",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "ratio": 1.0,
+                  "key": "GV_AvatarCount",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "GV_AvatarCount",
+                  "ratio": 1.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "canBeHandledOnRecover": true,
+                  "parameter": "State",
+                  "attachPoint": "",
+                  "type": "Int",
+                  "value": 201,
+                  "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_DeepSea_GoldenHallPortal_01",
+                  "isPlatformDependent": true
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SendEffectTrigger",
+                  "canBeHandledOnRecover": true,
+                  "parameter": "State",
+                  "attachPoint": "",
+                  "type": "Int",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_DeepSea_GoldenHallPortal_01",
+                  "isPlatformDependent": true
+                }
+              ]
+            }
+          ]
+        },
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Eff_Modifier"
+            }
+          ]
+        },
+        "ForceActive": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_DeepSea_GoldenHallPortal_01",
+              "effectTempleteID": -1.0,
+              "isPlatformDependent": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "canBeHandledOnRecover": true,
+              "parameter": "State",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_DeepSea_GoldenHallPortal_01",
+              "isPlatformDependent": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_QTE_Goal_Fail",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        }
+      ],
+      "abilitySpecials": {
+        "local_qte_Group": 1.0
+      },
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "KillSelfDelay": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "globalValueKey": "SGV_QTE_Group_ID",
+          "overrideMapKey": "local_qte_Group"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "content": "SceneObj_GoldenHall_QTE_Goal_Fail > onAbilityStart"
+        },
+        {
+          "$type": "SendEffectTrigger",
+          "canBeHandledOnRecover": true,
+          "parameter": "GadgetState",
+          "attachPoint": "",
+          "type": "Int",
+          "value": 202,
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_MMBubble_01"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "KillSelfDelay"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Harp_White",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "cdDelta": true,
+              "renderNames": ["String_01"],
+              "setEnable": true
+            },
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "cdDelta": true,
+              "renderNames": ["String_02"]
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GoldenHallHarp_Idle_SparkWhite",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "scale": 2.5,
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GoldenHallHarp_Idle_LightWhite",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "scale": 2.5,
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Harp_Red",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "cdDelta": true,
+              "renderNames": ["String_01"]
+            },
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "cdDelta": true,
+              "renderNames": ["String_02"],
+              "setEnable": true
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GoldenHallHarp_Idle_SparkRed",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "scale": 2.5,
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_GoldenHallHarp_Idle_LightRed",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode"
+              },
+              "scale": 2.5,
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_GoldenHall_Jump_Water",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Controller"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Active_Small"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "Active_Mid"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 203,
+          "modifierName": "Active_Big"
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "SGV_JumpWater_Trigger",
+          "actions": [
+            {
+              "$type": "DebugLog",
+              "content": "jumpWater TriggerBubble by SGV"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerEffect"
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "Controller": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "TimeTrackFireEffControl": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TimeTrackEventReceiverMixin",
+              "MFLGKANCEPE": "TriggerBubble",
+              "actionQueue": [
+                {
+                  "$type": "DebugLog",
+                  "content": "jumpWater TriggerBubble"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "TriggerEffect"
+                }
+              ]
+            }
+          ]
+        },
+        "ShootCD": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "GV_InShootCD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "GV_InShootCD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Active_Small": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_01_Loop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerEffect"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ShootCD"
+            }
+          ]
+        },
+        "Active_Mid": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_01_Loop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerEffect"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ShootCD"
+            }
+          ]
+        },
+        "Active_Big": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_Big_02_Loop",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "TriggerEffect"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ShootCD"
+            }
+          ]
+        },
+        "TriggerEffect": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_randomEff",
+              "useLimitRange": true,
+              "randomInRange": true,
+              "maxValue": 2.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_InShootCD",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "NJMOCHPJIKO",
+                  "target": "Self",
+                  "gadgetState": 201
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 1.0,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_Small_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_InShootCD",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "NJMOCHPJIKO",
+                  "target": "Self",
+                  "gadgetState": 201
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 1.0,
+                  "compareType": "MoreThan"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 2.0,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_Small_02",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_InShootCD",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "NJMOCHPJIKO",
+                  "target": "Self",
+                  "gadgetState": 202
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 1.0,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_Medium_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_InShootCD",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "NJMOCHPJIKO",
+                  "target": "Self",
+                  "gadgetState": 202
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 1.0,
+                  "compareType": "MoreThan"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 2.0,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_Medium_02",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_InShootCD",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 1.0,
+                  "compareType": "LessAndEqual"
+                },
+                {
+                  "$type": "NJMOCHPJIKO",
+                  "target": "Self",
+                  "gadgetState": 203
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_Big_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_InShootCD",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 1.0,
+                  "compareType": "MoreThan"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_randomEff",
+                  "ratio": 2.0,
+                  "compareType": "LessAndEqual"
+                },
+                {
+                  "$type": "NJMOCHPJIKO",
+                  "target": "Self",
+                  "gadgetState": 203
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Stages_SceneObj_RemusSyllable_Fd_MMMusic_Big_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "GV_InShootCD",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "TimeTrackFireEffControl"
+        }
+      ]
+    }
+  }
+]

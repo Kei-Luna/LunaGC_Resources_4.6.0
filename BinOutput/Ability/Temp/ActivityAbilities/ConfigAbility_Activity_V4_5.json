@@ -1,0 +1,2696 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_Avatar_SlimeBall",
+      "modifiers": {
+        "SlimeBall_SkillIcon": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "GV_CurBullet_Type",
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5, 3.5],
+              "modifierNameSteps": [
+                "SlimeCannon_HeadEff_0",
+                "SlimeCannon_HeadEff_1",
+                "SlimeCannon_HeadEff_2",
+                "SlimeCannon_HeadEff_3"
+              ],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "SlimeCannon_HeadEff_0": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIconMixin",
+              "skillID": 20093,
+              "skillIcon": "Btn_SlimeCannon_Fire_04"
+            }
+          ]
+        },
+        "SlimeCannon_HeadEff_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIconMixin",
+              "skillID": 20093,
+              "skillIcon": "Btn_SlimeCannon_Fire_03"
+            }
+          ]
+        },
+        "SlimeCannon_HeadEff_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIconMixin",
+              "skillID": 20093,
+              "skillIcon": "Btn_SlimeCannon_Fire_02"
+            }
+          ]
+        },
+        "SlimeCannon_HeadEff_3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIconMixin",
+              "skillID": 20093,
+              "skillIcon": "Btn_SlimeCannon_Fire_01"
+            }
+          ]
+        },
+        "SlimeBall_AvatarSkillForbid": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "HideAvatarSkillMixin",
+              "skillIDs": [10413, 10013]
+            },
+            {
+              "$type": "HideActionSlotMixin",
+              "slotType": "SlotQuickUse"
+            },
+            {
+              "$type": "HideActionSlotMixin"
+            },
+            {
+              "$type": "HideActionSlotMixin",
+              "slotType": "Slot2"
+            },
+            {
+              "$type": "HideActionSlotMixin",
+              "slotType": "Slot5"
+            },
+            {
+              "$type": "ForbidAvatarFlyMixin"
+            }
+          ]
+        },
+        "SlimeBall_AddSkillInfo": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddAvatarSkillInfo",
+              "cdDelta": true,
+              "skillID": 20093
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "SlimeBall_DefaultSkill"
+            }
+          ]
+        },
+        "SlimeBall_DefaultSkill": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "priority": "Playmode",
+              "skillID": 20093
+            }
+          ]
+        },
+        "SlimeBall_AvatarState": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Animator_MoveSpeedRatio": -0.3499999940395355,
+            "Actor_CostStaminaRatio": -2.0
+          },
+          "state": "DenyLockOn",
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "SlimeBall_Invincible"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "SlimeBall_IsGhost"
+            }
+          ]
+        },
+        "SlimeBall_Invincible": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "LockHP"
+        },
+        "SlimeBall_IsGhost": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "IsGhostToEnemy"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SlimeBall_AddSkillInfo"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SlimeBall_AvatarState"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SlimeBall_AvatarSkillForbid"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SlimeBall_SkillIcon"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_Team_SlimeBall",
+      "abilityMixins": [
+        {
+          "$type": "FollowAttachPointEffectMixin",
+          "modifierName": "ClearFollowPet",
+          "attachPriority": "QuestBlank"
+        },
+        {
+          "$type": "ServerUpdateGlobalValueMixin",
+          "key": "GV_SlimeCannon_Heat",
+          "useLimitRange": true,
+          "maxValue": 200.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "DoActionOnGlobalValueChangeMixin",
+          "globalValueKey": "GV_SlimeCannon_Heat",
+          "actions": [
+            {
+              "$type": "ServerLuaCall",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_SlimeCannon_Heat",
+                  "ratio": 0.0,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_SlimeCannon_EndlessLevel_Done",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ],
+          "FOFNFKOAKDL": true
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "GV_SlimeCannon_ShootType",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["SlimeBall_SkillNormal", "SlimeBall_SkillAuto"],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Cur_Difficulty",
+          "valueSteps": [
+            0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5,
+            13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 9999.0
+          ],
+          "modifierNameSteps": [
+            "SlimeBall_HeatManager_LV1",
+            "SlimeBall_HeatManager_LV2",
+            "SlimeBall_HeatManager_LV3",
+            "SlimeBall_HeatManager_LV4",
+            "SlimeBall_HeatManager_LV5",
+            "SlimeBall_HeatManager_LV6",
+            "SlimeBall_HeatManager_LV7",
+            "SlimeBall_HeatManager_LV8",
+            "SlimeBall_HeatManager_LV9",
+            "SlimeBall_HeatManager_LV10",
+            "SlimeBall_HeatManager_LV11",
+            "SlimeBall_HeatManager_LV12",
+            "SlimeBall_HeatManager_LV13",
+            "SlimeBall_HeatManager_LV14",
+            "SlimeBall_HeatManager_LV15",
+            "SlimeBall_HeatManager_LV16",
+            "SlimeBall_HeatManager_LV17",
+            "SlimeBall_HeatManager_LV18",
+            "SlimeBall_HeatManager_LV19",
+            "SlimeBall_HeatManager_LV20"
+          ],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Cur_Difficulty",
+          "valueSteps": [-9999.0, 9999.0],
+          "modifierNameSteps": ["SlimeBall_CheckHeat"],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Heat_ReducePerTick_Base": -1.0,
+        "Heat_ReduceTickInterval_Lv1": 1.0,
+        "Heat_ReduceTickInterval_Lv2": 1.0,
+        "Heat_ReduceTickInterval_Lv3": 1.0,
+        "Heat_ReduceTickInterval_Lv4": 1.0,
+        "Heat_ReduceTickInterval_Lv5": 1.0,
+        "Heat_ReduceTickInterval_Lv6": 1.0,
+        "Heat_ReduceTickInterval_Lv7": 1.0,
+        "Heat_ReduceTickInterval_Lv8": 1.0,
+        "Heat_ReduceTickInterval_Lv9": 1.0,
+        "Heat_ReduceTickInterval_Lv10": 1.0,
+        "Heat_ReduceTickInterval_Lv11": 1.0,
+        "Heat_ReduceTickInterval_Lv12": 1.0,
+        "Heat_ReduceTickInterval_Lv13": 1.0,
+        "Heat_ReduceTickInterval_Lv14": 1.0,
+        "Heat_ReduceTickInterval_Lv15": 1.0,
+        "Heat_ReduceTickInterval_Lv16": 1.0,
+        "Heat_ReduceTickInterval_Lv17": 1.0,
+        "Heat_ReduceTickInterval_Lv18": 1.0,
+        "Heat_ReduceTickInterval_Lv19": 1.0,
+        "Heat_ReduceTickInterval_Lv20": 1.0,
+        "Heat_ReducePerTick_Ratio_Lv1": 3.0,
+        "Heat_ReducePerTick_Ratio_Lv2": 4.0,
+        "Heat_ReducePerTick_Ratio_Lv3": 5.0,
+        "Heat_ReducePerTick_Ratio_Lv4": 6.0,
+        "Heat_ReducePerTick_Ratio_Lv5": 7.0,
+        "Heat_ReducePerTick_Ratio_Lv6": 8.0,
+        "Heat_ReducePerTick_Ratio_Lv7": 9.0,
+        "Heat_ReducePerTick_Ratio_Lv8": 10.0,
+        "Heat_ReducePerTick_Ratio_Lv9": 11.0,
+        "Heat_ReducePerTick_Ratio_Lv10": 12.0,
+        "Heat_ReducePerTick_Ratio_Lv11": 14.0,
+        "Heat_ReducePerTick_Ratio_Lv12": 16.0,
+        "Heat_ReducePerTick_Ratio_Lv13": 18.0,
+        "Heat_ReducePerTick_Ratio_Lv14": 20.0,
+        "Heat_ReducePerTick_Ratio_Lv15": 25.0,
+        "Heat_ReducePerTick_Ratio_Lv16": 30.0,
+        "Heat_ReducePerTick_Ratio_Lv17": 35.0,
+        "Heat_ReducePerTick_Ratio_Lv18": 40.0,
+        "Heat_ReducePerTick_Ratio_Lv19": 45.0,
+        "Heat_ReducePerTick_Ratio_Lv20": 50.0
+      },
+      "PAFDPAGAOGO": ["SGV_Cur_Difficulty"],
+      "modifiers": {
+        "SlimeBall_CheckHeat": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onThinkInterval": [
+            {
+              "$type": "ServerLuaCall",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_SlimeCannon_Heat",
+                  "ratio": 0.0,
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_SlimeCannon_EndlessLevel_Done",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "ClearFollowPet": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "SlimeBall_HeatManager_LV1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv1",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv1",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv2",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv2",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv3",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv3",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV4": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv4",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv4",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV5": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv5",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv5",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV6": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv6",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv6",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV7": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv7",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv7",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV8": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv8",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv8",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV9": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv9",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv9",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV10": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv10",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv10",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV11": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv11",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv11",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV12": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv12",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv12",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV13": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv13",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv13",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV14": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv14",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv14",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV15": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv15",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv15",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV16": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv16",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv16",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV17": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv17",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv17",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV18": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv18",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv18",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV19": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv19",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv19",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_HeatManager_LV20": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "Heat_ReduceTickInterval_Lv20",
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": [
+                "Heat_ReducePerTick_Base",
+                "Heat_ReducePerTick_Ratio_Lv20",
+                "MUL"
+              ],
+              "key": "GV_SlimeCannon_Heat",
+              "useLimitRange": true,
+              "maxValue": 200.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SlimeBall_PlayerSkillEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "SlimeBall_PlayerSkillEffect_Avatar"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "KillSelf",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 70331180
+              },
+              "cdDelta": true
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "gadgetID": 70331180,
+              "campID": 1001
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "KillSelf",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 70331180
+              },
+              "cdDelta": true
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "gadgetID": 70331180,
+              "campID": 1001
+            }
+          ]
+        },
+        "SlimeBall_SkillNormal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CopyGlobalValue",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "tag": "Is_SlimeCannon_Shooter"
+              },
+              "srcTarget": "Other",
+              "dstTarget": "CurLocalAvatar",
+              "srcKey": "GV_CurBullet_Type",
+              "dstKey": "GV_CurBullet_Type"
+            }
+          ]
+        },
+        "SlimeBall_SkillAuto": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "CurLocalAvatar",
+              "ratio": 0.0,
+              "key": "GV_CurBullet_Type",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "CurLocalAvatar",
+              "abilityName": "ActivityAbility_Avatar_SlimeBall_Shoot_02"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SlimeBall_PlayerSkillEffect"
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "ratio": 1.0,
+          "key": "GV_SlimeCannon_IsGalleryStart",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_Cur_Difficulty",
+              "ratio": 1.0,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "ratio": 200.0,
+          "key": "GV_SlimeCannon_Heat",
+          "useLimitRange": true,
+          "maxValue": 200.0,
+          "minValue": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "target": "Other",
+          "otherTargets": {
+            "$type": "JHKLCAELLHL",
+            "topLimit": 1,
+            "configID": 70331180
+          },
+          "rotationDampTime": "Eff_SceneObj_SlimeCannon_Active",
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "useRotation": true
+          },
+          "effectTempleteID": -1.0
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_Monster_HPLose",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_SlimeCannon_MovingLevel",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": ["SlimeCannon_MovingLevel"],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "BigSlime_NormalElementBullet_HPLoseRatio": 0.25,
+        "BigSlime_NormalPhysicBullet_HPLoseRatio": 1.0,
+        "BigSlime_Melt_HPLoseRatio": 1.0,
+        "BigSlime_Melt_Extra_HPLoseRatio": 1.0,
+        "BigSlime_Superconductor_Extra_HPLoseRatio": 0.25,
+        "BigSlime_Superconductor_HPLoseRatio": 0.25,
+        "BigSlime_Superconductor_WeakTime": 10.0,
+        "BigSlime_Superconductor_WeakExtraHPLose": 0.25,
+        "BaseScore_BigSlime": 100.0,
+        "BaseScore_SmallSlime": 20.0,
+        "Score_Ratio_Lv1": 1.0,
+        "Score_Ratio_Lv2": 1.2000000476837158,
+        "Score_Ratio_Lv3": 1.399999976158142,
+        "Score_Ratio_Lv4": 1.600000023841858,
+        "Score_Ratio_Lv5": 1.7999999523162842,
+        "Score_Ratio_Lv6": 2.0,
+        "Score_Ratio_Lv7": 2.200000047683716,
+        "Score_Ratio_Lv8": 2.4000000953674316,
+        "Score_Ratio_Lv9": 2.5999999046325684,
+        "Score_Ratio_Lv10": 2.799999952316284,
+        "Score_Ratio_Lv11": 3.0,
+        "Score_Ratio_Lv12": 3.5,
+        "Score_Ratio_Lv13": 4.0,
+        "Score_Ratio_Lv14": 4.5,
+        "Score_Ratio_Lv15": 5.0,
+        "Score_Ratio_Lv16": 6.0,
+        "Score_Ratio_Lv17": 7.0,
+        "Score_Ratio_Lv18": 8.0,
+        "Score_Ratio_Lv19": 9.0,
+        "Score_Ratio_Lv20": 10.0
+      },
+      "PAFDPAGAOGO": ["GV_Superconductor_ExtraHPLose", "GV_Cur_Difficulty"],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "SlimeCannon_MonsterState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "LockHP",
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "SlimeCannon_MonsterState_DenyLockOn"
+            }
+          ]
+        },
+        "SlimeCannon_MonsterState_DenyLockOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        },
+        "SlimeCannon_MovingLevel_DirFix": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_SlimeCannon_Slime_SelfPos",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "useRotation": true
+              }
+            },
+            {
+              "$type": "AddGlobalValueV2",
+              "ratio": -30.0,
+              "key": "_SlimeCannon_Slime_SelfPos_2",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "TurnDirectionToPos",
+              "toPos": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "_SlimeCannon_Slime_SelfPos",
+                "directionKey": ""
+              }
+            }
+          ]
+        },
+        "SlimeCannon_MovingLevel": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByAnimatorStateIDMixin",
+              "stateIDs": ["HitThrow"],
+              "enterActions": [
+                {
+                  "$type": "ClearAIRoute",
+                  "DNJNMFGNKMI": true
+                }
+              ],
+              "BILMCNCKIAO": ""
+            },
+            {
+              "$type": "DoActionByAnimatorStateIDMixin",
+              "stateIDs": ["HitThrowToGround"],
+              "exitActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "key": "_SlimeCannon_Slime_SelfPos",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  }
+                },
+                {
+                  "$type": "AddGlobalValueV2",
+                  "ratio": -30.0,
+                  "key": "_SlimeCannon_Slime_SelfPos_2",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "TurnDirectionToPos",
+                  "toPos": {
+                    "$type": "MKLCDCJFOHO",
+                    "positionKey": "_SlimeCannon_Slime_SelfPos",
+                    "directionKey": ""
+                  }
+                }
+              ],
+              "BILMCNCKIAO": ""
+            }
+          ],
+          "properties": {
+            "Animator_MoveSpeedRatio": -0.5
+          },
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "SlimeCannon_MovingLevel_DirFix"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "MotionFlag",
+              "ratio": 1.0
+            }
+          ]
+        },
+        "SlimeBall_HandleKill": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onKill": [
+            {
+              "$type": "CopyGlobalValue",
+              "srcTarget": "Team",
+              "dstTarget": "Self",
+              "srcKey": "SGV_Cur_Difficulty",
+              "dstKey": "GV_Cur_Difficulty"
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "BMLIEFFKDJK",
+                  "configIdArray": [20010504, 20011207, 20010804]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "PJGIKFLBGOL": "BaseScore_SmallSlime"
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv1",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 2.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv2",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 3.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv3",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 4.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv4",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 5.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv5",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 6.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv6",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 7.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv7",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 8.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv8",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 9.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv9",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 10.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv10",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 11.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv11",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 12.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv12",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 13.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv13",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 14.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv14",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 15.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv15",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 16.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv16",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 17.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv17",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 18.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv18",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 19.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv19",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 20.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_SmallSlime",
+                    "Score_Ratio_Lv20",
+                    "MUL"
+                  ]
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "PJGIKFLBGOL": "BaseScore_BigSlime"
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv1",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 2.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv2",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 3.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv3",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 4.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv4",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 5.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv5",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 6.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv6",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 7.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv7",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 8.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv8",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 9.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv9",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 10.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv10",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 11.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv11",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 12.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv12",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 13.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv13",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 14.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv14",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 15.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv15",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 16.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv16",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 17.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv17",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 18.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv18",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 19.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv19",
+                    "MUL"
+                  ]
+                },
+                {
+                  "$type": "ShowScoreText",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "GV_Cur_Difficulty",
+                      "ratio": 20.0
+                    }
+                  ],
+                  "PJGIKFLBGOL": [
+                    "BaseScore_BigSlime",
+                    "Score_Ratio_Lv20",
+                    "MUL"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "SlimeBall_OnbeingHitKillSelf_Electric": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "CopyGlobalValue",
+              "srcTarget": "Team",
+              "dstTarget": "Self",
+              "srcKey": "SGV_Cur_Difficulty",
+              "dstKey": "GV_Cur_Difficulty"
+            },
+            {
+              "$type": "ShowCustomDamageText",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_Electric"]
+                }
+              ],
+              "LCDMLHDNGPA": "ATTACK_DAMAGE_IMMUNE",
+              "FLIJMIOBJPK": {
+                "r": 0.6588000059127808,
+                "g": 0.6588000059127808,
+                "b": 0.6588000059127808,
+                "a": 1.0
+              },
+              "IBDECMBICGB": {
+                "r": 0.31369999051094055,
+                "g": 0.31369999051094055,
+                "b": 0.31369999051094055,
+                "a": 1.0
+              },
+              "HDEOFMLOJKE": 0.44999998807907104,
+              "lifeTime": 2.0
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Electric",
+                        "Activity_SlimeCannon_Overdrive",
+                        "CrashDamage"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "hitBoxNames": ["HitBox"]
+            },
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Electric",
+                        "Activity_SlimeCannon_Overdrive",
+                        "CrashDamage"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "SlimeBall_OnbeingHitKillSelf_Fire": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "EnableHitBoxByName",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Fire",
+                        "Activity_SlimeCannon_Overdrive",
+                        "CrashDamage"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "hitBoxNames": ["HitBox"]
+            },
+            {
+              "$type": "CopyGlobalValue",
+              "srcTarget": "Team",
+              "dstTarget": "Self",
+              "srcKey": "SGV_Cur_Difficulty",
+              "dstKey": "GV_Cur_Difficulty"
+            },
+            {
+              "$type": "ShowCustomDamageText",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_Fire"]
+                }
+              ],
+              "LCDMLHDNGPA": "ATTACK_DAMAGE_IMMUNE",
+              "FLIJMIOBJPK": {
+                "r": 0.6588000059127808,
+                "g": 0.6588000059127808,
+                "b": 0.6588000059127808,
+                "a": 1.0
+              },
+              "IBDECMBICGB": {
+                "r": 0.31369999051094055,
+                "g": 0.31369999051094055,
+                "b": 0.31369999051094055,
+                "a": 1.0
+              },
+              "HDEOFMLOJKE": 0.44999998807907104,
+              "lifeTime": 2.0
+            },
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Fire",
+                        "Activity_SlimeCannon_Overdrive",
+                        "CrashDamage"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "SlimeBall_OnbeingHitKillSelf_Ice": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "EnableHitBoxByName",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Ice",
+                        "Activity_SlimeCannon_Superconductor",
+                        "Activity_SlimeCannon_Overdrive",
+                        "CrashDamage"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "hitBoxNames": ["HitBox"]
+            },
+            {
+              "$type": "CopyGlobalValue",
+              "srcTarget": "Team",
+              "dstTarget": "Self",
+              "srcKey": "SGV_Cur_Difficulty",
+              "dstKey": "GV_Cur_Difficulty"
+            },
+            {
+              "$type": "ShowCustomDamageText",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_Ice"]
+                }
+              ],
+              "LCDMLHDNGPA": "ATTACK_DAMAGE_IMMUNE",
+              "FLIJMIOBJPK": {
+                "r": 0.6588000059127808,
+                "g": 0.6588000059127808,
+                "b": 0.6588000059127808,
+                "a": 1.0
+              },
+              "IBDECMBICGB": {
+                "r": 0.31369999051094055,
+                "g": 0.31369999051094055,
+                "b": 0.31369999051094055,
+                "a": 1.0
+              },
+              "HDEOFMLOJKE": 0.44999998807907104,
+              "lifeTime": 2.0
+            },
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Ice",
+                        "Activity_SlimeCannon_Superconductor",
+                        "Activity_SlimeCannon_Overdrive",
+                        "CrashDamage"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "SlimeBall_HPLose_Electric": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "CopyGlobalValue",
+              "srcTarget": "Team",
+              "dstTarget": "Self",
+              "srcKey": "SGV_Cur_Difficulty",
+              "dstKey": "GV_Cur_Difficulty"
+            },
+            {
+              "$type": "ShowCustomDamageText",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_Electric"]
+                }
+              ],
+              "LCDMLHDNGPA": "ATTACK_DAMAGE_IMMUNE",
+              "FLIJMIOBJPK": {
+                "r": 0.6588000059127808,
+                "g": 0.6588000059127808,
+                "b": 0.6588000059127808,
+                "a": 1.0
+              },
+              "IBDECMBICGB": {
+                "r": 0.31369999051094055,
+                "g": 0.31369999051094055,
+                "b": 0.31369999051094055,
+                "a": 1.0
+              },
+              "HDEOFMLOJKE": 0.44999998807907104,
+              "lifeTime": 2.0
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_None"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "LoseHP",
+                  "OLMENJCGGJJ": [
+                    "BigSlime_NormalPhysicBullet_HPLoseRatio",
+                    "GV_Superconductor_ExtraHPLose",
+                    "BigSlime_Superconductor_WeakExtraHPLose",
+                    "MUL",
+                    "ADD"
+                  ],
+                  "MIIHJFFDKKC": ""
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Fire",
+                        "Activity_SlimeCannon_Ice"
+                      ]
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "LoseHP",
+                      "OLMENJCGGJJ": [
+                        "BigSlime_NormalElementBullet_HPLoseRatio",
+                        "GV_Superconductor_ExtraHPLose",
+                        "BigSlime_Superconductor_WeakExtraHPLose",
+                        "MUL",
+                        "ADD"
+                      ],
+                      "MIIHJFFDKKC": ""
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "Predicated",
+                      "target": "Target",
+                      "targetPredicates": [
+                        {
+                          "$type": "ByAttackTags",
+                          "attackTags": [
+                            "Activity_SlimeCannon_Superconductor_Extra"
+                          ]
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "LoseHP",
+                          "OLMENJCGGJJ": [
+                            "BigSlime_Superconductor_Extra_HPLoseRatio",
+                            "GV_Superconductor_ExtraHPLose",
+                            "BigSlime_Superconductor_WeakExtraHPLose",
+                            "MUL",
+                            "ADD"
+                          ],
+                          "MIIHJFFDKKC": ""
+                        },
+                        {
+                          "$type": "ApplyModifier",
+                          "modifierName": "SlimeBall_WeakTime_Delay"
+                        }
+                      ],
+                      "failActions": [
+                        {
+                          "$type": "Predicated",
+                          "target": "Target",
+                          "targetPredicates": [
+                            {
+                              "$type": "ByAttackTags",
+                              "attackTags": [
+                                "Activity_SlimeCannon_Superconductor"
+                              ]
+                            }
+                          ],
+                          "successActions": [
+                            {
+                              "$type": "LoseHP",
+                              "OLMENJCGGJJ": [
+                                "BigSlime_Superconductor_HPLoseRatio",
+                                "GV_Superconductor_ExtraHPLose",
+                                "BigSlime_Superconductor_WeakExtraHPLose",
+                                "MUL",
+                                "ADD"
+                              ],
+                              "MIIHJFFDKKC": ""
+                            }
+                          ],
+                          "failActions": [
+                            {
+                              "$type": "Predicated",
+                              "target": "Target",
+                              "targetPredicates": [
+                                {
+                                  "$type": "ByAttackTags",
+                                  "attackTags": [
+                                    "Activity_SlimeCannon_Melt_Extra"
+                                  ]
+                                }
+                              ],
+                              "successActions": [
+                                {
+                                  "$type": "LoseHP",
+                                  "OLMENJCGGJJ": [
+                                    "BigSlime_Melt_Extra_HPLoseRatio",
+                                    "GV_Superconductor_ExtraHPLose",
+                                    "BigSlime_Superconductor_WeakExtraHPLose",
+                                    "MUL",
+                                    "ADD"
+                                  ],
+                                  "MIIHJFFDKKC": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "SlimeBall_HPLose_Fire": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "CopyGlobalValue",
+              "srcTarget": "Team",
+              "dstTarget": "Self",
+              "srcKey": "SGV_Cur_Difficulty",
+              "dstKey": "GV_Cur_Difficulty"
+            },
+            {
+              "$type": "ShowCustomDamageText",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_Fire"]
+                }
+              ],
+              "LCDMLHDNGPA": "ATTACK_DAMAGE_IMMUNE",
+              "FLIJMIOBJPK": {
+                "r": 0.6588000059127808,
+                "g": 0.6588000059127808,
+                "b": 0.6588000059127808,
+                "a": 1.0
+              },
+              "IBDECMBICGB": {
+                "r": 0.31369999051094055,
+                "g": 0.31369999051094055,
+                "b": 0.31369999051094055,
+                "a": 1.0
+              },
+              "HDEOFMLOJKE": 0.44999998807907104,
+              "lifeTime": 2.0
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_None"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "LoseHP",
+                  "OLMENJCGGJJ": [
+                    "BigSlime_NormalPhysicBullet_HPLoseRatio",
+                    "GV_Superconductor_ExtraHPLose",
+                    "BigSlime_Superconductor_WeakExtraHPLose",
+                    "MUL",
+                    "ADD"
+                  ],
+                  "MIIHJFFDKKC": ""
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Electric",
+                        "Activity_SlimeCannon_Ice"
+                      ]
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "LoseHP",
+                      "predicates": [
+                        {
+                          "$type": "ByAttackTags",
+                          "attackTags": ["Activity_SlimeCannon_Electric"]
+                        }
+                      ],
+                      "OLMENJCGGJJ": [
+                        "BigSlime_NormalElementBullet_HPLoseRatio",
+                        "GV_Superconductor_ExtraHPLose",
+                        "BigSlime_Superconductor_WeakExtraHPLose",
+                        "MUL",
+                        "ADD"
+                      ],
+                      "MIIHJFFDKKC": ""
+                    },
+                    {
+                      "$type": "LoseHP",
+                      "predicates": [
+                        {
+                          "$type": "ByAttackTags",
+                          "attackTags": ["Activity_SlimeCannon_Ice"]
+                        }
+                      ],
+                      "OLMENJCGGJJ": [
+                        "BigSlime_NormalElementBullet_HPLoseRatio",
+                        "GV_Superconductor_ExtraHPLose",
+                        "BigSlime_Superconductor_WeakExtraHPLose",
+                        "MUL",
+                        "ADD",
+                        "BigSlime_Melt_HPLoseRatio",
+                        "ADD"
+                      ],
+                      "MIIHJFFDKKC": ""
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "Predicated",
+                      "target": "Target",
+                      "targetPredicates": [
+                        {
+                          "$type": "ByAttackTags",
+                          "attackTags": [
+                            "Activity_SlimeCannon_Superconductor_Extra"
+                          ]
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "LoseHP",
+                          "OLMENJCGGJJ": [
+                            "BigSlime_Superconductor_Extra_HPLoseRatio",
+                            "GV_Superconductor_ExtraHPLose",
+                            "BigSlime_Superconductor_WeakExtraHPLose",
+                            "MUL",
+                            "ADD"
+                          ],
+                          "MIIHJFFDKKC": ""
+                        },
+                        {
+                          "$type": "ApplyModifier",
+                          "modifierName": "SlimeBall_WeakTime_Delay"
+                        }
+                      ],
+                      "failActions": [
+                        {
+                          "$type": "Predicated",
+                          "target": "Target",
+                          "targetPredicates": [
+                            {
+                              "$type": "ByAttackTags",
+                              "attackTags": [
+                                "Activity_SlimeCannon_Superconductor"
+                              ]
+                            }
+                          ],
+                          "successActions": [
+                            {
+                              "$type": "LoseHP",
+                              "OLMENJCGGJJ": [
+                                "BigSlime_Superconductor_HPLoseRatio",
+                                "GV_Superconductor_ExtraHPLose",
+                                "BigSlime_Superconductor_WeakExtraHPLose",
+                                "MUL",
+                                "ADD"
+                              ],
+                              "MIIHJFFDKKC": ""
+                            }
+                          ],
+                          "failActions": [
+                            {
+                              "$type": "Predicated",
+                              "target": "Target",
+                              "targetPredicates": [
+                                {
+                                  "$type": "ByAttackTags",
+                                  "attackTags": [
+                                    "Activity_SlimeCannon_Melt_Extra"
+                                  ]
+                                }
+                              ],
+                              "successActions": [
+                                {
+                                  "$type": "LoseHP",
+                                  "OLMENJCGGJJ": [
+                                    "BigSlime_Melt_Extra_HPLoseRatio",
+                                    "GV_Superconductor_ExtraHPLose",
+                                    "BigSlime_Superconductor_WeakExtraHPLose",
+                                    "MUL",
+                                    "ADD"
+                                  ],
+                                  "MIIHJFFDKKC": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "SlimeBall_HPLose_Ice": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "CopyGlobalValue",
+              "srcTarget": "Team",
+              "dstTarget": "Self",
+              "srcKey": "SGV_Cur_Difficulty",
+              "dstKey": "GV_Cur_Difficulty"
+            },
+            {
+              "$type": "ShowCustomDamageText",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_Ice"]
+                }
+              ],
+              "LCDMLHDNGPA": "ATTACK_DAMAGE_IMMUNE",
+              "FLIJMIOBJPK": {
+                "r": 0.6588000059127808,
+                "g": 0.6588000059127808,
+                "b": 0.6588000059127808,
+                "a": 1.0
+              },
+              "IBDECMBICGB": {
+                "r": 0.31369999051094055,
+                "g": 0.31369999051094055,
+                "b": 0.31369999051094055,
+                "a": 1.0
+              },
+              "HDEOFMLOJKE": 0.44999998807907104,
+              "lifeTime": 2.0
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Activity_SlimeCannon_None"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "LoseHP",
+                  "OLMENJCGGJJ": [
+                    "BigSlime_NormalPhysicBullet_HPLoseRatio",
+                    "GV_Superconductor_ExtraHPLose",
+                    "BigSlime_Superconductor_WeakExtraHPLose",
+                    "MUL",
+                    "ADD"
+                  ],
+                  "MIIHJFFDKKC": ""
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": [
+                        "Activity_SlimeCannon_Electric",
+                        "Activity_SlimeCannon_Fire"
+                      ]
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "LoseHP",
+                      "predicates": [
+                        {
+                          "$type": "ByAttackTags",
+                          "attackTags": ["Activity_SlimeCannon_Electric"]
+                        }
+                      ],
+                      "OLMENJCGGJJ": [
+                        "BigSlime_NormalElementBullet_HPLoseRatio",
+                        "GV_Superconductor_ExtraHPLose",
+                        "BigSlime_Superconductor_WeakExtraHPLose",
+                        "MUL",
+                        "ADD"
+                      ],
+                      "MIIHJFFDKKC": ""
+                    },
+                    {
+                      "$type": "LoseHP",
+                      "predicates": [
+                        {
+                          "$type": "ByAttackTags",
+                          "attackTags": ["Activity_SlimeCannon_Fire"]
+                        }
+                      ],
+                      "OLMENJCGGJJ": [
+                        "BigSlime_NormalElementBullet_HPLoseRatio",
+                        "GV_Superconductor_ExtraHPLose",
+                        "BigSlime_Superconductor_WeakExtraHPLose",
+                        "MUL",
+                        "ADD",
+                        "BigSlime_Melt_HPLoseRatio",
+                        "ADD"
+                      ],
+                      "MIIHJFFDKKC": ""
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "Predicated",
+                      "target": "Target",
+                      "targetPredicates": [
+                        {
+                          "$type": "ByAttackTags",
+                          "attackTags": [
+                            "Activity_SlimeCannon_Superconductor_Extra"
+                          ]
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "LoseHP",
+                          "OLMENJCGGJJ": [
+                            "BigSlime_Superconductor_Extra_HPLoseRatio",
+                            "GV_Superconductor_ExtraHPLose",
+                            "BigSlime_Superconductor_WeakExtraHPLose",
+                            "MUL",
+                            "ADD"
+                          ],
+                          "MIIHJFFDKKC": ""
+                        },
+                        {
+                          "$type": "ApplyModifier",
+                          "modifierName": "SlimeBall_WeakTime_Delay"
+                        }
+                      ],
+                      "failActions": [
+                        {
+                          "$type": "Predicated",
+                          "target": "Target",
+                          "targetPredicates": [
+                            {
+                              "$type": "ByAttackTags",
+                              "attackTags": ["Activity_SlimeCannon_Melt_Extra"]
+                            }
+                          ],
+                          "successActions": [
+                            {
+                              "$type": "LoseHP",
+                              "OLMENJCGGJJ": [
+                                "BigSlime_Melt_Extra_HPLoseRatio",
+                                "GV_Superconductor_ExtraHPLose",
+                                "BigSlime_Superconductor_WeakExtraHPLose",
+                                "MUL",
+                                "ADD"
+                              ],
+                              "MIIHJFFDKKC": ""
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "SlimeBall_WeakTime_Delay": {
+          "modifierName": "",
+          "duration": 0.25,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "SlimeBall_WeakTime"
+            }
+          ]
+        },
+        "SlimeBall_WeakTime": {
+          "modifierName": "",
+          "duration": "BigSlime_Superconductor_WeakTime",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_SceneObj_SlimeCannon_Defense_Down",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "GV_Superconductor_ExtraHPLose",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_Superconductor_ExtraHPLose",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_Superconductor_ExtraHPLose",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_Cur_Difficulty",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "_MONSTER_Slime_SimpleStick",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SlimeCannon_MonsterState"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "SlimeBall_HandleKill"
+        },
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "BMLIEFFKDJK",
+              "configIdArray": [20010504]
+            }
+          ],
+          "modifierName": "SlimeBall_OnbeingHitKillSelf_Electric"
+        },
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "BMLIEFFKDJK",
+              "configIdArray": [20011207]
+            }
+          ],
+          "modifierName": "SlimeBall_OnbeingHitKillSelf_Fire"
+        },
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "BMLIEFFKDJK",
+              "configIdArray": [20010804]
+            }
+          ],
+          "modifierName": "SlimeBall_OnbeingHitKillSelf_Ice"
+        },
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "BMLIEFFKDJK",
+              "configIdArray": [20010606]
+            }
+          ],
+          "modifierName": "SlimeBall_HPLose_Electric"
+        },
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "BMLIEFFKDJK",
+              "configIdArray": [20011307]
+            }
+          ],
+          "modifierName": "SlimeBall_HPLose_Fire"
+        },
+        {
+          "$type": "AttachModifier",
+          "predicates": [
+            {
+              "$type": "BMLIEFFKDJK",
+              "configIdArray": [20010906]
+            }
+          ],
+          "modifierName": "SlimeBall_HPLose_Ice"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_Avatar_SlimeBall_Shoot_01",
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Team",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "GV_SlimeCannon_IsGalleryStart",
+              "ratio": 1.0,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "TriggerAbility",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "tag": "Is_SlimeCannon_Shooter"
+              },
+              "abilityName": "SceneObj_Activity_Common_Property_Ani_Prop_SlimeCannon_Cannon_01"
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "Team",
+              "abilityName": "ActivityAbility_Team_SlimeBall"
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 20093,
+              "amount": 1.0,
+              "costStaminaRatio": 1.0
+            }
+          ]
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ActivityAbility_Avatar_SlimeBall_Shoot_02",
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Team",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "GV_SlimeCannon_IsGalleryStart",
+              "ratio": 1.0,
+              "compareType": "MoreThanAndEqual"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "TriggerAbility",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "tag": "Is_SlimeCannon_Shooter"
+              },
+              "abilityName": "SceneObj_Activity_Common_Property_Ani_Prop_SlimeCannon_Cannon_01"
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "Team",
+              "abilityName": "ActivityAbility_Team_SlimeBall"
+            },
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 20093,
+              "amount": 7.0,
+              "costStaminaRatio": 1.0
+            }
+          ]
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  }
+]

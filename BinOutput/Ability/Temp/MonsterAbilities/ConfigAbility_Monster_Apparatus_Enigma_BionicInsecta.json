@@ -1,0 +1,813 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_Initialization",
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 3.0,
+          "key": "_GLOBALtriggerID_EnigmaType",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "EnableHitBoxByName",
+          "hitBoxNames": ["CoreBox"]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_CoreActive",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["ChargeAtkLoop"],
+          "modifierName": "UNIQUE_Monster_Apparatus_Enigma_BionicInsecta_CoreState",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ShieldUpBS",
+          "modifierName": "UNIQUE_Monster_Apparatus_Enigma_BionicInsecta_CoreState",
+          "normalizeEnd": 0.699999988079071,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [202],
+          "modifierName": "Enigma_BionicInsecta_Weak"
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_Monster_Apparatus_Enigma_BionicInsecta_CoreState": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_MONSTER_Apparatus_Enigma_CoreActive",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "PowerStage",
+              "ratio": 2.0
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["CoreBox"],
+              "setEnable": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["MainBox", "LeftFrontBox", "RightFrontBox"]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["CoreBox"]
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["MainBox", "LeftFrontBox", "RightFrontBox"],
+              "setEnable": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorInt",
+                  "ratio": 0,
+                  "parameter": "PowerStage"
+                }
+              ],
+              "intID": "PowerStage",
+              "ratio": 1.0
+            },
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": -1.0,
+              "key": "_MONSTER_Apparatus_Enigma_CoreActive",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Enigma_BionicInsecta_Weak": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "target": "Owner",
+              "ratio": 1.0,
+              "key": "_WATCHER_80104_3",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onKill": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "target": "Owner",
+          "ratio": 1.0,
+          "key": "_WATCHER_80105_",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_JumpAtk",
+      "onAbilityStart": [
+        {
+          "$type": "RushMove",
+          "target": "SelfAttackTarget",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "_ENIGMA_Supporter_Tag_",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "toPos": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 2.0
+            },
+            "onGround": true
+          },
+          "minRange": 8.0,
+          "timeRange": 0.6700000166893005
+        },
+        {
+          "$type": "RushMove",
+          "otherTargets": {
+            "$type": "SelectTargetsByShape",
+            "topLimit": 1,
+            "sortType": "Nearest",
+            "shapeName": "CircleR30",
+            "campTargetType": "SelfCamp",
+            "SelectTargetsByShape": 1.0
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "_ENIGMA_Supporter_Tag_",
+              "ratio": 1.0
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MONSTER_Apparatus_Enigma_SupportPosition",
+              "ratio": 1.0
+            }
+          ],
+          "toPos": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 2.0
+            },
+            "onGround": true
+          },
+          "minRange": 8.0,
+          "maxRange": 40.0,
+          "timeRange": 0.6700000166893005
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_JumpAtk_Alert",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "JumpAtk",
+          "modifierName": "Monster_Apparatus_Enigma_BionicInsecta_JumpAtk_Collider",
+          "normalizeStart": 0.3100000023841858,
+          "normalizeEnd": 0.47999998927116394,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Apparatus_Enigma_BionicInsecta_JumpAtk_Collider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider"]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider"],
+              "setEnable": true
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_JumpAtk_Alert",
+          "born": {
+            "$type": "LIIDGCODPFO",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "shakeType": "CustomVector",
+            "shakeRange": 0.11999999731779099,
+            "shakeTime": 0.15000000596046448,
+            "shakeDir": {
+              "y": 1.0
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtkBS",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "ChargeAtkLoop",
+            "ChargeAtkTurnLeft",
+            "ChargeAtkTurnRight"
+          ],
+          "modifierName": "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtkLoop_Effect",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtkLoop_Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "ChargeAtkEnd"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk_Timer"
+            }
+          ]
+        },
+        "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk_Timer": {
+          "modifierName": "",
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "ChargeAtkEnd",
+              "ratio": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk_TriggerBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42401008,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngleType": "Vertical",
+              "maxAngle": 30.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "CorePoint"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk_Beam",
+      "modifiers": {
+        "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk_BeamEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk_Beam",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk_BeamEffect"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "attackTag": "Apparatus_Enigma_PowerAtk",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.26600000262260437,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV1",
+                "hitHaltTimeScale": 0.05000000074505806
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_ChargeAtk_BeamExplode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint"
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_ShieldUpBS",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [301],
+          "modifierName": "UNIQUE_Monster_Apparatus_Enigma_BionicInsecta_ShieldState"
+        }
+      ],
+      "abilitySpecials": {
+        "ShieldTime": 15.0
+      },
+      "modifiers": {
+        "UNIQUE_Monster_Apparatus_Enigma_BionicInsecta_ShieldState": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "ShieldTime",
+          "bonusCritical": 100.0,
+          "thinkInterval": ["ShieldTime", 1.0, "SUB"],
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "stateIDs": ["NormalIdle", "Turn"],
+              "defendTriggerID": "",
+              "defendAngle": 120.0,
+              "defendProbability": 1.0,
+              "defendProbabilityDelta": 0.0,
+              "defendTimeInterval": 0.0,
+              "ICOAJNCIGEN": 0,
+              "onDefendSucceded": [
+                {
+                  "$type": "SetGlobaltriggerID",
+                  "ratio": 0.0,
+                  "key": "_HITEFFECT_POSITION",
+                  "useLimitRange": true,
+                  "randomInRange": true,
+                  "maxValue": 2.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "FireEffect",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_HITEFFECT_POSITION",
+                      "ratio": 1.0,
+                      "compareType": "LessAndEqual"
+                    }
+                  ],
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_Shield_Hit",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "LeftHand"
+                  },
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "FireEffect",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_HITEFFECT_POSITION",
+                      "ratio": 1.0,
+                      "compareType": "MoreThan"
+                    }
+                  ],
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_Shield_Hit",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "attachPointName": "RightHand"
+                  },
+                  "effectTempleteID": -1.0
+                }
+              ],
+              "doNotTurnDirection": true
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_Shield",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "ShieldUpEnd",
+              "mpTriggerOnRemote": true
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "ShieldUp"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Monster_Apparatus_Enigma_BionicInsecta_KarkataTag",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "ShieldUpEnd_Latency"
+            }
+          ]
+        },
+        "ShieldUpEnd_Latency": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ShieldDisappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_Shield"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseBool",
+          "boolID": "ShieldUp",
+          "ratio": true
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_Monster_Apparatus_Enigma_BionicInsecta_KarkataTag",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Monster_Apparatus_Enigma_BionicInsecta_KarkataTag",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetOverrideMaptriggerID",
+                  "ratio": 25.0,
+                  "overrideMapKey": "ShieldTime",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetOverrideMaptriggerID",
+                  "ratio": 0.0,
+                  "overrideMapKey": "ShieldTime",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "UNIQUE_Monster_Apparatus_Enigma_BionicInsecta_ShieldState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_Steer",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["NormalAtk"],
+          "startNormalizedTime": 0.25,
+          "endNormalizedTime": 0.4300000071525574,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ShieldCannon"],
+          "endNormalizedTime": 0.30000001192092896,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["JumpAtk"],
+          "endNormalizedTime": 0.47999998927116394,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ShieldUpBS"],
+          "endNormalizedTime": 0.2800000011920929,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Turn"],
+          "endNormalizedTime": 999.0,
+          "angularSpeed": 60.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ChargeAtkLoop"],
+          "endNormalizedTime": 999.0,
+          "angularSpeed": 30.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ChargeAtkTurn"],
+          "endNormalizedTime": 999.0,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ChargeAtkAS"],
+          "endNormalizedTime": 0.11999999731779099,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_ReturnToBorn",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [902, 903],
+          "modifierName": "ReturnToBorn_State"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [902],
+          "modifierName": "ReturnToBorn_Disappear"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [903],
+          "modifierName": "ReturnToBorn_Appear"
+        }
+      ],
+      "modifiers": {
+        "ReturnToBorn_Disappear": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "StartDither",
+              "duration": 2.0
+            }
+          ]
+        },
+        "ReturnToBorn_Appear": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "StartDither",
+              "duration": 0.20000000298023224,
+              "reverse": true
+            }
+          ]
+        },
+        "ReturnToBorn_State": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Apparatus_Enigma_Weakness"
+            },
+            {
+              "$type": "ResetAnimatorTrigger",
+              "minValue": "WeakStartTrigger"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "ReturnToBorn_Invincible"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "ReturnToBorn_DenyLockOn"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_WeakTimer"
+            }
+          ]
+        },
+        "ReturnToBorn_Invincible": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "Invincible"
+        },
+        "ReturnToBorn_DenyLockOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_RightFrontStep",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_MoveSmoke",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "RightFrontStep"
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_LeftFrontStep",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_MoveSmoke",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "LeftFrontStep"
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_RightBackStep",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_MoveSmoke",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "RightBackStep"
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apparatus_Enigma_BionicInsecta_LeftBackStep",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apparatus_Enigma_BionicInsecta_MoveSmoke",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "LeftBackStep"
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  }
+]

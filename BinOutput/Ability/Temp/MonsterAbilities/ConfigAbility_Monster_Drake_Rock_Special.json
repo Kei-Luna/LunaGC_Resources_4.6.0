@@ -1,0 +1,4184 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_FireEnhance_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [201, 211, 221],
+          "modifierName": "UNIQUE_Monster_Drake_Rock_Alert_FireEnhance_Reset"
+        },
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "alertness": [0],
+          "modifierName": "Monster_Drake_ExitEnhance"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [904, 901],
+          "modifierName": "UNIQUE_Monster_Drake_Rock_Fire_AIReturn"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Alert"],
+          "modifierName": "Monster_Drake_Rock_Alert_FireEnhance_ForceSet",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_Monster_Drake_Rock_Alert_FireEnhance_Reset": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Alert"],
+                  "setEnable": true
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Free"]
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Alert"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Free"],
+                  "setEnable": true
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [101]
+            }
+          ]
+        },
+        "Monster_Drake_ExitEnhance": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FireEnhanceState_SP"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FakeDeath"
+            },
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_DRAKE_ROCK_HEAL_TIMES",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Alert_FireEnhance_ForceSet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FireEnhanceState_SP"
+            }
+          ]
+        },
+        "UNIQUE_Monster_Drake_Rock_FireEnhanceState_SP": {
+          "modifierName": "",
+          "isUnique": true,
+          "elementType": "Fire",
+          "bonusCritical": 100.0,
+          "isElementDurabilityMutable": false
+        },
+        "Monster_Drake_Rock_FireEnhanceState_Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_FireEnhanceState_LeftHand",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_FireEnhanceState_RightHand",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "UNIQUE_Monster_Drake_Rock_Fire_AIReturn": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "AIReturnPerform"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "minValue": "AIReturnPerform"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": 1.0,
+          "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+          "maxValue": 1.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Drake_Rock_FireEnhanceState_Effect"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Monster_Drake_Rock_FireEnhanceState_SP"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "EnablePushColliderName",
+          "pushColliderNames": [
+            "PushCollider_Alert",
+            "PushCollider_Free",
+            "PushCollider_Roll"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [201, 211, 222],
+          "modifierName": "UNIQUE_Monster_Drake_Rock_Alert_IceEnhance_Reset"
+        },
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "alertness": [0],
+          "modifierName": "Monster_Drake_ExitEnhance"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [904, 901],
+          "modifierName": "UNIQUE_Monster_Drake_Rock_Ice_AIReturn"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Alert"],
+          "modifierName": "Monster_Drake_Rock_Alert_IceEnhance_ForceSet",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_Monster_Drake_Rock_Alert_IceEnhance_Reset": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Alert"],
+                  "setEnable": true
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Free"]
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Alert"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Free"],
+                  "setEnable": true
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [101]
+            }
+          ]
+        },
+        "Monster_Drake_ExitEnhance": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_IceEnhanceState_SP"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FakeDeath"
+            },
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_DRAKE_ROCK_HEAL_TIMES",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Alert_IceEnhance_ForceSet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_IceEnhanceState_SP"
+            }
+          ]
+        },
+        "UNIQUE_Monster_Drake_Rock_IceEnhanceState_SP": {
+          "modifierName": "",
+          "isUnique": true,
+          "elementType": "Frozen",
+          "bonusCritical": 100.0,
+          "isElementDurabilityMutable": false
+        },
+        "Monster_Drake_Rock_IceEnhanceState_Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_IceEnhanceState_LeftHand",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_IceEnhanceState_RightHand",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "UNIQUE_Monster_Drake_Rock_ResistIce": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceListID": 13001
+            }
+          ]
+        },
+        "UNIQUE_Monster_Drake_Rock_Ice_AIReturn": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "AIReturnPerform"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "minValue": "AIReturnPerform"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "ratio": 1.0,
+          "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+          "maxValue": 1.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Monster_Drake_Rock_ResistIce"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Drake_Rock_IceEnhanceState_Effect"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Monster_Drake_Rock_IceEnhanceState_SP"
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "EnablePushColliderName",
+          "pushColliderNames": [
+            "PushCollider_Alert",
+            "PushCollider_Free",
+            "PushCollider_Roll"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_FireEnhance_SlapGround01_SP",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 1.0,
+                  "y": 0.0,
+                  "z": 2.5
+                },
+                "onGround": true,
+                "useRotation": true
+              },
+              "height": 2.0,
+              "radius": 4.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 50.0,
+                "attackType": "Melee",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3",
+                "retreatType": "ByHitDirection"
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeRange": 0.1599999964237213,
+                "shakeTime": 0.09000000357627869,
+                "shakeDistance": 25.0,
+                "shakeDir": {
+                  "y": 0.5
+                }
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_Atk_Fire",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 1.0,
+              "y": 0.0,
+              "z": 2.5
+            },
+            "onGround": true,
+            "useRotation": true
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_FireEnhance_SlapGround02_SP",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": -1.0,
+                  "y": 0.0,
+                  "z": 2.200000047683716
+                },
+                "onGround": true,
+                "useRotation": true
+              },
+              "height": 2.0,
+              "radius": 4.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 50.0,
+                "attackType": "Melee",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3",
+                "retreatType": "ByHitDirection"
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeRange": 0.1599999964237213,
+                "shakeTime": 0.09000000357627869,
+                "shakeDistance": 25.0,
+                "shakeDir": {
+                  "y": 0.5
+                }
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_Atk_Fire",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": -1.0,
+              "y": 0.0,
+              "z": 2.200000047683716
+            },
+            "onGround": true,
+            "useRotation": true
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_FireEnhance_SlapGround03_SP",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 2.0
+                },
+                "onGround": true,
+                "useRotation": true
+              },
+              "height": 3.0,
+              "radius": 5.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.75,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV5",
+                "retreatType": "ByHitDirection"
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeRange": 0.23999999463558197,
+                "shakeTime": 0.11999999731779099,
+                "shakeDir": {
+                  "y": 1.0
+                }
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_FinalAtk_Fire",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 1.0
+            },
+            "onGround": true,
+            "alongGround": true,
+            "useRotation": true
+          },
+          "scale": 1.2000000476837158,
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_SlapGround01_SP",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42604024,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.7120000123977661,
+              "y": 0.20000000298023224,
+              "z": 3.0999999046325684
+            },
+            "onGround": true
+          },
+          "lifeByOwnerV2": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_SlapGround02_SP",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42604024,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": -0.925000011920929,
+              "y": 0.20000000298023224,
+              "z": 2.9000000953674316
+            },
+            "onGround": true
+          },
+          "lifeByOwnerV2": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_SlapGround03_SP",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42604025,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 1.2890000343322754,
+              "y": 0.20000000298023224,
+              "z": 3.2179999351501465
+            },
+            "onGround": true
+          },
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42604025,
+          "born": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": -1.899999976158142,
+              "y": 0.20000000298023224,
+              "z": 3.2100000381469727
+            },
+            "onGround": true
+          },
+          "lifeByOwnerV2": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_SlapGround_DamageWave_SP",
+      "modifiers": {
+        "WaveDamge": {
+          "modifierName": "",
+          "duration": 0.8999999761581421,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.20000000298023224,
+          "onAdded": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.0,
+                      "z": -1.0
+                    },
+                    "onGround": true,
+                    "direction": {
+                      "$type": "DFEHJKCDGHN",
+                      "angleOffset": {
+                        "x": 30.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "useRotation": true
+                  },
+                  "size": {
+                    "x": 2.0,
+                    "y": 4.0,
+                    "z": 2.0
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.30000001192092896,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Ice",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 100.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV3",
+                    "retreatType": "ByHitDirection"
+                  },
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.1599999964237213,
+                    "shakeTime": 0.09000000357627869,
+                    "shakeDistance": 25.0,
+                    "shakeDir": {
+                      "y": 1.0
+                    }
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_Ice",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.0,
+                      "z": -1.0
+                    },
+                    "onGround": true,
+                    "direction": {
+                      "$type": "DFEHJKCDGHN",
+                      "angleOffset": {
+                        "x": 30.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "useRotation": true
+                  },
+                  "size": {
+                    "x": 2.0,
+                    "y": 4.0,
+                    "z": 2.0
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.30000001192092896,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Ice",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 100.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV3",
+                    "retreatType": "ByHitDirection"
+                  },
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.1599999964237213,
+                    "shakeTime": 0.09000000357627869,
+                    "shakeDistance": 25.0,
+                    "shakeDir": {
+                      "y": 1.0
+                    }
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_Ice",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WaveDamge"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_SlapGroundFinal_DamageWave_SP",
+      "modifiers": {
+        "WaveDamge": {
+          "modifierName": "",
+          "duration": 0.8999999761581421,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.20000000298023224,
+          "onAdded": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.0,
+                      "z": -1.0
+                    },
+                    "onGround": true,
+                    "direction": {
+                      "$type": "DFEHJKCDGHN",
+                      "angleOffset": {
+                        "x": 30.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "useRotation": true
+                  },
+                  "size": {
+                    "x": 2.0,
+                    "y": 4.0,
+                    "z": 2.0
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.30000001192092896,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Ice",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 100.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV3",
+                    "retreatType": "ByHitDirection"
+                  },
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.1599999964237213,
+                    "shakeTime": 0.09000000357627869,
+                    "shakeDistance": 25.0,
+                    "shakeDir": {
+                      "y": 1.0
+                    }
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_Ice",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.0,
+                      "z": -1.0
+                    },
+                    "onGround": true,
+                    "direction": {
+                      "$type": "DFEHJKCDGHN",
+                      "angleOffset": {
+                        "x": 30.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      }
+                    },
+                    "useRotation": true
+                  },
+                  "size": {
+                    "x": 2.0,
+                    "y": 4.0,
+                    "z": 2.0
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.30000001192092896,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Ice",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 100.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV3",
+                    "retreatType": "ByHitDirection"
+                  },
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.1599999964237213,
+                    "shakeTime": 0.09000000357627869,
+                    "shakeDistance": 25.0,
+                    "shakeDir": {
+                      "y": 1.0
+                    }
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_Ice",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WaveDamge"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_JumpAtk_SP",
+      "onAbilityStart": [
+        {
+          "$type": "FixedMonsterRushMove",
+          "target": "SelfAttackTarget",
+          "toPos": {
+            "$type": "ConfigBornByTarget",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 2.0
+            },
+            "onGround": true
+          },
+          "MBHPLECOEKG": 0.8199999928474426,
+          "maxRange": 20.0,
+          "animatorStateIDs": ["JumpAtk"],
+          "overrideMoveCollider": "",
+          "ignoreDetectForward": true
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_JumpAtk_Alert_FireEnhance",
+          "born": {
+            "$type": "LIIDGCODPFO",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "shakeType": "CustomVector",
+            "shakeRange": 0.11999999731779099,
+            "shakeTime": 0.15000000596046448,
+            "shakeDir": {
+              "y": 1.0
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_JumpAtk_Alert_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "BreatheAtkBS",
+          "modifierName": "Monster_Drake_Rock_JumpAtk_Collider",
+          "normalizeStart": 0.15000000596046448,
+          "normalizeEnd": 0.6700000166893005,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "CrushAtkBSJump",
+          "modifierName": "Monster_Drake_Rock_JumpAtk_Collider",
+          "normalizeStart": 0.15000000596046448,
+          "normalizeEnd": 0.6700000166893005,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "JumpAtk",
+          "modifierName": "Monster_Drake_Rock_JumpAtk_Collider",
+          "normalizeStart": 0.12999999523162842,
+          "normalizeEnd": 0.27000001072883606,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_JumpAtk_Collider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Alert", "MoveCollider"]
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Alert", "MoveCollider"],
+                  "setEnable": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_JumpAtk_Alert",
+          "born": {
+            "$type": "LIIDGCODPFO",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "shakeType": "CustomVector",
+            "shakeRange": 0.11999999731779099,
+            "shakeTime": 0.15000000596046448,
+            "shakeDir": {
+              "y": 1.0
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_FireEnhance_Breathe_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ElementBreathe",
+          "modifierName": "Monster_Drake_Rock_Breathe_Charging_Fire_Eff",
+          "normalizeEnd": 0.20000000298023224,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ElementBreathe",
+          "modifierName": "Monster_Drake_Rock_Breathe_Fire_StateCheck",
+          "normalizeStart": 0.12999999523162842,
+          "normalizeEnd": 0.7599999904632568,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ElementBreathe",
+          "modifierName": "Monster_Drake_Rock_Breathe_FireEff_StateCheck",
+          "normalizeStart": 0.12999999523162842,
+          "normalizeEnd": 0.7200000286102295,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_Breathe_Fire_StateCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToAbilityStateMixin",
+              "abilityStates": ["ElementPetrifaction"],
+              "reject": true,
+              "modifierName": "Monster_Drake_Rock_Breathe_Fire_Damage"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Breathe_Charging_Fire_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_BreatheCharging_Fire",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "paramList": [1, 2, 0]
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Breathe_Fire_Damage": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "alongGround": true,
+                    "useRotation": true,
+                    "attachPointName": "BreatheAttackPoint"
+                  },
+                  "size": {
+                    "x": 1.5,
+                    "y": 1.5,
+                    "z": 5.0
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Attenuation_Breathe",
+                  "attenuationGroup": "Drake_Rock_Fire_Breathe",
+                  "attackProperty": {
+                    "damagePercentage": 0.4000000059604645,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 25.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV1"
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Breathe_FireEff_StateCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToAbilityStateMixin",
+              "abilityStates": ["ElementPetrifaction"],
+              "reject": true,
+              "modifierName": "Monster_Drake_Rock_Breathe_Fire_Eff"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Breathe_Fire_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_Breathe_Fire",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_BreatheAS_Fire",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_Breathe_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ElementBreathe",
+          "modifierName": "Monster_Drake_Rock_Breathe_Charging_Ice_Eff",
+          "normalizeEnd": 0.20000000298023224,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ElementBreathe",
+          "modifierName": "Monster_Drake_Rock_Breathe_Ice_StateCheck",
+          "normalizeStart": 0.12999999523162842,
+          "normalizeEnd": 0.7599999904632568,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "ElementBreathe",
+          "modifierName": "Monster_Drake_Rock_Breathe_IceEff_StateCheck",
+          "normalizeStart": 0.12999999523162842,
+          "normalizeEnd": 0.7200000286102295,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_Breathe_Ice_StateCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToAbilityStateMixin",
+              "abilityStates": ["ElementPetrifaction"],
+              "reject": true,
+              "modifierName": "Monster_Drake_Rock_Breathe_Ice_Damage"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Breathe_Charging_Ice_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_BreatheCharging_Ice",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "paramList": [0, 2, 0]
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Breathe_Ice_Damage": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "alongGround": true,
+                    "useRotation": true,
+                    "attachPointName": "BreatheAttackPoint"
+                  },
+                  "size": {
+                    "x": 1.5,
+                    "y": 1.5,
+                    "z": 5.0
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Attenuation_Breathe",
+                  "attenuationGroup": "Drake_Rock_Ice_Breathe",
+                  "attackProperty": {
+                    "damagePercentage": 0.4000000059604645,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Ice",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 25.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV1"
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Breathe_IceEff_StateCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToAbilityStateMixin",
+              "abilityStates": ["ElementPetrifaction"],
+              "reject": true,
+              "modifierName": "Monster_Drake_Rock_Breathe_Ice_Eff"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Breathe_Ice_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_Breathe_Ice",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_BreatheAS_Ice",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_BreatheAtkBS_SP",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackTraceMixin",
+          "steerStateIDs": ["BreatheJumpBS"],
+          "startNormalizedTime": 0.3400000035762787,
+          "endNormalizedTime": 0.5299999713897705,
+          "angularSpeed": 1080.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackTraceToPosMixin",
+          "steerStateIDs": ["BreatheAtkBS"],
+          "startNormalizedTime": 0.10000000149011612,
+          "endNormalizedTime": 0.75,
+          "angularSpeed": 360.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": "",
+          "globalPosKey": "_DRAKE_BREATHE_FACE_POS"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ResetAIAttackTarget"
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+              "ratio": 1.0
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "FixedMonsterRushMove",
+              "target": "SelfAttackTarget",
+              "toPos": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": -1.7000000476837158,
+                  "y": 0.0,
+                  "z": 2.200000047683716
+                },
+                "onGround": true
+              },
+              "MBHPLECOEKG": 0.8199999928474426,
+              "maxRange": 60.0,
+              "animatorStateIDs": ["BreatheAtkBS"],
+              "overrideMoveCollider": "",
+              "ignoreDetectForward": true
+            },
+            {
+              "$type": "SetGlobalPos",
+              "target": "SelfAttackTarget",
+              "key": "_DRAKE_BREATHE_FACE_POS",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": -2.700000047683716,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "setTarget": false
+            }
+          ]
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+              "ratio": 1.0
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "FixedMonsterRushMove",
+              "target": "SelfAttackTarget",
+              "toPos": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 1.7000000476837158,
+                  "y": 0.0,
+                  "z": 2.200000047683716
+                },
+                "onGround": true
+              },
+              "MBHPLECOEKG": 0.8199999928474426,
+              "maxRange": 60.0,
+              "animatorStateIDs": ["BreatheAtkBS"],
+              "overrideMoveCollider": "",
+              "ignoreDetectForward": true
+            },
+            {
+              "$type": "SetGlobalPos",
+              "target": "SelfAttackTarget",
+              "key": "_DRAKE_BREATHE_FACE_POS",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 2.700000047683716,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "setTarget": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_ComboBreatheWait_Ice",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["BreatheJumpBS"],
+          "modifierName": "Monster_Drake_Rock_ComboBreatheWait_Try",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_ComboBreatheWait_Try": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "SelfAttackTarget",
+              "modifierName": "Monster_Drake_Rock_ComboBreatheWait_SetTeamTarget"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "Monster_Drake_Rock_ComboBreatheWait_Trigger"
+            },
+            {
+              "$type": "ResetAIAttackTarget"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_ComboBreatheWait_Trigger": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "DoComboBreathe"
+            },
+            {
+              "$type": "ResetAIAttackTarget"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_ComboBreatheWait_SetTeamTarget": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "Monster_Drake_Rock_ComboBreatheWait_SetTargetGV"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_ComboBreatheWait_SetTargetGV": {
+          "modifierName": "",
+          "duration": 10.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_DRAKE_ROCK_TARGET",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ClearGlobaltriggerID",
+              "cdDelta": true,
+              "key": "_DRAKE_ROCK_TARGET"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_CrushAtkBSJump_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "CrushJumpBS",
+          "modifierName": "Monster_Drake_Rock_GetPos",
+          "normalizeStart": 0.3499999940395355,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackTraceMixin",
+          "steerStateIDs": ["CrushJumpBS"],
+          "startNormalizedTime": 0.3400000035762787,
+          "endNormalizedTime": 0.5299999713897705,
+          "angularSpeed": 1080.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackTraceMixin",
+          "steerStateIDs": ["CrushAtkBSJump"],
+          "angularSpeed": 360.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_GetPos": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_DRAKE_ROCK_JUMP_POS",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "useRotation": true
+              }
+            },
+            {
+              "$type": "SetGlobalPos",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 5
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "key": "_DRAKE_ROCK_JUMP_POS",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 5.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "onGround": true
+              },
+              "setTarget": false
+            },
+            {
+              "$type": "SetGlobalPos",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 6
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "key": "_DRAKE_ROCK_JUMP_POS",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": -5.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "onGround": true
+              },
+              "setTarget": false
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 5
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_DRAKE_CRUSHATK_FAR",
+                  "ratio": 0.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "otherTargets": {
+                    "$type": "BCLBMPBNHKO",
+                    "operation": "XOR",
+                    "minValue": 5
+                  },
+                  "key": "_DRAKE_ROCK_JUMP_POS",
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "x": 5.0,
+                      "y": 0.0,
+                      "z": -8.0
+                    },
+                    "onGround": true
+                  },
+                  "setTarget": false
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 6
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_DRAKE_CRUSHATK_FAR",
+                  "ratio": 0.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "otherTargets": {
+                    "$type": "BCLBMPBNHKO",
+                    "operation": "XOR",
+                    "minValue": 6
+                  },
+                  "key": "_DRAKE_ROCK_JUMP_POS",
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "x": -5.0,
+                      "y": 0.0,
+                      "z": -8.0
+                    },
+                    "onGround": true
+                  },
+                  "setTarget": false
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FixedMonsterRushMove",
+          "toPos": {
+            "$type": "MKLCDCJFOHO",
+            "onGround": true,
+            "positionKey": "_DRAKE_ROCK_JUMP_POS",
+            "directionKey": ""
+          },
+          "MBHPLECOEKG": 0.8199999928474426,
+          "maxRange": 60.0,
+          "animatorStateIDs": ["CrushAtkBSJump"],
+          "overrideMoveCollider": "",
+          "ignoreDetectForward": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_ComboCrushAtkWait_Ice",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["CrushJumpBS"],
+          "modifierName": "Monster_Drake_Rock_ComboCrushAtk_Try",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "CrushJumpBS",
+          "modifierName": "Monster_Drake_Rock_TriggerGadget",
+          "normalizeEnd": 0.30000001192092896,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_ComboCrushAtk_Try": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "SelfAttackTarget",
+              "modifierName": "Monster_Drake_Rock_ComboCrushAtk_SetTeamTarget"
+            },
+            {
+              "$type": "ResetAIAttackTarget"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "Monster_Drake_Rock_ComboCrushAtk_Trigger"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_TriggerGadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 5
+              },
+              "abilityName": "Monster_Drake_Rock_Gadget_SetPos"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_ComboCrushAtk_Trigger": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "DoComboCrush"
+            },
+            {
+              "$type": "ResetAIAttackTarget"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_ComboCrushAtk_SetTeamTarget": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "Monster_Drake_Rock_ComboCrushAtk_SetTargetGV"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_ComboCrushAtk_SetTargetGV": {
+          "modifierName": "",
+          "duration": 10.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_DRAKE_ROCK_TARGET",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ClearGlobaltriggerID",
+              "cdDelta": true,
+              "key": "_DRAKE_ROCK_TARGET"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_CrushAtkCharging_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["CrushAtkSteer", "CrushAtkCharging"],
+          "modifierName": "Monster_Drake_Rock_CrushAtkCharging_Eff",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["CrushAtkSteer", "CrushAtkCharging"],
+          "modifierName": "Monster_Drake_Rock_CrushAtk_RollMode",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["CrushAtkCharging"],
+          "modifierName": "Monster_Drake_Rock_CrushAtkCharging",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["CrushAtkSteer", "CrushAtkCharging"],
+          "modifierName": "Monster_Drake_Rock_CrushAtk_RollCollider",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["CrushAtkFailed"],
+          "modifierName": "Drake_Rock_CrushAtkFailed_Log",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_CrushAtkCharging_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_CrushAtkCharging_Ice",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_CrushAtkCharging_Fire",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Monster_Drake_Rock_CrushAtk_RollMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "target": "Caster",
+              "bulletID": 42604029,
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "useRotation": true
+              },
+              "trackTarget": "Caster",
+              "lifeByOwnerV2": true
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "paramList": [0, 1, 0]
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "paramList": [1, 1, 0]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "configID": 42604029
+              }
+            }
+          ]
+        },
+        "Monster_Drake_Rock_CrushAtk_RollCollider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Alert"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Roll"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Alert"],
+                  "setEnable": true
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider_Roll"]
+                }
+              ]
+            }
+          ]
+        },
+        "Monster_Drake_Rock_CrushAtkCharging": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FixedMonsterRushMove",
+              "toPos": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 10.0
+                },
+                "useRotation": true
+              },
+              "MBHPLECOEKG": 0.550000011920929,
+              "maxRange": 12.0,
+              "animatorStateIDs": ["CrushAtkCharging"],
+              "overrideMoveCollider": "",
+              "ignoreDetectForward": true
+            }
+          ]
+        },
+        "Drake_Rock_CrushAtkFailed_Log": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ServerMonsterLog",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "paramList": [0, 1, 1]
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "paramList": [1, 1, 1]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_FollowHitBox_Roll_SP",
+      "modifiers": {
+        "Monster_Drake_Rock_Shield_Check": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                },
+                {
+                  "$type": "GEIKMHNFGBC",
+                  "type": "All"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Owner",
+                  "modifierName": "Drake_Rock_CrushAtk_HitOnShield"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Target",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": ["Avatar"]
+                    },
+                    {
+                      "$type": "ByNot",
+                      "predicates": [
+                        {
+                          "$type": "GEIKMHNFGBC",
+                          "type": "All"
+                        }
+                      ]
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Owner",
+                      "modifierName": "Drake_Rock_CrushAtk_HitOnAvatar"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Drake_Rock_CrushAtk_HitOnShield": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DoWatcherSystemAction",
+              "watcherId": 82085,
+              "inThreatListOnly": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Drake_Rock_CrushAtk_HitOnShield_Trigger"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "NHPKNAEEMEO",
+                      "abilityState": "ElementFreeze"
+                    },
+                    {
+                      "$type": "NHPKNAEEMEO",
+                      "abilityState": "ElementPetrifaction"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "Drake_Rock_CrushAtk_HitOnShield_Trigger"
+            }
+          ]
+        },
+        "Drake_Rock_CrushAtk_HitOnShield_Trigger": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "HitOnShield"
+            }
+          ]
+        },
+        "Drake_Rock_CrushAtk_HitOnAvatar": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Drake_Rock_CrushAtk_HitOnAvatar_Trigger"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "NHPKNAEEMEO",
+                      "abilityState": "ElementFreeze"
+                    },
+                    {
+                      "$type": "NHPKNAEEMEO",
+                      "abilityState": "ElementPetrifaction"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "Drake_Rock_CrushAtk_HitOnAvatar_Trigger"
+            }
+          ]
+        },
+        "Drake_Rock_CrushAtk_HitOnAvatar_Trigger": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "ChargingEnd"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Drake_Rock_Shield_Check"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByAnimatorFloat",
+              "target": "Owner",
+              "logic": "Equal",
+              "ratio": 221.0,
+              "parameter": "PoseID"
+            }
+          ],
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "filterByFrame": true,
+              "ignoreMassive": true,
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "size": {
+                "x": 1.2000000476837158,
+                "y": 2.0,
+                "z": 2.0
+              }
+            },
+            "attackInfo": {
+              "attackTag": "Drake_Roll_Damage_Fire",
+              "attenuationTag": "Drake_Rock_Fire_CrushAtk",
+              "attenuationGroup": "Drake_Rock_Fire_CrushAtk",
+              "attackProperty": {
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "attackType": "Melee",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV5",
+                "retreatType": "ByTangent"
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByAnimatorFloat",
+              "target": "Owner",
+              "logic": "Equal",
+              "ratio": 222.0,
+              "parameter": "PoseID"
+            }
+          ],
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "filterByFrame": true,
+              "ignoreMassive": true,
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "size": {
+                "x": 1.2000000476837158,
+                "y": 2.0,
+                "z": 2.0
+              }
+            },
+            "attackInfo": {
+              "attackTag": "Drake_Roll_Damage_Ice",
+              "attenuationTag": "Drake_Rock_Ice_CrushAtk",
+              "attenuationGroup": "Drake_Rock_Ice_CrushAtk",
+              "attackProperty": {
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Ice",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "attackType": "Melee",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV5",
+                "retreatType": "ByTangent"
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_ScaleShot_SP",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ScaleShot"],
+          "startNormalizedTime": 0.20000000298023224,
+          "endNormalizedTime": 0.5899999737739563,
+          "angularSpeed": 60.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ScaleShot"],
+          "endNormalizedTime": 0.10000000149011612,
+          "angularSpeed": 800.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42604022,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "randomAngleHor": 10.0,
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true,
+            "attachPointName": "MouthFirePoint"
+          },
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42604022,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "angleOffsetCorrect": {
+                "x": 15.0,
+                "y": 0.0,
+                "z": 10.0
+              },
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true,
+            "attachPointName": "MouthFirePoint"
+          },
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42604022,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "angleOffsetCorrect": {
+                "x": -15.0,
+                "y": 0.0,
+                "z": 10.0
+              },
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true,
+            "attachPointName": "MouthFirePoint"
+          },
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42604022,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "randomAngleHor": 10.0,
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true,
+            "attachPointName": "MouthFirePoint"
+          },
+          "lifeByOwnerV2": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_ScaleShot_IceSpear_SP",
+      "modifiers": {
+        "Monster_Drake_Rock_IceEnhance_ScaleShot_IceSpear_SP": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_DeepSea_TaiRangeAttack_IceSpear",
+              "scale": 1.5,
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_DeepSea_TaiRangeAttack_IceSpearTail",
+              "scale": 1.5,
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Drake_Rock_IceEnhance_ScaleShot_IceSpear_SP"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "Monster_Drake_Rock_IceEnhance_ScaleShot_IceSpear_SP"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_DeepSea_TaiRangeAttack_IceExplode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "onGround": true,
+            "alongGround": true
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "onGround": true
+              },
+              "radius": 0.699999988079071
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "Drake_Rock_Ice_GadgetExplode",
+              "attenuationGroup": "Drake_Rock_Ice_GadgetExplode",
+              "attackProperty": {
+                "damagePercentage": 0.30000001192092896,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Ice",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 0.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV1"
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "CreateGadget",
+          "ownerIs": "Owner",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "onGround": true,
+            "useRotation": true
+          },
+          "lifeByOwnerV2": true,
+          "gadgetID": 42604023,
+          "campID": 4001,
+          "campTargetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_Gadget_SP",
+      "modifiers": {
+        "Monster_Drake_Rock_IceEnhance_Gadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_IceEnhance_Gadget",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "alongGround": true,
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Drake_Rock_IceEnhance_Gadget"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_IceExplode",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "onGround": true,
+            "alongGround": true,
+            "useRotation": true
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "useRotation": true
+              },
+              "radius": 2.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "Drake_Rock_Ice_GadgetExplode",
+              "attenuationGroup": "Drake_Rock_Ice_GadgetExplode",
+              "attackProperty": {
+                "damagePercentage": 0.699999988079071,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Ice",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 50.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3"
+              },
+              "cameraShake": {
+                "shakeType": "CustomVector",
+                "shakeRange": 0.23999999463558197,
+                "shakeTime": 0.1599999964237213,
+                "shakeDir": {
+                  "y": -1.0
+                }
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_IceEnhance_Gadget_LiveOver_SP",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_SlapGround_IceExplode",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "onGround": true,
+            "alongGround": true,
+            "useRotation": true
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_CheckAlliance_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "JumpAtkBS",
+            "JumpAtk",
+            "GoDying",
+            "Dying",
+            "BackToLife"
+          ],
+          "modifierName": "Monster_Drake_Rock_DoLongSkillCheck",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "BreatheJumpBS",
+            "BreatheAtkBS",
+            "ElementBreathe",
+            "CrushJumpBS",
+            "CrushAtkBSJump",
+            "CrushAtkBSAlert",
+            "CrushAtkBS",
+            "CrushAtkSteer",
+            "CrushAtkCharging",
+            "CrushAtkFailed",
+            "CrushAtkNoHit",
+            "GoDying",
+            "Dying",
+            "BackToLife"
+          ],
+          "modifierName": "Monster_Drake_Rock_DoSpecialSkillCheck",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["ElementBreathe"],
+          "modifierName": "Monster_Drake_Rock_DoComboSkillCheck",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAbilityStateMixin",
+          "abilityStates": ["ElementPetrifaction"],
+          "modifierName": "Monster_Drake_Rock_DoPetrifactionCheck"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["SlapGround01"],
+          "modifierName": "Monster_Drake_Rock_ResetLayout_Latency",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "alertness": [0],
+          "modifierName": "Monster_Drake_Rock_DoAlertCheck"
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_DoLongSkillCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "_IN_LONG_ATTACK",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Drake_Rock_DoLongSkillCheck_UpdataGV"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "Monster_Drake_Rock_DoLongSkillCheck_UpdataGV"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_IN_LONG_ATTACK",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Drake_Rock_DoLongSkillCheck_UpdataGV"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "Monster_Drake_Rock_DoLongSkillCheck_UpdataGV"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_DoLongSkillCheck_UpdataGV": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IN_LONG_ATTACK",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_IN_LONG_ATTACK",
+                  "ratio": 0.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobaltriggerIDV2",
+                  "ratio": 1.0,
+                  "key": "_DRAKE_ROCK_COMBO_READY",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobaltriggerIDV2",
+                  "ratio": 0.0,
+                  "key": "_DRAKE_ROCK_COMBO_READY",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        "Monster_Drake_Rock_DoSpecialSkillCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_NOT_IN_SPECIAL_SKILL",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "_NOT_IN_SPECIAL_SKILL",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Monster_Drake_Rock_DoComboSkillCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "_IN_COMBO_SKILL",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_IN_COMBO_SKILL",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Monster_Drake_Rock_DoPetrifactionCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "_IN_Petrifaction",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Drake_Rock_DoPetrifactionCheck_UpdateGV"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "Monster_Drake_Rock_DoPetrifactionCheck_UpdateGV"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_IN_Petrifaction",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Drake_Rock_DoPetrifactionCheck_UpdateGV"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "Monster_Drake_Rock_DoPetrifactionCheck_UpdateGV"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_DoPetrifactionCheck_UpdateGV": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IN_Petrifaction",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_IN_Petrifaction",
+                  "ratio": 0.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobaltriggerIDV2",
+                  "ratio": 1.0,
+                  "key": "_DRAKE_ROCK_NOT_LOCK",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobaltriggerIDV2",
+                  "ratio": 0.0,
+                  "key": "_DRAKE_ROCK_NOT_LOCK",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        "Monster_Drake_Rock_ResetLayout_Latency": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RefreshUICombatBarLayout"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_DoAlertCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_IN_ALERT",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Drake_Rock_DoAlertCheck_UpdataGV"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "Monster_Drake_Rock_DoAlertCheck_UpdataGV"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "_IN_ALERT",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Drake_Rock_DoAlertCheck_UpdataGV"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "Monster_Drake_Rock_DoAlertCheck_UpdataGV"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_DoAlertCheck_UpdataGV": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IN_ALERT",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_IN_ALERT",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobaltriggerIDV2",
+                  "ratio": 1.0,
+                  "key": "_DRAKE_ROCK_BOTH_ALERT",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobaltriggerIDV2",
+                  "ratio": 0.0,
+                  "key": "_DRAKE_ROCK_BOTH_ALERT",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 0.0,
+          "key": "_IN_LONG_ATTACK",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "_NOT_IN_SPECIAL_SKILL",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 0.0,
+          "key": "_IN_COMBO_SKILL",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "_DRAKE_ROCK_COMBO_READY",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 0.0,
+          "key": "_IN_Petrifaction",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "_DRAKE_ROCK_NOT_LOCK",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "_DRAKE_ROCK_BOTH_ALERT",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "_IN_ALERT",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_FakeDeath",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["GoDying", "Dying"],
+          "modifierName": "Monster_Drake_Rock_FreezePos",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "dyingDuring": 15.0,
+        "backLifeLineFirst": 0.20000000298023224,
+        "backLifeLineSecond": 0.15000000596046448,
+        "backLifeLineThird": 0.10000000149011612
+      },
+      "modifiers": {
+        "UNIQUE_Monster_Drake_Rock_LinkEff": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_LifeLink",
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            }
+          ]
+        },
+        "UNIQUE_Monster_Drake_Rock_FakeDeath_Eff": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_DRAKE_ROCK_SELF_ALIVE",
+                      "ratio": 0.0
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_DRAKE_ROCK_ALLIANCE_ALIVE",
+                      "ratio": 0.0
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_FakeDeath",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": -0.5,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Monster_Drake_Rock_InBattle_LinkEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "UNIQUE_Monster_Drake_Rock_LinkEff"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "UNIQUE_Monster_Drake_Rock_LinkEff"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FakeDeath_Eff"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FakeDeath_Eff"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "UNIQUE_Monster_Drake_Rock_LinkEff"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_LinkEff"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FakeDeath_Eff"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FakeDeath_Eff"
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Drake_Rock_InBattle_LinkEff_ReconnectDelay"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Monster_Drake_Rock_InBattle_LinkEff"
+            }
+          ],
+          "onChangeAuthority": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Monster_Drake_Rock_InBattle_LinkEff_ReconnectDelay"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Monster_Drake_Rock_InBattle_LinkEff"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_InBattle_LinkEff_ReconnectDelay": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_DRAKE_ROCK_SELF_ALIVE",
+                  "ratio": 0.0
+                }
+              ],
+              "modifierName": "Monster_Drake_Rock_InBattle_LinkEff"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_FreezePos": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "RigidBodyFreezeMixin"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_NoLimo": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Monster_Drake_Rock_Limo": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToHPPercentMixinV2",
+              "valueSteps": [0.019999999552965164],
+              "modifierNameSteps": [
+                "Drake_Rock_DieWithOtherEmpty",
+                "Drake_Rock_DieWithOther"
+              ]
+            }
+          ],
+          "properties": {
+            "Actor_HpThresholdRatio": 0.009999999776482582
+          },
+          "state": "Limbo"
+        },
+        "Drake_Rock_DieWithOtherEmpty": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "_DRAKE_ROCK_SELF_ALIVE",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "StateAlive",
+              "ratio": true
+            }
+          ]
+        },
+        "Drake_Rock_DieWithOther": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_DRAKE_ROCK_SELF_ALIVE",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Lesser",
+                  "ratio": 900.0,
+                  "parameter": "PoseID"
+                }
+              ],
+              "modifierName": "UNIQUE_Monster_Drake_Rock_FakeDeath"
+            }
+          ]
+        },
+        "UNIQUE_Monster_Drake_Rock_FakeDeath": {
+          "stacking": "RefreshUniqueDurability",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "dyingDuring",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.20000000298023224,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+              "globalValueKey": "_DRAKE_ROCK_ALLIANCE_ALIVE",
+              "defaultGlobalValueOnCreate": 1.0,
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": [
+                "Drake_Rock_DieTruly",
+                "Drake_Rock_DieEmpty"
+              ]
+            },
+            {
+              "$type": "ChargeBarMixin",
+              "chargeBarIconID": 3,
+              "initialtriggerID": 0.0,
+              "maxValue": 100.0
+            }
+          ],
+          "state": "DenyLockOn",
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 3
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_DRAKE_ROCK_ALLIANCE_ALIVE",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "modifierName": "UNIQUE_Monster_Drake_AllianceDying"
+                }
+              ]
+            },
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_DRAKE_ROCK_SELF_ALIVE",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "StateAlive"
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "GoDying"
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Limbo",
+              "ratio": true
+            },
+            {
+              "$type": "SetUICombatBarSpark",
+              "enable": true
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Monster_Drake_Rock_Limbo_Ghost"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Monster_Drake_Rock_Limbo_Invincible"
+            },
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_DRAKE_ROCK_ALLIANCE_ALIVE",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "Monster_Drake_Rock_InBattle_LinkEff"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_DRAKE_ROCK_ALLIANCE_ALIVE",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobaltriggerIDV2",
+                  "ratio": 1.0,
+                  "key": "_DRAKE_ROCK_HEAL_TIMES",
+                  "useLimitRange": true,
+                  "maxValue": 3.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "HealHP",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_DRAKE_ROCK_HEAL_TIMES",
+                      "ratio": 1.0,
+                      "compareType": "LessAndEqual"
+                    }
+                  ],
+                  "MEEACMKOLJF": "backLifeLineFirst",
+                  "cdRatio": ""
+                },
+                {
+                  "$type": "HealHP",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_DRAKE_ROCK_HEAL_TIMES",
+                      "ratio": 2.0
+                    }
+                  ],
+                  "MEEACMKOLJF": "backLifeLineSecond",
+                  "cdRatio": ""
+                },
+                {
+                  "$type": "HealHP",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_DRAKE_ROCK_HEAL_TIMES",
+                      "ratio": 3.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ],
+                  "MEEACMKOLJF": "backLifeLineThird",
+                  "cdRatio": ""
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Drake_Rock_BackToLife_Eff"
+                },
+                {
+                  "$type": "SetPoseBool",
+                  "boolID": "Limbo"
+                },
+                {
+                  "$type": "SetUICombatBarSpark"
+                },
+                {
+                  "$type": "SetGlobaltriggerIDV2",
+                  "ratio": 1.0,
+                  "key": "_DRAKE_ROCK_SELF_ALIVE",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "StateAlive",
+                  "ratio": true
+                },
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "otherTargets": {
+                    "$type": "BCLBMPBNHKO",
+                    "operation": "XOR",
+                    "minValue": 3
+                  },
+                  "modifierName": "UNIQUE_Monster_Drake_AllianceDying"
+                },
+                {
+                  "$type": "ServerMonsterLog",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "paramList": [0, 0, 1]
+                },
+                {
+                  "$type": "ServerMonsterLog",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "paramList": [1, 0, 1]
+                }
+              ]
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Monster_Drake_Rock_InBattle_LinkEff"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AddChargeBartriggerID",
+              "ratio": [20.0, "dyingDuring", "DIV"],
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true,
+          "onReconnect": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "DyingReconnect"
+            }
+          ],
+          "onChangeAuthority": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "DyingReconnect"
+            }
+          ]
+        },
+        "UNIQUE_Monster_Drake_AllianceDying": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_DRAKE_ROCK_ALLIANCE_ALIVE",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "AllianceDead",
+              "ratio": true
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IN_COMBO_SKILL",
+                  "ratio": 1.0
+                }
+              ],
+              "intID": "HitFlag",
+              "ratio": 4.0
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IN_COMBO_SKILL",
+                  "ratio": 1.0
+                }
+              ],
+              "minValue": "BeHit",
+              "mpTriggerOnRemote": true
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_ICE_SP",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IN_COMBO_SKILL",
+                  "ratio": 1.0
+                }
+              ],
+              "paramList": [0, 2, 1]
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_MONSTER_DRAKE_ROCK_FIRE_SP",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_IN_COMBO_SKILL",
+                  "ratio": 1.0
+                }
+              ],
+              "paramList": [1, 2, 1]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "_DRAKE_ROCK_ALLIANCE_ALIVE",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "AllianceDead"
+            }
+          ]
+        },
+        "Monster_Drake_Rock_Limbo_Ghost": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "IsGhostToEnemy"
+        },
+        "Monster_Drake_Rock_Limbo_Invincible": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "Invincible"
+        },
+        "Drake_Rock_DieEmpty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Drake_Rock_DieTruly": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Drake_Rock_DieTruly_Action"
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Drake_Rock_DieTruly_Action"
+            }
+          ],
+          "onChangeAuthority": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Drake_Rock_DieTruly_Action"
+            }
+          ]
+        },
+        "Drake_Rock_DieTruly_Action": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetUICombatBarSpark"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Monster_Drake_Rock_InBattle_LinkEff"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Monster_Drake_Rock_Limo"
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "Drake_Rock_BackToLife_Eff": {
+          "modifierName": "",
+          "duration": 3.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Drake_Rock_Heal",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 0.0,
+          "key": "_DRAKE_ROCK_HEAL_TIMES",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "_DRAKE_ROCK_SELF_ALIVE",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "_DRAKE_ROCK_ALLIANCE_ALIVE",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Drake_Rock_Limo"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_ResistDebuff",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "CrushAtkBSJump",
+          "modifierName": "UNIQUE_Monster_Drake_Rock_ResistElementPetrifaction",
+          "normalizeStart": 0.22599999606609344,
+          "normalizeEnd": 0.699999988079071,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "BreatheAtkBS",
+          "modifierName": "UNIQUE_Monster_Drake_Rock_ResistElementPetrifaction",
+          "normalizeStart": 0.22599999606609344,
+          "normalizeEnd": 0.699999988079071,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "JumpAtk",
+          "modifierName": "UNIQUE_Monster_Drake_Rock_ResistElementPetrifaction",
+          "normalizeStart": 0.1340000033378601,
+          "normalizeEnd": 0.28999999165534973,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_Monster_Drake_Rock_ResistElementPetrifaction": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceListID": 14006
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveModifierByAbilityStateResistanceID",
+              "resistanceListID": 14006
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_Gadget_ClearGound_SP",
+      "modifiers": {
+        "Monster_Drake_Rock_BrokenRock_Check": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_COMMON_GADGET_ISSUMMON",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "modifierName": "Kill_Summon_Gadget"
+            }
+          ]
+        },
+        "Kill_Summon_Gadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Drake_Rock_BrokenRock_Check"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": -1.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "height": 3.5,
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 0.0,
+                "damage": 0.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "",
+                "hitImpulseType": "LV0"
+              }
+            }
+          },
+          "targetType": "AllExceptSelf"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_ClearGound_SP",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "CrushAtkBSJump",
+          "modifierName": "Monster_Drake_Rock_ClearGround",
+          "normalizeStart": 0.6000000238418579,
+          "normalizeEnd": 0.699999988079071,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "BreatheAtkBS",
+          "modifierName": "Monster_Drake_Rock_ClearGround",
+          "normalizeStart": 0.6000000238418579,
+          "normalizeEnd": 0.699999988079071,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "JumpAtk",
+          "modifierName": "Monster_Drake_Rock_ClearGround",
+          "normalizeStart": 0.25999999046325684,
+          "normalizeEnd": 0.2800000011920929,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "CrushAtkSteer",
+            "CrushAtkCharging",
+            "JumpAtkBS",
+            "BreatheJumpBS",
+            "CrushJumpBS"
+          ],
+          "modifierName": "Monster_Drake_Rock_ClearGround",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_ClearGround": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "target": "Caster",
+              "bulletID": 42604026,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "useRotation": true
+              },
+              "trackTarget": "Caster",
+              "lifeByOwnerV2": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillGadget",
+              "gadgetInfo": {
+                "configID": 42604026
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_Gadget_ListenField_Enter",
+      "abilityMixins": [
+        {
+          "$type": "FieldEntityCountChangeMixin",
+          "campTargetType": "All",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "replaceOnAddedInTick": true,
+          "simpleCountGlobatriggerIDKey": "_DRAKE_ROCK_AVATARS_COUNT",
+          "simpleCountUseLimitRange": true,
+          "simpleCountMaxtriggerID": 99.0,
+          "simpleCountMintriggerID": 0.0
+        },
+        {
+          "$type": "DoActionOnGlobaltriggerIDChangeMixin",
+          "globalValueKey": "_DRAKE_ROCK_AVATARS_COUNT",
+          "actions": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 5
+              },
+              "modifierName": "Monster_Drake_Rock_Gadget_ListenField_UpdateGV"
+            }
+          ]
+        }
+      ],
+      "modifiers": {
+        "Monster_Drake_Rock_Gadget_ListenField_UpdateGV": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "_DRAKE_ROCK_IN_FIELD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "XOR",
+                "minValue": 5
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_DRAKE_ROCK_AVATARS_COUNT",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobaltriggerIDV2",
+                  "ratio": 1.0,
+                  "key": "_DRAKE_ROCK_IN_FIELD",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 0.0,
+          "key": "_DRAKE_ROCK_AVATARS_COUNT",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_Gadget_ListenField_Exit"
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Drake_Rock_Gadget_SetPos",
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalPos",
+          "target": "CurLocalAvatar",
+          "key": "_DRAKE_ROCK_GADGET_TARGET",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          },
+          "setTarget": false
+        },
+        {
+          "$type": "TurnDirectionToPos",
+          "toPos": {
+            "$type": "MKLCDCJFOHO",
+            "positionKey": "_DRAKE_ROCK_GADGET_TARGET",
+            "directionKey": ""
+          }
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 0.0,
+          "key": "_DRAKE_CRUSHATK_FAR",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "JOLJOHDJLNF",
+              "target": "CurLocalAvatar",
+              "ratio": 20.0,
+              "PHMALDNHHLD": ""
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_DRAKE_CRUSHATK_FAR",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,305 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_AyusProjector_01_Ability",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMutexMixin",
+          "gadgetStates": [0, 201, 202],
+          "modifierNames": [["DefaultState"], ["ActiveState"], ["LockState"]]
+        }
+      ],
+      "modifiers": {
+        "LockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "DefaultState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusProjector_01_Idle",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "ChangeGadgetState",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["GrassSeed", "GrassSeedBig"]
+                }
+              ],
+              "state": 201
+            }
+          ]
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusProjector_01_Active",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "NJMOCHPJIKO",
+              "target": "Self"
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_BouncingMushroom_01_Appear",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_AyusProjectorLarge_01_Ability",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMutexMixin",
+          "gadgetStates": [0, 201, 202],
+          "modifierNames": [["DefaultState"], ["ActiveState"], ["LockState"]]
+        }
+      ],
+      "modifiers": {
+        "LockState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "DefaultState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusProjector_02_Idle",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "ChangeGadgetState",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByAttackTags",
+                      "attackTags": ["GrassSeedBig"]
+                    }
+                  ]
+                }
+              ],
+              "state": 201
+            }
+          ]
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_AyusProjector_02_Active",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "NJMOCHPJIKO",
+              "target": "Self"
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_BouncingMushroom_01_Appear",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Stone_XuMiPlantinshitou_01_Ability",
+      "modifiers": {
+        "IdleState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_XuMiPlantinshitou_Grass_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "SeedPoint01"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_XuMiPlantinshitou_Grass_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "SeedPoint02"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["GrassSeed", "GrassSeedBig"]
+                }
+              ],
+              "modifierName": "Destory"
+            }
+          ]
+        },
+        "Destory": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ChangeColliderTagMixin",
+              "transName": "Collider",
+              "tag": "Airwall"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Stone_XuMiPlantinshitou_Disappear02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "IdleState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Stone_XuMiPlantinshitou_02_Ability",
+      "modifiers": {
+        "IdleState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_XuMiPlantinshitou_Grass_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "SeedPoint01"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_XuMiPlantinshitou_Grass_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "SeedPoint02"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["GrassSeed", "GrassSeedBig"]
+                }
+              ],
+              "modifierName": "Destroy"
+            }
+          ]
+        },
+        "Destroy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ChangeColliderTagMixin",
+              "transName": "Collider",
+              "tag": "Airwall"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Stone_XuMiPlantinshitou_Disappear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "RootNode"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "IdleState"
+        }
+      ]
+    }
+  }
+]

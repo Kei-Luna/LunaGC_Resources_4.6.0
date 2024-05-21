@@ -1,0 +1,88 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Bullet_Ptahur_JellyFish_ShootAttack_Bullet",
+      "modifiers": {
+        "Bullet_Loop": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Ptahur_JellyFish_ShootAttack_Bullet",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Ptahur_JellyFish_ShootAttack_Bullet_Trail",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Bullet_Loop"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Ptahur_JellyFish_ShootAttack_Bullet_Hit",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "attackTag": "Monster_Ptahur_JellyFish_Attack",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Water",
+                "bonusCritical": 10.0,
+                "strikeType": "Default",
+                "damage": 50.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3",
+                "hitHaltTimeScale": 0.05000000074505806
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "Bullet_Loop"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,888 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_FireElectricBall",
+      "modifiers": {
+        "UNIQUE_MonsterEliteAffix_DefaultState": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "UseSkillEliteSet",
+              "skillEliteSetID": 1
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ELITEAFFIX_TAG",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "modifierName": "UNIQUE_MonsterEliteAffix_DefaultState"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42606001,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.20000000298023224,
+              "z": 1.2000000476837158
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "PDKJDHJIEJB": ""
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_ElectricBall_Hit",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Cicin_ElectricBall_Loop"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_ElectricBallAS",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "cdDelta": true,
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Electric",
+                "bonusCritical": 50.0,
+                "strikeType": "Default",
+                "damage": 20.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "",
+                "hitImpulseType": "LV2",
+                "hitHaltTimeScale": 0.05000000074505806
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_ElectricBall_Effect",
+      "modifiers": {
+        "UNIQUE_Cicin_ElectricBall_Loop": {
+          "modifierName": "",
+          "isUnique": true,
+          "elementType": "Electric",
+          "bonusCritical": 25.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_ElectricBall",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Cicin_ElectricBall_Loop"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_RushAtkTrigger",
+      "modifiers": {
+        "RushAtkTrigger_Delay1": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "RushAtkTrigger"
+            }
+          ]
+        },
+        "RushAtkTrigger_Delay2": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "RushAtkTrigger"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorTrigger",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_SummonNumberInCicin",
+              "ratio": 1.0
+            }
+          ],
+          "minValue": "RushAtkTrigger"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_SummonNumberInCicin",
+              "ratio": 2.0
+            }
+          ],
+          "modifierName": "RushAtkTrigger_Delay1"
+        },
+        {
+          "$type": "ApplyModifier",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_SummonNumberInCicin",
+              "ratio": 3.0
+            }
+          ],
+          "modifierName": "RushAtkTrigger_Delay2"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_RushAtk",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["RushAtk"],
+          "modifierName": "Cincin_Thunder_RushAtk",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["RushAtk"],
+          "modifierName": "Cincin_Thunder_RushAtk_EnableCollider",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["NormalAtk"],
+          "endNormalizedTime": 0.75,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "attackDistance": 1.5,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Cincin_Thunder_RushAtk": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.20000000298023224,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_ElectricSurround",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_ElectricSurroundAS",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Ordered"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf"
+                  },
+                  "radius": 2.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 1.0,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Electric",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 25.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV2",
+                    "retreatType": "ByTangent",
+                    "hitHaltTimeScale": 0.05000000074505806
+                  },
+                  "cameraShake": {}
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Cincin_Thunder_RushAtk_EnableCollider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_EndureDelta": 0.0
+          },
+          "onAdded": [
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider"]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider"],
+              "setEnable": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_BlinkState",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Blink"],
+          "modifierName": "Blink_State",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Blink_State": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Cicin_Blink_Actions"
+            }
+          ]
+        },
+        "UNIQUE_Cicin_Blink_Actions": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Blink_Invincible"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Blink_DenyLockOn"
+            },
+            {
+              "$type": "TriggerSetVisible"
+            },
+            {
+              "$type": "TriggerHideWeapon",
+              "partNames": ["equip01"]
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "hide": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox"]
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider"]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox", "HeadBox"],
+              "setEnable": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider"],
+              "setEnable": true
+            },
+            {
+              "$type": "TriggerSetVisible",
+              "visible": true
+            },
+            {
+              "$type": "TriggerHideWeapon",
+              "visible": true,
+              "partNames": ["equip01"]
+            },
+            {
+              "$type": "HideUIBillBoard"
+            }
+          ]
+        },
+        "Blink_Invincible": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "Invincible"
+        },
+        "Blink_DenyLockOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Cicin_Blink_Actions"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Fatuus_Summoner_Disappear",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ClearLockTarget",
+          "target": "CurLocalAvatar"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_FindBlinkPoint",
+      "onAbilityStart": [
+        {
+          "$type": "TryFindBlinkPointByBorn",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_SummonNumberInCicin",
+              "ratio": 1.0
+            }
+          ],
+          "born": {
+            "$type": "ICLGELJNKIC",
+            "offset": {
+              "x": 0.0,
+              "y": 1.25,
+              "z": 2.0
+            }
+          },
+          "limitY": 2.5
+        },
+        {
+          "$type": "TryFindBlinkPointByBorn",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_SummonNumberInCicin",
+              "ratio": 2.0
+            }
+          ],
+          "born": {
+            "$type": "ICLGELJNKIC",
+            "offset": {
+              "x": 2.0,
+              "y": 1.25,
+              "z": 2.0
+            }
+          },
+          "limitY": 2.5
+        },
+        {
+          "$type": "TryFindBlinkPointByBorn",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_SummonNumberInCicin",
+              "ratio": 3.0
+            }
+          ],
+          "born": {
+            "$type": "ICLGELJNKIC",
+            "offset": {
+              "x": -2.0,
+              "y": 1.25,
+              "z": 2.0
+            }
+          },
+          "limitY": 2.5
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "Ordered",
+          "ratio": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_Blink",
+      "onAbilityStart": [
+        {
+          "$type": "DoBlink"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_BlinkAS",
+      "onAbilityStart": [
+        {
+          "$type": "SetSelfAttackTarget",
+          "target": "CurLocalAvatar",
+          "turnToTargetImmediately": true
+        },
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Cicin_Blink_Actions"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Fatuus_Summoner_Appear",
+          "born": {
+            "$type": "ConfigBornBySelf"
+          },
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_Die",
+      "onAdded": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "target": "Owner",
+          "ratio": 1.0,
+          "key": "_Summon_Count",
+          "useLimitRange": true,
+          "maxValue": 3.0,
+          "minValue": 0.0
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "target": "Owner",
+          "ratio": -1.0,
+          "key": "_Summon_Count",
+          "useLimitRange": true,
+          "maxValue": 3.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_ThunderShieldCreateEnergy",
+      "onAbilityStart": [
+        {
+          "$type": "AddGlobaltriggerID",
+          "target": "Owner",
+          "ratio": 1.0,
+          "key": "_ISOwner",
+          "useLimitRange": true,
+          "maxValue": 1.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AddGlobaltriggerID",
+          "target": "Owner",
+          "ratio": -1.0,
+          "key": "_Summon_Count",
+          "useLimitRange": true,
+          "maxValue": 3.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42606003,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "trackTarget": "TargetOwner"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_ThunderShieldDie",
+      "onAbilityStart": [
+        {
+          "$type": "KillSelf",
+          "amountByCasterAttackRatio": true,
+          "banExp": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_Fury",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": ["Fury"],
+          "enterActions": [
+            {
+              "$type": "SetEntityScale",
+              "scale": 2.0
+            }
+          ],
+          "exitActions": [
+            {
+              "$type": "SetEntityScale"
+            }
+          ],
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_Steer",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["NormalAtk"],
+          "endNormalizedTime": 0.75,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "attackDistance": 1.5,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Fury"],
+          "endNormalizedTime": 4.0,
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "attackDistance": 1.5,
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_CommonEffect",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAbilityStateMixin",
+          "abilityStates": ["ElementFrozen"],
+          "modifierName": "FrozenDetect"
+        }
+      ],
+      "modifiers": {
+        "FrozenDetect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": ["Wing"]
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "CommonEffect"
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Frozen",
+              "ratio": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider_Frozen"],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": ["Wing"],
+              "setEnable": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "CommonEffect"
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Frozen"
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider_Frozen"]
+            }
+          ]
+        },
+        "CommonEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_WingElement_L",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "attachPointName": "WingLeft"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_WingElement_R",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "attachPointName": "WingRight"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_BodyElement",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CommonEffect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_Element",
+      "modifiers": {
+        "Element": {
+          "modifierName": "",
+          "elementType": "Electric",
+          "bonusCritical": 50.0,
+          "isElementDurabilityMutable": false
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Element"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_TriggerOwnerDodge",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAbility",
+          "target": "Owner",
+          "predicates": [
+            {
+              "$type": "JOLJOHDJLNF",
+              "logic": "GreaterOrEqual",
+              "ratio": 6.0,
+              "PHMALDNHHLD": ""
+            }
+          ],
+          "abilityName": "Monster_Fatuus_Summoner_FindDodgePoint"
+        },
+        {
+          "$type": "TriggerAbility",
+          "target": "Owner",
+          "predicates": [
+            {
+              "$type": "JOLJOHDJLNF",
+              "logic": "Lesser",
+              "ratio": 6.0,
+              "PHMALDNHHLD": ""
+            }
+          ],
+          "abilityName": "Monster_Fatuus_Summoner_FindDodgeBackPoint"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_ThunderEnergy",
+      "modifiers": {
+        "ThunderEnergy_Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_Disappear",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ThunderEnergy_Effect"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_DisappearBS",
+          "effectTempleteID": -1.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ISOwner",
+              "ratio": 1.0
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "ThunderEnergy_Effect"
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Cicin_ThunderEnergyAS",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Cicin_Thunder_DisappearAS",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  }
+]

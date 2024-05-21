@@ -1,0 +1,814 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_SteerAttack",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Sword_ThumpAttack"],
+          "endNormalizedTime": 0.36000001430511475,
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Sword_TripleAttack"],
+          "startNormalizedTime": 0.20000000298023224,
+          "endNormalizedTime": 0.23000000417232513,
+          "angularSpeed": 720.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Sword_TripleAttack"],
+          "startNormalizedTime": 0.30000001192092896,
+          "endNormalizedTime": 0.33000001311302185,
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Sword_TripleAttack"],
+          "startNormalizedTime": 0.44999998807907104,
+          "endNormalizedTime": 0.47999998927116394,
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ShootArrow_WithPredictive",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Aim"],
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": -0.10000000149011612,
+              "y": 0.0,
+              "z": 0.4000000059604645
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngle": 60.0,
+              "speedForPredictive": 30.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ShootArrow_WithRandom",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Aim"],
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ELITEAFFIX_ATTACK_ENHANCE",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "randomAngleHor": 0.30000001192092896,
+              "randomAngleVer": 0.5,
+              "maxAngle": 60.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ELITEAFFIX_ATTACK_ENHANCE",
+              "ratio": 1.0
+            }
+          ],
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "maxAngle": 60.0,
+              "speedForPredictive": 30.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ELITEAFFIX_ATTACK_ENHANCE",
+              "ratio": 1.0
+            }
+          ],
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 5.0,
+                "z": 0.0
+              },
+              "maxAngle": 60.0,
+              "speedForPredictive": 30.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ELITEAFFIX_ATTACK_ENHANCE",
+              "ratio": 1.0
+            }
+          ],
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 10.0,
+                "z": 0.0
+              },
+              "maxAngle": 60.0,
+              "speedForPredictive": 30.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ELITEAFFIX_ATTACK_ENHANCE",
+              "ratio": 1.0
+            }
+          ],
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "angleOffset": {
+                "x": 0.0,
+                "y": -5.0,
+                "z": 0.0
+              },
+              "maxAngle": 60.0,
+              "speedForPredictive": 30.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ELITEAFFIX_ATTACK_ENHANCE",
+              "ratio": 1.0
+            }
+          ],
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "angleOffset": {
+                "x": 0.0,
+                "y": -10.0,
+                "z": 0.0
+              },
+              "maxAngle": 60.0,
+              "speedForPredictive": 30.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Hili_None_CrossBow_Arrow_BS",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ShootArrow_WithRandom_Activity",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Aim"],
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101027,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "randomAngleHor": 0.30000001192092896,
+              "randomAngleVer": 0.5,
+              "maxAngle": 60.0,
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true,
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Hili_None_CrossBow_Arrow_BS",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_Arrow_Damage",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Hili_None_CrossBow_Arrow",
+          "effectTempleteID": -1.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Owner",
+              "key": "_ELITEAFFIX_ATTACK_ENHANCE",
+              "ratio": 0.0,
+              "compareType": "NoneOrEqual"
+            }
+          ],
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -0.5
+                }
+              },
+              "size": {
+                "x": 0.10000000149011612,
+                "y": 0.10000000149011612,
+                "z": 1.0
+              }
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "strikeType": "Pierce",
+                "damage": 50.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV2",
+                "hitHaltTimeScale": 0.009999999776482582
+              },
+              "cameraShake": {
+                "shakeRange": 0.05999999865889549,
+                "shakeTime": 0.09000000357627869
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Owner",
+              "key": "_ELITEAFFIX_ATTACK_ENHANCE",
+              "ratio": 1.0
+            }
+          ],
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "checkHitLayerType": "Both",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -0.5
+                }
+              },
+              "size": {
+                "x": 0.10000000149011612,
+                "y": 0.10000000149011612,
+                "z": 1.0
+              }
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.699999988079071,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "strikeType": "Pierce",
+                "damage": 50.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV2",
+                "hitHaltTimeScale": 0.009999999776482582
+              },
+              "cameraShake": {
+                "shakeRange": 0.05999999865889549,
+                "shakeTime": 0.09000000357627869
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_Dodge",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [1401],
+          "modifierName": "Dodge"
+        }
+      ],
+      "modifiers": {
+        "Dodge": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "stateIDs": [
+                "NormalIdle",
+                "NormalMove",
+                "BeHit",
+                "BeHitThrow",
+                "Dodge"
+              ],
+              "defendTriggerID": "DodgeTrigger",
+              "defendProbability": 0.25,
+              "defendProbabilityDelta": 0.15000000596046448,
+              "defendTimeInterval": 3.75,
+              "ICOAJNCIGEN": 0,
+              "attackType": "Melee",
+              "onDefendSucceded": [
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "DodgeInvincible"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "DodgeDenyLockOn"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "DodgeSpeedup"
+                },
+                {
+                  "$type": "ClearLockTarget",
+                  "target": "CurLocalAvatar"
+                }
+              ],
+              "randomDirection": true
+            }
+          ]
+        },
+        "DodgeInvincible": {
+          "modifierName": "",
+          "duration": 0.75,
+          "bonusCritical": 100.0,
+          "state": "Invincible"
+        },
+        "DodgeDenyLockOn": {
+          "modifierName": "",
+          "duration": 1.75,
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        },
+        "DodgeSpeedup": {
+          "modifierName": "",
+          "duration": 2.25,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Animator_MoveSpeedRatio": 1.0499999523162842
+          }
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble_Effect",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "GLELJBPONCJ",
+              "filters": ["Water"],
+              "include": false
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Hili_None_PebbleBullet_BS",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ThrowPebble"],
+          "startNormalizedTime": 0.550000011920929,
+          "endNormalizedTime": 0.6200000047683716,
+          "angularSpeed": 320.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101009,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngleType": "Horizontal",
+              "maxAngle": 15.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponL"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble_Shield_Effect",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "GLELJBPONCJ",
+              "filters": ["Water"],
+              "include": false
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Hili_None_PebbleBullet_BS_Shield",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble_Shield",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["ThrowPebble_Shield"],
+          "startNormalizedTime": 0.550000011920929,
+          "endNormalizedTime": 0.6200000047683716,
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101009,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngleType": "Horizontal",
+              "maxAngle": 15.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Hili_None_ThrowPebble_Loop",
+      "modifiers": {
+        "ThrowPebble_Loop": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Hili_None_PebbleBullet",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "ThrowPebble_Loop"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "size": {
+                "x": 0.10000000149011612,
+                "y": 0.10000000149011612,
+                "z": 1.0
+              }
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "strikeType": "Blunt",
+                "damage": 40.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV2",
+                "hitHaltTimeScale": 0.009999999776482582
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "FireHitEffect",
+          "hitEntity": "",
+          "hitScene": {
+            "defaultEffect": "Eff_Monster_Hili_None_PebbleBullet_AS",
+            "surfaceEffect": {
+              "Water": "Eff_Monster_Hili_None_PebbleBullet_AS_Water"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Hili_None_SpecialActionV3_5",
+      "abilityMixins": [
+        {
+          "$type": "ServerUpdateGlobaltriggerIDMixin",
+          "key": "Start_Kneel",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "alertness": [0],
+          "modifierName": "Monster_Hili_None_SpecialActionV3_5"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Kneel_BS", "Kneel_Loop", "Kneel_AS"],
+          "modifierName": "Monster_Hili_None_SpecialFreezePos",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Hili_None_SpecialFreezePos": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "RigidBodyFreezeMixin"
+            }
+          ]
+        },
+        "Monster_Hili_None_SpecialActionV3_5": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+              "globalValueKey": "SGV_KneelStart",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["Go_KneelEmpty", "Go_Kneel"]
+            },
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "HideUIBillBoard",
+                  "hide": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "HideUIBillBoard"
+                }
+              ]
+            }
+          ]
+        },
+        "Go_KneelEmpty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Go_Kneel": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "GoKneel"
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "Start_Kneel",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      }
+    }
+  }
+]

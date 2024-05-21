@@ -1,0 +1,922 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "ControlPlatformSkill_Ability",
+      "abilityMixins": [
+        {
+          "$type": "CheckSubTagScanEntityMixin",
+          "tag": "Activity4_4",
+          "onEnterHookArea": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ControlPlatformSkill_ExtraTeamAbility"
+            }
+          ],
+          "onExitHookArea": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ControlPlatformSkill_ExtraTeamAbility"
+            }
+          ],
+          "activateSkillKey": "AVATAR_ControlPlatformSkill",
+          "HJGNNPFLNGL": "ControlPlatform"
+        },
+        {
+          "$type": "CheckSubTagScanEntityMixin",
+          "tag": "Activity4_4",
+          "onEnterHookArea": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ControlPlatformSkill_ExtraTeamAbility_Indoor"
+            }
+          ],
+          "onExitHookArea": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_ControlPlatformSkill_ExtraTeamAbility_Indoor"
+            }
+          ],
+          "activateSkillKey": "AVATAR_ControlPlatformSkill",
+          "HJGNNPFLNGL": "ControlPlatformIndoor"
+        }
+      ],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "UNIQUE_ControlPlatformCallGroup": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_ControlPlatformCallGroup",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            },
+            {
+              "$type": "ServerLuaTriggerEvent",
+              "luaCallType": "FromGroup",
+              "sourceName": "ControlPlatform",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "UNIQUE_ControlPlatformSkill_ExtraTeamAbility": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "priority": "Auto",
+              "OHMHKPOPGMI": 20058
+            }
+          ]
+        },
+        "UNIQUE_ControlPlatformSkill_ExtraTeamAbility_Indoor": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "priority": "Auto",
+              "OHMHKPOPGMI": 20058
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "otherTargets": {
+            "$type": "PBJFBODBNLD",
+            "topLimit": 1,
+            "tag": "Activity4_4"
+          },
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "modifierName": "UNIQUE_ControlPlatformCallGroup"
+            }
+          ]
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "TalkStatueSkill_Ability",
+      "abilityMixins": [
+        {
+          "$type": "CheckSubTagScanEntityMixin",
+          "tag": "Activity4_4",
+          "onEnterHookArea": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_TalkStatueSkill_ExtraTeamAbility"
+            }
+          ],
+          "onExitHookArea": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_TalkStatueSkill_ExtraTeamAbility"
+            }
+          ],
+          "activateSkillKey": "AVATAR_TalkStatueSkill",
+          "MNFOJIEFKLM": [
+            {
+              "$type": "DoWatcherSystemAction",
+              "target": "CurLocalAvatar",
+              "watcherId": 10195
+            }
+          ],
+          "HJGNNPFLNGL": "TalkStatue"
+        }
+      ],
+      "modifiers": {
+        "FireBullet": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetSelfAttackTarget",
+              "target": "Applier"
+            }
+          ]
+        },
+        "UNIQUE_TalkStatueSkill_ExtraTeamAbility": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "priority": "Auto",
+              "OHMHKPOPGMI": 20063
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "otherTargets": {
+            "$type": "NLPCMNAODBH",
+            "topLimit": 1,
+            "tag": "Activity4_4",
+            "HJGNNPFLNGL": "TalkStatue"
+          },
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "modifierName": "FireBullet"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "ratio": -1.0,
+              "key": "GV_4_4_StuffGet",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "ratio": 0.0,
+              "key": "GV_4_4_StuffGet",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetExtraAbilityState",
+              "target": "Team"
+            },
+            {
+              "$type": "DoWatcherSystemAction",
+              "target": "CurLocalAvatar",
+              "watcherId": 81445
+            }
+          ]
+        },
+        {
+          "$type": "ServerLuaCall",
+          "otherTargets": {
+            "$type": "NLPCMNAODBH",
+            "topLimit": 1,
+            "tag": "Activity4_4",
+            "HJGNNPFLNGL": "TalkStatue"
+          },
+          "luaCallType": "FromGroup",
+          "isTarget": true,
+          "funcName": "SLC_TalkStatueCallGroup",
+          "param1": 0.0,
+          "KEEFCBAAODF": 0.0,
+          "LABHKHBCHFB": 0.0,
+          "KHLHELFCHLB": "FromSource"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "TalkStatueBaseSkill_Ability",
+      "abilityMixins": [
+        {
+          "$type": "CheckSubTagScanEntityMixin",
+          "tag": "Activity4_4",
+          "onEnterHookArea": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_TalkStatueBaseSkill_ExtraTeamAbility"
+            }
+          ],
+          "onExitHookArea": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_TalkStatueBaseSkill_ExtraTeamAbility"
+            }
+          ],
+          "activateSkillKey": "AVATAR_TalkStatueBaseSkill",
+          "HJGNNPFLNGL": "TalkStatueBase"
+        }
+      ],
+      "modifiers": {
+        "UNIQUE_TalkStatueBaseSkill_ExtraTeamAbility": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "priority": "Auto",
+              "OHMHKPOPGMI": 20064
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ServerLuaCall",
+          "otherTargets": {
+            "$type": "NLPCMNAODBH",
+            "topLimit": 1,
+            "tag": "Activity4_4",
+            "HJGNNPFLNGL": "TalkStatueBase"
+          },
+          "luaCallType": "FromGroup",
+          "isTarget": true,
+          "funcName": "SLC_TalkStatueBaseCallGroup",
+          "param1": 0.0,
+          "KEEFCBAAODF": 0.0,
+          "LABHKHBCHFB": 0.0,
+          "KHLHELFCHLB": "FromSource"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "LostSamachurl_Level_Button_Down",
+      "abilityMixins": [
+        {
+          "$type": "ServerUpdateGlobalValueMixin",
+          "key": "GV_LostSamachurl_Level_Progress",
+          "useLimitRange": true,
+          "maxValue": 100.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "EnterSneakModeMixin",
+          "BGDJBKKBOOE": 24.0,
+          "OFAILMAADFP": "Sneak",
+          "KBENPENGEDP": true,
+          "OPNHGEFFCJO": true
+        },
+        {
+          "$type": "StreamingFollowCameraMixin"
+        }
+      ],
+      "modifiers": {
+        "LineLinkEye": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Applier",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_LostSamachurl_ObserverEye_01_Line",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "RootNode",
+                "attachPointTargetType": "Self"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "LineLink": {
+          "modifierName": "",
+          "duration": 0.30000001192092896,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "tag": "HiliActivityObserverEye"
+              },
+              "modifierName": "LineLinkEye"
+            }
+          ]
+        },
+        "UNIQUE_Refresh_FollowTarget": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetTargetToTargetKey",
+              "otherTargets": {
+                "$type": "NLPCMNAODBH",
+                "topLimit": 1,
+                "tag": "Activity_LostSamachurl",
+                "HJGNNPFLNGL": "HiliSearchMonster"
+              },
+              "targetKey": "FollowRuntimeID"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValueV2",
+          "target": "Team",
+          "ratio": 0.0,
+          "key": "GV_LostSamachurl_Level_Progress",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValueV2",
+          "target": "Team",
+          "ratio": 0.0,
+          "key": "GV_LostSamachurl_Level_Charging",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "content": "LostSamachurl_Level_Button_Down"
+        },
+        {
+          "$type": "ApplyModifier",
+          "otherTargets": {
+            "$type": "LOFHFECCCGG",
+            "topLimit": 1,
+            "sortType": "Nearest",
+            "tag": "HiliActivityObserverEye"
+          },
+          "cdDelta": true,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "GV_LostSamachurl_Level_Current_BtnType",
+              "ratio": 0.0
+            }
+          ],
+          "modifierName": "UNIQUE_Refresh_FollowTarget"
+        },
+        {
+          "$type": "ApplyModifier",
+          "otherTargets": {
+            "$type": "NLPCMNAODBH",
+            "topLimit": 1,
+            "tag": "Activity_LostSamachurl",
+            "HJGNNPFLNGL": "LostSamachurlGadgets"
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "GV_LostSamachurl_Level_Current_BtnType",
+              "ratio": 1.0
+            }
+          ],
+          "modifierName": "LineLink"
+        },
+        {
+          "$type": "ChangeGadgetState",
+          "otherTargets": {
+            "$type": "NLPCMNAODBH",
+            "topLimit": 1,
+            "tag": "Activity_LostSamachurl",
+            "HJGNNPFLNGL": "LostSamachurlGadgets"
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "GV_LostSamachurl_Level_Current_BtnType",
+              "ratio": 1.0
+            }
+          ],
+          "state": 201
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "LostSamachurl_Skill_Ability",
+      "abilityMixins": [
+        {
+          "$type": "CheckSubTagScanEntityMixin",
+          "tag": "Activity_LostSamachurl",
+          "onEnterHookArea": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_SetBtnState"
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "Team",
+              "ratio": 0.0,
+              "key": "GV_LostSamachurl_Level_Current_BtnType",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onExitHookArea": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_SetBtnState"
+            }
+          ],
+          "activateSkillKey": "AVATAR_LostSamachurl",
+          "HJGNNPFLNGL": "HiliSearchMonster"
+        },
+        {
+          "$type": "CheckSubTagScanEntityMixin",
+          "tag": "Activity_LostSamachurl",
+          "onEnterHookArea": [
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "Team",
+              "ratio": 1.0,
+              "key": "GV_LostSamachurl_Level_Current_BtnType",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_SetBtnState"
+            }
+          ],
+          "onExitHookArea": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_SetBtnState"
+            }
+          ],
+          "activateSkillKey": "AVATAR_LostSamachurl",
+          "MNFOJIEFKLM": [
+            {
+              "$type": "ServerLuaCall",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "BMLIEFFKDJK",
+                  "configIdArray": [70292131]
+                }
+              ],
+              "luaCallType": "FromGroup",
+              "isTarget": true,
+              "funcName": "SLC_LostSamachurlShowTutorial",
+              "paramNum": 1,
+              "param1": 2.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            },
+            {
+              "$type": "ServerLuaCall",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "BMLIEFFKDJK",
+                  "configIdArray": [70292130]
+                }
+              ],
+              "luaCallType": "FromGroup",
+              "isTarget": true,
+              "funcName": "SLC_LostSamachurlShowTutorial",
+              "paramNum": 1,
+              "param1": 3.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ],
+          "HJGNNPFLNGL": "LostSamachurlGadgets"
+        },
+        {
+          "$type": "CheckSubTagScanEntityMixin",
+          "tag": "Activity_LostSamachurl",
+          "onEnterHookArea": [
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "Team",
+              "ratio": 2.0,
+              "key": "GV_LostSamachurl_Level_Current_BtnType",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_SetBtnState"
+            }
+          ],
+          "onExitHookArea": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_SetBtnState"
+            }
+          ],
+          "activateSkillKey": "AVATAR_LostSamachurl",
+          "MNFOJIEFKLM": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "SetTargetKey"
+            }
+          ],
+          "KLGNIBBIDDE": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "ResetTargetKey"
+            }
+          ],
+          "HJGNNPFLNGL": "LostSamachurlTarget"
+        },
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "modifierName": "LostSamachurl_Is_Fail_SetVisible_Avatar"
+        }
+      ],
+      "modifiers": {
+        "SetTargetKey": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetTargetToTargetKey",
+              "otherTargets": {
+                "$type": "NLPCMNAODBH",
+                "topLimit": 1,
+                "tag": "Activity_LostSamachurl",
+                "HJGNNPFLNGL": "LostSamachurlTarget"
+              },
+              "targetKey": "LostSamachurl_Level_TargetKey"
+            }
+          ]
+        },
+        "ResetTargetKey": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "Team",
+              "ratio": 0.0,
+              "key": "LostSamachurl_Level_TargetKey_0",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "Team",
+              "ratio": 0.0,
+              "key": "LostSamachurl_Level_TargetKey_1",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetBtnUnusable": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "Team",
+              "ratio": 1.0,
+              "key": "GV_LostSamachurl_Level_Current_BtnState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetBtnUsable": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "Team",
+              "ratio": 2.0,
+              "key": "GV_LostSamachurl_Level_Current_BtnState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_SetBtnState": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobalValueMixin",
+              "globalValueTarget": "Team",
+              "globalValueKey": "AVATAR_LostSamachurl",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["SetBtnUnusable", "SetBtnUsable"],
+              "MFJNNNHGMJD": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValueV2",
+              "target": "Team",
+              "ratio": 0.0,
+              "key": "GV_LostSamachurl_Level_Current_BtnState",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "LostSamachurl_Team_Is_Fail_CloseCollider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "Invincible",
+          "onAdded": [
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "passThrough": true,
+              "includeDynamicBarrier": true
+            },
+            {
+              "$type": "TriggerHideWeapon",
+              "cdDelta": true,
+              "partNames": ["equip01", "equip02", "equip03", "sheathPoint"]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "TriggerHideWeapon",
+              "cdDelta": true,
+              "visible": true,
+              "partNames": ["equip01", "equip02", "equip03", "sheathPoint"]
+            }
+          ]
+        },
+        "LostSamachurl_Is_Fail_SetVisible_Avatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "EntityInVisibleMixin",
+              "reason": "Gallary"
+            }
+          ],
+          "state": "DenyLockOn"
+        },
+        "UNIQUE_LostSamachurl_ExtraTeamAbility": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "priority": "Auto",
+              "OHMHKPOPGMI": 20073
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "CurTeamAvatars",
+          "modifierName": "LostSamachurl_Team_Is_Fail_CloseCollider"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "LostSamachurl_Gadget_Ability",
+      "modifiers": {
+        "UNIQUE_LostSamachurl_ExtraTeamAbility_Gadget": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "priority": "Auto",
+              "OHMHKPOPGMI": 20078
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "LostSamachurl_Target_Ability",
+      "modifiers": {
+        "UNIQUE_LostSamachurl_ExtraTeamAbility_Target": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "modifierMixins": [
+            {
+              "$type": "ActivitySkillMixin",
+              "priority": "Auto",
+              "OHMHKPOPGMI": 20079
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "otherTargets": {
+                "$type": "NLPCMNAODBH",
+                "topLimit": 1,
+                "tag": "Activity_LostSamachurl",
+                "HJGNNPFLNGL": "LostSamachurlTarget"
+              },
+              "ratio": 10.0,
+              "key": "_CHARGEBAR_VALUE",
+              "useLimitRange": true,
+              "maxValue": 100.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Ability_LostSamachurl_BossBattle_Test",
+      "modifiers": {
+        "BossBattleSkillTest": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Jump"],
+              "modifierName": "DoSkill",
+              "isCheckOnAttach": true,
+              "BILMCNCKIAO": ""
+            }
+          ]
+        },
+        "DoSkill": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "LOFHFECCCGG",
+                "topLimit": 1,
+                "sortType": "Nearest",
+                "tag": "LostSamachurlFloor"
+              },
+              "cdDelta": true,
+              "modifierName": "SLC"
+            }
+          ]
+        },
+        "SLC": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "BossBattleSkillTest"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SuperJump_Test",
+      "abilityMixins": [
+        {
+          "$type": "CurLocalAvatarMixinV2",
+          "modifierName": "superjump"
+        }
+      ],
+      "modifiers": {
+        "superjump": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "RocketJumpMixin",
+              "type": "GearSpring",
+              "extention": {
+                "xzMultiplier": 15.0,
+                "yMultiplier": 20.0
+              },
+              "uiEffect": true
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  }
+]

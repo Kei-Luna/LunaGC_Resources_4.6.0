@@ -1,0 +1,1846 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_InspirationSpurt_Skill_CJB_Level01",
+      "abilitySpecials": {
+        "SpurtLevel": 0.0,
+        "InnerBaseDam": 0.0,
+        "SpurtRatio": 0.0,
+        "OuterAttenuation": 0.0,
+        "DamageSystemValue": 0.0,
+        "Dura": 0.0,
+        "ElemSubHurtDown_Rate": 0.0
+      },
+      "modifiers": {
+        "ActivityAbility_InspirationSpurt_CJB_TeamHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "SGV_SpurtTrigger",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "SGV_SpurtLevel",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "SGV_SpurtTrigger",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": [
+                "Blank",
+                "ActivityAbility_InspirationSpurt_TriggerCJB_Team"
+              ],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "ActivityAbility_InspirationSpurt_TriggerCJB_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "target": "Team",
+              "cdDelta": true,
+              "globalValueKey": "SGV_SpurtLevel",
+              "overrideMapKey": "SpurtLevel"
+            },
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Stages_Activity_InspirationSpurt_GainWave",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Activity_InspirationSpurt_CJB",
+                  "attenuationGroup": "Activity_InspirationSpurt_CJB",
+                  "NHGAFFGCPID": true,
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 100.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "InnerBaseDam",
+                      "DamageSystemValue",
+                      "MUL",
+                      "SpurtLevel",
+                      "SpurtRatio",
+                      "MUL",
+                      "DamageSystemValue",
+                      "MUL",
+                      "ADD"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 60.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Activity_InspirationSpurt_CJB",
+                  "attenuationGroup": "Activity_InspirationSpurt_CJB",
+                  "NHGAFFGCPID": true,
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 100.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "InnerBaseDam",
+                      "DamageSystemValue",
+                      "MUL",
+                      "OuterAttenuation",
+                      "MUL",
+                      "SpurtLevel",
+                      "SpurtRatio",
+                      "MUL",
+                      "DamageSystemValue",
+                      "MUL",
+                      "OuterAttenuation",
+                      "MUL",
+                      "ADD"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR60",
+                "centerBasedOn": "CurLocalAvatar",
+                "campTargetType": "Enemy",
+                "campBasedOn": "CurLocalAvatar",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                }
+              ],
+              "modifierName": "UNIQUE_MonsterAffix_Activity_InspirationSpurt_DefenseUp"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR60",
+                "centerBasedOn": "CurLocalAvatar",
+                "campTargetType": "Enemy",
+                "campBasedOn": "CurLocalAvatar",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                }
+              ],
+              "modifierName": "ActivityAbility_InspirationSpurt_CJB_Monster"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "cdDelta": true,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_SpurtReset",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "ActivityAbility_InspirationSpurt_CJB_Monster": {
+          "modifierName": "",
+          "duration": "Dura",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_FireSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_ElecSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WaterSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_GrassSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WindSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_IceSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_RockSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_PhysicalSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ]
+          },
+          "state": "DefenseDown"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "modifierName": "ActivityAbility_InspirationSpurt_CJB_TeamHandler"
+        },
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_InspirationSpurt_Skill_CJB_Level02",
+      "abilitySpecials": {
+        "SpurtLevel": 0.0,
+        "InnerBaseDam": 0.0,
+        "SpurtRatio": 0.0,
+        "OuterAttenuation": 0.0,
+        "DamageSystemValue": 0.0,
+        "Dura": 0.0,
+        "ElemSubHurtDown_Rate": 0.0
+      },
+      "modifiers": {
+        "ActivityAbility_InspirationSpurt_CJB_TeamHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "SGV_SpurtTrigger",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "SGV_SpurtLevel",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "SGV_SpurtTrigger",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": [
+                "Blank",
+                "ActivityAbility_InspirationSpurt_TriggerCJB_Team"
+              ],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "ActivityAbility_InspirationSpurt_TriggerCJB_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "target": "Team",
+              "cdDelta": true,
+              "globalValueKey": "SGV_SpurtLevel",
+              "overrideMapKey": "SpurtLevel"
+            },
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Stages_Activity_InspirationSpurt_GainWave",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Activity_InspirationSpurt_CJB",
+                  "attenuationGroup": "Activity_InspirationSpurt_CJB",
+                  "NHGAFFGCPID": true,
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 100.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "InnerBaseDam",
+                      "DamageSystemValue",
+                      "MUL",
+                      "SpurtLevel",
+                      "SpurtRatio",
+                      "MUL",
+                      "DamageSystemValue",
+                      "MUL",
+                      "ADD"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 60.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Activity_InspirationSpurt_CJB",
+                  "attenuationGroup": "Activity_InspirationSpurt_CJB",
+                  "NHGAFFGCPID": true,
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 100.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "InnerBaseDam",
+                      "DamageSystemValue",
+                      "MUL",
+                      "OuterAttenuation",
+                      "MUL",
+                      "SpurtLevel",
+                      "SpurtRatio",
+                      "MUL",
+                      "DamageSystemValue",
+                      "MUL",
+                      "OuterAttenuation",
+                      "MUL",
+                      "ADD"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR60",
+                "centerBasedOn": "CurLocalAvatar",
+                "campTargetType": "Enemy",
+                "campBasedOn": "CurLocalAvatar",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                }
+              ],
+              "modifierName": "UNIQUE_MonsterAffix_Activity_InspirationSpurt_DefenseUp"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR60",
+                "centerBasedOn": "CurLocalAvatar",
+                "campTargetType": "Enemy",
+                "campBasedOn": "CurLocalAvatar",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                }
+              ],
+              "modifierName": "ActivityAbility_InspirationSpurt_CJB_Monster"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "cdDelta": true,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_SpurtReset",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "ActivityAbility_InspirationSpurt_CJB_Monster": {
+          "modifierName": "",
+          "duration": "Dura",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_FireSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_ElecSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WaterSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_GrassSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WindSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_IceSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_RockSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_PhysicalSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ]
+          },
+          "state": "DefenseDown"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "modifierName": "ActivityAbility_InspirationSpurt_CJB_TeamHandler"
+        },
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_InspirationSpurt_Skill_CJB_Level03",
+      "abilitySpecials": {
+        "SpurtLevel": 0.0,
+        "InnerBaseDam": 0.0,
+        "SpurtRatio": 0.0,
+        "OuterAttenuation": 0.0,
+        "DamageSystemValue": 0.0,
+        "Dura": 0.0,
+        "ElemSubHurtDown_Rate": 0.0
+      },
+      "modifiers": {
+        "ActivityAbility_InspirationSpurt_CJB_TeamHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "SGV_SpurtTrigger",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "SGV_SpurtLevel",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "SGV_SpurtTrigger",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": [
+                "Blank",
+                "ActivityAbility_InspirationSpurt_TriggerCJB_Team"
+              ],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "ActivityAbility_InspirationSpurt_TriggerCJB_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "target": "Team",
+              "cdDelta": true,
+              "globalValueKey": "SGV_SpurtLevel",
+              "overrideMapKey": "SpurtLevel"
+            },
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Stages_Activity_InspirationSpurt_GainWave",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Activity_InspirationSpurt_CJB",
+                  "attenuationGroup": "Activity_InspirationSpurt_CJB",
+                  "NHGAFFGCPID": true,
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 100.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "InnerBaseDam",
+                      "DamageSystemValue",
+                      "MUL",
+                      "SpurtLevel",
+                      "SpurtRatio",
+                      "MUL",
+                      "DamageSystemValue",
+                      "MUL",
+                      "ADD"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 60.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Activity_InspirationSpurt_CJB",
+                  "attenuationGroup": "Activity_InspirationSpurt_CJB",
+                  "NHGAFFGCPID": true,
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 100.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "InnerBaseDam",
+                      "DamageSystemValue",
+                      "MUL",
+                      "OuterAttenuation",
+                      "MUL",
+                      "SpurtLevel",
+                      "SpurtRatio",
+                      "MUL",
+                      "DamageSystemValue",
+                      "MUL",
+                      "OuterAttenuation",
+                      "MUL",
+                      "ADD"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR60",
+                "centerBasedOn": "CurLocalAvatar",
+                "campTargetType": "Enemy",
+                "campBasedOn": "CurLocalAvatar",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                }
+              ],
+              "modifierName": "UNIQUE_MonsterAffix_Activity_InspirationSpurt_DefenseUp"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR60",
+                "centerBasedOn": "CurLocalAvatar",
+                "campTargetType": "Enemy",
+                "campBasedOn": "CurLocalAvatar",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                }
+              ],
+              "modifierName": "ActivityAbility_InspirationSpurt_CJB_Monster"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "cdDelta": true,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_SpurtReset",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "ActivityAbility_InspirationSpurt_CJB_Monster": {
+          "modifierName": "",
+          "duration": "Dura",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_FireSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_ElecSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WaterSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_GrassSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WindSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_IceSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_RockSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_PhysicalSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ]
+          },
+          "state": "DefenseDown"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "modifierName": "ActivityAbility_InspirationSpurt_CJB_TeamHandler"
+        },
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_InspirationSpurt_Skill_CJB_Level04",
+      "abilitySpecials": {
+        "SpurtLevel": 0.0,
+        "InnerBaseDam": 0.0,
+        "SpurtRatio": 0.0,
+        "OuterAttenuation": 0.0,
+        "DamageSystemValue": 0.0,
+        "Dura": 0.0,
+        "ElemSubHurtDown_Rate": 0.0
+      },
+      "modifiers": {
+        "ActivityAbility_InspirationSpurt_CJB_TeamHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "SGV_SpurtTrigger",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ServerUpdateGlobalValueMixin",
+              "key": "SGV_SpurtLevel",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+              "globalValueKey": "SGV_SpurtTrigger",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": [
+                "Blank",
+                "ActivityAbility_InspirationSpurt_TriggerCJB_Team"
+              ],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "ActivityAbility_InspirationSpurt_TriggerCJB_Team": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "target": "Team",
+              "cdDelta": true,
+              "globalValueKey": "SGV_SpurtLevel",
+              "overrideMapKey": "SpurtLevel"
+            },
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Stages_Activity_InspirationSpurt_GainWave",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Activity_InspirationSpurt_CJB",
+                  "attenuationGroup": "Activity_InspirationSpurt_CJB",
+                  "NHGAFFGCPID": true,
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 100.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "InnerBaseDam",
+                      "DamageSystemValue",
+                      "MUL",
+                      "SpurtLevel",
+                      "SpurtRatio",
+                      "MUL",
+                      "DamageSystemValue",
+                      "MUL",
+                      "ADD"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 60.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Activity_InspirationSpurt_CJB",
+                  "attenuationGroup": "Activity_InspirationSpurt_CJB",
+                  "NHGAFFGCPID": true,
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 100.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "InnerBaseDam",
+                      "DamageSystemValue",
+                      "MUL",
+                      "OuterAttenuation",
+                      "MUL",
+                      "SpurtLevel",
+                      "SpurtRatio",
+                      "MUL",
+                      "DamageSystemValue",
+                      "MUL",
+                      "OuterAttenuation",
+                      "MUL",
+                      "ADD"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR60",
+                "centerBasedOn": "CurLocalAvatar",
+                "campTargetType": "Enemy",
+                "campBasedOn": "CurLocalAvatar",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                }
+              ],
+              "modifierName": "UNIQUE_MonsterAffix_Activity_InspirationSpurt_DefenseUp"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR60",
+                "centerBasedOn": "CurLocalAvatar",
+                "campTargetType": "Enemy",
+                "campBasedOn": "CurLocalAvatar",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                }
+              ],
+              "modifierName": "ActivityAbility_InspirationSpurt_CJB_Monster"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "cdDelta": true,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_SpurtReset",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "ActivityAbility_InspirationSpurt_CJB_Monster": {
+          "modifierName": "",
+          "duration": "Dura",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_FireSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_ElecSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WaterSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_GrassSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_WindSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_IceSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_RockSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ],
+            "Actor_PhysicalSubHurtDelta": [
+              0.0,
+              1.0,
+              "ElemSubHurtDown_Rate",
+              "MUL",
+              "SUB"
+            ]
+          },
+          "state": "DefenseDown"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "target": "Team",
+          "modifierName": "ActivityAbility_InspirationSpurt_CJB_TeamHandler"
+        },
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_InspirationSpurt_KillMonsterTriggerCJB",
+      "abilitySpecials": {
+        "ImpactInterval": 8.0,
+        "DamageRatio": 12.0,
+        "DamageSystemValue": 0.0
+      },
+      "modifiers": {
+        "Activity_InspirationSpurt_KillMonsterTriggerCJB_Avatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByKillingMixin",
+              "detectWindow": 0.6000000238418579,
+              "onKill": [
+                {
+                  "$type": "Predicated",
+                  "target": "Other",
+                  "cdDelta": true,
+                  "targetPredicates": [
+                    {
+                      "$type": "ByEntityTypes",
+                      "entityTypes": ["Monster"]
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Team",
+                      "key": "_Activity_InspirationSpurt_KillMonsterTriggerCJB_CD",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Team",
+                      "cdDelta": true,
+                      "modifierName": "UNIQUE_Activity_InspirationSpurt_KillMonsterTriggerCJB_CD"
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "CurLocalAvatar",
+                      "cdDelta": true,
+                      "modifierName": "UNIQUE_Activity_InspirationSpurt_KillMonsterTriggerCJB_Effect"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Activity_InspirationSpurt_KillMonsterTriggerCJB_CD": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "ImpactInterval",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "_Activity_InspirationSpurt_KillMonsterTriggerCJB_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Activity_InspirationSpurt_KillMonsterTriggerCJB_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "UNIQUE_Activity_InspirationSpurt_KillMonsterTriggerCJB_Effect": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "rotationDampTime": "Eff_Avatar_ShockWave_BigSize_Grass",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 10.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "ignoreAttackerProperty": true,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "damageExtra": [
+                      "DamageRatio",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "Activity_InspirationSpurt_KillMonsterTriggerCJB_Avatar"
+        },
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_InspirationSpurt_NormalAtkTriggerCJB",
+      "abilitySpecials": {
+        "ImpactInterval": 2.0,
+        "Dot_Damage": 3.0,
+        "DamageSystemValue": 0.0
+      },
+      "modifiers": {
+        "Activity_InspirationSpurt_NormalAtkTriggerCJB_Avatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "NormalAttack_06",
+                    "ExtraAttack",
+                    "FallingAttack"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Team",
+                  "key": "Activity_InspirationSpurt_NormalAtkTriggerCJB_CD",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Team",
+                  "cdDelta": true,
+                  "modifierName": "UNIQUE_Activity_InspirationSpurt_NormalAtkTriggerCJB_CD"
+                },
+                {
+                  "$type": "Randomed",
+                  "target": "Other",
+                  "cdDelta": true,
+                  "chance": 0.5,
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Other",
+                      "cdDelta": true,
+                      "modifierName": "Activity_InspirationSpurt_NormalAtkTriggerCJB_Fire"
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Other",
+                      "cdDelta": true,
+                      "modifierName": "Activity_InspirationSpurt_NormalAtkTriggerCJB_Electric"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Activity_InspirationSpurt_NormalAtkTriggerCJB_Fire": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "cdDelta": true,
+              "rotationDampTime": "Eff_Stages_GainShieldDoDamage_Fire",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "ignoreAttackerProperty": true,
+                    "damage": 0.0,
+                    "attackType": "Melee",
+                    "damageExtra": [
+                      "Dot_Damage",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "Activity_InspirationSpurt_NormalAtkTriggerCJB_Electric": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "cdDelta": true,
+              "rotationDampTime": "Eff_Stages_GainShieldDoDamage_Electric",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Electric",
+                    "bonusCritical": 25.0,
+                    "ignoreAttackerProperty": true,
+                    "damage": 0.0,
+                    "attackType": "Melee",
+                    "damageExtra": [
+                      "Dot_Damage",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "UNIQUE_Activity_InspirationSpurt_NormalAtkTriggerCJB_CD": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "ImpactInterval",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "Activity_InspirationSpurt_NormalAtkTriggerCJB_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "Activity_InspirationSpurt_NormalAtkTriggerCJB_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "Activity_InspirationSpurt_NormalAtkTriggerCJB_Avatar"
+        },
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_InspirationSpurt_WaterReactTriggerCJB",
+      "abilitySpecials": {
+        "ImpactInterval": 4.0,
+        "Dot_Damage": 10.0,
+        "DamageSystemValue": 0.0
+      },
+      "modifiers": {
+        "Activity_InspirationSpurt_WaterReactTriggerCJB_Avatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 50.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": ["Freeze", "Shock", "Stream"],
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Other",
+                  "cdDelta": true,
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Team",
+                      "key": "Activity_InspirationSpurt_WaterReactTriggerCJB_CD",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Team",
+                      "cdDelta": true,
+                      "modifierName": "UNIQUE_Activity_InspirationSpurt_WaterReactTriggerCJB_CD"
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Other",
+                      "cdDelta": true,
+                      "modifierName": "UNIQUE_Activity_InspirationSpurt_WaterReactTriggerCJB_Effect"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Activity_InspirationSpurt_WaterReactTriggerCJB_Effect": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "cdDelta": true,
+              "rotationDampTime": "Eff_Stages_GainWave_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 0.0,
+                    "ignoreAttackerProperty": true,
+                    "damage": 25.0,
+                    "attackType": "Melee",
+                    "damageExtra": [
+                      "Dot_Damage",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "UNIQUE_Activity_InspirationSpurt_WaterReactTriggerCJB_CD": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "ImpactInterval",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "Activity_InspirationSpurt_WaterReactTriggerCJB_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "Activity_InspirationSpurt_WaterReactTriggerCJB_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "Activity_InspirationSpurt_WaterReactTriggerCJB_Avatar"
+        },
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_InspirationSpurt_SwirlTriggerCJB",
+      "abilitySpecials": {
+        "ImpactInterval": 4.0,
+        "Dot_Damage": 10.0,
+        "DamageSystemValue": 0.0
+      },
+      "modifiers": {
+        "Activity_InspirationSpurt_SwirlTriggerCJB_Avatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 50.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": [
+                "SwirlFire",
+                "SwirlWater",
+                "SwirlElectric",
+                "SwirlIce"
+              ],
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Other",
+                  "cdDelta": true,
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Team",
+                      "key": "Activity_InspirationSpurt_SwirlTriggerCJB_CD",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Team",
+                      "cdDelta": true,
+                      "modifierName": "UNIQUE_Activity_InspirationSpurt_SwirlTriggerCJB_CD"
+                    },
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Other",
+                      "cdDelta": true,
+                      "modifierName": "Activity_InspirationSpurt_SwirlTriggerCJB_Effect"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Activity_InspirationSpurt_SwirlTriggerCJB_Effect": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "cdDelta": true,
+              "rotationDampTime": "Eff_Stages_GainWave_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 0.0,
+                    "ignoreAttackerProperty": true,
+                    "damage": 25.0,
+                    "attackType": "Melee",
+                    "damageExtra": [
+                      "Dot_Damage",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "trueDamage": true,
+                    "ignoreModifyDamage": true,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV2",
+                    "hitHaltTimeScale": 0.019999999552965164
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "UNIQUE_Activity_InspirationSpurt_SwirlTriggerCJB_CD": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "ImpactInterval",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "Activity_InspirationSpurt_SwirlTriggerCJB_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Team",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "Activity_InspirationSpurt_SwirlTriggerCJB_CD",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "Activity_InspirationSpurt_SwirlTriggerCJB_Avatar"
+        },
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  }
+]

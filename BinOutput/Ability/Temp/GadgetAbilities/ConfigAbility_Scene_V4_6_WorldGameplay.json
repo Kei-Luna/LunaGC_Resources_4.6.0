@@ -1,0 +1,967 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_LanternFishPacman_WaterGlideChampOrb_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Normal"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Hide"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "Hide"
+        }
+      ],
+      "modifiers": {
+        "Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_FontaineGlideChampOrb_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Hide": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            },
+            {
+              "$type": "NJMOCHPJIKO",
+              "target": "Self"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_FontaineGlideChampOrb_01_Smash",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_Avatar_PickUp",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            },
+            {
+              "$type": "ChangeGadgetState",
+              "state": 201
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Platform"]
+                },
+                {
+                  "$type": "NJMOCHPJIKO",
+                  "target": "Self"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_FontaineGlideChampOrb_01_Smash",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "luaCallType": "FromGroup",
+                  "funcName": "SLC_RemusLanternFish_PickUp",
+                  "param1": 0.0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                },
+                {
+                  "$type": "ChangeGadgetState",
+                  "state": 202
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_LanternFishPacman_RemusLanternFish_01",
+      "abilityMixins": [
+        {
+          "$type": "PlatformMoveMixin",
+          "moveModifiers": ["move"],
+          "stopModifiers": ["stop"]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["OnStandby"],
+          "modifierName": "IsStandBy",
+          "isCheckOnAttach": true,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["OnStill"],
+          "modifierName": "IsStill",
+          "isCheckOnAttach": true,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["OnAlert"],
+          "modifierName": "IsAlert",
+          "isCheckOnAttach": true,
+          "PECBNJJKFBD": 3,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["OnWaring"],
+          "modifierName": "IsWaring",
+          "isCheckOnAttach": true,
+          "PECBNJJKFBD": 3,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["DoorOpen"],
+          "modifierName": "IsDoorOpen",
+          "isCheckOnAttach": true,
+          "PECBNJJKFBD": 1,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["DoorClose"],
+          "modifierName": "IsDoorClose",
+          "isCheckOnAttach": true,
+          "PECBNJJKFBD": 1,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDNoInitMixin",
+          "globalValueKey": "IsLightOpen",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["LightClose", "LightOpen"]
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "MouthOff"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 901,
+          "modifierName": "MouthOn"
+        }
+      ],
+      "PAFDPAGAOGO": ["SGV_REMUSLANTERNFISH_STILL_TIME"],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "move": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_Move",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Tail"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Search",
+              "ratio": true
+            }
+          ]
+        },
+        "stop": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_Retract",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Tail"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Search"
+            }
+          ]
+        },
+        "MouthOff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "DoorOpen"
+            }
+          ]
+        },
+        "MouthOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "canBeHandledOnRecover": true,
+              "boolID": "DoorOpen",
+              "ratio": true
+            }
+          ]
+        },
+        "IsStandBy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "IsLightOpen",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "IsStill": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "IsLightOpen",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "IsAlert": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "IsLightOpen",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_Shield_Appear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Tail"
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_Shield_Disappear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Tail"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "IsWaring": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "IsLightOpen",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "IsDoorOpen": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_OpenDoor",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Body"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "IsDoorClose": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_CloseDoor",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Body"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "LightOpen": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_Light",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Lamp"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "LightColorControl"
+            }
+          ]
+        },
+        "LightClose": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "LightColorControl": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobaltriggerIDMixin",
+              "globalValueKey": "SGV_IsWarning",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["LightYellow", "LightRed"],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "LightRed": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "minValue": 1,
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_Light"
+            }
+          ]
+        },
+        "LightYellow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RemusLanternFish_Light"
+            }
+          ]
+        },
+        "State_Control": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDNoInitMixin",
+              "globalValueKey": "InternalState_4_6",
+              "valueSteps": [-0.5, 0.5, 1.5, 2.5, 3.5],
+              "modifierNameSteps": [
+                "OnStandByHandle",
+                "OnStillHandle",
+                "OnStandByHandle",
+                "OnMoveHandle"
+              ]
+            }
+          ]
+        },
+        "BlankHandle": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "OnStillHandle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "FreezeState"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Resume2Standby"
+            },
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "GV_MUSICMECH_Hold",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "OnStandByHandle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "PlayerDetect"
+            },
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "GV_MUSICMECH_Hold",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ServerLuaCall",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "SGV_MUSICMECH_ACTIVE",
+                  "ratio": 1.0
+                }
+              ],
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_WB46_MovePlat_Move",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "OnMoveHandle": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Resume2Standby": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": "SGV_REMUSLANTERNFISH_STILL_TIME",
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 2.0,
+              "key": "InternalState_4_6",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "PlayerDetect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobaltriggerIDMixin",
+              "globalValueKey": "SGV_IsWarning",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["FreeState", "AlertState"],
+              "MFJNNNHGMJD": true
+            }
+          ]
+        },
+        "DetectWarning": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "RefreshWarningState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "FreezeState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "BeAttack_4_6"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "GadgetState",
+              "ratio": 202.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "canBeHandledOnRecover": true,
+              "floatID": "Speed",
+              "ratio": 0.0
+            },
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_WB46_MovePlat_Stop",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "FreeState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 2,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "GadgetState",
+              "ratio": 0.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "canBeHandledOnRecover": true,
+              "floatID": "Speed",
+              "ratio": 1.0
+            }
+          ]
+        },
+        "AlertState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 3,
+              "BGFMCENBKJD": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "canBeHandledOnRecover": true,
+              "intID": "GadgetState",
+              "ratio": 201.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "canBeHandledOnRecover": true,
+              "floatID": "Speed",
+              "ratio": 1.5
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "IS_LMS_WHALE_SCAN_TARGET"
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "IsLightOpen",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "State_Control"
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "GV_MUSICMECH_Tap",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobaltriggerIDV2",
+          "ratio": 1.0,
+          "key": "GV_MUSICMECH_Hold",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_WoodenFish_GamePlayController_01",
+      "modifiers": {
+        "WoodenFish_Handle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "minValue": 1
+              },
+              "modifierName": "WoodenFish_Walker_01"
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "minValue": 2
+              },
+              "modifierName": "WoodenFish_Walker_02"
+            },
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "minValue": 3
+              },
+              "modifierName": "WoodenFish_Watcher"
+            }
+          ]
+        },
+        "WoodenFish_Walker_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "PlatformMoveMixin",
+              "isLogicMove": true,
+              "moveModifiers": ["Walker_Move_01"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人:1号上modifier"
+            }
+          ]
+        },
+        "Walker_Move_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人:1号动"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Caster",
+              "modifierName": "Set_Move_State_01"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_Walker_Move_01",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人:1号停"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Caster",
+              "modifierName": "Set_Stop_State_01"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_Walker_Stop_01",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "Set_Move_State_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "Walker_Move_State_01",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Set_Stop_State_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "Walker_Move_State_01",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "WoodenFish_Walker_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "PlatformMoveMixin",
+              "isLogicMove": true,
+              "moveModifiers": ["Walker_Move_02"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人:2号上modifier"
+            }
+          ]
+        },
+        "Walker_Move_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人:2号动"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Caster",
+              "modifierName": "Set_Move_State_02"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_Walker_Move_02",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人:2号停"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Caster",
+              "modifierName": "Set_Stop_State_02"
+            },
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_Walker_Stop_02",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "Set_Move_State_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 1.0,
+              "key": "Walker_Move_State_02",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Set_Stop_State_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerIDV2",
+              "ratio": 0.0,
+              "key": "Walker_Move_State_02",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "WoodenFish_Watcher": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Opposite"],
+              "modifierName": "Is_Watching",
+              "BILMCNCKIAO": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人:3号上modifier"
+            }
+          ]
+        },
+        "Is_Watching": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人：开始监视"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Caster",
+              "modifierName": "Watcher_01"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人：结束监视"
+            }
+          ]
+        },
+        "Watcher_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDNoInitMixin",
+              "globalValueKey": "Walker_Move_State_01",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["Empty", "Challenge_Failed"]
+            },
+            {
+              "$type": "AttachModifierToSelfGlobaltriggerIDNoInitMixin",
+              "globalValueKey": "Walker_Move_State_02",
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["Empty", "Challenge_Failed"]
+            }
+          ]
+        },
+        "Challenge_Failed": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "木头人:挑战失败TriggerAbility"
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "Caster",
+              "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_WoodenFish_GamePlayController_02"
+            }
+          ]
+        },
+        "Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WoodenFish_Handle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_WoodenFish_GamePlayController_02",
+      "onAbilityStart": [
+        {
+          "$type": "ServerLuaCall",
+          "luaCallType": "FromGroup",
+          "funcName": "SLC_Challenge_Failed",
+          "param1": 0.0,
+          "KEEFCBAAODF": 0.0,
+          "LABHKHBCHFB": 0.0
+        }
+      ]
+    }
+  }
+]

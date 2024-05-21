@@ -1,0 +1,572 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Crossbow_AnimatorSteer",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "SingleShoot_Aim",
+            "RapidShoot_BS",
+            "ProjectileShoot_Aim01",
+            "ProjectileShoot_Aim02"
+          ],
+          "startNormalizedTime": 0.06700000166893005,
+          "endNormalizedTime": 0.12999999523162842,
+          "angularSpeed": 10.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": [
+            "SingleShoot_Fire",
+            "RapidShoot_AS",
+            "ProjectileShoot_Fire01",
+            "ProjectileShoot_Fire02"
+          ],
+          "startNormalizedTime": 0.7250000238418579,
+          "endNormalizedTime": 0.800000011920929,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["SingleShoot_Exit", "RapidShoot_AS_Loaded"],
+          "endNormalizedTime": 0.9700000286102295,
+          "angularSpeed": 160.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Alert"],
+          "angularSpeed": 270.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Crossleg_Alert"],
+          "startNormalizedTime": 0.11100000143051147,
+          "endNormalizedTime": 0.800000011920929,
+          "angularSpeed": 250.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Crossbow_ProjectileShoot_Load",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_ProjectileShoot_WarningLight",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "attachPointName": "WeaponR"
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "Predicated",
+          "predicates": [
+            {
+              "$type": "ByAny",
+              "predicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "target": "SelfAttackTarget",
+                  "ratio": 11.0,
+                  "PHMALDNHHLD": ""
+                },
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "target": "SelfAttackTarget",
+                  "compareType": "Y",
+                  "ratio": 1.2000000476837158,
+                  "PHMALDNHHLD": ""
+                }
+              ]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "ProjectileTrigger"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Crossbow_Fire_Dendro_Bomb",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_ProjectileShoot_Fire",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42520003,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngleType": "Horizontal",
+              "maxAngle": 12.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Crossbow_Fire_Dendro_Bomb_Hov",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_ProjectileShoot_Fire",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42520004,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "maxAngleType": "Horizontal",
+              "maxAngle": 12.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Crossbow_SingleShoot_Fire",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42520001,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "randomAngleHor": 0.20000000298023224,
+              "randomAngleVer": 0.4000000059604645,
+              "maxAngle": 40.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_Crossbow_Shoot_01",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Crossbow_RapidShoot_Fire",
+      "abilitySpecials": {
+        "shootingDuration": 4.0
+      },
+      "modifiers": {
+        "In_RapidShooting": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": "shootingDuration",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "RapidShootEndTrigger"
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "RapidShootEndTrigger"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42520002,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "randomAngleHor": 1.399999976158142,
+              "randomAngleVer": 0.8999999761581421,
+              "maxAngle": 30.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_Crossbow_Shoot_01",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "SetRandomOverrideMaptriggerID",
+          "triggerIDRangeMax": 5.0,
+          "triggerIDRangeMin": 2.0,
+          "overrideMapKey": "shootingDuration"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "In_RapidShooting"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremit_Crossbow_Arrow_Damage",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Hili_None_CrossBow_Arrow",
+          "effectTempleteID": -1.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -0.5
+                }
+              },
+              "size": {
+                "x": 0.10000000149011612,
+                "y": 0.10000000149011612,
+                "z": 1.0
+              }
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "strikeType": "Pierce",
+                "damage": 50.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV2",
+                "hitHaltTimeScale": 0.009999999776482582
+              },
+              "cameraShake": {
+                "shakeRange": 0.05999999865889549,
+                "shakeTime": 0.09000000357627869
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremit_Crossbow_Arrow_Damage_Weak",
+      "onAdded": [
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Hili_None_CrossBow_Arrow",
+          "effectTempleteID": -1.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": -0.5
+                }
+              },
+              "size": {
+                "x": 0.10000000149011612,
+                "y": 0.10000000149011612,
+                "z": 1.0
+              }
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.6499999761581421,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "strikeType": "Pierce",
+                "damage": 50.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV2",
+                "hitHaltTimeScale": 0.009999999776482582
+              },
+              "cameraShake": {
+                "shakeRange": 0.05999999865889549,
+                "shakeTime": 0.09000000357627869
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremit_Crossbow_Dendro_Bomb_Display",
+      "modifiers": {
+        "UNIQUE_Dendro_Bomb_Display": {
+          "modifierName": "",
+          "isUnique": true,
+          "elementType": "Grass",
+          "bonusCritical": 50.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_DendroBomb",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Dendro_Bomb_Display"
+        },
+        {
+          "$type": "AttachEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_DendroBomb_Trail",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremit_Crossbow_Dendro_Bomb_Explosion",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_Dendro_Bomb_Display"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_DendroBomb_Explosion",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "onGround": true,
+            "alongGround": true
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.25,
+                  "z": 0.0
+                },
+                "onGround": true,
+                "alongGround": true
+              },
+              "radius": 2.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.699999988079071,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Grass",
+                "bonusCritical": 50.0,
+                "strikeType": "Default",
+                "damage": 50.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3"
+              },
+              "cameraShake": {
+                "shakeRange": 0.05999999865889549,
+                "shakeTime": 0.09000000357627869
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "CreateGadget",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "onGround": true,
+            "alongGround": true
+          },
+          "gadgetID": 42520005
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Eremite_Crossbow_Dendro_Bomb_Infection",
+      "modifiers": {
+        "Dendro_Bomb_Infection": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Eremite_DendroBomb_Remains_Loop",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "radius": 2.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Group1",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.20000000298023224,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "damage": 0.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV1"
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Dendro_Bomb_Infection"
+        }
+      ]
+    }
+  }
+]

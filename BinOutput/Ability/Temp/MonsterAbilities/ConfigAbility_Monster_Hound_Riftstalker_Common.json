@@ -1,0 +1,288 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Hound_Riftstalker_RunState",
+      "modifiers": {
+        "Run_RandomtriggerID": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Randomed",
+              "chance": 0.30000001192092896,
+              "successActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "minValue": "RunRandom"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Run_RandomtriggerID"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Hound_Corruption_LoseHP",
+      "modifiers": {
+        "Hound_Corruption_LoseHP_AttackCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Hound_Corruption_Tag"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "TargetTeam",
+                  "predicates": [
+                    {
+                      "$type": "ByNot",
+                      "predicates": [
+                        {
+                          "$type": "DMGCINEBAFB"
+                        }
+                      ]
+                    }
+                  ],
+                  "modifierName": "Hound_Corruption_LoseHP_Logic"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "target": "TargetTeam",
+                  "predicates": [
+                    {
+                      "$type": "ByNot",
+                      "predicates": [
+                        {
+                          "$type": "DMGCINEBAFB"
+                        }
+                      ]
+                    }
+                  ],
+                  "modifierName": "UNIQUE_Hound_Corruption_LoseHP_Effect_LocalHandler"
+                }
+              ]
+            }
+          ]
+        },
+        "Hound_Corruption_LoseHP_Logic": {
+          "timeScale": "Level",
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 9.5,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "state": "UnlockFrequencyLimit",
+          "onAdded": [
+            {
+              "$type": "LoseHP",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "CKJNCONHFNH"
+                    }
+                  ]
+                },
+                {
+                  "$type": "JAEEKGKDNDI",
+                  "ratio": 0.15000000596046448
+                },
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "LKDJMGOJHAH": 0.0,
+              "OLMENJCGGJJ": 0.004999999888241291,
+              "lethal": false,
+              "enableInvincible": true,
+              "enableLockHP": true,
+              "disableWhenLoading": true,
+              "useMeta": true,
+              "MIIHJFFDKKC": ""
+            },
+            {
+              "$type": "LoseHP",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "CKJNCONHFNH"
+                },
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "LKDJMGOJHAH": 0.0,
+              "OLMENJCGGJJ": 0.004999999888241291,
+              "enableInvincible": true,
+              "enableLockHP": true,
+              "disableWhenLoading": true,
+              "useMeta": true,
+              "MIIHJFFDKKC": ""
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "LoseHP",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "CKJNCONHFNH"
+                    }
+                  ]
+                },
+                {
+                  "$type": "JAEEKGKDNDI",
+                  "ratio": 0.15000000596046448
+                },
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "LKDJMGOJHAH": 0.0,
+              "OLMENJCGGJJ": 0.004999999888241291,
+              "lethal": false,
+              "enableInvincible": true,
+              "enableLockHP": true,
+              "disableWhenLoading": true,
+              "useMeta": true,
+              "MIIHJFFDKKC": ""
+            },
+            {
+              "$type": "LoseHP",
+              "target": "CurTeamAvatars",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "CKJNCONHFNH"
+                },
+                {
+                  "$type": "PIJDLFEPGPD"
+                }
+              ],
+              "LKDJMGOJHAH": 0.0,
+              "OLMENJCGGJJ": 0.004999999888241291,
+              "enableInvincible": true,
+              "enableLockHP": true,
+              "disableWhenLoading": true,
+              "useMeta": true,
+              "MIIHJFFDKKC": ""
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true,
+          "modifierTags": ["Corruption"]
+        },
+        "UNIQUE_Hound_Corruption_LoseHP_Effect_LocalHandler": {
+          "stacking": "RefreshUniqueDurability",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 9.5,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "Hound_Corruption_LoseHP_Effect"
+            },
+            {
+              "$type": "LocalAvatarsMixin",
+              "modifierName": "Hound_Corruption_LoseHP_Icon"
+            }
+          ],
+          "modifierTags": ["Corruption"]
+        },
+        "Hound_Corruption_LoseHP_Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Common_Corruption_LoseHP",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Stage",
+              "attachPoint": "",
+              "type": "Int",
+              "minValue": 2,
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Common_Corruption_LoseHP"
+            }
+          ]
+        },
+        "Hound_Corruption_LoseHP_Icon": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "buffID": 90005
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Hound_Corruption_LoseHP_AttackCheck"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Hound_Riftstalker_ExitBattle",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "alertness": [0],
+          "modifierName": "ExitBattle"
+        }
+      ],
+      "modifiers": {
+        "ExitBattle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "_Riftstalker_POSE_TAG_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetChargeBartriggerID",
+              "ratio": 0.0
+            }
+          ]
+        }
+      }
+    }
+  }
+]

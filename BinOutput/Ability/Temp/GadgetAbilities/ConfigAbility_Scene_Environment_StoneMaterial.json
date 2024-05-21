@@ -1,0 +1,1072 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePillar",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 10.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StonePillar_01_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StonePillar_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StoneWall",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 10.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePile",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 10.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StonePile_01_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StonePillar_01_Broken",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_Stone",
+      "modifiers": {
+        "StoneHit": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onCrash": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByTarget",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    }
+                  },
+                  "radius": 1.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 1.0,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Rock",
+                    "bonusCritical": 50.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV6",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 10.0,
+                      "hitImpulseY": 10.0
+                    },
+                    "hitHaltTimeScale": 0.05000000074505806
+                  },
+                  "cameraShake": {
+                    "shakeRange": 0.36000001430511475,
+                    "shakeTime": 0.36000001430511475
+                  }
+                }
+              },
+              "targetType": "All"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Stone_Destroy",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "StoneHit"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Stone_RuinStonePile_02",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 25.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_RuinStonePile_01_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePileWorld",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 25.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePileWorld01",
+      "modifiers": {
+        "BeHitBlunt1": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 500.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt1"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Broken_StonePile",
+      "modifiers": {
+        "Broken_StonePile": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "gadgetState",
+              "ratio": 201.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Broken_StonePile"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": -4.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "RootNode"
+              },
+              "size": {
+                "x": 8.0,
+                "y": 1.5,
+                "z": 1.5
+              },
+              "muteHitBehindScene": true
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 30.0,
+                "strikeType": "Default",
+                "damage": 900.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV4",
+                "overrideHitImpulse": {
+                  "hitLevel": "Air",
+                  "BLHKKKALNDK": 800.0,
+                  "hitImpulseY": 0.0
+                },
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.05000000074505806
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePileDungeon",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 25.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Dungeon_StonePillar_Destory",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StoneStackDungeon",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 25.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Dungeon_StoneStack01_Destory",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 0.0,
+                  "y": -3.0,
+                  "z": 0.0
+                }
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_FlyFloor",
+      "modifiers": {
+        "Floor": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_FlyingStone_Disapear",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetAnimatorInt",
+          "intID": "Has_Born",
+          "ratio": 1.0
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_FlyingStone_Appear",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Floor"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_FlyFloorBlue",
+      "modifiers": {
+        "Floor": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_FlyingStoneBlue_Disapear",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetAnimatorInt",
+          "intID": "Has_Born",
+          "ratio": 1.0
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_FlyingStoneBlue_Appear",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Floor"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Task_Rock_Pierce",
+      "modifiers": {
+        "BeHitPierce": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 10.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StonePillar_01_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "HNPGJLFFLHF",
+                  "strikeType": "Pierce"
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StonePillar_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitPierce"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_SaviorStone",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Default_0"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "GearStart_201"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "GearStop_202"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 203,
+          "modifierName": "GearAction01_203"
+        }
+      ],
+      "modifiers": {
+        "Default_0": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "GearStart_201": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 70360072,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 180.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "ShootPoint1"
+              }
+            }
+          ]
+        },
+        "GearStop_202": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 70360072,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "ShootPoint2"
+              }
+            }
+          ]
+        },
+        "GearAction01_203": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 70360072,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "attachPointName": "ShootPoint3"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_SaviorStone_Fragment",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByAttackNotHitScene",
+                  "attackPattern": {
+                    "$type": "ConfigAttackSphere",
+                    "triggerType": "TriggerNoRepeat",
+                    "born": {
+                      "$type": "ConfigBornBySelf"
+                    },
+                    "radius": 2.0
+                  },
+                  "checkWaterLayer": true
+                }
+              ]
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_Drop_Rock_Hit",
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "onGround": true,
+            "attachPointName": "attachPoint"
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "KillSelf",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByAttackNotHitScene",
+                  "attackPattern": {
+                    "$type": "ConfigAttackSphere",
+                    "triggerType": "TriggerNoRepeat",
+                    "born": {
+                      "$type": "ConfigBornBySelf"
+                    },
+                    "radius": 2.0
+                  },
+                  "checkWaterLayer": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Prop_WaterStoneObstacle_01",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 10.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_WaterStoneObstacle_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_WaterStoneObstacle_01_Broken",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  }
+]

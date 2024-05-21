@@ -1,0 +1,4742 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Foliage_Dandelion_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "DandelionHide"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "DandelionShow"
+        }
+      ],
+      "modifiers": {
+        "DandelionHide": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["DandelionFlower", "DandelionBed"]
+            }
+          ]
+        },
+        "DandelionShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["DandelionFlower", "DandelionBed"],
+              "setEnable": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Foliage_WindmilDaisy_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "WindmilDaisyHide"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "WindmilDaisyShow"
+        }
+      ],
+      "modifiers": {
+        "WindmilDaisyHide": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["WindmilDaisy"]
+            }
+          ]
+        },
+        "WindmilDaisyShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["WindmilDaisy"],
+              "setEnable": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Foliage_Cecilia_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "CeciliaHide"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "CeciliaShow"
+        }
+      ],
+      "modifiers": {
+        "CeciliaHide": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Cecilia"]
+            }
+          ]
+        },
+        "CeciliaShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Cecilia"],
+              "setEnable": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Foliage_ImitationGrass_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "ImitationGrassHide"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "ImitationGrassShow"
+        }
+      ],
+      "modifiers": {
+        "ImitationGrassHide": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["ImitationGrass"]
+            }
+          ]
+        },
+        "ImitationGrassShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["ImitationGrass"],
+              "setEnable": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Foliage_Whiteballet_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "WhiteballetHide"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "WhiteballetShow"
+        }
+      ],
+      "modifiers": {
+        "WhiteballetHide": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Whiteballet"]
+            }
+          ]
+        },
+        "WhiteballetShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Whiteballet"],
+              "setEnable": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Foliage_GogoFruit_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "GogoFruitHide"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "GogoFruitShow"
+        }
+      ],
+      "modifiers": {
+        "GogoFruitHide": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["GogoFruit"]
+            }
+          ]
+        },
+        "GogoFruitShow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["GogoFruit"],
+              "setEnable": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Environment_Rock_StonePileQuest_Hard",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "showDamageText": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Destroy",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "HNPGJLFFLHF"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "Pierce"
+                    },
+                    {
+                      "$type": "HNPGJLFFLHF",
+                      "strikeType": "None"
+                    }
+                  ]
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_StoneWall_01_Broken",
+              "born": {
+                "$type": "ConfigBornByTarget"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "BeHitBlunt"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Dq_Property_Ani_Foliage_Shrub_01_Ability",
+      "modifiers": {
+        "GrassMaterial": {
+          "modifierName": "",
+          "elementType": "Wood",
+          "bonusCritical": 30.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 1.0,
+              "key": "_ABILITY_BURNING_IGNITE_ONLY",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Bush_Death_Type",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Quest_Foliage_Shrub_01_Burnt",
+                  "born": {
+                    "$type": "BANDHMAGECH",
+                    "offset": {
+                      "x": 0.0,
+                      "y": -0.20000000298023224,
+                      "z": 0.0
+                    },
+                    "onGround": true
+                  },
+                  "effectTempleteID": -1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Quest_Foliage_Shrub_01_Destroy",
+                  "born": {
+                    "$type": "BANDHMAGECH",
+                    "offset": {
+                      "x": 0.0,
+                      "y": -0.20000000298023224,
+                      "z": 0.0
+                    },
+                    "onGround": true
+                  },
+                  "effectTempleteID": -1.0
+                }
+              ]
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["ExplodeDamage"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Quest_Foliage_Shrub_01_Destroy",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "KillSelf"
+                }
+              ]
+            },
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 0.0,
+              "key": "_Bush_Death_Type",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 1.0,
+              "key": "_Bush_Attack_Count",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Shake"
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "BAAFGCJBAPM",
+                  "element": "Fire",
+                  "durability": 10.0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "ratio": 1.0,
+                  "key": "_Bush_Death_Type",
+                  "useLimitRange": true,
+                  "maxValue": 1.0,
+                  "minValue": 0.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "RemoveModifier",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Bush_Attack_Count",
+                      "ratio": 2.0
+                    }
+                  ],
+                  "modifierName": "GrassMaterial"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "GrassMaterial"
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Bush_Attack_Count",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Prop_RockDoorHidden_01_Ability",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Full"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Death"
+        }
+      ],
+      "modifiers": {
+        "Full": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Death": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Quest_Seal_Side_Yellow",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "ShowWhiteEff"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "ShowEff"
+        }
+      ],
+      "modifiers": {
+        "ShowWhiteEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "UnActive"
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Squama"]
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "TickAttachEff"
+            }
+          ]
+        },
+        "TickAttachEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff"
+            }
+          ]
+        },
+        "TargetEff": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Applier",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_CampSealGear_01_Chains_White",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint",
+                "attachPointTargetType": "Self"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ShowEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Active"
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Squama"],
+              "setEnable": true
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "TickAttachEff2"
+            }
+          ]
+        },
+        "TickAttachEff2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff2"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff2"
+            }
+          ]
+        },
+        "TargetEff2": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Applier",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_CampSealGear_01_Chains_Yellow",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint",
+                "attachPointTargetType": "Self"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Quest_Seal_Side_Red",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "ShowWhiteEff"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "ShowEff"
+        }
+      ],
+      "modifiers": {
+        "ShowWhiteEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "UnActive"
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Squama"]
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "TickAttachEff"
+            }
+          ]
+        },
+        "TickAttachEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff_RED"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff_RED"
+            }
+          ]
+        },
+        "TargetEff_RED": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Applier",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_CampSealGear_01_Chains_White",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint",
+                "attachPointTargetType": "Self"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ShowEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Active"
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Squama"],
+              "setEnable": true
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "TickAttachEff2"
+            }
+          ]
+        },
+        "TickAttachEff2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff_RED2"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff_RED2"
+            }
+          ]
+        },
+        "TargetEff_RED2": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Applier",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_CampSealGear_01_Chains_Red",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint",
+                "attachPointTargetType": "Self"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Quest_Seal_Side_Blue",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "ShowWhiteEff"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "ShowEff"
+        }
+      ],
+      "modifiers": {
+        "ShowWhiteEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "UnActive"
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Squama"]
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "TickAttachEff"
+            }
+          ]
+        },
+        "TickAttachEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff_Bule"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff_Bule"
+            }
+          ]
+        },
+        "TargetEff_Bule": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Applier",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_CampSealGear_01_Chains_White",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint",
+                "attachPointTargetType": "Self"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ShowEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Active"
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Squama"],
+              "setEnable": true
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "TickAttachEff2"
+            }
+          ]
+        },
+        "TickAttachEff2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff_Bule2"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "otherTargets": {
+                "$type": "BCLBMPBNHKO",
+                "operation": "AND",
+                "value": 16
+              },
+              "modifierName": "TargetEff_Bule2"
+            }
+          ]
+        },
+        "TargetEff_Bule2": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Applier",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_CampSealGear_01_Chains_Blue",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "AttachPoint",
+                "attachPointTargetType": "Self"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Quest_Seal_Center",
+      "modifiers": {
+        "BeHitBlunt": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "Is_Center_Seal",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Prop_Scarecrow_02_Ability",
+      "modifiers": {
+        "Scarecrow_Boom02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_Scarecrow_02_Appear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "Hitbox"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Scarecrow_Boom02"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Prop_Scarecrow_01_Ability",
+      "modifiers": {
+        "Scarecrow_Boom01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_Scarecrow_01_Appear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "Hitbox"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Scarecrow_Boom01"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Quest_Invisible_Water_Trigger",
+      "modifiers": {
+        "Default": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_SiteInteract_Event",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Water"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Default"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Quest_Invisible_Fire_Trigger",
+      "modifiers": {
+        "Default": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_SiteInteract_Event",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "ByHitElement",
+                  "element": "Fire"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Default"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Dq_Property_Ani_Prop_Fence_01_Ability",
+      "modifiers": {
+        "RoadBlock_Burning": {
+          "modifierName": "",
+          "elementType": "Wood",
+          "bonusCritical": 30.0,
+          "isElementDurabilityMutable": false,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByEventMixin",
+              "type": "Current",
+              "onAbilityStateAdded": [
+                {
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "AttachModifier",
+                      "modifierName": "Burning_Effect"
+                    }
+                  ]
+                }
+              ],
+              "onAbilityStateRemoved": [
+                {
+                  "abilityState": "ElementBurning",
+                  "actions": [
+                    {
+                      "$type": "RemoveModifier",
+                      "modifierName": "Burning_Effect"
+                    }
+                  ]
+                }
+              ],
+              "costEnergyDeltaName": ""
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Burning_Effect"
+            }
+          ]
+        },
+        "Burning_Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Element_Burning",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AddGlobalValue",
+          "ratio": 2.0,
+          "key": "_CUSTOM_ATTACK_SHAPE_TYPE",
+          "useLimitRange": true,
+          "maxValue": 2.0,
+          "minValue": 2.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "RoadBlock_Burning"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Ly_Property_Ani_Prop_QunyugeEngineCore",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Active"],
+          "modifierName": "ActiveState",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "ActiveState": {
+          "modifierName": "",
+          "duration": 5.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_QunyugeEngineCore_01_Active",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Level_Xm_Property_Ani_Prop_ControlBoard_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Switch_LightOn"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Swtich_LightOff"
+        }
+      ],
+      "modifiers": {
+        "Switch_LightOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlBoard_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "matName1",
+              "GGGADBNBNDN": "_EmissionStrength",
+              "ratio": 1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_ControlBoard_01_Disappear",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "matName1",
+              "GGGADBNBNDN": "_EmissionStrength",
+              "ratio": 0.30000001192092896
+            }
+          ]
+        },
+        "Swtich_LightOff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "matName1",
+              "GGGADBNBNDN": "_EmissionStrength",
+              "ratio": 0.30000001192092896
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_KnowledgeJar_01_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 1,
+          "modifierName": "SetGVTo0"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "SetGVTo201"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 901,
+          "modifierName": "SetGVTo901"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 902,
+          "modifierName": "SetGVTo902"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 1.5, 902.5],
+          "modifierNameSteps": ["StayState", "ActiveState"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "GV_State",
+          "valueSteps": [900.5, 901.5, 902.5],
+          "modifierNameSteps": ["ListenAvatar", "ListenGadget"]
+        }
+      ],
+      "modifiers": {
+        "WoodState": {
+          "modifierName": "",
+          "elementType": "Wood",
+          "bonusCritical": 50.0,
+          "isElementDurabilityMutable": false
+        },
+        "SetGVTo0": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo201": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 201.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo901": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 901.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo902": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 902.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_06",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_03",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_State",
+                  "ratio": 0.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_04",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ListenAvatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ConnectLineMixin",
+              "repeaterModifier": "ActiveLine",
+              "collectorModifier": "ActiveLine",
+              "collectorGlobalvalueKey": "isTerminal",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "sortType": "Nearest",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ]
+            }
+          ]
+        },
+        "ActiveLine": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Disappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ]
+        },
+        "UNIQUE_KnowledgeJar01_ConnectLine": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Applier"
+              },
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_State",
+                  "ratio": 901.0
+                }
+              ],
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ]
+        },
+        "CancelConnectLine": {
+          "modifierName": "",
+          "duration": 1.100000023841858,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Disappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_KnowledgeJar01_ConnectLine"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "KnowledgeJarTargetLine"
+            }
+          ]
+        },
+        "ListenGadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "EMFOAGGLKKH",
+                      "tag": "KnowledgeJarTarget"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KnowledgeJarTarget",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "KnowledgeJarTargetLine"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "EMFOAGGLKKH",
+                      "tag": "KnowledgeJarTarget"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KnowledgeJarTarget",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "CancelConnectLine"
+            }
+          ]
+        },
+        "KnowledgeJarTargetLine": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Applier"
+              },
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "WoodState"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "RemoveModifier",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "LMBGIDDHLDM",
+                  "modifierName": "CancelConnectLine"
+                }
+              ],
+              "modifierName": "CancelConnectLine"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Target",
+              "modifierName": "UNIQUE_KnowledgeJar01_ConnectLine"
+            }
+          ]
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "modifierName": "CancelConnectLine"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_KnowledgeJar_01_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 1,
+          "modifierName": "SetGVTo0"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "SetGVTo201"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 901,
+          "modifierName": "SetGVTo901"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 902,
+          "modifierName": "SetGVTo902"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 1.5, 902.5],
+          "modifierNameSteps": ["StayState", "ActiveState"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "GV_State",
+          "valueSteps": [900.5, 901.5, 902.5],
+          "modifierNameSteps": ["ListenAvatar", "ListenGadget"]
+        }
+      ],
+      "modifiers": {
+        "WoodState": {
+          "modifierName": "",
+          "elementType": "Wood",
+          "bonusCritical": 50.0,
+          "isElementDurabilityMutable": false
+        },
+        "SetGVTo0": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo201": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 201.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo901": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 901.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo902": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 902.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_01",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_03",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_State",
+                  "ratio": 0.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_04",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ListenAvatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ConnectLineMixin",
+              "repeaterModifier": "ActiveLine",
+              "collectorModifier": "ActiveLine",
+              "collectorGlobalvalueKey": "isTerminal",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "sortType": "Nearest",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ]
+            }
+          ]
+        },
+        "ActiveLine": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Disappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ]
+        },
+        "UNIQUE_KnowledgeJar01_ConnectLine": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Applier"
+              },
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_State",
+                  "ratio": 901.0
+                }
+              ],
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ]
+        },
+        "CancelConnectLine": {
+          "modifierName": "",
+          "duration": 1.100000023841858,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Disappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_KnowledgeJar01_ConnectLine"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "KnowledgeJarTargetLine"
+            }
+          ]
+        },
+        "ListenGadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "EMFOAGGLKKH",
+                      "tag": "KnowledgeJarTarget"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KnowledgeJarTarget",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "KnowledgeJarTargetLine"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "EMFOAGGLKKH",
+                      "tag": "KnowledgeJarTarget"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KnowledgeJarTarget",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "CancelConnectLine"
+            }
+          ]
+        },
+        "KnowledgeJarTargetLine": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_01_05",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Applier"
+              },
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "WoodState"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "RemoveModifier",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "LMBGIDDHLDM",
+                  "modifierName": "CancelConnectLine"
+                }
+              ],
+              "modifierName": "CancelConnectLine"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Target",
+              "modifierName": "UNIQUE_KnowledgeJar01_ConnectLine"
+            }
+          ]
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "modifierName": "CancelConnectLine"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_KnowledgeJar_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 1,
+          "modifierName": "SetGVTo0"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "SetGVTo201"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 901,
+          "modifierName": "SetGVTo901"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 902,
+          "modifierName": "SetGVTo902"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 1.5, 902.5],
+          "modifierNameSteps": ["StayState", "ActiveState"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "GV_State",
+          "valueSteps": [900.5, 901.5, 902.5],
+          "modifierNameSteps": ["ListenAvatar", "ListenGadget"]
+        }
+      ],
+      "modifiers": {
+        "WoodState": {
+          "modifierName": "",
+          "elementType": "Wood",
+          "bonusCritical": 50.0,
+          "isElementDurabilityMutable": false
+        },
+        "SetGVTo0": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo201": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 201.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo901": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 901.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo902": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 902.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_06",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_03",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_State",
+                  "ratio": 0.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_04",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ListenAvatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ConnectLineMixin",
+              "repeaterModifier": "ActiveLine",
+              "collectorModifier": "ActiveLine",
+              "collectorGlobalvalueKey": "isTerminal",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "sortType": "Nearest",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ]
+            }
+          ]
+        },
+        "ActiveLine": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_05"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Disappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_05"
+            }
+          ]
+        },
+        "UNIQUE_KnowledgeJar02_ConnectLine": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_05",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Applier"
+              },
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_State",
+                  "ratio": 901.0
+                }
+              ],
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_05"
+            }
+          ]
+        },
+        "CancelConnectLine": {
+          "modifierName": "",
+          "duration": 1.100000023841858,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Disappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_05"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_KnowledgeJar02_ConnectLine"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "KnowledgeJarTargetLine"
+            }
+          ]
+        },
+        "ListenGadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "EMFOAGGLKKH",
+                      "tag": "KnowledgeJarTarget"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KnowledgeJarTarget",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "KnowledgeJarTargetLine"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "EMFOAGGLKKH",
+                      "tag": "KnowledgeJarTarget"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KnowledgeJarTarget",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "CancelConnectLine"
+            }
+          ]
+        },
+        "KnowledgeJarTargetLine": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_05",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Applier"
+              },
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_02_05"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "WoodState"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "RemoveModifier",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "LMBGIDDHLDM",
+                  "modifierName": "CancelConnectLine"
+                }
+              ],
+              "modifierName": "CancelConnectLine"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Target",
+              "modifierName": "UNIQUE_KnowledgeJar02_ConnectLine"
+            }
+          ]
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "modifierName": "CancelConnectLine"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_KnowledgeJar_03",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 1,
+          "modifierName": "SetGVTo0"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "SetGVTo201"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 901,
+          "modifierName": "SetGVTo901"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 902,
+          "modifierName": "SetGVTo902"
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 1.5, 902.5],
+          "modifierNameSteps": ["StayState", "ActiveState"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "GV_State",
+          "valueSteps": [900.5, 901.5, 902.5],
+          "modifierNameSteps": ["ListenAvatar", "ListenGadget"]
+        }
+      ],
+      "modifiers": {
+        "WoodState": {
+          "modifierName": "",
+          "elementType": "Wood",
+          "bonusCritical": 50.0,
+          "isElementDurabilityMutable": false
+        },
+        "SetGVTo0": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo201": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 201.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo901": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 901.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SetGVTo902": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 902.0,
+              "key": "GV_State",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_06",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_03",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_State",
+                  "ratio": 0.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_04",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ListenAvatar": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ConnectLineMixin",
+              "repeaterModifier": "ActiveLine",
+              "collectorModifier": "ActiveLine",
+              "collectorGlobalvalueKey": "isTerminal",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "sortType": "Nearest",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ]
+            }
+          ]
+        },
+        "ActiveLine": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_05"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Disappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_05"
+            }
+          ]
+        },
+        "UNIQUE_KnowledgeJar03_ConnectLine": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_05",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Applier"
+              },
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "GV_State",
+                  "ratio": 901.0
+                }
+              ],
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_05"
+            }
+          ]
+        },
+        "CancelConnectLine": {
+          "modifierName": "",
+          "duration": 1.100000023841858,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Disappear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_05"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_KnowledgeJar03_ConnectLine"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "KnowledgeJarTargetLine"
+            }
+          ]
+        },
+        "ListenGadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "EMFOAGGLKKH",
+                      "tag": "KnowledgeJarTarget"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KnowledgeJarTarget",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "KnowledgeJarTargetLine"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "EMFOAGGLKKH",
+                      "tag": "KnowledgeJarTarget"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "KnowledgeJarTarget",
+                      "ratio": 1.0,
+                      "compareType": "MoreThanAndEqual"
+                    }
+                  ]
+                }
+              ],
+              "modifierName": "CancelConnectLine"
+            }
+          ]
+        },
+        "KnowledgeJarTargetLine": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_05",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "attachPoint",
+                "attachPointTargetType": "Applier"
+              },
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Appear",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_KnowledgeJar_03_05"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "WoodState"
+        }
+      ],
+      "onFieldEnter": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "RemoveModifier",
+              "target": "Target",
+              "predicates": [
+                {
+                  "$type": "LMBGIDDHLDM",
+                  "modifierName": "CancelConnectLine"
+                }
+              ],
+              "modifierName": "CancelConnectLine"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Target",
+              "modifierName": "UNIQUE_KnowledgeJar03_ConnectLine"
+            }
+          ]
+        }
+      ],
+      "onFieldExit": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["Avatar"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Target",
+              "modifierName": "CancelConnectLine"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Prop_KnowledgeJar_TargetPoint",
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "KnowledgeJarTarget"
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "KnowledgeJarTarget",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Ly_Property_Prop_Scarecrow_01_Ability",
+      "abilitySpecials": {
+        "PerHitLoseHp": 0.07999999821186066
+      },
+      "modifiers": {
+        "Scarecrow_Boom02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_Scarecrow_02_Appear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "HitBox"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "DieByHit": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "LockHP",
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Scarecrow_01_Hit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "LoseHP",
+              "predicates": [
+                {
+                  "$type": "JAEEKGKDNDI",
+                  "target": "Self",
+                  "ratio": "PerHitLoseHp"
+                }
+              ],
+              "OLMENJCGGJJ": "PerHitLoseHp",
+              "MIIHJFFDKKC": ""
+            },
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "JAEEKGKDNDI",
+                  "target": "Self",
+                  "logic": "LesserOrEqual",
+                  "ratio": "PerHitLoseHp"
+                }
+              ]
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Scarecrow_01_Destroy",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Scarecrow_Boom02"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DieByHit"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Ly_Property_Prop_Scarecrow_02_Ability",
+      "abilitySpecials": {
+        "PerHitLoseHp": 0.07999999821186066
+      },
+      "modifiers": {
+        "Scarecrow_Boom02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_Scarecrow_01_Appear",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "attachPointName": "HitBox"
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "DieByHit": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "LockHP",
+          "onBeingHit": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Scarecrow_01_Hit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "CallLuaTask",
+              "targetAlias": "19047",
+              "valueInt": 1,
+              "valueString": ""
+            },
+            {
+              "$type": "LoseHP",
+              "predicates": [
+                {
+                  "$type": "JAEEKGKDNDI",
+                  "target": "Self",
+                  "ratio": "PerHitLoseHp"
+                }
+              ],
+              "OLMENJCGGJJ": "PerHitLoseHp",
+              "MIIHJFFDKKC": ""
+            },
+            {
+              "$type": "KillSelf",
+              "predicates": [
+                {
+                  "$type": "JAEEKGKDNDI",
+                  "target": "Self",
+                  "logic": "LesserOrEqual",
+                  "ratio": "PerHitLoseHp"
+                }
+              ]
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Scarecrow_02_Destroy",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Scarecrow_Boom02"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "DieByHit"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Prop_QuestCoopHole_01_Ability",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Show"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Hide"
+        }
+      ],
+      "modifiers": {
+        "Show": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Vo"],
+              "setEnable": true
+            }
+          ]
+        },
+        "Hide": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["Vo"]
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Hole_Disappear",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Quest_VoidSearching_Target",
+      "modifiers": {
+        "tag": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ChangeTag",
+              "isAdd": true,
+              "tag": "IS_VOID_SEARCHING_TARGET"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "tag"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Nahida_Quest_Hitbox_01",
+      "modifiers": {
+        "BeHitHandle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "GV_Quest_Call",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["StayState", "ActiveState"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "IS_NAHIDA_QUEST_CALL_GADGET",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CallLuaTask",
+              "targetAlias": "13014",
+              "valueString": "FollowNpcGadget_Moesis"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_Quest_Call",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BeHitHandle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Nahida_Quest_Hitbox_02",
+      "modifiers": {
+        "BeHitHandle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "GV_Quest_Call",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-0.5, 0.5, 1.5],
+              "modifierNameSteps": ["StayState", "ActiveState"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "IS_NAHIDA_QUEST_CALL_GADGET",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CallLuaTask",
+              "targetAlias": "13014",
+              "valueString": "FollowNpcGadget_Deby"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "GV_Quest_Call",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "BeHitHandle"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_TrainerCompetitionBead_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+          "modifierNameSteps": ["StayState", "ActiveState", "DisappearState"]
+        }
+      ],
+      "modifiers": {
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_TrainerCompetitionBead_01",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "DisappearState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_State",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_TrainerCompetitionBead_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+          "modifierNameSteps": ["StayState", "ActiveState", "DisappearState"]
+        }
+      ],
+      "modifiers": {
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_TrainerCompetitionBead_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "DisappearState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_State",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_MysticalCrystal_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+          "modifierNameSteps": ["StayState", "ActiveState", "DisappearState"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 1.5],
+          "modifierNameSteps": ["DefaultEffect"]
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "DisappearState"
+        }
+      ],
+      "modifiers": {
+        "DefaultEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_MysticalCrystalDefault",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "DisappearState": {
+          "modifierName": "",
+          "duration": 1.100000023841858,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_MysticalCrystalBroken",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Material01",
+              "GGGADBNBNDN": "_SecInteriorColorIntensity",
+              "ratio": 0.0,
+              "useCurve": true,
+              "lerpCurveIndex": 1,
+              "lerpTime": 2.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Material01",
+              "GGGADBNBNDN": "_SceneDissolveVal",
+              "ratio": 1.649999976158142,
+              "useCurve": true,
+              "lerpCurveIndex": 1,
+              "lerpTime": 2.4000000953674316
+            },
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_MysticalCrystalActive",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_State",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Prop_VillageRoom_01",
+      "modifiers": {
+        "EffectLight": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_VillageRoom_Light_01",
+              "effectTempleteID": -1.0,
+              "isPlatformDependent": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "EffectLight"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Xm_Property_Ani_Prop_PrisonDoor_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "PhaseOne"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "PhaseTwo"
+        }
+      ],
+      "modifiers": {
+        "PhaseOne": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Stretch01",
+              "GGGADBNBNDN": "_EmissionStrength",
+              "ratio": 3.5,
+              "useCurve": true,
+              "lerpCurveIndex": 1,
+              "lerpTime": 1.0
+            }
+          ]
+        },
+        "PhaseTwo": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Stretch01",
+              "GGGADBNBNDN": "_EmissionStrength",
+              "ratio": 12.0,
+              "useCurve": true,
+              "lerpCurveIndex": 1,
+              "lerpTime": 1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Sanbin_Music",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "IdleEffect"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "ActiveEffect"
+        }
+      ],
+      "modifiers": {
+        "IdleEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Empty_Loop",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActiveEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Empty_Loop02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Xm_Property_Ani_Prop_SoulBranch_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Show"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Idle"
+        }
+      ],
+      "modifiers": {
+        "IdleEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_SoulBranch_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Tick": {
+          "modifierName": "",
+          "duration": 3.5,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "IdleEffect"
+            }
+          ]
+        },
+        "Show": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "GV_Tag",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_SoulBranch_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Tick"
+            }
+          ]
+        },
+        "Idle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "GV_Tag",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "IdleEffect"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "IdleEffect"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Fd_Property_Ani_Prop_Magic03_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Magic03_State_Active"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Magic03_State_Idle"
+        }
+      ],
+      "modifiers": {
+        "Magic03_State_Idle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "AKKOIFEFBPF": 0.25,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        },
+        "Magic03_State_Active": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "AKKOIFEFBPF": 0.25,
+              "BGFMCENBKJD": ""
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Fd_Property_Ani_Prop_CouncilDoor_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Door_Open"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 203,
+          "modifierName": "Door_OpenIn"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Door_Close"
+        }
+      ],
+      "modifiers": {
+        "Door_Close": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Open"
+            }
+          ]
+        },
+        "Door_Open": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "In"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Open",
+              "ratio": true
+            }
+          ]
+        },
+        "Door_OpenIn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "In",
+              "ratio": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Open",
+              "ratio": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Fd_Property_Ani_Prop_OperaRoomDoor_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Door_Open"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 203,
+          "modifierName": "Door_OpenIn"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Door_Close"
+        }
+      ],
+      "modifiers": {
+        "Door_Close": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Open"
+            }
+          ]
+        },
+        "Door_Open": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "In"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Open",
+              "ratio": true
+            }
+          ]
+        },
+        "Door_OpenIn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "In",
+              "ratio": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Open",
+              "ratio": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Fd_Property_Ani_Prop_JusticeMachineBalance_01",
+      "modifiers": {
+        "JusticeMachineBalance_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalance_Water_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "EffectNode_1"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "followPath": "EffectNode_1",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalance_Water_01",
+              "attachPoint": "EffectNode_1"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalance_Water_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "EffectNode_2"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "followPath": "EffectNode_2",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalance_Water_01",
+              "attachPoint": "EffectNode_2"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "JusticeMachineBalance_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Fd_Property_Ani_Prop_JusticeMachineBalance_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "EffState_1"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "EffState_2"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 203,
+          "modifierName": "EffState_3"
+        }
+      ],
+      "modifiers": {
+        "JusticeMachineBalance_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalance_Water_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "EffState_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalance_Water_02"
+            }
+          ]
+        },
+        "EffState_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 202,
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalance_Water_02"
+            }
+          ]
+        },
+        "EffState_3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 203,
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalance_Water_02"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "JusticeMachineBalance_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_OperaLight_01",
+      "modifiers": {
+        "Light_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Area_Fd_Property_Ani_Prop_OperaLight_01_Light",
+              "effectTempleteID": -1.0,
+              "isPlatformDependent": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Light_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_OperaLight_02",
+      "modifiers": {
+        "Light_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Area_Fd_Property_Ani_Prop_OperaLight_02_Light",
+              "effectTempleteID": -1.0,
+              "isPlatformDependent": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Light_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Quest_Fd_Property_Ani_Prop_QuestLight_01",
+      "modifiers": {
+        "Light_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Quest_Fd_Property_Ani_Prop_QuestLight_01_Light",
+              "effectTempleteID": -1.0,
+              "isPlatformDependent": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Light_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Fd_Property_Ani_Prop_JusticeMachineBalanceMirror_01",
+      "modifiers": {
+        "JusticeMachineBalance_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalanceMirror_Water_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "EffectNode_1"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "followPath": "EffectNode_1",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalanceMirror_Water_01",
+              "attachPoint": "EffectNode_1"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalanceMirror_Water_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "EffectNode_2"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "followPath": "EffectNode_2",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalanceMirror_Water_01",
+              "attachPoint": "EffectNode_2"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "JusticeMachineBalance_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Fd_Property_Ani_Prop_JusticeMachineBalanceMirror_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "EffState_1"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "EffState_2"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 203,
+          "modifierName": "EffState_3"
+        }
+      ],
+      "modifiers": {
+        "JusticeMachineBalance_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalanceMirror_Water_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "EffState_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 201,
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalanceMirror_Water_02"
+            }
+          ]
+        },
+        "EffState_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 202,
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalanceMirror_Water_02"
+            }
+          ]
+        },
+        "EffState_3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "parameter": "GadgetState",
+              "attachPoint": "",
+              "type": "Int",
+              "value": 203,
+              "healLimitedByCasterMaxHPRatio": "Eff_Sc_FD_JusticeMachineBalanceMirror_Water_02"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "JusticeMachineBalance_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_DesertCompetitionMachine_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "ShowEff"
+        }
+      ],
+      "modifiers": {
+        "ShowEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_DesertCompetitionMachine_Flash",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Ani_Prop_TalentCrown_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Normal"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Active"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "Broken"
+        }
+      ],
+      "modifiers": {
+        "Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "canBeHandledOnRecover": true,
+              "transformNames": ["Root01"],
+              "setEnable": true
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "canBeHandledOnRecover": true,
+              "transformNames": ["Root02", "Root03"]
+            }
+          ]
+        },
+        "Active": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "canBeHandledOnRecover": true,
+              "transformNames": ["Root03"],
+              "setEnable": true
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "canBeHandledOnRecover": true,
+              "transformNames": ["Root01", "Root02"]
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Area_Xm_Property_Ani_Prop_TalentCrown_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Broken": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "canBeHandledOnRecover": true,
+              "transformNames": ["Root02"],
+              "setEnable": true
+            },
+            {
+              "$type": "EnableSceneTransformByName",
+              "canBeHandledOnRecover": true,
+              "transformNames": ["Root01", "Root03"]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_FilmFesSlate_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Normal"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Active"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "Floating"
+        }
+      ],
+      "modifiers": {
+        "Floating": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 202.0
+            }
+          ]
+        },
+        "Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 0.0
+            }
+          ]
+        },
+        "Active": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GadgetState",
+              "ratio": 201.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_LostParadise_Common_Property_Prop_ShipSpirit_01",
+      "onAdded": [
+        {
+          "$type": "SetMaterialParamFloatByTransform",
+          "matName": "Dissolve",
+          "GGGADBNBNDN": "_DissolveVal",
+          "ratio": 2.0
+        },
+        {
+          "$type": "SetMaterialParamFloatByTransform",
+          "matName": "Dissolve",
+          "GGGADBNBNDN": "_DissolveVal",
+          "ratio": 0.0,
+          "useCurve": true,
+          "lerpTime": 2.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Common_Property_Ani_Prop_WhirlingCoin_01_Ability",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "GVState",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Rot", "Stop"],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "modifiers": {
+        "Rot": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GVState",
+              "ratio": 0.0
+            }
+          ]
+        },
+        "Stop": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "GVState",
+              "ratio": 1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Prop_QuestSandWall_01_Small",
+      "modifiers": {
+        "Sand_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_QuestSandWall_01",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_QuestSandWall_01_Disappear",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Sand_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Property_Prop_QuestSandWall_01_Big",
+      "modifiers": {
+        "Sand_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_QuestSandWall_02",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_QuestSandWall_02_Disappear",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Sand_Eff"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_OPBoomController_01_Ability",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Idle"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Completed"
+        }
+      ],
+      "modifiers": {
+        "Idle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "BGFMCENBKJD": "Default"
+            }
+          ]
+        },
+        "Completed": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShaderStateMachineSwitchMixin",
+              "LHKFBGDFMEC": 1,
+              "BGFMCENBKJD": "Default"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Fd_Property_Ani_Prop_PrivateShip_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "IdleEff"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "StartEff"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "StopEff"
+        }
+      ],
+      "modifiers": {
+        "StopEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_Waterwayship_01_Idle",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "ModifyCurveBaseVelocity",
+              "MJBMADNHCMK": "ByFrame",
+              "JIFKGADHBGE": "GV_STOPSPEED",
+              "DFJANEHCEKC": "",
+              "JADNGFNALNM": "GV_TIME"
+            }
+          ]
+        },
+        "StartEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_TransferStationShip_01_Move",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "IdleEff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_ScenObj_Waterwayship_01_Idle",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.5,
+          "key": "GV_TIME",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_STOPSPEED",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 7.0,
+          "key": "GV_MOVESPEED",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Indoor_Fd_Property_Ani_Prop_PoissonHouse_01",
+      "modifiers": {
+        "EffectLight": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Indoor_Fd_Property_Ani_Prop_PoissonHouse_01_Light_01",
+              "effectTempleteID": -1.0,
+              "isPlatformDependent": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "EffectLight"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Ly_Property_Ani_Prop_TheDreamMachine_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "DreamMachine_State_Idle"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "DreamMachine_State_Play"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 202,
+          "modifierName": "DreamMachine_State_Stop"
+        }
+      ],
+      "modifiers": {
+        "DreamMachine_State_Idle": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["MadamePing", "PrivateLight"]
+            }
+          ]
+        },
+        "DreamMachine_State_Play": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["MadamePing", "PrivateLight"],
+              "setEnable": true
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_TheDreamMachine_01",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["PrivateLight"]
+            }
+          ]
+        },
+        "DreamMachine_State_Stop": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "EnableSceneTransformByName",
+              "transformNames": ["MadamePing"],
+              "setEnable": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Xm_Prop_Common_Cyno2_TempleOfSilence_02",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "GV_State",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 999.0],
+          "modifierNameSteps": ["StayState", "ActiveState"]
+        }
+      ],
+      "modifiers": {
+        "StayState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Dither",
+              "GGGADBNBNDN": "_DitherAlpha",
+              "ratio": 0.0
+            }
+          ]
+        },
+        "StayState_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_Stages_Xm_Prop_Cyno2_TempleOfSilence_02",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ActiveState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "GV_StayState_Eff",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [0.5, 999.0],
+              "modifierNameSteps": ["StayState_Eff"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetMaterialParamFloatByTransform",
+              "canBeHandledOnRecover": true,
+              "matName": "Dither",
+              "GGGADBNBNDN": "_DitherAlpha",
+              "ratio": 1.0,
+              "useCurve": true,
+              "lerpCurveIndex": 1,
+              "lerpTime": 3.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "SceneObj_Area_Ly_Property_Ani_Prop_LuggageofLiyue_01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "Luggage_State_Idle"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "Luggage_State_Play"
+        }
+      ],
+      "modifiers": {
+        "Luggage_State_Idle": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Luggage_State_Play": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_LuggageofLiyue_01",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "PRIVATE_EFFECT_NODE"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "followPath": "PRIVATE_EFFECT_NODE",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_LuggageofLiyue_01",
+              "attachPoint": "PRIVATE_EFFECT_NODE"
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_LuggageofLiyue_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "PRIVATE_EFFECT_NODE"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetEffectFollowPath",
+              "followPath": "PRIVATE_EFFECT_NODE",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_LuggageofLiyue_02",
+              "attachPoint": "PRIVATE_EFFECT_NODE"
+            }
+          ]
+        }
+      }
+    }
+  }
+]

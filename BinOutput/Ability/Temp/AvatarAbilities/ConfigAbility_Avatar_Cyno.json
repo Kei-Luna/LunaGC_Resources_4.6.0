@@ -1,0 +1,5404 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ExtraAttack",
+      "abilityMixins": [
+        {
+          "$type": "ButtonHoldChargeMixin",
+          "skillID": 10711,
+          "chargeTime": 0.11999999731779099,
+          "secondChargeTime": 0.20000000298023224,
+          "OnBeginUncharged": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "predicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorInt",
+                      "logic": "Equal",
+                      "ratio": 0,
+                      "parameter": "ComboCount"
+                    },
+                    {
+                      "$type": "ByAnimatorInt",
+                      "logic": "Equal",
+                      "ratio": 4,
+                      "parameter": "ComboCount"
+                    }
+                  ]
+                }
+              ],
+              "intID": "SkillID",
+              "ratio": 99.0
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            }
+          ],
+          "OnReleaseUncharged": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "ratio": 1.0
+            }
+          ],
+          "OnBeginCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging",
+              "ratio": true
+            }
+          ],
+          "OnReleaseCharged": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "SkillID",
+              "ratio": 1.0
+            }
+          ],
+          "OnBeginSecondCharged": [
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "predicates": [
+                    {
+                      "$type": "ByLocalAvatarStamina",
+                      "logic": "GreaterOrEqual",
+                      "stamina": [
+                        "ExtraAttack_BurstMode_Stamina_Cost",
+                        "Flexible_Stamina",
+                        "ADD"
+                      ]
+                    }
+                  ],
+                  "triggerID": "DoSkill"
+                },
+                {
+                  "$type": "SetAnimatorInt",
+                  "predicates": [
+                    {
+                      "$type": "ByLocalAvatarStamina",
+                      "logic": "GreaterOrEqual",
+                      "stamina": [
+                        "ExtraAttack_BurstMode_Stamina_Cost",
+                        "Flexible_Stamina",
+                        "ADD"
+                      ]
+                    }
+                  ],
+                  "intID": "SkillID",
+                  "ratio": 6.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "predicates": [
+                    {
+                      "$type": "ByLocalAvatarStamina",
+                      "logic": "GreaterOrEqual",
+                      "stamina": [
+                        "ExtraAttack_Pole_Stamina_Cost",
+                        "Flexible_Stamina",
+                        "ADD"
+                      ]
+                    }
+                  ],
+                  "triggerID": "DoSkill"
+                },
+                {
+                  "$type": "SetAnimatorInt",
+                  "predicates": [
+                    {
+                      "$type": "ByLocalAvatarStamina",
+                      "logic": "GreaterOrEqual",
+                      "stamina": [
+                        "ExtraAttack_Pole_Stamina_Cost",
+                        "Flexible_Stamina",
+                        "ADD"
+                      ]
+                    }
+                  ],
+                  "intID": "SkillID",
+                  "ratio": 6.0
+                }
+              ]
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "IsCharging"
+            }
+          ],
+          "chargeStateIDs": [
+            "Attack01",
+            "Attack02",
+            "Attack03",
+            "Attack04",
+            "Attack05",
+            "Run"
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["ExtraAttack"],
+          "modifierName": "ExtraAttack_StaminaCost",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Cyno_ExtraAttack_BurstMode"],
+          "modifierName": "ExtraAttack_StaminaCost_BurstMode",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["ExtraAttack"],
+          "modifierName": "ExtraAttack_AttachEffect",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["ExtraAttack_BS"],
+          "modifierName": "ExtraAttack_BS_AttachEffect",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["ExtraAttack"],
+          "modifierName": "ExtraAttack_CloseCollider",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Cyno_ExtraAttack_BurstMode"],
+          "modifierName": "ExtraAttack_CloseCollider",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack05",
+          "modifierName": "Avatar_Cyno_Attack05_TurndDirection",
+          "normalizeEnd": 0.17000000178813934,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "ExtraAttack_Pole_Stamina_Cost": 0.0,
+        "ExtraAttack_BurstMode_Stamina_Cost": 0.0,
+        "Flexible_Stamina": -2.0,
+        "Attack03_HitDir": 0.0
+      },
+      "modifiers": {
+        "ExtraAttack_StaminaCost": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10002,
+              "amount": 1.0,
+              "costStaminaRatio": "ExtraAttack_Pole_Stamina_Cost"
+            }
+          ]
+        },
+        "ExtraAttack_StaminaCost_BurstMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AvatarSkillStart",
+              "skillID": 10002,
+              "amount": 1.0,
+              "costStaminaRatio": "ExtraAttack_BurstMode_Stamina_Cost"
+            }
+          ]
+        },
+        "ExtraAttack_AttachEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ExtraAttack_Sprint",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 0.0,
+                  "y": -0.30000001192092896,
+                  "z": 0.0
+                }
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ExtraAttack_BS_AttachEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ExtraAttack",
+              "born": {
+                "$type": "ConfigBornByTarget",
+                "offset": {
+                  "x": 0.0,
+                  "y": -0.30000001192092896,
+                  "z": 0.0
+                }
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "ExtraAttack_CloseCollider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "passThrough": true
+            },
+            {
+              "$type": "EnableHDMesh",
+              "hdMeshKey": "Default"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHDMesh",
+              "enable": true,
+              "hdMeshKey": "Default"
+            },
+            {
+              "$type": "KillGadget",
+              "cdDelta": true,
+              "gadgetInfo": {
+                "configID": 41071003
+              }
+            }
+          ]
+        },
+        "Avatar_Cyno_Attack05_TurndDirection": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AvatarSteerByCameraMixin",
+              "stateIDs": ["Katana_Attack05"],
+              "angularSpeed": 600.0,
+              "canReviveStamina": true,
+              "isCheckOnAttach": true,
+              "GMBCNDFMEPL": "",
+              "LGBNCJHLOLI": ""
+            }
+          ]
+        },
+        "Avatar_Cyno_Attack03_FireHitEffect_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalDir",
+                  "target": "Target",
+                  "key": "_Avatar_Cyno_Attack03_Hit",
+                  "born": {
+                    "$type": "PNCLIHNAPNL"
+                  },
+                  "setTarget": false
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "_Avatar_Cyno_Attack03_Hit_0",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "_Avatar_Cyno_Attack03_Hit_1",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "globalValueKey": "_Avatar_Cyno_Attack03_Hit_2",
+                  "overrideMapKey": "Attack03_HitDir"
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": [0.0, 1.0, "Attack03_HitDir", "MUL", "SUB"],
+                  "key": "_Avatar_Cyno_Attack03_Hit_2",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "FireEffect",
+                  "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_BurstMode_NormalAttack_03_Hit",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "$type": "AIJHOFHPJJB",
+                      "directionKey": "_Avatar_Cyno_Attack03_Hit"
+                    }
+                  },
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ExtraAttack_CreateBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41071003
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ExtraAttack_Bullet",
+      "abilitySpecials": {
+        "ExtraAttack_Normal": 0.0
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["MonsterEquip"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "Target",
+              "attackInfo": {
+                "attackTag": "ExtraAttack",
+                "attenuationTag": "ExtraAttack",
+                "attenuationGroup": "Avatar_Pole_ExtraAttack",
+                "attackProperty": {
+                  "damagePercentage": "ExtraAttack_Normal",
+                  "damagePercentageRatio": 0.0,
+                  "bonusCritical": 25.0,
+                  "overrideByWeapon": true,
+                  "strikeType": "Spear",
+                  "damage": 120.0,
+                  "attackType": "Melee",
+                  "FKGFPFNOJMN": 0.0
+                },
+                "hitPattern": {
+                  "onHitEffectName": "default",
+                  "hitImpulseType": "LV6",
+                  "hitHaltTimeScale": 0.009999999776482582,
+                  "canBeDefenceHalt": true
+                },
+                "cameraShake": {
+                  "shakeType": "CustomVector",
+                  "shakeRange": 0.36000001430511475,
+                  "shakeTime": 0.11999999731779099,
+                  "shakeDistance": 30.0,
+                  "shakeDir": {
+                    "y": -1.0
+                  }
+                },
+                "canBeModifiedBy": "OriginOwner"
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByCollisionPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    }
+                  },
+                  "radius": 0.800000011920929
+                },
+                "attackInfo": {
+                  "attackTag": "ExtraAttack",
+                  "attenuationTag": "ExtraAttack",
+                  "attenuationGroup": "Avatar_Pole_ExtraAttack",
+                  "attackProperty": {
+                    "damagePercentage": "ExtraAttack_Normal",
+                    "damagePercentageRatio": 0.0,
+                    "bonusCritical": 25.0,
+                    "overrideByWeapon": true,
+                    "strikeType": "Spear",
+                    "damage": 120.0,
+                    "attackType": "Melee",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV5",
+                    "hitHaltTimeScale": 0.009999999776482582,
+                    "canBeDefenceHalt": true
+                  },
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.36000001430511475,
+                    "shakeTime": 0.11999999731779099,
+                    "shakeDistance": 30.0,
+                    "shakeDir": {
+                      "y": -1.0
+                    }
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Cyno_ElementalArt_Click",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ElementalArt_BS",
+          "modifierName": "Cyno_ElementalArt_CheckTarget",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ElementalArt_HasTarget",
+          "modifierName": "Cyno_ElementalArt_Click_CloseCollider",
+          "normalizeStart": 0.30000001192092896,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ElementalArt_NoTarget",
+          "modifierName": "Cyno_ElementalArt_ClearTrigger",
+          "normalizeStart": 0.47200000286102295,
+          "normalizeEnd": 0.8999999761581421,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ElementalArt_HasTarget",
+          "modifierName": "Cyno_ElementalArt_ClearTrigger",
+          "normalizeStart": 0.47200000286102295,
+          "normalizeEnd": 0.8999999761581421,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "OnAvatarUseSkillMixin",
+          "onTriggerSkill": [
+            {
+              "$type": "DebugLog",
+              "content": "使用元素战技"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_Muya_Success",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_IsInWindow",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "_Cyno_BurstMode_Muya_Success",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SendCameraScreenEffectTrigger",
+                  "muteRemoteAction": true,
+                  "parameter": "Muya_Success",
+                  "effectName": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_WarningCamera"
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Avatar_Cyno_Constellation_1"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "Predicated",
+                  "cdDelta": true,
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Cyno_BurstMode_Muya_Success",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "TriggerAbility",
+                      "target": "Caster",
+                      "abilityName": "Avatar_Cyno_Constellation_1_AttackRatio"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "clearSkillIdDelay": 0.20000000298023224
+        }
+      ],
+      "modifiers": {
+        "Cyno_ElementalArt_CheckTarget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByHasAttackTarget"
+                    }
+                  ]
+                }
+              ],
+              "boolID": "SkillHasTarget"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "predicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ],
+              "boolID": "SkillHasTarget",
+              "ratio": true
+            }
+          ]
+        },
+        "Cyno_ElementalArt_Click_CloseCollider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "passThrough": true
+            },
+            {
+              "$type": "EnableHDMesh",
+              "hdMeshKey": "Default"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHDMesh",
+              "enable": true,
+              "hdMeshKey": "Default"
+            }
+          ]
+        },
+        "Cyno_ElementalArt_ClearTrigger": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "triggerID": "DoSkill"
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalArt_DropBallCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onHittingOther": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": ["Elemental_Art", "Elemental_Art_Extra"]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "cdDelta": true,
+                  "modifierName": "Avatar_Cyno_ElementalArt_DropBall"
+                }
+              ]
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalArt_DropBall": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "Randomed",
+                  "chance": 0.3330000042915344,
+                  "successActions": [
+                    {
+                      "$type": "GenerateElemBall",
+                      "cdDelta": true,
+                      "configID": 2020,
+                      "born": {
+                        "$type": "ConfigBornBySelf",
+                        "bornRandom": {
+                          "$type": "OCDANLJMNNK",
+                          "minRandomRange": 0.4000000059604645,
+                          "maxRandomRange": 1.2000000476837158
+                        }
+                      },
+                      "value": 1.0,
+                      "baseEnergy": 3.0
+                    }
+                  ]
+                },
+                {
+                  "$type": "GenerateElemBall",
+                  "cdDelta": true,
+                  "configID": 2020,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "bornRandom": {
+                      "$type": "OCDANLJMNNK",
+                      "minRandomRange": 0.4000000059604645,
+                      "maxRandomRange": 1.2000000476837158
+                    }
+                  },
+                  "value": 1.0,
+                  "baseEnergy": 3.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "GenerateElemBall",
+                  "cdDelta": true,
+                  "configID": 2020,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "bornRandom": {
+                      "$type": "OCDANLJMNNK",
+                      "minRandomRange": 0.4000000059604645,
+                      "maxRandomRange": 1.2000000476837158
+                    }
+                  },
+                  "value": 1.0,
+                  "baseEnergy": 9.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "Avatar_Cyno_ElementalArt_DropBallCheck"
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "canBeHandledOnRecover": true,
+          "ratio": 1.0,
+          "key": "_AvartarInShaderChange_Special",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "content": "++使用元素战技"
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "predicates": [
+            {
+              "$type": "GOKKOCICPNK",
+              "skillID": 10712
+            }
+          ],
+          "skillID": 10712,
+          "amount": 1.0,
+          "costStaminaRatio": 1.0
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "predicates": [
+            {
+              "$type": "GOKKOCICPNK",
+              "skillID": 10713
+            }
+          ],
+          "skillID": 10713,
+          "amount": 1.0,
+          "costStaminaRatio": 1.0
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41071002,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "attachPointName": "RootNode"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ElementalArt_Bullet",
+      "abilitySpecials": {
+        "Elemental_Art_Bullet_Damage": 0.0
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["MonsterEquip"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "Target",
+              "attackInfo": {
+                "attackTag": "Elemental_Art",
+                "attenuationTag": "Cyno_ElementalArt_Bullet",
+                "attenuationGroup": "Cyno_ElementalArt_Bullet",
+                "attackProperty": {
+                  "damagePercentage": "Elemental_Art_Bullet_Damage",
+                  "damagePercentageRatio": 0.0,
+                  "elementType": "Electric",
+                  "bonusCritical": 25.0,
+                  "strikeType": "Slash",
+                  "damage": 50.0,
+                  "attackType": "Melee",
+                  "FKGFPFNOJMN": 0.0
+                },
+                "hitPattern": {
+                  "onHitEffectName": "default",
+                  "hitImpulseType": "LV3",
+                  "hitHaltTimeScale": 0.009999999776482582
+                },
+                "canBeModifiedBy": "OriginOwner"
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "TriggerAttackEvent",
+              "target": "OriginOwner",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "filterByFrame": true,
+                  "born": {
+                    "$type": "ConfigBornByCollisionPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    }
+                  },
+                  "radius": 1.0
+                },
+                "attackInfo": {
+                  "attackTag": "Elemental_Art",
+                  "attenuationTag": "Cyno_ElementalArt_Bullet",
+                  "attenuationGroup": "Cyno_ElementalArt_Bullet",
+                  "attackProperty": {
+                    "damagePercentage": "Elemental_Art_Bullet_Damage",
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Electric",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Slash",
+                    "damage": 50.0,
+                    "attackType": "Melee",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV3",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_BurstMode_ElementalArt_Onstart",
+      "abilitySpecials": {
+        "ElementalArt_BurstMode_MuyaRatio": 0.0,
+        "Cyno_Constellation_6_Layer": 0.0,
+        "Cyno_Constellation_6_LayerMax": 0.0
+      },
+      "modifiers": {
+        "Cyno_ElementalArt_Click_BurstMode_AddArtExtra_Handler": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Muya_Success",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Cyno_PermanentSkill_1"
+                }
+              ],
+              "modifierName": "Cyno_ElementalArt_Click_BurstMode_AddArtExtra"
+            },
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "targetPredicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Avatar_Cyno_Constellation_6"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Muya_Success",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "cdDelta": true,
+                  "ratio": "Cyno_Constellation_6_Layer",
+                  "key": "_Cyno_Constellation_6_Layer",
+                  "useLimitRange": true,
+                  "maxValue": "Cyno_Constellation_6_LayerMax",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "TriggerAbility",
+                  "target": "Caster",
+                  "abilityName": "Avatar_Cyno_Constellation_6"
+                }
+              ]
+            }
+          ]
+        },
+        "Cyno_ElementalArt_Click_BurstMode_AddArtExtra": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ModifyDamageMixin",
+              "attackTags": ["Elemental_Art_Extra"],
+              "damagePercentageRatio": "ElementalArt_BurstMode_MuyaRatio"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Cyno_BurstMode_Muya_Success",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AddElementDurability",
+          "cdDelta": true,
+          "ratio": 4.0,
+          "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler",
+          "useLimitRange": true,
+          "maxValue": 18.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "cdDelta": true,
+          "modifierName": "Cyno_ElementalArt_Click_BurstMode_AddArtExtra_Handler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Cyno_ElementalArt_Click_BurstMode",
+      "abilitySpecials": {
+        "ElementalArt_BurstMode_Damage": 0.0,
+        "Cyno_BurstMode_Muya_Success": 0.0
+      },
+      "modifiers": {
+        "Cyno_ElementalArt_Click_Invisible": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible"
+            },
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "passThrough": true
+            },
+            {
+              "$type": "EnableHDMesh",
+              "hdMeshKey": "Default"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetVisible",
+              "cdDelta": true,
+              "visible": true
+            },
+            {
+              "$type": "TriggerSetPassThrough",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true
+            },
+            {
+              "$type": "EnableHDMesh",
+              "enable": true,
+              "hdMeshKey": "Default"
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalArt_Muya_Success_Handler": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 41071001,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.30000001192092896,
+                  "z": 0.30000001192092896
+                }
+              }
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 41071001,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.30000001192092896,
+                  "z": 0.30000001192092896
+                },
+                "direction": {
+                  "$type": "DFEHJKCDGHN",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 25.0,
+                    "z": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 41071001,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.30000001192092896,
+                  "z": 0.30000001192092896
+                },
+                "direction": {
+                  "$type": "DFEHJKCDGHN",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": -25.0,
+                    "z": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Muya_Success",
+                  "ratio": 1.0
+                }
+              ],
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_IsInWindow",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_Muya_Success",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "AvatarSkillStart",
+          "predicates": [
+            {
+              "$type": "GOKKOCICPNK",
+              "skillID": 10712
+            }
+          ],
+          "skillID": 10712,
+          "amount": 1.0,
+          "costStaminaRatio": 1.0
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "predicates": [
+            {
+              "$type": "GOKKOCICPNK",
+              "skillID": 10713
+            }
+          ],
+          "skillID": 10713,
+          "amount": 1.0,
+          "costStaminaRatio": 1.0
+        },
+        {
+          "$type": "SetGlobalValueToOverrideMap",
+          "cdDelta": true,
+          "globalValueKey": "_Cyno_BurstMode_Muya_Success",
+          "overrideMapKey": "Cyno_BurstMode_Muya_Success"
+        },
+        {
+          "$type": "Predicated",
+          "target": "Caster",
+          "targetPredicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Cyno_PermanentSkill_1"
+            },
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_Cyno_BurstMode_Muya_Success",
+              "ratio": 1.0
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalArt_BurstMode_Explode",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 1.5
+                }
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": -0.5,
+                      "z": 1.5
+                    }
+                  },
+                  "height": 3.5,
+                  "radius": 6.0
+                },
+                "attackInfo": {
+                  "attackTag": "Elemental_Art_Extra",
+                  "attenuationTag": "Elemental_Art",
+                  "attenuationGroup": "Cyno_ElementalArt",
+                  "attackProperty": {
+                    "damagePercentage": "ElementalArt_BurstMode_Damage",
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Electric",
+                    "elementRank": 1.5,
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 75.0,
+                    "attackType": "Melee",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV5",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 600.0
+                    },
+                    "hitHaltTime": 0.029999999329447746,
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.47999998927116394,
+                    "shakeTime": 0.11999999731779099,
+                    "shakeDistance": 30.0,
+                    "shakeDir": {
+                      "y": 1.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalArt_BurstMode_Explode_Fail",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 1.5
+                }
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": -0.5,
+                      "z": 1.5
+                    }
+                  },
+                  "height": 3.5,
+                  "radius": 6.0
+                },
+                "attackInfo": {
+                  "attackTag": "Elemental_Art",
+                  "attenuationTag": "Elemental_Art",
+                  "attenuationGroup": "Cyno_ElementalArt",
+                  "attackProperty": {
+                    "damagePercentage": "ElementalArt_BurstMode_Damage",
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Electric",
+                    "elementRank": 1.5,
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 75.0,
+                    "attackType": "Melee",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV5",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 600.0
+                    },
+                    "hitHaltTime": 0.029999999329447746,
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.47999998927116394,
+                    "shakeTime": 0.11999999731779099,
+                    "shakeDistance": 30.0,
+                    "shakeDir": {
+                      "y": 1.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        {
+          "$type": "ApplyModifier",
+          "cdDelta": true,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_Cyno_BurstMode_Muya_Success",
+              "ratio": 1.0
+            },
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Cyno_PermanentSkill_1"
+            }
+          ],
+          "modifierName": "Avatar_Cyno_ElementalArt_Muya_Success_Handler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ElementalBurst",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Cyno_ElementalBurst"],
+          "modifierName": "Cyno_ElementalBurst_CameraShot",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Cyno_ElementalBurst", "Cyno_ElementalBurst_AS"],
+          "modifierName": "Avatar_Cyno_ElementalBurst_Invincible",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Cyno_ElementalBurst"],
+          "modifierName": "Cyno_TriggerSetShadowRamp",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ElementalBurst",
+          "modifierName": "Avatar_Cyno_ElementalBurst_CameraBlur_Handler",
+          "normalizeEnd": 0.8939999938011169,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ElementalBurst",
+          "modifierName": "Cyno_ElementalBurst_ChangeAlpha",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "Cyno_Constellation_6_Layer": 0.0
+      },
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Avatar_Cyno_ElementalBurst_Invincible": {
+          "modifierName": "",
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "state": "Invincible",
+          "onAdded": [
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceListID": 11002
+            }
+          ]
+        },
+        "Cyno_ElementalBurst_CameraShot": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "AvatarCameraParam",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Cyno_BurstCamera_Mark",
+                  "ratio": 1.0
+                }
+              ],
+              "cameraParam": {
+                "forceRadius": 6.0,
+                "forceRadiusDuration": 0.0,
+                "shouldKeepForceRadius": true
+              }
+            },
+            {
+              "$type": "AvatarExitCameraShot",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Cyno_BurstCamera_Mark",
+                  "ratio": 1.0
+                }
+              ]
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Cyno_BurstCamera_Mark",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "AvatarCameraParam",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Cyno_BurstCamera_Mark",
+                  "ratio": 1.0
+                }
+              ],
+              "cameraParam": {
+                "forceRadius": 6.0,
+                "forceRadiusDuration": 0.0,
+                "shouldKeepForceRadius": true
+              }
+            },
+            {
+              "$type": "AvatarExitCameraShot",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Cyno_BurstCamera_Mark",
+                  "ratio": 1.0
+                }
+              ]
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Cyno_BurstCamera_Mark",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "Cyno_ElementalBurst_CameraStart": {
+          "modifierName": "",
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackNotHitScene",
+                  "attackPattern": {
+                    "$type": "ConfigAttackCircle",
+                    "triggerType": "TriggerNoRepeat",
+                    "born": {
+                      "$type": "ConfigBornBySelf",
+                      "offset": {
+                        "x": 0.0,
+                        "y": 0.5,
+                        "z": 0.0
+                      }
+                    },
+                    "height": 2.0,
+                    "radius": 1.0
+                  },
+                  "checkWaterLayer": true
+                },
+                {
+                  "$type": "ByAvatarInWaterDepth",
+                  "compareType": "LessAndEqual",
+                  "depth": 0.5
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AvatarEnterCameraShot",
+                  "cameraMoveCfgPath": "Camera_Cyno_ElementalBurst"
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Cyno_BurstCamera_Mark",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Cyno_ElementalBurst_PostEffect"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Cyno_ElementalBurst_CameraEffect_Handler"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "_ABILITY_Cyno_BurstCamera_Mark",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        "Cyno_ElementalBurst_PostEffect": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": 2.5,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TriggerPostProcessEffectMixin",
+              "postEffectAssetName": "PostEffect_Avatar_Cyno_ElementalBurst"
+            }
+          ]
+        },
+        "Cyno_ElementalBurst_CameraEffect_Handler": {
+          "modifierName": "",
+          "duration": 2.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DungeonFogEffects",
+              "muteRemoteAction": true,
+              "enable": true,
+              "cameraFogEffectName": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_CameraFog",
+              "playerFogEffectName": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "DungeonFogEffects",
+              "cdDelta": true,
+              "muteRemoteAction": true,
+              "cameraFogEffectName": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_CameraFog",
+              "playerFogEffectName": ""
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "Cyno_ElementalBurst_CameraEffect_Handler"
+            }
+          ]
+        },
+        "UNIQUE_Cyno_ElementalBurst_Weather_Once": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "type": "Skill",
+              "weatherPattern": "Weather_Cyno_ElementalBurst_Once",
+              "transDuration": 0.30000001192092896,
+              "duration": 1.5
+            }
+          ]
+        },
+        "Cyno_TriggerSetShadowRamp": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerSetShadowRamp",
+              "specialMats": [
+                "Avatar_Boy_Pole_Cyno_Mat_Body",
+                "Avatar_Boy_Pole_Cyno_Mat_Dress",
+                "Avatar_Boy_Pole_Cyno_Mat_Hair"
+              ]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerSetShadowRamp",
+              "cdDelta": true,
+              "useShadowRamp": true,
+              "specialMats": [
+                "Avatar_Boy_Pole_Cyno_Mat_Body",
+                "Avatar_Boy_Pole_Cyno_Mat_Dress",
+                "Avatar_Boy_Pole_Cyno_Mat_Hair"
+              ]
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_CameraBlur_Handler": {
+          "modifierName": "",
+          "duration": 1.399999976158142,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "modifierName": "Avatar_Cyno_ElementalBurst_CameraBlur_Effect"
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_CameraBlur_Effect": {
+          "modifierName": "",
+          "duration": 0.30000001192092896,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CameraBlurMixin",
+              "cameraRadialBlur": {
+                "power": 0.699999988079071,
+                "fadeTime": 0.15000000596046448
+              }
+            }
+          ]
+        },
+        "Cyno_ElementalBurst_ChangeAlpha": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "EffectChangeAlphaMixin",
+              "target": "Team",
+              "startDuration": 0.10000000149011612,
+              "endDuration": 0.20000000298023224,
+              "AHODOBPPBJK": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_ABILITY_Cyno_BurstCamera_Mark",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "cdDelta": true,
+          "modifierName": "UNIQUE_Special_ShaderLerp"
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "Cyno_ElementalBurst_CameraStart"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Cyno_ElementalBurst_CameraStart"
+        },
+        {
+          "$type": "FireEffect",
+          "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_RArm",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "FireEffect",
+          "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Atmosphere",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "SetAnimatorTrigger",
+          "value": "ElementalBurst_Appear"
+        },
+        {
+          "$type": "FireEffect",
+          "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Jackal_Eye",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "FireEffect",
+          "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Perform_AttachHand",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": -2.0,
+                  "z": 0.0
+                },
+                "direction": {
+                  "$type": "DFEHJKCDGHN",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                }
+              },
+              "height": 4.0,
+              "radius": 2.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "damage": 400.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "none",
+                "hitImpulseType": "",
+                "overrideHitImpulse": {
+                  "hitLevel": "Heavy",
+                  "BLHKKKALNDK": 600.0,
+                  "hitImpulseY": 0.0
+                },
+                "retreatType": "ByHitDirection"
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "Predicated",
+          "target": "Caster",
+          "targetPredicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Cyno_Constellation_1"
+            },
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Cyno_PermanentSkill_1"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "TriggerAbility",
+              "target": "Caster",
+              "abilityName": "Avatar_Cyno_Constellation_1_AttackRatio"
+            }
+          ]
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 1.0,
+          "key": "_Cyno_BurstMode_Constellation_4",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "Predicated",
+          "target": "Caster",
+          "targetPredicates": [
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Avatar_Cyno_Constellation_6"
+            },
+            {
+              "$type": "ByUnlockTalentParam",
+              "talentParam": "Cyno_PermanentSkill_1"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": "Cyno_Constellation_6_Layer",
+              "key": "_Cyno_Constellation_6_Layer",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_Cyno_Constellation_6_CD",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "TriggerAbility",
+              "target": "Caster",
+              "abilityName": "Avatar_Cyno_Constellation_6"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ElementalBurst_ChangeVisible",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Cyno_ElementalBurst"],
+          "modifierName": "Avatar_Cyno_ElementalBurst_ResetInit",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_Cyno_BurstMode_Weapon_Flag",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": [
+            "Blank",
+            "Avatar_Cyno_ElementalBurst_WeaponVisible_Handler"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_Cyno_BurstMode_Fog_Flag",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": [
+            "Blank",
+            "Avatar_Cyno_ElementalBurst_Fog_Handler"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_Cyno_BurstMode_Weather_Flag",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+          "modifierNameSteps": [
+            "Blank",
+            "Avatar_Cyno_ElementalBurst_Weather_DisPlayHandler",
+            "Avatar_Cyno_ElementalBurst_Weather_LoopHandler"
+          ]
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Cyno_ElementalBurst"],
+          "modifierName": "Avatar_Cyno_ElementalBurst_ChangeWeather",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack01",
+          "modifierName": "Avatar_Cyno_BigArmAppear",
+          "normalizeEnd": 0.20000000298023224,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack02",
+          "modifierName": "Avatar_Cyno_BigArmAppear",
+          "normalizeEnd": 0.20000000298023224,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack03",
+          "modifierName": "Avatar_Cyno_BigArmAppear",
+          "normalizeEnd": 0.20000000298023224,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack04",
+          "modifierName": "Avatar_Cyno_BigArmAppear",
+          "normalizeEnd": 0.20000000298023224,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack05",
+          "modifierName": "Avatar_Cyno_BigArmAppear",
+          "normalizeEnd": 0.20000000298023224,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ElementalArt_BurstMode",
+          "modifierName": "Avatar_Cyno_BigArmAppear",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ExtraAttack_BurstMode_BS",
+          "modifierName": "Avatar_Cyno_BigArmAppear",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Katana_Attack01",
+            "Katana_Attack02",
+            "Katana_Attack03",
+            "Katana_Attack04",
+            "Katana_Attack05",
+            "Cyno_ElementalArt_BurstMode",
+            "Cyno_ElementalArt_BurstMode_AS",
+            "Cyno_ExtraAttack_BurstMode_BS",
+            "Cyno_ExtraAttack_BurstMode",
+            "Cyno_ExtraAttack_BurstMode_AS",
+            "Cyno_ElementalBurst_AS"
+          ],
+          "modifierName": "Avatar_Cyno_ArmBreak",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack01",
+          "modifierName": "Avatar_Cyno_BurstMode_State_Badao",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack02",
+          "modifierName": "Avatar_Cyno_BurstMode_State_Badao",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack03",
+          "modifierName": "Avatar_Cyno_BurstMode_State_Badao",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack04",
+          "modifierName": "Avatar_Cyno_BurstMode_State_Badao",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Katana_Attack05",
+          "modifierName": "Avatar_Cyno_BurstMode_State_Badao",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ExtraAttack_BurstMode",
+          "modifierName": "Avatar_Cyno_BurstMode_State_Badao",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Cyno_ExtraAttack_BurstMode_AS",
+          "modifierName": "Avatar_Cyno_BurstMode_State_Badao",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Avatar_Cyno_ArmBreak": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "BurstMode_ArmBreak"
+            }
+          ]
+        },
+        "Avatar_Cyno_BigArmDisAppear": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Attack_DisAppear"
+            }
+          ]
+        },
+        "Avatar_Cyno_BigArmAppear": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.30000001192092896,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Attack_Appear"
+            }
+          ]
+        },
+        "Avatar_Cyno_BurstMode_State_Badao": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_ShowOrSheath",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_PreSheath",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_ResetInit": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_IsInBattleState",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_WarningCameraEffect"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_SprintAddMuya",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_Muya_Success",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "ElementalBurst_DisAppear"
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_WeaponVisible_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "TriggerHideWeapon",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "partNames": ["equip01", "equip02", "equip03", "sheathPoint"]
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "TriggerHideWeapon",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "visible": true,
+                  "partNames": ["equip01", "equip02", "equip03", "sheathPoint"]
+                }
+              ]
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_Fog_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Aura_BipHead",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Aura_Root_FollowY",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_Weather_DisPlayHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "type": "Skill",
+              "weatherPattern": "Weather_Cyno_ElementalBurst_Once",
+              "transDuration": 0.30000001192092896,
+              "duration": 1.399999976158142
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_Weather_LoopHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "type": "Skill",
+              "weatherPattern": "Weather_Cyno_ElementalBurst_BurstMode",
+              "transDuration": 0.20000000298023224,
+              "duration": 20.0
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_ChangeWeather": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_Cyno_BurstMode_Weather_Flag",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 2.0,
+              "key": "_Cyno_BurstMode_Weather_Flag",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "UNIQUE_Avatar_Cyno_ElementalBurst_WarningCameraEffect": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Cyno_BurstMode_Flag",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetAnimatorFloat",
+          "cdDelta": true,
+          "canBeHandledOnRecover": true,
+          "floatID": "InSubWeapon",
+          "ratio": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Cyno_BurstMode_Weapon_Flag",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Cyno_BurstMode_Fog_Flag",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_Cyno_BurstMode_Weather_Flag",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_ABILITY_Cyno_ElementalBurst_SprintAddMuya",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ElementalBurst_JackalMode",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Cyno_ElementalBurst"],
+          "modifierName": "zzzCyno_ElementalBurst_RemoveEndMode",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "BurstMode_MaxDuration": 18.0,
+        "Burst_Duration": 10.0,
+        "Cyno_BurstMode_ElemMasteryDelta": 0.0
+      },
+      "modifiers": {
+        "Cyno_BurstMode_PreShow_Handler": {
+          "modifierName": "",
+          "duration": 1.600000023841858,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_Cyno_BurstMode_Fog_Flag",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "cdDelta": true,
+              "floatID": "BurstMode_Level",
+              "ratio": 1.0
+            }
+          ]
+        },
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Cyno_BurstMode_Leave": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_WarningCameraEffect"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_Cyno_Constellation_6_Layer",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onAvatarOut": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_WarningCameraEffect"
+            },
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler"
+            }
+          ]
+        },
+        "UNIQUE_Cyno_BurstMode_MaxTimeHandler": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": [
+            "BurstMode_MaxDuration",
+            1.7999999523162842,
+            "ADD"
+          ],
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler"
+            }
+          ]
+        },
+        "Cyno_BurstMode_MuyaCameraHandler_Pre": {
+          "modifierName": "",
+          "duration": 1.399999976158142,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Cyno_BurstMode_MuyaCameraHandler"
+            }
+          ]
+        },
+        "UNIQUE_Cyno_BurstMode_MuyaCameraHandler": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": [
+            "BurstMode_MaxDuration",
+            0.4000000059604645,
+            "ADD"
+          ],
+          "bonusCritical": 100.0,
+          "thinkInterval": 4.0,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_MuyaHandler"
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "floatID": "",
+              "ratio": 0.0,
+              "persistent": true
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_MuyaHandler"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 0.0
+                }
+              ],
+              "modifierName": "UNIQUE_Cyno_BurstMode_MuyaCameraHandler"
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        },
+        "UNIQUE_Cyno_BurstMode_LifeTimeHandler": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": ["Burst_Duration", 1.7999999523162842, "ADD"],
+          "bonusCritical": ["Burst_Duration", 1.7999999523162842, "ADD"],
+          "thinkInterval": 0.20000000298023224,
+          "modifierMixins": [
+            {
+              "$type": "SwitchSkillIDMixin",
+              "priority": "AvatarSpecial",
+              "skillIndex": 1,
+              "skillID": 10713
+            },
+            {
+              "$type": "RejectAttackMixin",
+              "attackTag": "ShockDamage"
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0.5,
+            "Actor_ElemMasteryDelta": "Cyno_BurstMode_ElemMasteryDelta"
+          },
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_Cyno_BurstMode_Flag",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "floatID": "InSubWeapon",
+              "ratio": 1.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "cdDelta": true,
+              "floatID": "BurstMode_Level",
+              "ratio": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_Cyno_BurstMode_Weapon_Flag",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "target": "Caster",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByUnlockTalentParam",
+                  "talentParam": "Cyno_PermanentSkill_1"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "cdDelta": true,
+                  "modifierName": "Cyno_BurstMode_MuyaCameraHandler_Pre"
+                }
+              ]
+            },
+            {
+              "$type": "ClearEndura"
+            },
+            {
+              "$type": "AttachModifier",
+              "cdDelta": true,
+              "modifierName": "Avatar_Cyno_ElementalBurst_Renderer_Handler"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "CanSpecialPerform"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "RemoveUniqueModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_WarningCameraEffect"
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Cyno_BurstMode_MuyaCameraHandler"
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "cdDelta": true,
+              "floatID": "InSubWeapon",
+              "ratio": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Cyno_ElementalBurst_IsInBattleState",
+                  "ratio": 0.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "cdDelta": true,
+                  "value": "BurstMode_Fade"
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": 0.0,
+                  "key": "_Cyno_BurstMode_Flag",
+                  "useLimitRange": true,
+                  "maxValue": 1.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": 0.0,
+                  "key": "_Cyno_BurstMode_Weapon_Flag",
+                  "useLimitRange": true,
+                  "maxValue": 1.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": 0.0,
+                  "key": "_Cyno_BurstMode_Fog_Flag",
+                  "useLimitRange": true,
+                  "maxValue": 1.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": 0.0,
+                  "key": "_Cyno_BurstMode_IsInWindow",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SetAnimatorFloat",
+                  "cdDelta": true,
+                  "floatID": "",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "cdDelta": true,
+                  "modifierName": "UNIQUE_Cyno_BurstMode_MaxTimeHandler"
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": 0.0,
+                  "key": "_Cyno_BurstMode_Weather_Flag",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "FireEffect",
+                  "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_BurstMode_Quit",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": 0.0,
+                  "key": "_Cyno_BurstMode_Constellation_4",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "cdDelta": true,
+                  "modifierName": "UNIQUE_Avatar_Cyno_Constellation_6_BulletHandler"
+                },
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "CanSpecialPerform",
+                  "ratio": true
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "cdDelta": true,
+                  "modifierName": "Avatar_Cyno_ElementalBurst_EndMode"
+                }
+              ]
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "InSubWeapon",
+              "ratio": 1.0
+            }
+          ],
+          "isLimitedProperties": true
+        },
+        "Avatar_Cyno_ElementalBurst_EndMode": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.20000000298023224,
+          "modifierMixins": [
+            {
+              "$type": "RejectAttackMixin",
+              "attackTag": "ShockDamage"
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0.5,
+            "Actor_ElemMasteryDelta": "Cyno_BurstMode_ElemMasteryDelta"
+          },
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "cdDelta": true,
+              "value": "BurstMode_Fade"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_Flag",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_Weapon_Flag",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_Fog_Flag",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_IsInWindow",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "cdDelta": true,
+              "floatID": "",
+              "ratio": 0.0
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Cyno_BurstMode_MaxTimeHandler"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_Weather_Flag",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_BurstMode_Quit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_Constellation_4",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Avatar_Cyno_Constellation_6_BulletHandler"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "CanSpecialPerform",
+              "ratio": true
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_Cyno_ElementalBurst_IsInBattleState",
+                  "ratio": 0.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "RemoveModifier",
+                  "cdDelta": true,
+                  "modifierName": "Avatar_Cyno_ElementalBurst_EndMode"
+                }
+              ]
+            }
+          ]
+        },
+        "Cyno_ElementalBurst_Weather_BurstMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "TriggerWeatherMixin",
+              "type": "Skill",
+              "weatherPattern": "Weather_Cyno_ElementalBurst_BurstMode",
+              "transDuration": 0.20000000298023224,
+              "duration": 20.0
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_Renderer_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToAnimatorStateIDMixin",
+              "stateIDs": [
+                "Katana_Attack01",
+                "Katana_Attack02",
+                "Katana_Attack03",
+                "Katana_Attack04",
+                "Katana_Attack05",
+                "Cyno_ElementalArt_BurstMode",
+                "Cyno_ElementalArt_BurstMode_AS",
+                "Cyno_ExtraAttack_BurstMode_BS",
+                "Cyno_ExtraAttack_BurstMode",
+                "Cyno_ExtraAttack_BurstMode_AS",
+                "Cyno_FallingAnthem_BS",
+                "Cyno_FallingAnthem_Loop",
+                "Cyno_FallingAnthem_AS_1",
+                "Cyno_FallingAnthem_AS_2"
+              ],
+              "modifierName": "Avatar_Cyno_ElementalBurst_Renderer_AttackHandler",
+              "BILMCNCKIAO": ""
+            }
+          ]
+        },
+        "Avatar_Cyno_ElementalBurst_Renderer_AttackHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_IsInBattleState",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "value": "Attack_DisAppear"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_ShowOrSheath",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_IsInBattleState",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "UNIQUE_Avatar_Cyno_ElementalBurst_WarningCameraEffect": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 1.5,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "enable": true,
+                  "effectName": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_WarningCamera"
+                },
+                {
+                  "$type": "SendCameraScreenEffectTrigger",
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "parameter": "Muya_Start",
+                  "effectName": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_WarningCamera"
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "effectName": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_WarningCamera"
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Avatar_Cyno_ElementalBurst_MuyaHandler": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 1.399999976158142,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.100000023841858,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["SprintBS", "Sprint"],
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_MuyaAddTime",
+              "BILMCNCKIAO": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Team",
+              "cdDelta": true,
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_WarningCameraEffect"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_Cyno_BurstMode_IsInWindow",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "cdDelta": true,
+              "floatID": "BurstMode_Level",
+              "ratio": 2.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "state03",
+              "attachPoint": "",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Aura_BipHead"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "state03",
+              "attachPoint": "",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Aura_Root_FollowY"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_BurstMode_IsInWindow",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 1.0
+                }
+              ],
+              "floatID": "BurstMode_Level",
+              "ratio": 1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "state01",
+              "attachPoint": "",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Aura_BipHead"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "state01",
+              "attachPoint": "",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_Aura_Root_FollowY"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SendCameraScreenEffectTrigger",
+              "muteRemoteAction": true,
+              "parameter": "Muya_End_TimeoOut",
+              "effectName": "Eff_Avatar_Boy_Pole_Cyno_ElementalBurst_WarningCamera"
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        },
+        "UNIQUE_Avatar_Cyno_ElementalBurst_MuyaAddTime": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddElementDurability",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Caster",
+                  "key": "_ABILITY_Cyno_ElementalBurst_SprintAddMuya",
+                  "ratio": 0.0
+                }
+              ],
+              "ratio": 20.0,
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_MuyaHandler",
+              "useLimitRange": true,
+              "maxValue": 120.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "ratio": -1.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_SprintAddMuya",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "UNIQUE_Avatar_Cyno_Constellation_6_BulletHandler": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0
+        },
+        "zzzCyno_ElementalBurst_RemoveEndMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveModifier",
+              "cdDelta": true,
+              "modifierName": "Avatar_Cyno_ElementalBurst_EndMode"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_Cyno_BurstMode_IsInWindow",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_Cyno_BurstMode_Constellation_4",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Cyno_BurstMode_MaxTimeHandler"
+        },
+        {
+          "$type": "ApplyModifier",
+          "cdDelta": true,
+          "modifierName": "Cyno_BurstMode_PreShow_Handler"
+        },
+        {
+          "$type": "AvatarSkillStart",
+          "predicates": [
+            {
+              "$type": "GOKKOCICPNK",
+              "skillID": 10715
+            }
+          ],
+          "skillID": 10715,
+          "amount": 1.0,
+          "costStaminaRatio": 1.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Cyno_BurstMode_Leave"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ElementalBurst_EndHanlder",
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "UNIQUE_Avatar_Cyno_ElementalBurst_Buff_AddDurability": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 1.5,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AddElementDurability",
+              "ratio": 1.0,
+              "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler",
+              "maxValue": 3.4028234663852886e38
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AddElementDurability",
+              "ratio": 1.0,
+              "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler",
+              "maxValue": 3.4028234663852886e38
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_ABILITY_Cyno_ElementalBurst_ShowOrSheath",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_ABILITY_Cyno_ElementalBurst_IsInBattleState",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "_ABILITY_Cyno_ElementalBurst_PreSheath",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "DebugLog",
+          "cdDelta": true,
+          "content": "出状态前判断要不要延长大招时间"
+        },
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_ABILITY_Cyno_ElementalBurst_IsInBattleState",
+              "ratio": 0.0
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Cyno_ElementalBurst_PreSheath",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "UNIQUE_Avatar_Cyno_ElementalBurst_Buff_AddDurability"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Cyno_ElementalArt_Blade_Hit",
+      "abilitySpecials": {
+        "Cyno_ElementalArt_Blade": 0.0,
+        "Cyno_PermanentSkill_2_Ratio_ElementalArt_Blade": 0.0,
+        "Cyno_PermanentSkill_2_UnLock": 0.0
+      },
+      "modifiers": {
+        "LoopState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalArt_Blades",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "LoopState"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "GetFightProperty",
+          "cdDelta": true,
+          "fightPropSourceTarget": "OriginOwner",
+          "fightProp": "FIGHT_PROP_ELEMENT_MASTERY",
+          "globalValueKey": "Cyno_Element_MasterY_Cache"
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Caster",
+              "key": "Cyno_Element_MasterY_Cache",
+              "ratio": 0.0,
+              "compareType": "MoreThan"
+            }
+          ],
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "attackInfo": {
+            "attackTag": "Elemental_Art_Hold",
+            "attenuationTag": "Elemental_Art",
+            "attenuationGroup": "Cyno_ElementalArt_Blade",
+            "attackProperty": {
+              "damagePercentage": "Cyno_ElementalArt_Blade",
+              "damagePercentageRatio": 0.0,
+              "elementType": "Electric",
+              "bonusCritical": 25.0,
+              "strikeType": "Slash",
+              "damage": 25.0,
+              "attackType": "Melee",
+              "damageExtra": [
+                "Cyno_PermanentSkill_2_Ratio_ElementalArt_Blade",
+                "Cyno_PermanentSkill_2_UnLock",
+                "MUL",
+                "FIGHT_PROP_ELEMENT_MASTERY",
+                "MUL"
+              ],
+              "FKGFPFNOJMN": 0.0
+            },
+            "hitPattern": {
+              "onHitEffectName": "default",
+              "hitImpulseType": "LV2"
+            },
+            "canBeModifiedBy": "OriginOwner"
+          }
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Caster",
+              "key": "Cyno_Element_MasterY_Cache",
+              "ratio": 0.0,
+              "compareType": "LessAndEqual"
+            }
+          ],
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "attackInfo": {
+            "attackTag": "Elemental_Art_Hold",
+            "attenuationTag": "Elemental_Art",
+            "attenuationGroup": "Cyno_ElementalArt_Blade",
+            "attackProperty": {
+              "damagePercentage": "Cyno_ElementalArt_Blade",
+              "damagePercentageRatio": 0.0,
+              "elementType": "Electric",
+              "bonusCritical": 25.0,
+              "strikeType": "Slash",
+              "damage": 25.0,
+              "attackType": "Melee",
+              "FKGFPFNOJMN": 0.0
+            },
+            "hitPattern": {
+              "onHitEffectName": "default",
+              "hitImpulseType": "LV2"
+            },
+            "canBeModifiedBy": "OriginOwner"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Cyno_Constellation_6_Blade",
+      "abilitySpecials": {
+        "Cyno_ElementalArt_Blade": 0.0,
+        "Cyno_PermanentSkill_2_Ratio_ElementalArt_Blade": 0.0,
+        "Cyno_PermanentSkill_2_UnLock": 0.0
+      },
+      "modifiers": {
+        "LoopState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_ElementalArt_Blades",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "LoopState"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "GetFightProperty",
+          "cdDelta": true,
+          "fightPropSourceTarget": "OriginOwner",
+          "fightProp": "FIGHT_PROP_ELEMENT_MASTERY",
+          "globalValueKey": "Cyno_Element_MasterY_Cache"
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Caster",
+              "key": "Cyno_Element_MasterY_Cache",
+              "ratio": 0.0,
+              "compareType": "MoreThan"
+            }
+          ],
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "attackInfo": {
+            "attackTag": "Elemental_Art_Hold",
+            "attenuationTag": "Elemental_Art",
+            "attenuationGroup": "Cyno_Constellation_6",
+            "attackProperty": {
+              "damagePercentage": "Cyno_ElementalArt_Blade",
+              "damagePercentageRatio": 0.0,
+              "elementType": "Electric",
+              "bonusCritical": 25.0,
+              "strikeType": "Slash",
+              "damage": 25.0,
+              "attackType": "Melee",
+              "damageExtra": [
+                "Cyno_PermanentSkill_2_Ratio_ElementalArt_Blade",
+                "Cyno_PermanentSkill_2_UnLock",
+                "MUL",
+                "FIGHT_PROP_ELEMENT_MASTERY",
+                "MUL"
+              ],
+              "FKGFPFNOJMN": 0.0
+            },
+            "hitPattern": {
+              "onHitEffectName": "default",
+              "hitImpulseType": "LV2"
+            },
+            "canBeModifiedBy": "OriginOwner"
+          }
+        },
+        {
+          "$type": "DamageByAttackValue",
+          "target": "Target",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Caster",
+              "key": "Cyno_Element_MasterY_Cache",
+              "ratio": 0.0,
+              "compareType": "LessAndEqual"
+            }
+          ],
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "attackInfo": {
+            "attackTag": "Elemental_Art_Hold",
+            "attenuationTag": "Elemental_Art",
+            "attenuationGroup": "Cyno_Constellation_6",
+            "attackProperty": {
+              "damagePercentage": "Cyno_ElementalArt_Blade",
+              "damagePercentageRatio": 0.0,
+              "elementType": "Electric",
+              "bonusCritical": 25.0,
+              "strikeType": "Slash",
+              "damage": 25.0,
+              "attackType": "Melee",
+              "FKGFPFNOJMN": 0.0
+            },
+            "hitPattern": {
+              "onHitEffectName": "default",
+              "hitImpulseType": "LV2"
+            },
+            "canBeModifiedBy": "OriginOwner"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_FallingAnthem",
+      "abilityMixins": [
+        {
+          "$type": "AvatarChangeSkillMixin",
+          "jumpSkillID": 5071010,
+          "flySkillID": 5071010
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["FallingAnthem_BS"],
+          "modifierName": "FallingAnthem_BS_Material",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["FallingAnthem_Loop"],
+          "modifierName": "FallingAnthem_Loop_Normal",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS_2",
+            "FallingAnthem_Loop",
+            "FallingAnthem_Loop_Low"
+          ],
+          "modifierName": "FallingAnthem_LoopDamage",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["FallingAnthem_BS"],
+          "modifierName": "FallingAnthem_BS_VelocityForce_Initialize",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS",
+            "FallingAnthem_Loop",
+            "FallingAnthem_AS_1",
+            "FallingAnthem_AS_2"
+          ],
+          "modifierName": "FallingAnthem_Height_Detect",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS",
+            "FallingAnthem_Loop",
+            "FallingAnthem_AS_1",
+            "FallingAnthem_AS_2"
+          ],
+          "modifierName": "FallingAnthem_FallingDamageImmune_01",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["FallingAnthem_BS", "FallingAnthem_Loop"],
+          "modifierName": "Inertia",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "FallingAnthem_BS",
+            "FallingAnthem_Loop",
+            "FallingAnthem_AS_1",
+            "FallingAnthem_AS_2"
+          ],
+          "modifierName": "FallingAnthem_OverHead_Camera",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["FallingAnthem_BS"],
+          "modifierName": "FallingAnthem_ClearVelocityForce",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["FallingAnthem_BS", "FallingAnthem_Loop"],
+          "modifierName": "FallingAnthem_AttachSelfEffect",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "FallingAnthem_Normal_Loop_Damage": 0.0,
+        "FallingAnthem_Normal_Rank_1_Damage": 0.0,
+        "FallingAnthem_Normal_Rank_2_Damage": 0.0,
+        "FallingAnthem_Normal_Loop_BurstMode_Damage": 0.0,
+        "FallingAnthem_Normal_Rank_1_BurstMode_Damage": 0.0,
+        "FallingAnthem_Normal_Rank_2_BurstMode_Damage": 0.0,
+        "FallingAnthem_Altitude_Lv0": 20.0,
+        "FallingAnthem_Altitude_Lv1": 40.0,
+        "FallingAnthem_Altitude_Lv2": 60.0,
+        "FallingAnthem_Altitude_Lv3": 100.0,
+        "FallingAnthem_Altitude_Lv4": 200.0,
+        "FallingAnthem_FallingDamageRatio_Lv0": -1.0,
+        "FallingAnthem_FallingDamageRatio_Lv1": -1.0,
+        "FallingAnthem_FallingDamageRatio_Lv2": -0.8999999761581421,
+        "FallingAnthem_FallingDamageRatio_Lv3": -0.800000011920929,
+        "FallingAnthem_FallingDamageRatio_Lv4": -0.6000000238418579,
+        "FallingAnthem_FallingDamageRatio": 0.0
+      },
+      "modifiers": {
+        "FallingAnthem_AttachSelfEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "FallingAnthem_BS_Material": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Avatar_Pole_FallingAnthem_BS_Normal",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "FallingAnthem_BS_VelocityForce_Initialize": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AddGravityScale": -2.0
+          },
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "forces": ["RushMoveType"]
+            }
+          ]
+        },
+        "FallingAnthem_LoopDamage": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "attackPattern": {
+                      "$type": "ConfigAttackSphere",
+                      "triggerType": "TriggerNoRepeat",
+                      "born": {
+                        "$type": "ConfigBornBySelf",
+                        "offset": {
+                          "x": 0.0,
+                          "y": 0.0,
+                          "z": 1.0
+                        }
+                      },
+                      "radius": 1.0
+                    },
+                    "attackInfo": {
+                      "attackTag": "FallingAttack",
+                      "attenuationTag": "",
+                      "attenuationGroup": "default",
+                      "attackProperty": {
+                        "damagePercentage": "FallingAnthem_Normal_Loop_BurstMode_Damage",
+                        "damagePercentageRatio": 0.0,
+                        "elementType": "Electric",
+                        "bonusCritical": 0.0,
+                        "strikeType": "Slash",
+                        "damage": 25.0,
+                        "attackType": "Melee",
+                        "FKGFPFNOJMN": 0.0
+                      },
+                      "hitPattern": {
+                        "onHitEffectName": "default",
+                        "hitImpulseType": "LV2",
+                        "hitHaltTimeScale": 0.019999999552965164
+                      }
+                    }
+                  },
+                  "targetType": "Enemy"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "attackPattern": {
+                      "$type": "ConfigAttackSphere",
+                      "triggerType": "TriggerNoRepeat",
+                      "born": {
+                        "$type": "ConfigBornBySelf",
+                        "offset": {
+                          "x": 0.0,
+                          "y": 0.0,
+                          "z": 1.0
+                        }
+                      },
+                      "radius": 1.0
+                    },
+                    "attackInfo": {
+                      "attackTag": "FallingAttack",
+                      "attenuationTag": "",
+                      "attenuationGroup": "default",
+                      "attackProperty": {
+                        "damagePercentage": "FallingAnthem_Normal_Loop_Damage",
+                        "damagePercentageRatio": 0.0,
+                        "bonusCritical": 0.0,
+                        "overrideByWeapon": true,
+                        "strikeType": "Slash",
+                        "damage": 25.0,
+                        "attackType": "Melee",
+                        "FKGFPFNOJMN": 0.0
+                      },
+                      "hitPattern": {
+                        "onHitEffectName": "default",
+                        "hitImpulseType": "LV2",
+                        "hitHaltTimeScale": 0.019999999552965164
+                      }
+                    }
+                  },
+                  "targetType": "Enemy"
+                }
+              ]
+            }
+          ]
+        },
+        "FallingAnthem_FallingDamageImmune_01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ClearGlobalValue",
+              "key": "_ABILITY_FallingAttack_Altitude"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "ratio": "FallingAnthem_Altitude_Lv0"
+                }
+              ],
+              "ratio": "FallingAnthem_FallingDamageRatio_Lv0",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv0",
+              "triggerID": "FallingAnthem_FallingDamageRatio_Lv0"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "ratio": "FallingAnthem_Altitude_Lv1"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "ratio": "FallingAnthem_Altitude_Lv0"
+                }
+              ],
+              "ratio": "FallingAnthem_FallingDamageRatio_Lv1",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv1",
+              "triggerID": "FallingAnthem_FallingDamageRatio_Lv1"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "ratio": "FallingAnthem_Altitude_Lv2"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "ratio": "FallingAnthem_Altitude_Lv1"
+                }
+              ],
+              "ratio": "FallingAnthem_FallingDamageRatio_Lv2",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv2",
+              "triggerID": "FallingAnthem_FallingDamageRatio_Lv2"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "ratio": "FallingAnthem_Altitude_Lv3"
+                },
+                {
+                  "$type": "ByTargetAltitude",
+                  "ratio": "FallingAnthem_Altitude_Lv2"
+                }
+              ],
+              "ratio": "FallingAnthem_FallingDamageRatio_Lv3",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv3",
+              "triggerID": "FallingAnthem_FallingDamageRatio_Lv3"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "ratio": "FallingAnthem_Altitude_Lv3"
+                }
+              ],
+              "ratio": "FallingAnthem_FallingDamageRatio_Lv4",
+              "key": "_ABILITY_FallingAttack_Altitude",
+              "useLimitRange": true,
+              "maxValue": "FallingAnthem_FallingDamageRatio_Lv4",
+              "triggerID": "FallingAnthem_FallingDamageRatio_Lv4"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "FallingAnthem_FallingDamageImmune_02"
+            }
+          ]
+        },
+        "FallingAnthem_FallingDamageImmune_02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "globalValueKey": "_ABILITY_FallingAttack_Altitude",
+              "overrideMapKey": "FallingAnthem_FallingDamageRatio"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "FallingAnthem_FallingDamageImmune_03"
+            }
+          ]
+        },
+        "FallingAnthem_FallingDamageImmune_03": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_FallingDamageRatio": "FallingAnthem_FallingDamageRatio"
+          }
+        },
+        "FallingAnthem_Loop_Normal": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToSelfGlobalValueMixin",
+              "globalValueKey": "_ABILITY_FallingAnthem_UseCamera",
+              "defaultGlobalValueOnCreate": 0.0,
+              "valueSteps": [-1.0, 0.5, 1.5],
+              "modifierNameSteps": [
+                "FallingAnthem_Loop_Normal_Rank_1",
+                "FallingAnthem_Loop_Normal_Rank_2"
+              ]
+            }
+          ]
+        },
+        "FallingAnthem_Loop_Normal_Rank_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachEffect",
+                  "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_FallAnthem_Self_01",
+                  "effectTempleteID": -1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "rotationDampTime": "Eff_Avatar_Pole_FallingAnthem_Loop_01_Normal",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        },
+        "FallingAnthem_Loop_Normal_Rank_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachEffect",
+                  "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_FallAnthem_Self_01",
+                  "effectTempleteID": -1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "AttachEffect",
+                  "rotationDampTime": "Eff_Avatar_Pole_FallingAnthem_Loop_02_Normal",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        },
+        "Inertia": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ApplyInertiaVelocityMixin",
+              "useXZ": false,
+              "useY": false
+            }
+          ]
+        },
+        "FallingAnthem_Height_Detect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "ratio": 2.4000000953674316
+                }
+              ],
+              "ratio": 0.0,
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "ratio": 2.4000000953674316
+                }
+              ],
+              "ratio": 5.0,
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "useLimitRange": true,
+              "maxValue": 1.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "logic": "LesserOrEqual",
+                  "ratio": 2.4000000953674316
+                }
+              ],
+              "floatID": "FallingAnthem_UseCamera",
+              "ratio": 0.0
+            },
+            {
+              "$type": "SetAnimatorFloat",
+              "predicates": [
+                {
+                  "$type": "ByTargetAltitude",
+                  "ratio": 2.4000000953674316
+                }
+              ],
+              "floatID": "FallingAnthem_UseCamera",
+              "ratio": 1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "FallingAnthem_UseCamera",
+              "ratio": 0.0
+            },
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 0.0,
+              "key": "_ABILITY_FallingAnthem_UseCamera",
+              "useLimitRange": true,
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "FallingAnthem_OverHead_Camera": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AvatarCameraParam",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "ratio": 1.0,
+                  "parameter": "FallingAnthem_UseCamera"
+                }
+              ],
+              "cameraParam": {
+                "forceRadius": 4.5,
+                "forceRadiusDuration": 0.20000000298023224,
+                "shouldKeepForceRadius": true
+              }
+            }
+          ]
+        },
+        "FallingAnthem_OverHead_Camera_Remover": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AvatarExitCameraShot",
+              "cdDelta": true
+            }
+          ]
+        },
+        "FallingAnthem_Landed_Camera": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AvatarCameraParam",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "ratio": 1.0,
+                  "parameter": "FallingAnthem_UseCamera"
+                }
+              ],
+              "cameraParam": {
+                "forceRadius": 6.0,
+                "forceRadiusDuration": 0.10000000149011612,
+                "shouldKeepForceRadius": true
+              }
+            }
+          ]
+        },
+        "FallingAnthem_ClearVelocityForce": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "RemoveVelocityForce",
+              "forces": ["RushMoveType", "InertiaType"]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "targetPredicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_Cyno_BurstMode_Flag",
+              "ratio": 1.0
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_FallingAnthem_UseCamera",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_FallAnthem_Strike_01",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "attackPattern": {
+                      "$type": "ConfigAttackCircle",
+                      "triggerType": "TriggerNoRepeat",
+                      "born": {
+                        "$type": "ConfigBornByTarget",
+                        "offset": {
+                          "x": 0.0,
+                          "y": -0.5,
+                          "z": 1.0
+                        }
+                      },
+                      "height": 2.0,
+                      "radius": 4.0
+                    },
+                    "attackInfo": {
+                      "attackTag": "FallingAttack",
+                      "attenuationTag": "",
+                      "attenuationGroup": "default",
+                      "attackProperty": {
+                        "damagePercentage": "FallingAnthem_Normal_Rank_1_BurstMode_Damage",
+                        "damagePercentageRatio": 0.0,
+                        "elementType": "Electric",
+                        "bonusCritical": 25.0,
+                        "strikeType": "Blunt",
+                        "damage": 100.0,
+                        "attackType": "Melee",
+                        "FKGFPFNOJMN": 0.0
+                      },
+                      "hitPattern": {
+                        "onHitEffectName": "none",
+                        "hitImpulseType": "LV4",
+                        "hitHaltTimeScale": 0.10000000149011612
+                      },
+                      "forceCameraShake": true,
+                      "cameraShake": {
+                        "shakeType": "CustomVector",
+                        "shakeRange": 0.23999999463558197,
+                        "shakeTime": 0.11999999731779099,
+                        "shakeDistance": 30.0,
+                        "shakeDir": {
+                          "y": 1.0
+                        },
+                        "extension": {
+                          "baseCycle": 0.23999999463558197,
+                          "cycleDamping": 0.0,
+                          "rangeAttenuation": 0.30000001192092896
+                        }
+                      }
+                    }
+                  },
+                  "targetType": "Enemy"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "rotationDampTime": "Eff_Avatar_Boy_Pole_Cyno_FallAnthem_Strike_02",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "attackPattern": {
+                      "$type": "ConfigAttackCircle",
+                      "triggerType": "TriggerNoRepeat",
+                      "born": {
+                        "$type": "ConfigBornByTarget",
+                        "offset": {
+                          "x": 0.0,
+                          "y": -0.5,
+                          "z": 1.0
+                        }
+                      },
+                      "height": 2.0,
+                      "radius": 6.0
+                    },
+                    "attackInfo": {
+                      "attackTag": "FallingAttack",
+                      "attenuationTag": "",
+                      "attenuationGroup": "default",
+                      "attackProperty": {
+                        "damagePercentage": "FallingAnthem_Normal_Rank_2_BurstMode_Damage",
+                        "damagePercentageRatio": 0.0,
+                        "elementType": "Electric",
+                        "bonusCritical": 25.0,
+                        "strikeType": "Blunt",
+                        "damage": 150.0,
+                        "attackType": "Melee",
+                        "FKGFPFNOJMN": 0.0
+                      },
+                      "hitPattern": {
+                        "onHitEffectName": "none",
+                        "hitImpulseType": "LV7",
+                        "hitHaltTimeScale": 0.10000000149011612
+                      },
+                      "forceCameraShake": true,
+                      "cameraShake": {
+                        "shakeType": "CustomVector",
+                        "shakeRange": 0.5,
+                        "shakeTime": 0.20000000298023224,
+                        "shakeDistance": 30.0,
+                        "shakeDir": {
+                          "y": 1.0,
+                          "z": 1.0
+                        },
+                        "extension": {
+                          "baseCycle": 0.4000000059604645,
+                          "cycleDamping": 0.0,
+                          "rangeAttenuation": 0.30000001192092896
+                        }
+                      }
+                    }
+                  },
+                  "targetType": "Enemy"
+                }
+              ]
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ABILITY_FallingAnthem_UseCamera",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "rotationDampTime": "Eff_Avatar_Pole_FallingAnthem_Strike_01_Normal",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "attackPattern": {
+                      "$type": "ConfigAttackCircle",
+                      "triggerType": "TriggerNoRepeat",
+                      "born": {
+                        "$type": "ConfigBornByTarget",
+                        "offset": {
+                          "x": 0.0,
+                          "y": -0.5,
+                          "z": 1.0
+                        }
+                      },
+                      "height": 2.0,
+                      "radius": 3.0
+                    },
+                    "attackInfo": {
+                      "attackTag": "FallingAttack",
+                      "attenuationTag": "",
+                      "attenuationGroup": "default",
+                      "attackProperty": {
+                        "damagePercentage": "FallingAnthem_Normal_Rank_1_Damage",
+                        "damagePercentageRatio": 0.0,
+                        "bonusCritical": 25.0,
+                        "overrideByWeapon": true,
+                        "strikeType": "Blunt",
+                        "damage": 100.0,
+                        "attackType": "Melee",
+                        "FKGFPFNOJMN": 0.0
+                      },
+                      "hitPattern": {
+                        "onHitEffectName": "none",
+                        "hitImpulseType": "LV4",
+                        "hitHaltTimeScale": 0.10000000149011612
+                      },
+                      "forceCameraShake": true,
+                      "cameraShake": {
+                        "shakeType": "CustomVector",
+                        "shakeRange": 0.23999999463558197,
+                        "shakeTime": 0.11999999731779099,
+                        "shakeDistance": 30.0,
+                        "shakeDir": {
+                          "y": 1.0
+                        },
+                        "extension": {
+                          "baseCycle": 0.23999999463558197,
+                          "cycleDamping": 0.0,
+                          "rangeAttenuation": 0.30000001192092896
+                        }
+                      }
+                    }
+                  },
+                  "targetType": "Enemy"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "rotationDampTime": "Eff_Avatar_Pole_FallingAnthem_Strike_02_Normal",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "attackPattern": {
+                      "$type": "ConfigAttackCircle",
+                      "triggerType": "TriggerNoRepeat",
+                      "born": {
+                        "$type": "ConfigBornByTarget",
+                        "offset": {
+                          "x": 0.0,
+                          "y": -0.5,
+                          "z": 1.0
+                        }
+                      },
+                      "height": 2.0,
+                      "radius": 5.0
+                    },
+                    "attackInfo": {
+                      "attackTag": "FallingAttack",
+                      "attenuationTag": "",
+                      "attenuationGroup": "default",
+                      "attackProperty": {
+                        "damagePercentage": "FallingAnthem_Normal_Rank_2_Damage",
+                        "damagePercentageRatio": 0.0,
+                        "bonusCritical": 25.0,
+                        "overrideByWeapon": true,
+                        "strikeType": "Blunt",
+                        "damage": 150.0,
+                        "attackType": "Melee",
+                        "FKGFPFNOJMN": 0.0
+                      },
+                      "hitPattern": {
+                        "onHitEffectName": "none",
+                        "hitImpulseType": "LV7",
+                        "hitHaltTimeScale": 0.10000000149011612
+                      },
+                      "forceCameraShake": true,
+                      "cameraShake": {
+                        "shakeType": "CustomVector",
+                        "shakeRange": 0.5,
+                        "shakeTime": 0.20000000298023224,
+                        "shakeDistance": 30.0,
+                        "shakeDir": {
+                          "y": 1.0,
+                          "z": 1.0
+                        },
+                        "extension": {
+                          "baseCycle": 0.4000000059604645,
+                          "cycleDamping": 0.0,
+                          "rangeAttenuation": 0.30000001192092896
+                        }
+                      }
+                    }
+                  },
+                  "targetType": "Enemy"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_Show",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_Cyno_BurstMode_Flag",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": [
+            "Blank",
+            "Avatar_Cyno_ElementalBurst_onReconnectHandler"
+          ]
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["StandbyShow_01"],
+          "modifierName": "Avatar_Cyno_Show01_Handler",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Avatar_Cyno_ElementalBurst_onReconnectHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onRemoved": [
+                {
+                  "$type": "SetAnimatorInt",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "intID": "BurstMode_Loop",
+                  "ratio": 0.0,
+                  "persistent": true
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "intID": "BurstMode_Loop",
+              "ratio": 1.0,
+              "persistent": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "intID": "BurstMode_Loop",
+              "ratio": 0.0,
+              "persistent": true
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "SetAnimatorInt",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "intID": "BurstMode_Loop",
+              "ratio": 1.0,
+              "persistent": true
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 1.0
+                }
+              ],
+              "ratio": 2.0,
+              "key": "_Cyno_BurstMode_Weather_Flag",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "Avatar_Cyno_Show01_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "cdDelta": true,
+              "value": "DoShow01"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "cdDelta": true,
+              "canBeHandledOnRecover": true,
+              "value": "ExitShow01"
+            }
+          ]
+        },
+        "Avatar_Cyno_Show02_WeaponHandler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerHideWeapon",
+              "cdDelta": true,
+              "partNames": ["equip01", "equip02", "equip03", "sheathPoint"]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerHideWeapon",
+              "cdDelta": true,
+              "visible": true,
+              "partNames": ["equip01", "equip02", "equip03", "sheathPoint"]
+            }
+          ]
+        },
+        "Avatar_Cyno_Show01_WeaponHandler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerHideWeapon",
+              "cdDelta": true,
+              "partNames": ["equip01", "equip02", "equip03", "sheathPoint"]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "TriggerHideWeapon",
+              "cdDelta": true,
+              "visible": true,
+              "partNames": ["equip01", "equip02", "equip03", "sheathPoint"]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_BigArm_DisAppear",
+      "onAbilityStart": [
+        {
+          "$type": "ResetAnimatorTrigger",
+          "value": "Attack_Appear"
+        },
+        {
+          "$type": "SetAnimatorTrigger",
+          "value": "Attack_DisAppear"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_ExtraAttack_BurstMode_Damage",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 41071004
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_BurstMode_ExtraAttack_Bullet",
+      "abilitySpecials": {
+        "Cyno_BurstMode_ExtraAttack_Damage": 0.0
+      },
+      "onAbilityStart": [
+        {
+          "$type": "Predicated",
+          "target": "Target",
+          "targetPredicates": [
+            {
+              "$type": "ByEntityTypes",
+              "entityTypes": ["MonsterEquip"]
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "DamageByAttackValue",
+              "target": "Target",
+              "attackInfo": {
+                "attackTag": "ExtraAttack",
+                "attenuationTag": "ExtraAttack",
+                "attenuationGroup": "Avatar_Pole_ExtraAttack",
+                "attackProperty": {
+                  "damagePercentage": "Cyno_BurstMode_ExtraAttack_Damage",
+                  "damagePercentageRatio": 0.0,
+                  "elementType": "Electric",
+                  "bonusCritical": 25.0,
+                  "strikeType": "Spear",
+                  "damage": 120.0,
+                  "attackType": "Melee",
+                  "FKGFPFNOJMN": 0.0
+                },
+                "hitPattern": {
+                  "onHitEffectName": "default",
+                  "hitImpulseType": "LV6",
+                  "hitHaltTimeScale": 0.009999999776482582,
+                  "canBeDefenceHalt": true
+                },
+                "cameraShake": {
+                  "shakeType": "CustomVector",
+                  "shakeRange": 0.36000001430511475,
+                  "shakeTime": 0.11999999731779099,
+                  "shakeDistance": 30.0,
+                  "shakeDir": {
+                    "y": -1.0
+                  }
+                },
+                "canBeModifiedBy": "OriginOwner"
+              }
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByCollisionPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    }
+                  },
+                  "radius": 0.800000011920929
+                },
+                "attackInfo": {
+                  "attackTag": "ExtraAttack",
+                  "attenuationTag": "ExtraAttack",
+                  "attenuationGroup": "Avatar_Pole_ExtraAttack",
+                  "attackProperty": {
+                    "damagePercentage": "Cyno_BurstMode_ExtraAttack_Damage",
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Electric",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Spear",
+                    "damage": 120.0,
+                    "attackType": "Melee",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV5",
+                    "hitHaltTimeScale": 0.009999999776482582,
+                    "canBeDefenceHalt": true
+                  },
+                  "cameraShake": {
+                    "shakeType": "CustomVector",
+                    "shakeRange": 0.36000001430511475,
+                    "shakeTime": 0.11999999731779099,
+                    "shakeDistance": 30.0,
+                    "shakeDir": {
+                      "y": -1.0
+                    }
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_Attack_DamageHandler",
+      "abilityMixins": [
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK01"],
+          "damagePercentage": "Attack_01_Normal",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK02"],
+          "damagePercentage": "Attack_02_Normal",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK03A"],
+          "damagePercentage": "Attack_03A_Normal",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK03B"],
+          "damagePercentage": "Attack_03B_Normal",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK04"],
+          "damagePercentage": "Attack_04_Normal",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK01_BurstMode"],
+          "damagePercentage": "Attack_01_BurstMode",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK01_BurstMode"],
+          "damagePercentageRatio": 0.0,
+          "damageExtra": [
+            "Cyno_PermanentSkill_2_Ratio_BurstModeNormalAttack",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "MUL",
+            "Cyno_PermanentSkill_2_UnLock",
+            "MUL"
+          ],
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "Cyno_Element_Mastery_Lower_Limit",
+              "ratio": "FIGHT_PROP_ELEMENT_MASTERY",
+              "compareType": "LessAndEqual"
+            }
+          ]
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK02_BurstMode"],
+          "damagePercentage": "Attack_02_BurstMode",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK02_BurstMode"],
+          "damagePercentageRatio": 0.0,
+          "damageExtra": [
+            "Cyno_PermanentSkill_2_Ratio_BurstModeNormalAttack",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "MUL",
+            "Cyno_PermanentSkill_2_UnLock",
+            "MUL"
+          ],
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "Cyno_Element_Mastery_Lower_Limit",
+              "ratio": "FIGHT_PROP_ELEMENT_MASTERY",
+              "compareType": "LessAndEqual"
+            }
+          ]
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK03_BurstMode"],
+          "damagePercentage": "Attack_03_BurstMode",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK03_BurstMode"],
+          "damagePercentageRatio": 0.0,
+          "damageExtra": [
+            "Cyno_PermanentSkill_2_Ratio_BurstModeNormalAttack",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "MUL",
+            "Cyno_PermanentSkill_2_UnLock",
+            "MUL"
+          ],
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "Cyno_Element_Mastery_Lower_Limit",
+              "ratio": "FIGHT_PROP_ELEMENT_MASTERY",
+              "compareType": "LessAndEqual"
+            }
+          ]
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK04A_BurstMode"],
+          "damagePercentage": "Attack_04A_BurstMode",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK04A_BurstMode"],
+          "damagePercentageRatio": 0.0,
+          "damageExtra": [
+            "Cyno_PermanentSkill_2_Ratio_BurstModeNormalAttack",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "MUL",
+            "Cyno_PermanentSkill_2_UnLock",
+            "MUL"
+          ],
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "Cyno_Element_Mastery_Lower_Limit",
+              "ratio": "FIGHT_PROP_ELEMENT_MASTERY",
+              "compareType": "LessAndEqual"
+            }
+          ]
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK04B_BurstMode"],
+          "damagePercentage": "Attack_04B_BurstMode",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK04B_BurstMode"],
+          "damagePercentageRatio": 0.0,
+          "damageExtra": [
+            "Cyno_PermanentSkill_2_Ratio_BurstModeNormalAttack",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "MUL",
+            "Cyno_PermanentSkill_2_UnLock",
+            "MUL"
+          ],
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "Cyno_Element_Mastery_Lower_Limit",
+              "ratio": "FIGHT_PROP_ELEMENT_MASTERY",
+              "compareType": "LessAndEqual"
+            }
+          ]
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK05_BurstMode"],
+          "damagePercentage": "Attack_05_BurstMode",
+          "damagePercentageRatio": 0.0
+        },
+        {
+          "$type": "ModifyDamageMixin",
+          "animEventNames": ["ATK05_BurstMode"],
+          "damagePercentageRatio": 0.0,
+          "damageExtra": [
+            "Cyno_PermanentSkill_2_Ratio_BurstModeNormalAttack",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "MUL",
+            "Cyno_PermanentSkill_2_UnLock",
+            "MUL"
+          ],
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "Cyno_Element_Mastery_Lower_Limit",
+              "ratio": "FIGHT_PROP_ELEMENT_MASTERY",
+              "compareType": "LessAndEqual"
+            }
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "Attack_01_Normal": 0.0,
+        "Attack_02_Normal": 0.0,
+        "Attack_03A_Normal": 0.0,
+        "Attack_03B_Normal": 0.0,
+        "Attack_04_Normal": 0.0,
+        "Attack_01_BurstMode": 0.0,
+        "Attack_02_BurstMode": 0.0,
+        "Attack_03_BurstMode": 0.0,
+        "Attack_04A_BurstMode": 0.0,
+        "Attack_04B_BurstMode": 0.0,
+        "Attack_05_BurstMode": 0.0,
+        "Cyno_PermanentSkill_2_UnLock": 0.0,
+        "Cyno_PermanentSkill_2_Ratio_BurstModeNormalAttack": 0.0,
+        "Cyno_Element_MasterY_Cache": 0.0
+      },
+      "modifiers": {
+        "Cyno_MasteryTick_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 5.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValueToOverrideMap",
+              "cdDelta": true,
+              "globalValueKey": "Cyno_Element_MasterY_Cache",
+              "overrideMapKey": "Cyno_Element_MasterY_Cache"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "Cyno_Element_MasterY_Cache",
+                      "ratio": "FIGHT_PROP_ELEMENT_MASTERY"
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": "FIGHT_PROP_ELEMENT_MASTERY",
+                  "key": "Cyno_Element_MasterY_Cache",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SetGlobalValueToOverrideMap",
+                  "cdDelta": true,
+                  "globalValueKey": "Cyno_Element_MasterY_Cache",
+                  "overrideMapKey": "Cyno_Element_MasterY_Cache"
+                }
+              ]
+            }
+          ]
+        },
+        "Cyno_BurstMode_Recover_TickHandler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 2.0,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_Cyno_BurstMode_Flag",
+                  "ratio": 0.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "RemoveUniqueModifier",
+                  "cdDelta": true,
+                  "modifierName": "UNIQUE_Cyno_BurstMode_LifeTimeHandler"
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": 0.0,
+                  "key": "_Cyno_BurstMode_Weather_Flag",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "cdDelta": true,
+                  "ratio": 0.0,
+                  "key": "_Cyno_BurstMode_Weapon_Flag",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "Cyno_Element_Mastery_Lower_Limit",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": "FIGHT_PROP_ELEMENT_MASTERY",
+          "key": "Cyno_Element_MasterY_Cache",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "Cyno_MasteryTick_Handler"
+        },
+        {
+          "$type": "AttachModifier",
+          "cdDelta": true,
+          "modifierName": "Cyno_BurstMode_Recover_TickHandler"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_Constellation_1_AttackRatio",
+      "abilitySpecials": {
+        "Cyno_Constellation_1_Duration": 0.0,
+        "Cyno_Constellation_1_AtkRatio": 0.0
+      },
+      "modifiers": {
+        "UNIQUE_Avatar_Cyno_Constellation_1_Buff": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "Cyno_Constellation_1_Duration",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Animator_AttackSpeedRatio": "Cyno_Constellation_1_AtkRatio"
+          },
+          "isLimitedProperties": true
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "target": "Caster",
+          "cdDelta": true,
+          "modifierName": "UNIQUE_Avatar_Cyno_Constellation_1_Buff"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_Constellation_2_BuffElecAddHurt",
+      "abilitySpecials": {
+        "Cyno_Constellation_2_BuffTime": 0.0,
+        "Cyno_Constellation_2_MaxLevel": 0.0,
+        "Cyno_Constellation_2_ElecAddHurtDelta": 0.0,
+        "Cyno_Constellation_2_CD": 0.0
+      },
+      "modifiers": {
+        "Avatar_Cyno_Constellation_2_BuffElecAddHurt_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05",
+                    "NormalAttack_06"
+                  ]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_Cyno_Constellation_2_CD",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachModifier",
+                  "cdDelta": true,
+                  "modifierName": "Avatar_Cyno_Constellation_2_BuffElecAddHurt_Effect"
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "cdDelta": true,
+                  "modifierName": "Avatar_Cyno_Constellation_2_BuffElecAddHurt_CD"
+                }
+              ]
+            }
+          ]
+        },
+        "Avatar_Cyno_Constellation_2_BuffElecAddHurt_Effect": {
+          "stacking": "MultipleAllRefresh",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": "Cyno_Constellation_2_MaxLevel"
+          },
+          "modifierName": "",
+          "duration": "Cyno_Constellation_2_BuffTime",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElecAddHurtDelta": "Cyno_Constellation_2_ElecAddHurtDelta"
+          },
+          "state": "AttackUp",
+          "isLimitedProperties": true
+        },
+        "Avatar_Cyno_Constellation_2_BuffElecAddHurt_CD": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": "Cyno_Constellation_2_CD",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "_Cyno_Constellation_2_CD",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_Constellation_2_CD",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Avatar_Cyno_Constellation_2_BuffElecAddHurt_Handler"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_Constellation_4_ReviveEnergy",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueMixin",
+          "globalValueKey": "_Cyno_BurstMode_Constellation_4",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": [
+            "Blank",
+            "Avatar_Cyno_Constellation_4_ReviveEnergy_UnLock"
+          ]
+        }
+      ],
+      "abilitySpecials": {
+        "Cyno_Constellation_4_ReviveElemEnergyValue": 0.0,
+        "Cyno_Constellation_4_CD": 0.0,
+        "Cyno_Constellation_4_MaxCount": 0.0
+      },
+      "modifiers": {
+        "Blank": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Avatar_Cyno_Constellation_4_ReviveEnergy_UnLock": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 1.0,
+              "key": "_Cyno_BurstMode_Constellation_4_Count",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Avatar_Cyno_Constellation_4_ReviveEnergy_Handler"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_Cyno_BurstMode_Constellation_4_Count",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "Avatar_Cyno_Constellation_4_ReviveEnergy_Handler": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "entityTypes": ["Monster"],
+              "reactionTypes": [
+                "Explode",
+                "Shock",
+                "Overdose",
+                "OverdoseElectric",
+                "OvergrowMushroomElectric",
+                "Superconductor",
+                "SwirlElectric"
+              ],
+              "actions": [
+                {
+                  "$type": "Predicated",
+                  "target": "Caster",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Caster",
+                      "key": "_Cyno_BurstMode_Constellation_4_Count",
+                      "ratio": "Cyno_Constellation_4_MaxCount",
+                      "compareType": "LessAndEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "ApplyModifier",
+                      "target": "Caster",
+                      "cdDelta": true,
+                      "modifierName": "Avatar_Cyno_Constellation_4_ReviveEnergy_AddGV"
+                    },
+                    {
+                      "$type": "AttachModifier",
+                      "target": "AllPlayerAvatars",
+                      "predicates": [
+                        {
+                          "$type": "ByNot",
+                          "predicates": [
+                            {
+                              "$type": "KHCIBKLALCK",
+                              "targetType": "Caster",
+                              "EFHKFHFMKIF": ""
+                            }
+                          ]
+                        },
+                        {
+                          "$type": "JOLJOHDJLNF",
+                          "logic": "LesserOrEqual",
+                          "ratio": 40.0,
+                          "PHMALDNHHLD": ""
+                        }
+                      ],
+                      "modifierName": "Avatar_Cyno_Constellation_4_ReviveEnergy"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Avatar_Cyno_Constellation_4_ReviveEnergy": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "content": "##恢复能量"
+            },
+            {
+              "$type": "ReviveElemEnergy",
+              "cdDelta": true,
+              "ratio": "Cyno_Constellation_4_ReviveElemEnergyValue"
+            }
+          ]
+        },
+        "Avatar_Cyno_Constellation_4_ReviveEnergy_AddGV": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_Cyno_BurstMode_Constellation_4_Count",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 1.0,
+          "key": "_Cyno_BurstMode_Constellation_4_Count",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_Cyno_BurstMode_Constellation_4",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Avatar_Cyno_Constellation_6",
+      "abilitySpecials": {
+        "Cyno_Constellation_6_Duration": 0.0,
+        "Cyno_Constellation_6_Layer": 0.0,
+        "Cyno_Constellation_6_LayerMax": 0.0,
+        "Cyno_Constellation_6_Layer_CD": 0.0
+      },
+      "modifiers": {
+        "UNIQUE_Avatar_Cyno_Constellation_6_BulletHandler": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": "Cyno_Constellation_6_Duration",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_Constellation_6_Layer",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_Constellation_6_CD",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByAttackTags",
+                  "attackTags": [
+                    "NormalAttack_01",
+                    "NormalAttack_02",
+                    "NormalAttack_03",
+                    "NormalAttack_04",
+                    "NormalAttack_05"
+                  ]
+                },
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Caster",
+                  "key": "_Cyno_Constellation_6_Layer",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Caster",
+                  "key": "_Cyno_Constellation_6_CD",
+                  "ratio": 0.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 41071005,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.30000001192092896,
+                      "z": 0.30000001192092896
+                    }
+                  },
+                  "flushAbilityPacket": true
+                },
+                {
+                  "$type": "AddGlobalValue",
+                  "cdDelta": true,
+                  "ratio": -1.0,
+                  "key": "_Cyno_Constellation_6_Layer",
+                  "useLimitRange": true,
+                  "maxValue": "Cyno_Constellation_6_LayerMax",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Avatar_Cyno_Constellation_6_BulletCdHandler"
+                }
+              ]
+            }
+          ]
+        },
+        "Avatar_Cyno_Constellation_6_BulletCdHandler": {
+          "modifierName": "",
+          "duration": "Cyno_Constellation_6_Layer_CD",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": -1.0,
+              "key": "_Cyno_Constellation_6_CD",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_Cyno_Constellation_6_CD",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 1.0,
+          "key": "_Cyno_Constellation_6",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_Cyno_Constellation_6_Layer",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        },
+        {
+          "$type": "SetGlobalValue",
+          "cdDelta": true,
+          "ratio": 0.0,
+          "key": "_Cyno_Constellation_6_CD",
+          "maxValue": 0.0,
+          "triggerID": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "UNIQUE_Avatar_Cyno_Constellation_6_BulletHandler"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  }
+]

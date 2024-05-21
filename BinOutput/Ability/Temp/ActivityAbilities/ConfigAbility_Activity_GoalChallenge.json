@@ -1,0 +1,2511 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level01_HpChangeCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level01_HpChangeCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level01_HpChangeCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level01_HpChangeCounter"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level01_HpChangeCounter"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level01_HpChangeCounter": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByEventMixin",
+              "onEvent": "HPChange",
+              "actions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+                  "useLimitRange": true,
+                  "maxValue": "Goal",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "cdDelta": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_Sync_GoalCounterGV",
+                  "param1": 0.0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                }
+              ],
+              "costEnergyDeltaName": ""
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level01_WaterReactionCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level01_WaterReactionCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level01_WaterReactionCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level01_WaterReactionCounter"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level01_WaterReactionCounter"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level01_WaterReactionCounter": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 40.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": [
+                "Stream",
+                "Freeze",
+                "Shock",
+                "SwirlWater",
+                "Overgrow",
+                "CrystallizeWater"
+              ],
+              "actions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+                  "useLimitRange": true,
+                  "maxValue": "Goal",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "cdDelta": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_Sync_GoalCounterGV",
+                  "param1": 0.0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level01_Buff",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level01_Buff_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "BuffDuration": 0.0,
+        "AoeCD": 0.0,
+        "AoeDamage": 0.0,
+        "DamageSystemValue": 0.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level01_Buff_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level01_Buff"
+            },
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "enable": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ]
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level01_Buff": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onBeingHealed": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Caster",
+              "cdDelta": true,
+              "modifierName": "Activity_GoalChallenge_Level01_Aoe_Trigger"
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level01_Aoe_Trigger": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": "AoeCD",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "modifierName": "Activity_GoalChallenge_Level01_Aoe"
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level01_Aoe": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Activity_Muqadas_Potion_Water_Explode_Big_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.20000000298023224,
+                      "z": 0.0
+                    },
+                    "useRotation": true
+                  },
+                  "height": 2.0,
+                  "radius": 12.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Water",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 15.0,
+                    "damageExtra": [
+                      "AoeDamage",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "FKGFPFNOJMN": 0.0
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level02_RockReactionCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level02_RockReactionCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level02_RockReactionCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level02_RockReactionCounter"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level02_RockReactionCounter"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level02_RockReactionCounter": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 40.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": [
+                "CrystallizeFire",
+                "CrystallizeWater",
+                "CrystallizeElectric",
+                "CrystallizeIce"
+              ],
+              "actions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+                  "useLimitRange": true,
+                  "maxValue": "Goal",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "cdDelta": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_Sync_GoalCounterGV",
+                  "param1": 0.0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level02_KillCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level02_KillCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level02_KillCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level02_KillCounter"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level02_KillCounter"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level02_KillCounter": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onHittingOther": [
+            {
+              "$type": "AttachModifier",
+              "target": "Other",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level02_KillCounter_OnMonster"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level02_KillCounter_OnMonster": {
+          "stacking": "RefreshUniqueDurability",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onKill": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Caster",
+              "modifierName": "Activity_GoalChallenge_Level02_KillCounter_Add"
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level02_KillCounter_Add": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.30000001192092896,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "BJONBAKPHBM",
+                  "target": "CurLocalAvatar",
+                  "type": "All"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "useLimitRange": true,
+              "maxValue": "Goal",
+              "triggerID": 0.0
+            },
+            {
+              "$type": "ServerLuaCall",
+              "cdDelta": true,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_Sync_GoalCounterGV",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level02_Buff",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level02_Buff_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "BuffDuration": 0.0,
+        "AoeCD": 0.0,
+        "AoeDamage": 0.0,
+        "AoeDamage2": 0.0,
+        "ExtraAttackCount": 0.0,
+        "DamageSystemValue": 0.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level02_Buff_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "enable": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_Level02_RockWaveCount",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level02_Buff"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level02_Buff": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 40.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": [
+                "CrystallizeFire",
+                "CrystallizeWater",
+                "CrystallizeElectric",
+                "CrystallizeIce"
+              ],
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "modifierName": "Activity_GoalChallenge_Level02_Aoe_Trigger"
+                }
+              ]
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level02_Aoe_Trigger": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": "AoeCD",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "modifierName": "Activity_GoalChallenge_Level02_Aoe_01"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_Level02_RockWaveCount",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level02_Aoe_01": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Activity_Muqadas_Potion_Rock_Explode_Big",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.20000000298023224,
+                      "z": 0.0
+                    },
+                    "useRotation": true
+                  },
+                  "height": 2.0,
+                  "radius": 12.5
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Rock",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 15.0,
+                    "damageExtra": [
+                      "AoeDamage",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "FKGFPFNOJMN": 0.0
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "sortType": "Nearest",
+                "shapeName": "CircleR12_5H10",
+                "campTargetType": "AllExceptSelf",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Gadget", "Bullet", "Field"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_COMMON_GADGET_ISSUMMON",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_COMMON_GADGET_ISSUMMON_NOT_ROCK",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "Activity_GoalChallenge_Level02_Aoe_02"
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level02_Aoe_02": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Caster",
+                  "key": "_ABILITY_Activity_GoalChallenge_Level02_RockWaveCount",
+                  "ratio": ["ExtraAttackCount", 1.0, "SUB"],
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "rotationDampTime": "Eff_Activity_Muqadas_Potion_Rock_Explode_Big",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Caster",
+                  "key": "_ABILITY_Activity_GoalChallenge_Level02_RockWaveCount",
+                  "ratio": ["ExtraAttackCount", 1.0, "SUB"],
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.20000000298023224,
+                      "z": 0.0
+                    },
+                    "useRotation": true
+                  },
+                  "height": 2.0,
+                  "radius": 12.5
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Rock",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 15.0,
+                    "damageExtra": [
+                      "AoeDamage2",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "FKGFPFNOJMN": 0.0
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Caster",
+                  "key": "_ABILITY_Activity_GoalChallenge_Level02_RockWaveCount",
+                  "ratio": ["ExtraAttackCount", 1.0, "SUB"],
+                  "compareType": "LessAndEqual"
+                }
+              ],
+              "ratio": 1.0,
+              "key": "_ABILITY_Activity_GoalChallenge_Level02_RockWaveCount",
+              "useLimitRange": true,
+              "maxValue": "ExtraAttackCount",
+              "triggerID": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level03_ExplodeReactionCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level03_ExplodeReactionCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level03_ExplodeReactionCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level03_ExplodeReactionCounter"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level03_ExplodeReactionCounter"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level03_ExplodeReactionCounter": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 40.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": ["Explode"],
+              "actions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+                  "useLimitRange": true,
+                  "maxValue": "Goal",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "cdDelta": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_Sync_GoalCounterGV",
+                  "param1": 0.0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level03_FireElectricReactionCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level03_FireElectricReactionCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level03_FireElectricReactionCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level03_FireElectricReactionCounter"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level03_FireElectricReactionCounter"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level03_FireElectricReactionCounter": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 40.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": [
+                "Explode",
+                "Stream",
+                "Burning",
+                "Melt",
+                "SwirlFire",
+                "CrystallizeFire",
+                "OvergrowMushroomFire",
+                "Shock",
+                "Superconductor",
+                "SwirlElectric",
+                "CrystallizeElectric",
+                "Overdose",
+                "OverdoseElectric",
+                "OvergrowMushroomElectric"
+              ],
+              "actions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+                  "useLimitRange": true,
+                  "maxValue": "Goal",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "cdDelta": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_Sync_GoalCounterGV",
+                  "param1": 0.0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level03_Buff",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level03_Buff_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "BuffDuration": 0.0,
+        "AoeCD": 0.0,
+        "ExplodeDamageUp": 0.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level03_Buff_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "enable": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level03_Buff"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_Level03_RockWaveCount",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_Level03_Buff_CD",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level03_Buff"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level03_Buff": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 40.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": [
+                "Explode",
+                "Burning",
+                "CrystallizeElectric",
+                "CrystallizeFire",
+                "Melt",
+                "OvergrowMushroomFire",
+                "Superconductor",
+                "Shock",
+                "Overdose",
+                "OverdoseElectric",
+                "OvergrowMushroomElectric",
+                "SwirlElectric",
+                "SwirlFire",
+                "Stream"
+              ],
+              "actions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Other",
+                  "cdDelta": true,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Caster",
+                      "key": "_ABILITY_Activity_GoalChallenge_Level03_Buff_CD",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "modifierName": "Activity_GoalChallenge_Level03_Aoe_01"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Caster",
+                      "key": "_ABILITY_Activity_GoalChallenge_Level03_Buff_CD",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "modifierName": "Activity_GoalChallenge_Level03_Aoe_CD"
+                },
+                {
+                  "$type": "SetGlobalValue",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Activity_GoalChallenge_Level03_Buff_CD",
+                  "maxValue": 0.0,
+                  "triggerID": 0.0
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "Actor_ElecAddHurtDelta": "ExplodeDamageUp",
+            "Actor_FireAddHurtDelta": "ExplodeDamageUp"
+          },
+          "isLimitedProperties": true
+        },
+        "Activity_GoalChallenge_Level03_Aoe_CD": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": "AoeCD",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "target": "Caster",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_Level03_Buff_CD",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level03_Aoe_01": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "onGround": true,
+                "useRotation": true
+              },
+              "gadgetID": 420000031,
+              "campID": 1001,
+              "campTargetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level03_WindZone",
+      "abilitySpecials": {
+        "AoeDuration": 0.0
+      },
+      "modifiers": {
+        "Activity_GoalChallenge_Level03_Aoe_01": {
+          "modifierName": "",
+          "duration": "AoeDuration",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR10H10",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 2.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "strength": 6.0,
+              "attenuation": 2.0,
+              "innerRadius": 0.5,
+              "reverse": true,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "logic": "Lesser",
+                  "weight": 100.0
+                }
+              ],
+              "modifierName": ""
+            },
+            {
+              "$type": "WindZoneMixin",
+              "shapeName": "CircleR6",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 2.0,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "strength": 15.0,
+              "attenuation": 3.0,
+              "innerRadius": 0.5,
+              "reverse": true,
+              "targetType": "All",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "logic": "LesserOrEqual",
+                  "weight": 150.0
+                },
+                {
+                  "$type": "ByTargetWeight",
+                  "logic": "GreaterOrEqual",
+                  "weight": 100.0
+                }
+              ],
+              "modifierName": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Activity_GoalChallenge_WindZone",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Activity_GoalChallenge_Level03_Aoe_01"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level04_OverdoseKillCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level04_OverdoseKillCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level04_OverdoseKillCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level04_OverdoseKillCounter_Applier"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level04_OverdoseKillCounter_Applier"
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level04_Sync": {
+          "stacking": "MultipleAllRefresh",
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "cdDelta": true,
+              "ratio": 1.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "useLimitRange": true,
+              "maxValue": "Goal",
+              "triggerID": 0.0
+            },
+            {
+              "$type": "ServerLuaCall",
+              "cdDelta": true,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_Sync_GoalCounterGV",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level04_OverdoseKillCounter_Applier": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "AttachModifier",
+              "target": "Other",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "KKDONNLCCFK",
+                  "element": "Overdose"
+                }
+              ],
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level04_OverdoseKillCounter_OnMonster"
+            }
+          ],
+          "onHittingOther": [
+            {
+              "$type": "AttachModifier",
+              "target": "Other",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "KKDONNLCCFK",
+                  "element": "Overdose"
+                }
+              ],
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level04_OverdoseKillCounter_OnMonster"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level04_OverdoseKillCounter_OnMonster": {
+          "stacking": "RefreshUniqueDurability",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onKill": [
+            {
+              "$type": "ApplyModifier",
+              "target": "Caster",
+              "cdDelta": true,
+              "modifierName": "Activity_GoalChallenge_Level04_Sync"
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level04_OvergrowReactionCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level04_OvergrowReactionCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level04_OvergrowReactionCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level04_OvergrowReactionCounter"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level04_OvergrowReactionCounter"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level04_OvergrowReactionCounter": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionByElementReactionMixin",
+              "range": 40.0,
+              "entityTypes": ["Monster"],
+              "reactionTypes": ["Overgrow"],
+              "actions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+                  "useLimitRange": true,
+                  "maxValue": "Goal",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "cdDelta": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_Sync_GoalCounterGV",
+                  "param1": 0.0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level04_Buff",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level04_Buff_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "BuffDuration": 0.0,
+        "AoeCD": 0.0,
+        "RainZoneCD": 0.0,
+        "AoeDamage": 0.0,
+        "DamageSystemValue": 0.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level04_Buff_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": "RainZoneCD",
+          "modifierMixins": [
+            {
+              "$type": "CurLocalAvatarMixinV2",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level04_Buff"
+            },
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "enable": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "modifierName": "Create_Rain_Zone_Init"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "cdDelta": true,
+              "modifierName": "Create_Rain_Zone"
+            }
+          ]
+        },
+        "Create_Rain_Zone_Init": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "CreateGadget",
+              "cdDelta": true,
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "bornRandom": {
+                  "$type": "OCDANLJMNNK",
+                  "minRandomRange": 1.0,
+                  "maxRandomRange": 6.0
+                },
+                "onGround": true,
+                "useRotation": true
+              },
+              "gadgetID": 420000032,
+              "campID": 1001,
+              "campTargetType": "Enemy"
+            }
+          ]
+        },
+        "Create_Rain_Zone": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByHasAttackTarget"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "target": "SelfAttackTarget",
+                  "key": "_Activity_GoalChallenge_RainZonePos",
+                  "born": {
+                    "$type": "ConfigBornBySelectedPoint"
+                  },
+                  "setTarget": false
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "key": "_Activity_GoalChallenge_RainZonePos",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  }
+                }
+              ]
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "onGround": true,
+                "useRotation": true,
+                "positionKey": "_Activity_GoalChallenge_RainZonePos",
+                "directionKey": ""
+              },
+              "gadgetID": 420000032,
+              "campID": 1001,
+              "campTargetType": "Enemy"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level04_Buff": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "OnAvatarUseSkillMixin",
+              "onTriggerSkill": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Caster",
+                  "modifierName": "Activity_GoalChallenge_Level04_Aoe_Trigger"
+                }
+              ],
+              "onTriggerUltimateSkill": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Caster",
+                  "modifierName": "Activity_GoalChallenge_Level04_Aoe_Trigger"
+                }
+              ],
+              "clearSkillIdDelay": 0.20000000298023224
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level04_Aoe_Trigger": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "duration": "AoeCD",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "target": "CurLocalAvatar",
+              "modifierName": "Activity_GoalChallenge_Level04_Aoe"
+            }
+          ]
+        },
+        "Activity_GoalChallenge_Level04_Aoe": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "rotationDampTime": "Eff_Activity_Muqadas_Potion_Grass_Explode_Big",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.20000000298023224,
+                      "z": 0.0
+                    },
+                    "useRotation": true
+                  },
+                  "height": 2.0,
+                  "radius": 12.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 15.0,
+                    "damageExtra": [
+                      "AoeDamage",
+                      "DamageSystemValue",
+                      "MUL"
+                    ],
+                    "FKGFPFNOJMN": 0.0
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetSystemValueToOverrideMap",
+          "cdDelta": true,
+          "key": "DamageSystemValue",
+          "type": "ElementLevelCo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level04_RainZone",
+      "abilitySpecials": {
+        "AoeDuration": 0.0,
+        "AttackInterval": 0.0
+      },
+      "modifiers": {
+        "Activity_GoalChallenge_Level04_RainZone": {
+          "modifierName": "",
+          "duration": "AoeDuration",
+          "bonusCritical": 100.0,
+          "thinkInterval": "AttackInterval",
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "rotationDampTime": "Eff_Activity_GoalChallenge_Sustained_Water",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.20000000298023224,
+                      "z": 0.0
+                    },
+                    "useRotation": true
+                  },
+                  "height": 2.0,
+                  "radius": 4.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Water",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 15.0,
+                    "damageExtra": 0.0,
+                    "FKGFPFNOJMN": 0.0
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Activity_GoalChallenge_Level04_RainZone"
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.20000000298023224,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "height": 2.0,
+              "radius": 4.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentageRatio": 0.0,
+                "elementType": "Water",
+                "bonusCritical": 25.0,
+                "strikeType": "Default",
+                "damage": 15.0,
+                "damageExtra": 0.0,
+                "FKGFPFNOJMN": 0.0
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level05_FreezeTimeCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level05_FreezeTimeCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level05_FreezeTimeCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level05_FreezeTimeCounter_Applier"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level05_FreezeTimeCounter_Applier"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level05_FreezeTimeCounter_Applier": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onHittingOther": [
+            {
+              "$type": "AttachModifier",
+              "target": "Other",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level05_FreezeTimeCounter_OnMonster"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level05_FreezeTimeCounter_OnMonster": {
+          "stacking": "GlobalUnique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.25,
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobalValue",
+              "target": "Caster",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "KKDONNLCCFK",
+                  "target": "Self",
+                  "element": "Frozen"
+                }
+              ],
+              "ratio": 0.25,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "useLimitRange": true,
+              "maxValue": "Goal",
+              "triggerID": 0.0
+            },
+            {
+              "$type": "ServerLuaCall",
+              "cdDelta": true,
+              "luaCallType": "CurGalleryControlGroup",
+              "funcName": "SLC_Sync_GoalCounterGV",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level05_IceCrtiCounter",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level05_IceCrtiCounter_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "Goal": 100.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level05_IceCrtiCounter_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level05_IceCrtiCounter"
+            },
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "cdDelta": true,
+              "ratio": 0.0,
+              "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+              "maxValue": 0.0,
+              "triggerID": 0.0
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level05_IceCrtiCounter"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level05_IceCrtiCounter": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAttackLanded": [
+            {
+              "$type": "Predicated",
+              "target": "Other",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByHitDamage",
+                  "damage": 0.0
+                },
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "KKDONNLCCFK",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "KKDONNLCCFK",
+                      "element": "Frozen"
+                    }
+                  ]
+                },
+                {
+                  "$type": "AEKMJHCBPCN"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddGlobalValue",
+                  "target": "Caster",
+                  "cdDelta": true,
+                  "ratio": 1.0,
+                  "key": "_ABILITY_Activity_GoalChallenge_GoalCounter",
+                  "useLimitRange": true,
+                  "maxValue": "Goal",
+                  "triggerID": 0.0
+                },
+                {
+                  "$type": "ServerLuaCall",
+                  "cdDelta": true,
+                  "luaCallType": "CurGalleryControlGroup",
+                  "funcName": "SLC_Sync_GoalCounterGV",
+                  "param1": 0.0,
+                  "KEEFCBAAODF": 0.0,
+                  "LABHKHBCHFB": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Activity_GoalChallenge_Level05_Buff",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobalValueNoInitMixin",
+          "globalValueKey": "SGV_Ability_GoalStatus",
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "UNIQUE_Activity_GoalChallenge_Level05_Buff_Handler"
+          ],
+          "MFJNNNHGMJD": true
+        }
+      ],
+      "abilitySpecials": {
+        "BuffDuration": 0.0,
+        "DamageInterval": 0.0,
+        "Damage": 0.0,
+        "DamageSystemValue": 0.0
+      },
+      "modifiers": {
+        "UNIQUE_Activity_GoalChallenge_Level05_Buff_Handler": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "thinkInterval": 1.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "enable": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "CameraScreenEffect",
+                  "cdDelta": true,
+                  "canBeHandledOnRecover": true,
+                  "muteRemoteAction": true,
+                  "effectName": "Eff_UI_GoalChallenge_ScreenEffect"
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level05_Buff"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "target": "CurTeamAvatars",
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level05_Buff"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level05_Buff": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onHittingOther": [
+            {
+              "$type": "SetSystemValueToOverrideMap",
+              "cdDelta": true,
+              "key": "DamageSystemValue",
+              "type": "ElementLevelCo"
+            },
+            {
+              "$type": "AttachModifier",
+              "target": "Other",
+              "cdDelta": true,
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Monster"]
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_ANIMAL_ENTITY_TYPE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "UNIQUE_Activity_GoalChallenge_Level05_Buff_OnMonster"
+            }
+          ]
+        },
+        "UNIQUE_Activity_GoalChallenge_Level05_Buff_OnMonster": {
+          "stacking": "GlobalUnique",
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 15.0,
+          "bonusCritical": 100.0,
+          "thinkInterval": "DamageInterval",
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "KKDONNLCCFK",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "KKDONNLCCFK",
+                      "element": "Frozen"
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "attackPattern": {
+                      "$type": "ConfigAttackSphere",
+                      "triggerType": "TriggerNoRepeat",
+                      "born": {
+                        "$type": "ConfigBornByAttachPoint",
+                        "offset": {
+                          "x": 0.0,
+                          "y": 0.20000000298023224,
+                          "z": 0.0
+                        },
+                        "useRotation": true,
+                        "attachPointName": "RootNode"
+                      },
+                      "radius": 0.20000000298023224
+                    },
+                    "attackInfo": {
+                      "attackTag": "",
+                      "attenuationTag": "",
+                      "attenuationGroup": "default",
+                      "attackProperty": {
+                        "damagePercentageRatio": 0.0,
+                        "elementType": "Ice",
+                        "bonusCritical": 25.0,
+                        "strikeType": "Default",
+                        "damage": 1.0,
+                        "damageExtra": [
+                          "Damage",
+                          "DamageSystemValue",
+                          "MUL"
+                        ],
+                        "bonusCritical": 0.0
+                      }
+                    }
+                  },
+                  "targetType": "Self"
+                },
+                {
+                  "$type": "AttachEffect",
+                  "rotationDampTime": "Eff_Activity_GoalChallenge_IceHit",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "cdDelta": true,
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "KKDONNLCCFK",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "KKDONNLCCFK",
+                      "element": "Frozen"
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "TriggerAttackEvent",
+                  "attackEvent": {
+                    "attackPattern": {
+                      "$type": "ConfigAttackSphere",
+                      "triggerType": "TriggerNoRepeat",
+                      "born": {
+                        "$type": "ConfigBornByAttachPoint",
+                        "offset": {
+                          "x": 0.0,
+                          "y": 0.20000000298023224,
+                          "z": 0.0
+                        },
+                        "useRotation": true,
+                        "attachPointName": "RootNode"
+                      },
+                      "radius": 0.20000000298023224
+                    },
+                    "attackInfo": {
+                      "attackTag": "",
+                      "attenuationTag": "",
+                      "attenuationGroup": "default",
+                      "attackProperty": {
+                        "damagePercentageRatio": 0.0,
+                        "elementType": "Ice",
+                        "bonusCritical": 25.0,
+                        "strikeType": "Default",
+                        "damage": 1.0,
+                        "damageExtra": [
+                          "Damage",
+                          "DamageSystemValue",
+                          "MUL"
+                        ],
+                        "bonusCritical": 0.0
+                      }
+                    }
+                  },
+                  "targetType": "Self"
+                },
+                {
+                  "$type": "AttachEffect",
+                  "rotationDampTime": "Eff_Activity_GoalChallenge_IceHit",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  }
+]

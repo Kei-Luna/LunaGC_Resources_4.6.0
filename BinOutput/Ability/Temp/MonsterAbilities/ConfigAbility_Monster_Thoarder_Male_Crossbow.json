@@ -1,0 +1,283 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Thoarder_Male_Crossbow_SteerAttack",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Dodge"],
+          "endNormalizedTime": 0.10000000149011612,
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Thoarder_Male_Crossbow_ShootArrow_WithRandom",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Aim"],
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101006,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "randomAngleHor": 0.30000001192092896,
+              "randomAngleVer": 0.5,
+              "maxAngle": 60.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Thoarder_Male_Crossbow_Shoot_01",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Thoarder_Male_Crossbow_Shoot_Enhanced01",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Aim", "Aim_Enhanced"],
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "attackDistance": 3.75,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42101003,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.20000000298023224,
+              "y": 0.0,
+              "z": 0.10000000149011612
+            },
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "randomAngleHor": 0.30000001192092896,
+              "randomAngleVer": 0.5,
+              "maxAngle": 60.0,
+              "PDKJDHJIEJB": ""
+            },
+            "attachPointName": "WeaponR"
+          }
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Thoarder_Male_Crossbow_Shoot_Fire_01",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Thoarder_Male_Crossbow_FireEnchanted_Start",
+      "modifiers": {
+        "EnhancedCrossbow": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToStateIDMixin",
+              "stateIDs": ["Aim_Enhanced", "Shoot_Enhanced01"],
+              "modifierName": "UNIQUE_EnhancedCrossbow_Effect",
+              "BILMCNCKIAO": ""
+            }
+          ]
+        },
+        "UNIQUE_EnhancedCrossbow_Effect": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Thoarder_Male_Crossbow_FireEnchanted_01",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Thoarder_Male_Crossbow_FireEnchanted_01_End",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "EnhancedCrossbow"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Thoarder_Male_Crossbow_FireEnchanted_End",
+      "onAbilityStart": [
+        {
+          "$type": "RemoveUniqueModifier",
+          "modifierName": "UNIQUE_EnhancedCrossbow_Effect"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Thoarder_Male_Crossbow_Dodge",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Dodge"],
+          "modifierName": "Dodge",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [1001],
+          "modifierName": "GetUpDodge"
+        }
+      ],
+      "modifiers": {
+        "GetUpDodge": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "MonsterDefendMixin",
+              "stateIDs": ["BeHit", "BeHitThrow"],
+              "defendTriggerID": "DodgeTrigger",
+              "defendProbability": 0.8999999761581421,
+              "defendProbabilityDelta": 0.15000000596046448,
+              "defendTimeInterval": 3.75,
+              "ICOAJNCIGEN": 0,
+              "onDefendSucceded": [
+                {
+                  "$type": "ApplyModifier",
+                  "modifierName": "Dodge"
+                }
+              ],
+              "randomDirection": true
+            }
+          ]
+        },
+        "Dodge": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "DodgeInvincible"
+            }
+          ]
+        },
+        "DodgeInvincible": {
+          "modifierName": "",
+          "duration": 0.75,
+          "bonusCritical": 100.0,
+          "state": "Invincible"
+        },
+        "DodgeDenyLockOn": {
+          "modifierName": "",
+          "duration": 1.75,
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        },
+        "DodgeSpeedup": {
+          "modifierName": "",
+          "duration": 2.25,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Animator_MoveSpeedRatio": 1.0499999523162842
+          }
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Thoarder_Male_Crossbow_DodgeShootCDManager",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": ["DodgeAttack"],
+          "enterActions": [
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [401, 402]
+            }
+          ],
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Thoarder_Male_Crossbow_DodgeShootCDManager_ByPose",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByPoseIDMixin",
+          "poseIDs": [1002],
+          "enterActions": [
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [402]
+            }
+          ]
+        },
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": ["BeHit", "BeHitThrow", "Struggle"],
+          "exitActions": [
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [402]
+            }
+          ],
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  }
+]

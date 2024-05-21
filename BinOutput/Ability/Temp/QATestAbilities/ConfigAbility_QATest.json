@@ -1,0 +1,2358 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SuperArmor",
+      "abilitySpecials": {
+        "EndureDelta": 0.019999999552965164
+      },
+      "modifiers": {
+        "QATest_SuperArmor": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_EndureDelta": "EndureDelta"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SuperArmor"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_SuperArmor"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SuperArmor"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Critical",
+      "abilitySpecials": {
+        "Crit": 1.0
+      },
+      "modifiers": {
+        "QATest_Critical": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_CriticalDelta": "Crit"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_Critical"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_Critical"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_Critical"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_CriticalHurt",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_CriticalHurt": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_CriticalHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_CriticalHurt"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_CriticalHurt"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_CriticalHurt"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ShieldCostMinusRatio",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_ShieldCostMinusRatio": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ShieldCostMinusRatio": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ShieldCostMinusRatio"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ShieldCostMinusRatio"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ShieldCostMinusRatio"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_HealAddDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_HealAddDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_HealAddDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_HealAddDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_HealAddDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_HealAddDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_HealedAddDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_HealedAddDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_HealedAddDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_HealedAddDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_HealedAddDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_HealedAddDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SkillCDMinusRatio",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_SkillCDMinusRatio": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_SkillCDMinusRatio": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SkillCDMinusRatio"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_SkillCDMinusRatio"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SkillCDMinusRatio"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_MoveSpeedRatio",
+      "abilitySpecials": {
+        "Rate": 0.4000000059604645
+      },
+      "modifiers": {
+        "QATest_MoveSpeedRatio": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Animator_MoveSpeedRatio": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_MoveSpeedRatio"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_MoveSpeedRatio"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_MoveSpeedRatio"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_FireAddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_FireAddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_FireAddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_FireAddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_FireAddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_FireAddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ElecAddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_ElecAddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElecAddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElecAddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ElecAddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElecAddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_WaterAddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_WaterAddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_WaterAddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_WaterAddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_WaterAddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_WaterAddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_GrassAddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_GrassAddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_GrassAddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_GrassAddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_GrassAddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_GrassAddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_WindAddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_WindAddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_WindAddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_WindAddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_WindAddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_WindAddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_RockAddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_RockAddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_RockAddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_RockAddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_RockAddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_RockAddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_IceAddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_IceAddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_IceAddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_IceAddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_IceAddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_IceAddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_PhysicalAddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_PhysicalAddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_PhysicalAddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_PhysicalAddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_PhysicalAddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_PhysicalAddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_FireSubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_FireSubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_FireSubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_FireSubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_FireSubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_FireSubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ElecSubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_ElecSubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElecSubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElecSubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ElecSubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElecSubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_WaterSubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_WaterSubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_WaterSubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_WaterSubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_WaterSubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_WaterSubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_GrassSubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_GrassSubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_GrassSubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_GrassSubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_GrassSubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_GrassSubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_WindSubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_WindSubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_WindSubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_WindSubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_WindSubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_WindSubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_IceSubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_IceSubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_IceSubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_IceSubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_IceSubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_IceSubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_RockSubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_RockSubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_RockSubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_RockSubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_RockSubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_RockSubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_PhysicalSubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.5
+      },
+      "modifiers": {
+        "QATest_PhysicalSubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_PhysicalSubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_PhysicalSubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_PhysicalSubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_PhysicalSubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_AddHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_AddHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AddHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_AddHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_AddHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_AddHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SubHurtDelta",
+      "abilitySpecials": {
+        "Rate": 0.800000011920929
+      },
+      "modifiers": {
+        "QATest_SubHurtDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_SubHurtDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SubHurtDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_SubHurtDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SubHurtDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_CriticalDown",
+      "abilitySpecials": {
+        "Rate": -2.0
+      },
+      "modifiers": {
+        "QATest_CriticalDown": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_CriticalDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_CriticalDown"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_CriticalDown"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_CriticalDown"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ElemMastery",
+      "abilitySpecials": {
+        "Rate": 2000.0
+      },
+      "modifiers": {
+        "QATest_ElemMastery": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElemMasteryDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemMastery"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ElemMastery"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemMastery"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ChargeEfficiency",
+      "abilitySpecials": {
+        "Rate": 3.0
+      },
+      "modifiers": {
+        "QATest_ChargeEfficiency": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ChargeEfficiencyDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ChargeEfficiency"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ChargeEfficiency"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ChargeEfficiency"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SelfElemFireAdd",
+      "abilitySpecials": {
+        "Rate": 50.0
+      },
+      "modifiers": {
+        "QATest_SelfElemFireAdd": {
+          "stacking": "Multiple",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 10.0
+          },
+          "modifierName": "",
+          "elementType": "Fire",
+          "bonusCritical": "Rate"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemFireAdd"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemFireAdd"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SelfElemWaterAdd",
+      "abilitySpecials": {
+        "Rate": 50.0
+      },
+      "modifiers": {
+        "QATest_SelfElemWaterAdd": {
+          "stacking": "Multiple",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 10.0
+          },
+          "modifierName": "",
+          "elementType": "Water",
+          "bonusCritical": "Rate"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemWaterAdd"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemWaterAdd"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SelfElemGrassAdd",
+      "abilitySpecials": {
+        "Rate": 50.0
+      },
+      "modifiers": {
+        "QATest_SelfElemGrassAdd": {
+          "stacking": "Multiple",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 10.0
+          },
+          "modifierName": "",
+          "elementType": "Grass",
+          "bonusCritical": "Rate"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemGrassAdd"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemGrassAdd"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SelfElemElectricAdd",
+      "abilitySpecials": {
+        "Rate": 50.0
+      },
+      "modifiers": {
+        "QATest_SelfElemElectricAdd": {
+          "stacking": "Multiple",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 10.0
+          },
+          "modifierName": "",
+          "elementType": "Electric",
+          "bonusCritical": "Rate"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemElectricAdd"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemElectricAdd"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SelfElemIceAdd",
+      "abilitySpecials": {
+        "Rate": 50.0
+      },
+      "modifiers": {
+        "QATest_SelfElemIceAdd": {
+          "stacking": "Multiple",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 10.0
+          },
+          "modifierName": "",
+          "elementType": "Ice",
+          "bonusCritical": "Rate"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemIceAdd"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemIceAdd"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SelfElemWindAdd",
+      "abilitySpecials": {
+        "Rate": 50.0
+      },
+      "modifiers": {
+        "QATest_SelfElemWindAdd": {
+          "stacking": "Multiple",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 10.0
+          },
+          "modifierName": "",
+          "elementType": "Wind",
+          "bonusCritical": "Rate"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemWindAdd"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemWindAdd"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_SelfElemRockAdd",
+      "abilitySpecials": {
+        "Rate": 50.0
+      },
+      "modifiers": {
+        "QATest_SelfElemRockAdd": {
+          "stacking": "Multiple",
+          "stackingOption": {
+            "abilitySpecialName": "",
+            "maxModifierNumForMultipleType": 10.0
+          },
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": "Rate"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemRockAdd"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_SelfElemRockAdd"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_StaminaReduce",
+      "abilitySpecials": {
+        "Rate": 1.0
+      },
+      "modifiers": {
+        "QATest_StaminaReduce": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_CostStaminaRatio": [0.0, "Rate", "SUB"]
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_StaminaReduce"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_StaminaReduce"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_StaminaReduce"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Electric_Enchant",
+      "modifiers": {
+        "QATest_Electric_Enchant": {
+          "modifierName": "",
+          "elementType": "Electric",
+          "bonusCritical": 99999.0,
+          "overrideWeaponElement": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": ["equip01", "equip02", "sheathPoint"]
+          },
+          "predicates": [
+            {
+              "$type": "DMHLALOGPAH",
+              "target": "Self",
+              "weaponTypes": ["WEAPON_CLAYMORE"]
+            }
+          ],
+          "modifierName": "QATest_Electric_Enchant"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Fire_Enchant",
+      "modifiers": {
+        "QATest_Fire_Enchant": {
+          "modifierName": "",
+          "elementType": "Fire",
+          "bonusCritical": 99999.0,
+          "overrideWeaponElement": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": ["equip01", "equip02", "sheathPoint"]
+          },
+          "predicates": [
+            {
+              "$type": "DMHLALOGPAH",
+              "target": "Self",
+              "weaponTypes": ["WEAPON_CLAYMORE"]
+            }
+          ],
+          "modifierName": "QATest_Fire_Enchant"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Ice_Enchant",
+      "modifiers": {
+        "QATest_Ice_Enchant": {
+          "modifierName": "",
+          "elementType": "Ice",
+          "bonusCritical": 99999.0,
+          "overrideWeaponElement": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": ["equip01", "equip02", "sheathPoint"]
+          },
+          "predicates": [
+            {
+              "$type": "DMHLALOGPAH",
+              "target": "Self",
+              "weaponTypes": ["WEAPON_CLAYMORE"]
+            }
+          ],
+          "modifierName": "QATest_Ice_Enchant"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Water_Enchant",
+      "modifiers": {
+        "QATest_Water_Enchant": {
+          "modifierName": "",
+          "elementType": "Water",
+          "bonusCritical": 99999.0,
+          "overrideWeaponElement": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": ["equip01", "equip02", "sheathPoint"]
+          },
+          "predicates": [
+            {
+              "$type": "DMHLALOGPAH",
+              "target": "Self",
+              "weaponTypes": ["WEAPON_CLAYMORE"]
+            }
+          ],
+          "modifierName": "QATest_Water_Enchant"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Wind_Enchant",
+      "modifiers": {
+        "QATest_Wind_Enchant": {
+          "modifierName": "",
+          "elementType": "Wind",
+          "bonusCritical": 99999.0,
+          "overrideWeaponElement": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": ["equip01", "equip02", "sheathPoint"]
+          },
+          "predicates": [
+            {
+              "$type": "DMHLALOGPAH",
+              "target": "Self",
+              "weaponTypes": ["WEAPON_CLAYMORE"]
+            }
+          ],
+          "modifierName": "QATest_Wind_Enchant"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Rock_Enchant",
+      "modifiers": {
+        "QATest_Rock_Enchant": {
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 99999.0,
+          "overrideWeaponElement": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "otherTargets": {
+            "$type": "SelectTargetsByEquipParts",
+            "equipPartNames": ["equip01", "equip02", "sheathPoint"]
+          },
+          "predicates": [
+            {
+              "$type": "DMHLALOGPAH",
+              "target": "Self",
+              "weaponTypes": ["WEAPON_CLAYMORE"]
+            }
+          ],
+          "modifierName": "QATest_Rock_Enchant"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ElemReactOverdoseElectricDelta",
+      "abilitySpecials": {
+        "Rate": 2.0
+      },
+      "modifiers": {
+        "QATest_ElemReactOverdoseElectricDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElemReactOverdoseElectricDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOverdoseElectricDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ElemReactOverdoseElectricDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOverdoseElectricDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ElemReactOverdoseGrassDelta",
+      "abilitySpecials": {
+        "Rate": 2.0
+      },
+      "modifiers": {
+        "QATest_ElemReactOverdoseGrassDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElemReactOverdoseGrassDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOverdoseGrassDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ElemReactOverdoseGrassDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOverdoseGrassDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ElemReactOvergrowDelta",
+      "abilitySpecials": {
+        "Rate": 2.0
+      },
+      "modifiers": {
+        "QATest_ElemReactOvergrowDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElemReactOvergrowDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOvergrowDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ElemReactOvergrowDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOvergrowDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ElemReactOvergrowFireDelta",
+      "abilitySpecials": {
+        "Rate": 2.0
+      },
+      "modifiers": {
+        "QATest_ElemReactOvergrowFireDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElemReactOvergrowFireDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOvergrowFireDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ElemReactOvergrowFireDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOvergrowFireDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ElemReactOvergrowElectricDelta",
+      "abilitySpecials": {
+        "Rate": 2.0
+      },
+      "modifiers": {
+        "QATest_ElemReactOvergrowElectricDelta": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_ElemReactOvergrowElectricDelta": "Rate"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOvergrowElectricDelta"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_ElemReactOvergrowElectricDelta"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ElemReactOvergrowElectricDelta"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_IgnoreWindZone",
+      "modifiers": {
+        "QATest_IgnoreWindZone": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "VelocityForceMixin",
+              "excludeForces": ["WindZoneType"]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_IgnoreWindZone"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ActionRecover",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_Test_GV",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 2.5],
+          "modifierNameSteps": ["Empty", "QATest_ActionRecover02"]
+        }
+      ],
+      "modifiers": {
+        "QATest_ActionRecover01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "canBeHandledOnRecover": true,
+              "content": "test: 常驻modifier,onadd配置了canBeHandledOnRecover的action恢复执行一次"
+            },
+            {
+              "$type": "DebugLog",
+              "content": "test: 常驻modifier,onadd未配置canBeHandledOnRecover的action恢复执行一次"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox"]
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider_Free"]
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider"]
+            },
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 1.0,
+              "key": "_Test_GV",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobalValue",
+              "ratio": 0.0,
+              "key": "_Test_GV",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "DebugLog",
+              "content": "test: 常驻modifier,onreconnect的action恢复执行一次"
+            }
+          ],
+          "onChangeAuthority": [
+            {
+              "$type": "DebugLog",
+              "content": "test: 常驻modifier,onChangeAuthority的action执行一次"
+            }
+          ]
+        },
+        "Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "QATest_ActionRecover02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DebugLog",
+              "canBeHandledOnRecover": true,
+              "content": "test: AttachModifierToSelfGlobaltriggerIDMixin的modifier onadd恢复执行一次"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_ActionRecover01"
+        },
+        {
+          "$type": "DebugLog",
+          "canBeHandledOnRecover": true,
+          "content": "test: ability,onadd恢复执行一次"
+        },
+        {
+          "$type": "AddGlobalValue",
+          "ratio": 0.0,
+          "key": "_Test_GV",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ActionCheck1",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_QATest_Action01_Test_GV01",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["QATest_Action01_Open", "QATest_Action01_Close"]
+        }
+      ],
+      "modifiers": {
+        "QATest_Action01_Close": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnEquipOwnerAndEquipsReadyMixin",
+              "actionQueue": [
+                {
+                  "$type": "TriggerHideWeapon",
+                  "partNames": ["equip01"]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible"
+            },
+            {
+              "$type": "TriggerSetCastShadow",
+              "affectFakeShadow": true
+            },
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": ["Body_Transparent"]
+            },
+            {
+              "$type": "SetEntityScale",
+              "canBeHandledOnRecover": true
+            }
+          ]
+        },
+        "QATest_Action01_Open": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DoActionOnEquipOwnerAndEquipsReadyMixin",
+              "actionQueue": [
+                {
+                  "$type": "TriggerHideWeapon",
+                  "visible": true,
+                  "partNames": ["equip01"]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "TriggerSetVisible",
+              "visible": true
+            },
+            {
+              "$type": "TriggerSetCastShadow",
+              "castShadow": true,
+              "affectFakeShadow": true
+            },
+            {
+              "$type": "TriggerSetRenderersEnable",
+              "renderNames": ["Body_Transparent"],
+              "setEnable": true
+            },
+            {
+              "$type": "SetEntityScale",
+              "canBeHandledOnRecover": true,
+              "scale": 3.0
+            }
+          ]
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Freeze",
+      "modifiers": {
+        "QATest_Freeze": {
+          "modifierName": "",
+          "elementType": "Frozen",
+          "bonusCritical": 100.0,
+          "isElementDurabilityMutable": false,
+          "state": "ElementFreeze"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_Freeze"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_Petrifaction",
+      "modifiers": {
+        "QATest_Petrifaction": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "isElementDurabilityMutable": false,
+          "state": "ElementPetrifaction",
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "QATest_Petrifaction_RockAround"
+            }
+          ]
+        },
+        "QATest_Petrifaction_RockAround": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "elementType": "Rock",
+          "bonusCritical": 1.0,
+          "isElementDurabilityMutable": false
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_Petrifaction"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ActionCheck2",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_QATest_Action02_Test_GV01",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": [
+            "QATest_Action02_UIBillBoardOpen",
+            "QATest_Action02_UIBillBoardClose"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_QATest_Action02_Test_GV02",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": [
+            "QATest_Action02_UICombatBarOpen",
+            "QATest_Action02_UICombatBarClose"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_QATest_Action02_Test_GV03",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Empty", "QATest_Action02_ShieldBar"]
+        }
+      ],
+      "modifiers": {
+        "QATest_Action02_UIBillBoardOpen": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "BillboardMarkMixin",
+              "iconName": "UI_NPCTopIcon_ReputationHunting"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "HideUIBillBoard"
+            }
+          ]
+        },
+        "QATest_Action02_UIBillBoardClose": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "HideUIBillBoard",
+              "hide": true
+            }
+          ]
+        },
+        "QATest_Action02_UICombatBarOpen": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ShowUICombatBar",
+              "show": true,
+              "fore": true
+            },
+            {
+              "$type": "SetUICombatBarSpark",
+              "enable": true
+            }
+          ]
+        },
+        "QATest_Action02_UICombatBarClose": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ShowUICombatBar",
+              "fore": true,
+              "skipCheck": true
+            },
+            {
+              "$type": "SetUICombatBarSpark"
+            }
+          ]
+        },
+        "QATest_Action02_ShieldBar": {
+          "modifierName": "",
+          "elementType": "Fire",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "onShieldBroken": [
+                {
+                  "$type": "SetGlobalValue",
+                  "ratio": 0.0,
+                  "key": "_QATest_Action02_Test_GV03",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ],
+              "showDamageText": ""
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "RefreshUICombatBarLayout"
+            }
+          ]
+        },
+        "Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_ActionCheck3",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_QATest_Action03_Test_GV01",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": [
+            "Empty1",
+            "QATest_Action03_FireSubEmitterEffect"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_QATest_Action03_Test_GV02",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Empty2", "QATest_Action03_FireUIEffect"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_QATest_Action03_Test_GV03",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Empty3", "QATest_Action03_AttachUIEffect"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_QATest_Action03_Test_GV04",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5, 2.5],
+          "modifierNameSteps": [
+            "Empty4",
+            "QATest_Action03_SendEffectTrigger01",
+            "QATest_Action03_SendEffectTrigger02"
+          ]
+        }
+      ],
+      "modifiers": {
+        "QATest_Action03_FireSubEmitterEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireSubEmitterEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_DeathZero_LaserRain_LandHit",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "alongGround": true,
+                "useRotation": true
+              }
+            }
+          ]
+        },
+        "QATest_Action03_FireUIEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireUIEffect",
+              "target": "SelfAttackTarget",
+              "healLimitedByCasterMaxHPRatio": "Eff_UI_Debuff_BurnBlue_DecreaseEnergy_More",
+              "effectSlot": "ElementBurst",
+              "effectParam": ""
+            },
+            {
+              "$type": "FireUIEffect",
+              "target": "SelfAttackTarget",
+              "healLimitedByCasterMaxHPRatio": "Eff_UI_Debuff_BurnBlue_DecreaseEnergy_HPBar",
+              "effectSlot": "HPBar",
+              "effectParam": ""
+            },
+            {
+              "$type": "DungeonFogEffects",
+              "target": "SelfAttackTarget",
+              "muteRemoteAction": true,
+              "enable": true,
+              "cameraFogEffectName": "Eff_UI_Debuff_BurnBlue_DecreaseEnergy_ScreenEffect",
+              "playerFogEffectName": ""
+            }
+          ]
+        },
+        "QATest_Action03_AttachUIEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachUIEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_UI_Skill_Monster_Shougun_EyeStrip"
+            },
+            {
+              "$type": "AttachUIEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_UI_Skill_Monster_Shougun_EyeStrip",
+              "effectSlot": "ElementBurst"
+            }
+          ]
+        },
+        "QATest_Action03_SendEffectTrigger01": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Standby",
+              "attachPoint": "",
+              "type": "Bool",
+              "minValue": 1,
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Effigy_Ice_EnergyCore"
+            }
+          ]
+        },
+        "QATest_Action03_SendEffectTrigger02": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "StandbyFree",
+              "attachPoint": "",
+              "type": "Bool",
+              "minValue": 1,
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Effigy_Ice_EnergyCore"
+            }
+          ]
+        },
+        "QATest_ActionCheck03": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Effigy_Ice_EnergyCore",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Empty1": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Empty2": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Empty3": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Empty4": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "QATest_ActionCheck03"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_AttackRatio",
+      "abilitySpecials": {
+        "AttackRatio": 2.0
+      },
+      "modifiers": {
+        "QATest_AttackRatio": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AttackRatio": "AttackRatio"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_AttackRatio"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_AttackRatio"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_AttackRatio"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_DefenceRatio",
+      "abilitySpecials": {
+        "DefenceRatio": 2.0
+      },
+      "modifiers": {
+        "QATest_DefenceRatio": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_DefenceRatio": "DefenceRatio"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_DefenceRatio"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_DefenceRatio"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_DefenceRatio"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_MaxHPRatio",
+      "abilitySpecials": {
+        "MaxHPRatio": 2.0
+      },
+      "modifiers": {
+        "QATest_MaxHPRatio": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_MaxHPRatio": "MaxHPRatio"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_MaxHPRatio"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_MaxHPRatio"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_MaxHPRatio"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "QATest_AttackSpeedRatio",
+      "abilitySpecials": {
+        "AttackSpeedRatio": 0.6000000238418579
+      },
+      "modifiers": {
+        "QATest_AttackSpeedRatio": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Animator_AttackSpeedRatio": "AttackSpeedRatio"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_AttackSpeedRatio"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "QATest_AttackSpeedRatio"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "QATest_AttackSpeedRatio"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  }
+]

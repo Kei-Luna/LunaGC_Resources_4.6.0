@@ -1,0 +1,664 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_SeedOfKarna_CommonState",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_MONSTER_Apep_Underling_SeedOfKarna_AttackMode",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.5, 1.5, 2.5],
+          "modifierNameSteps": ["MeleeMode", "RangeMode"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDNoInitMixin",
+          "globalValueKey": "SGV_Apep_Underling_AttackMode",
+          "valueSteps": [0.5, 1.5, 2.5],
+          "modifierNameSteps": ["MeleeMode_LevelSet", "RangeMode_LevelSet"]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_MONSTER_Apep_Underling_QuestTag",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["Empty", "MeleeMode_QuestSet"]
+        }
+      ],
+      "modifiers": {
+        "Monster_Apep_Underling_SeedOfKarna_CommonState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_MONSTER_Apep_Underling_SeedOfKarna_Tag",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "MeleeMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "MeleeMode",
+              "ratio": true
+            }
+          ]
+        },
+        "RangeMode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "MeleeMode"
+            }
+          ]
+        },
+        "MeleeMode_LevelSet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_MONSTER_Apep_Underling_SeedOfKarna_AttackMode",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "RangeMode_LevelSet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 2.0,
+              "key": "_MONSTER_Apep_Underling_SeedOfKarna_AttackMode",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "MeleeMode_QuestSet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_MONSTER_Apep_Underling_SeedOfKarna_AttackMode",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Monster_Apep_Underling_SeedOfKarna_CommonState"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_SeedOfKarna_RangeAttack",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": [
+            "RangeAttack_BS2",
+            "RangeAttack_Loop",
+            "RangeAttack_Attack1"
+          ],
+          "modifierName": "Monster_Apep_Underling_SeedOfKarna_RangeAttack_Eff",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["RangeAttack_BS"],
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["MeleeAttack"],
+          "endNormalizedTime": 0.5,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Monster_Apep_Underling_SeedOfKarna_RangeAttack_Eff": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_SeedOfKarna_RangeAttack_BS",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42908203,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "direction": {
+              "$type": "JOHHBEHLHLO",
+              "attachPointName": "BulletPos"
+            },
+            "useRotation": true,
+            "attachPointName": "BulletPos"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Apep_Underling_SeedOfKarna_Bullet",
+      "modifiers": {
+        "Apep_Underling_SeedOfKarna_Bullet_Effect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "target": "Owner",
+              "targetPredicates": [
+                {
+                  "$type": "LMBGIDDHLDM",
+                  "target": "Owner",
+                  "modifierName": "Monster_Apep_Underling_SeedOfKarna_ChosenByArjuna"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_SeedOfKarna_RangeAttack_Bullet02",
+                  "effectTempleteID": -1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "AttachEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_SeedOfKarna_RangeAttack_Bullet",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Apep_Underling_SeedOfKarna_Bullet_Effect"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireHitEffect",
+          "hitEntity": "",
+          "hitScene": {
+            "defaultEffect": "Eff_Hit_Grass_Blunt_Small"
+          }
+        },
+        {
+          "$type": "Predicated",
+          "target": "Owner",
+          "targetPredicates": [
+            {
+              "$type": "LMBGIDDHLDM",
+              "modifierName": "Monster_Apep_Underling_SeedOfKarna_ChosenByArjuna"
+            }
+          ],
+          "successActions": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByCollisionPoint"
+                  },
+                  "radius": 0.30000001192092896
+                },
+                "attackInfo": {
+                  "attackTag": "Apep_UnderlingAttack_Type2",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.800000011920929,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 100.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ],
+          "failActions": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByCollisionPoint"
+                  },
+                  "radius": 0.30000001192092896
+                },
+                "attackInfo": {
+                  "attackTag": "Apep_UnderlingAttack_Type1",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 100.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV1",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Apep_Underling_SeedOfKarna_SpecialState",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_MONSTER_Apep_Underling_SeedOfArjuna_ChosenOne",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "Monster_Apep_Underling_SeedOfKarna_ChosenByArjuna"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_SeedOfArjuna_ChosenOne_Scale",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "Monster_Apep_Underling_SeedOfKarna_ChosenByArjuna_Scale"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_SeedOfArjuna_ChosenOne_Line",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "Monster_Apep_Underling_SeedOfKarna_ChosenByArjuna_Line"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_MONSTER_Apep_Underling_SeedOfBrahma_ChosenOne",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "Monster_Apep_Underling_SeedOfKarna_ChosenByBrahma_Manager"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_MONSTER_Apep_Underling_SeedOfAshura_TriggerTaunt",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [0.5, 1.5],
+          "modifierNameSteps": [
+            "Monster_Apep_Underling_SeedOfKarna_ChosenByAshura"
+          ]
+        },
+        {
+          "$type": "AttachModifierToSelfGlobaltriggerIDMixin",
+          "globalValueKey": "_MONSTER_Apep_Underling_SeedOfAshura_SwallowTarget",
+          "defaultGlobalValueOnCreate": 0.0,
+          "valueSteps": [-0.5, 0.5],
+          "modifierNameSteps": ["Monster_Apep_Underling_SeedOfKarna_NormalDie"]
+        }
+      ],
+      "modifiers": {
+        "Monster_Apep_Underling_SeedOfKarna_ChosenByArjuna": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ReplaceEventPatternMixin",
+              "oldPatterns": [
+                "Monster_Apep_Underling_SeedOfKarna_MeleeAttack",
+                "Monster_Apep_Underling_SeedOfKarna_RangeAttack_Attack"
+              ],
+              "newPatterns": [
+                "Monster_Apep_Underling_SeedOfKarna_MeleeAttack_Enhanced",
+                "Monster_Apep_Underling_SeedOfKarna_RangeAttack_Attack_Enhanced"
+              ]
+            }
+          ],
+          "properties": {
+            "Actor_WeightDelta": 150.0,
+            "Actor_EndureDelta": 0.009999999776482582
+          },
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_SeedOfArjuna_ChosenOne_Line",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "SeedOfArjuna_SupportAttack_Scale_Latency"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "SeedOfArjuna_SupportAttack_Line_RemoveLatency"
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "_SeedOfArjuna_ChosenOne_Scale",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SeedOfArjuna_SupportAttack_Scale_Latency": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_SeedOfArjuna_ChosenOne_Scale",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SeedOfArjuna_SupportAttack_Line_RemoveLatency": {
+          "modifierName": "",
+          "duration": 0.550000011920929,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "_SeedOfArjuna_ChosenOne_Line",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Monster_Apep_Underling_SeedOfKarna_ChosenByArjuna_Scale": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetEntityScale",
+              "canBeHandledOnRecover": true,
+              "scale": 1.7999999523162842
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_SeedOfArjuna_TargetEnhance",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 2.0,
+              "key": "_MONSTER_Apep_Underling_SeedOfKarna_AttackMode",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetEntityScale",
+              "canBeHandledOnRecover": true,
+              "scale": 1.2999999523162842
+            }
+          ]
+        },
+        "Monster_Apep_Underling_SeedOfKarna_ChosenByArjuna_Line": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_SeedOfArjuna_SupportAttack_Target",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Monster_Apep_Underling_SeedOfKarna_ChosenByBrahma_Manager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Monster_Apep_Underling_SeedOfKarna_ChosenByBrahma"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Monster_Apep_Underling_SeedOfKarna_ChosenByBrahma"
+            },
+            {
+              "$type": "AddElementDurability",
+              "ratio": 200.0,
+              "modifierName": "Monster_Apep_Underling_SeedOfKarna_ChosenByBrahma",
+              "elementType": "Grass",
+              "useLimitRange": true,
+              "useMutiPlayerFixData": true,
+              "maxValue": 200.0
+            }
+          ]
+        },
+        "Monster_Apep_Underling_SeedOfKarna_ChosenByBrahma": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "elementType": "Grass",
+          "bonusCritical": 200.0,
+          "modifierMixins": [
+            {
+              "$type": "ElementShieldMixin",
+              "elementType": "Grass",
+              "showDamageText": "",
+              "shieldAngle": 360.0,
+              "maxShieldByHPRatio": 1.0,
+              "shieldHP": 0.20000000298023224,
+              "useMutiPlayerFixData": true,
+              "updateShieldByMaxHp": true
+            },
+            {
+              "$type": "VelocityForceMixin",
+              "excludeForces": ["WindZoneType"]
+            }
+          ],
+          "properties": {
+            "Actor_EndureDelta": 0.0
+          },
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_SeedOfBrahma_Shield",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachAbilityStateResistance",
+              "resistanceListID": 14001
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Apep_Underling_SeedOfBrahma_ShieldBreak",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Monster_Apep_Underling_SeedOfKarna_ChosenByAshura": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.5,
+          "onAdded": [
+            {
+              "$type": "TriggerTaunt",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR50",
+                "campTargetType": "SelfCamp",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Apep_Underling_SeedOfAshura_Tag",
+                  "ratio": 1.0
+                }
+              ],
+              "tauntLevel": "Ability_TauntLevel_5"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerTaunt",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR50",
+                "campTargetType": "SelfCamp",
+                "SelectTargetsByShape": 1.0
+              },
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_MONSTER_Apep_Underling_SeedOfAshura_Tag",
+                  "ratio": 1.0
+                }
+              ],
+              "tauntLevel": "Ability_TauntLevel_5"
+            }
+          ]
+        },
+        "Monster_Apep_Underling_SeedOfKarna_NormalDie": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "ServerCreateGadgetOnKillMixin",
+              "gadgetIDList": [42908211],
+              "campID": 1001,
+              "campTargetType": "Enemy"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Apep_Underling_SeedOfKarna_Die",
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 1.0,
+          "key": "_MONSTER_Apep_Underling_SpecialGadget",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ServerLuaCall",
+          "otherTargets": {
+            "$type": "SelectTargetsByShape",
+            "topLimit": 1,
+            "sortType": "Nearest",
+            "shapeName": "CircleR50",
+            "campTargetType": "SelfCamp",
+            "SelectTargetsByShape": 1.0
+          },
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "SGV_Show_Bar",
+              "ratio": 1.0
+            }
+          ],
+          "luaCallType": "FromGroup",
+          "isTarget": true,
+          "funcName": "SLC_UpdateProtectScore",
+          "paramNum": 1,
+          "param1": 35.0,
+          "KEEFCBAAODF": 0.0,
+          "LABHKHBCHFB": 0.0
+        },
+        {
+          "$type": "KillSelf",
+          "duration": 2.0
+        }
+      ]
+    }
+  }
+]

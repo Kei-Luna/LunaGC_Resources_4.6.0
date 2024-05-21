@@ -1,0 +1,1509 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_BossEvent_CommonProcess",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobaltriggerIDMixin",
+          "globalValueKey": "SGV_EffigyChallenge_V5_AssistOptionSelectedCount",
+          "valueSteps": [-0.5, 0.5, 1.5, 2.5, 3.5, 4.5],
+          "modifierNameSteps": [
+            "AssistCount_0",
+            "AssistCount_1",
+            "AssistCount_2",
+            "AssistCount_3",
+            "AssistCount_4"
+          ],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "AttachModifierToGlobaltriggerIDMixin",
+          "globalValueKey": "SGV_EffigyChallenge_V5_AssistOptionSelected_1",
+          "valueSteps": [-0.10000000149011612, 0.5, 1.5],
+          "modifierNameSteps": [
+            "AssistOption_1_Cancel",
+            "AssistOption_1_Selected"
+          ],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "alertness": [0, 1],
+          "modifierName": "Invincible_State"
+        }
+      ],
+      "abilitySpecials": {
+        "attack_weaken": 0.0,
+        "hp_adjust_0": 0.0,
+        "hp_adjust_1": 0.0,
+        "hp_adjust_2": 0.0,
+        "hp_adjust_3": 0.0
+      },
+      "modifiers": {
+        "AssistCount_0": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_MaxHPRatio": "hp_adjust_0"
+          }
+        },
+        "AssistCount_1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_MaxHPRatio": "hp_adjust_1"
+          }
+        },
+        "AssistCount_2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_MaxHPRatio": "hp_adjust_2"
+          }
+        },
+        "AssistCount_3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_MaxHPRatio": "hp_adjust_3"
+          }
+        },
+        "AssistCount_4": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Invincible_State": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "Invincible",
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Ghost_State"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "DenyLockOn_State"
+            }
+          ]
+        },
+        "Ghost_State": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "IsGhostToEnemy"
+        },
+        "DenyLockOn_State": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        },
+        "AssistOption_1_Cancel": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "AssistOption_1_Selected": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_AttackRatio": "attack_weaken"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ChangeTag",
+          "isAdd": true,
+          "tag": "ChallengeBoss"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_RopeBoundLogic",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobaltriggerIDMixin",
+          "globalValueKey": "SGV_EffigyChallenge_V5_AssistSkillUsed",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["RopeBound_Ready", "RopeBound_Start"],
+          "MFJNNNHGMJD": true
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["RopeBound_BS", "RopeBound_Loop"],
+          "modifierName": "RopeBound_State",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "RopeBound_Ready": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "RopeBound_Start": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "TriggerAbility",
+              "abilityName": "Monster_Regisvine_Fire_BossEvent_RopeBoundLogic"
+            }
+          ]
+        },
+        "Dummy_Bullet_Timer": {
+          "modifierName": "",
+          "duration": 0.30000001192092896,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_BidingRope_BS",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "specialCameraName": "StunFocus",
+              "frameDelay": 1,
+              "lockTrans": ""
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "_REGISVINE_STAGE",
+                      "ratio": 2.0
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "_REGISVINE_STAGE",
+                      "ratio": 4.0
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "AllTeams",
+                  "modifierName": "Energy_Amend"
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "ServerMonsterLog",
+                  "paramList": [1, 2, 0]
+                },
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "minValue": "RopeBound"
+                }
+              ]
+            }
+          ]
+        },
+        "Energy_Amend": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobalValue",
+              "ratio": 1000.0,
+              "key": "GV_EffigyChallenge_V5_Energy",
+              "useLimitRange": true,
+              "maxValue": 2000.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "RopeBound_State": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_BidingRope_Loop",
+              "effectTempleteID": -1.0,
+              "setSelfAsEffectPluginTarget": true
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider_RopeBound"],
+              "setEnable": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_BidingRope_AS",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushCollider_RopeBound"]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobalValue",
+          "ratio": 0.0,
+          "key": "GV_EffigyChallenge_V5_Boss_DisableButtonT",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Dummy_Bullet_Timer"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_AttackSteer",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Standby"],
+          "endNormalizedTime": 99.0,
+          "angularSpeed": 25.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Alert"],
+          "startNormalizedTime": 0.28999999165534973,
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["LavaBlast_BS"],
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["LavaBlast_Loop"],
+          "endNormalizedTime": 0.5,
+          "angularSpeed": 40.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["LavaBlast_Attack"],
+          "startNormalizedTime": 0.4300000071525574,
+          "endNormalizedTime": 0.7400000095367432,
+          "angularSpeed": 270.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["FlameLazer_Attack01"],
+          "startNormalizedTime": 0.6000000238418579,
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["FlameLazer_Attack02"],
+          "endNormalizedTime": 0.08100000023841858,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["RapidFire_BS", "RapidFire_Attack"],
+          "endNormalizedTime": 3.0,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["HeadAttack"],
+          "endNormalizedTime": 0.25,
+          "angularSpeed": 210.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["HeadAttack"],
+          "startNormalizedTime": 0.25,
+          "endNormalizedTime": 0.3199999928474426,
+          "angularSpeed": 50.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["HeadCombo_Attack"],
+          "endNormalizedTime": 0.3199999928474426,
+          "angularSpeed": 160.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["HeadAttack"],
+          "startNormalizedTime": 0.6700000166893005,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["HeadCombo_Release"],
+          "angularSpeed": 150.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["MeleeCombo"],
+          "startNormalizedTime": 0.20399999618530273,
+          "endNormalizedTime": 0.26100000739097595,
+          "angularSpeed": 150.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["HeadCombo_Final"],
+          "startNormalizedTime": 0.38999998569488525,
+          "endNormalizedTime": 0.44999998807907104,
+          "angularSpeed": 160.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["MeleeCombo"],
+          "startNormalizedTime": 0.38999998569488525,
+          "endNormalizedTime": 0.44999998807907104,
+          "angularSpeed": 160.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["RangedAttack"],
+          "endNormalizedTime": 0.20999999344348907,
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["RangedAttack"],
+          "startNormalizedTime": 0.20999999344348907,
+          "endNormalizedTime": 0.8500000238418579,
+          "angularSpeed": 55.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_HeadCoreGadget",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobaltriggerIDMixin",
+          "globaltriggerIDTarget": "Owner",
+          "globalValueKey": "_REGISVINE_STAGE",
+          "valueSteps": [-0.10000000149011612, 0.5, 1.5, 2.5, 3.5, 5.5],
+          "modifierNameSteps": [
+            "HideCore",
+            "HeadCore",
+            "HideCore",
+            "RootCore",
+            "HideCore"
+          ],
+          "removeModifierByAttach": true
+        }
+      ],
+      "abilitySpecials": {
+        "core_element_durability_max": 0.0,
+        "root_element_durability_max": 0.0,
+        "element_transform_threshold": 150.0
+      },
+      "modifiers": {
+        "isGhost": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "IsGhostToEnemy"
+        },
+        "HideCore": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn",
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "isGhost"
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox_Core", "HitBox_Fruit"]
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "hide": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Owner",
+                  "key": "SGV_EffigyChallenge_V5_AssistOptionSelected_4",
+                  "ratio": 1.0
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetOverrideMaptriggerID",
+                  "cdDelta": true,
+                  "ratio": 650.0,
+                  "overrideMapKey": "core_element_durability_max",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "SetOverrideMaptriggerID",
+                  "cdDelta": true,
+                  "ratio": 50.0,
+                  "overrideMapKey": "root_element_durability_max",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetOverrideMaptriggerID",
+                  "cdDelta": true,
+                  "ratio": 900.0,
+                  "overrideMapKey": "core_element_durability_max",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "SetOverrideMaptriggerID",
+                  "cdDelta": true,
+                  "ratio": 100.0,
+                  "overrideMapKey": "root_element_durability_max",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        "HeadCore": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "elementType": "Fire",
+          "bonusCritical": "core_element_durability_max",
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "onShieldBroken": [
+                {
+                  "$type": "ServerMonsterLog",
+                  "target": "Owner",
+                  "paramList": [1, 0, 1]
+                },
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_Fruit_Break",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "TriggerAbility",
+                  "target": "Owner",
+                  "abilityName": "Monster_Regisvine_Fire_BossEvent_StageControl"
+                }
+              ],
+              "showDamageText": "",
+              "useMutiPlayerFixData": true,
+              "barElementType": "Fire"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetFollowMove",
+              "canBeHandledOnRecover": true,
+              "attachPoint": "Core",
+              "followRotation": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox_Core"],
+              "setEnable": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox_Fruit"]
+            },
+            {
+              "$type": "HideUIBillBoard"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Water"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Electric"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Wind"
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_Hit_Weakness",
+                  "born": {
+                    "$type": "PNCLIHNAPNL"
+                  },
+                  "effectTempleteID": -1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BlazeSeed_Hit_Ineffective",
+                  "born": {
+                    "$type": "PNCLIHNAPNL",
+                    "direction": {
+                      "$type": "CDNKHFEKHNH"
+                    }
+                  },
+                  "effectTempleteID": -1.0
+                }
+              ]
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "target": "Owner",
+              "minValue": "CoreWeaknessBeHit",
+              "mpTriggerOnRemote": true
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "HeadCore"
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "SetFollowMove",
+              "attachPoint": "Core",
+              "followRotation": true
+            }
+          ],
+          "forceSyncToRemote": true
+        },
+        "RootCore": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "elementType": "Fire",
+          "bonusCritical": "root_element_durability_max",
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "onShieldBroken": [
+                {
+                  "$type": "ServerMonsterLog",
+                  "target": "Owner",
+                  "paramList": [1, 1, 1]
+                },
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_Fruit_Break",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "TriggerAbility",
+                  "target": "Owner",
+                  "abilityName": "Monster_Regisvine_Fire_BossEvent_ShieldBreak"
+                }
+              ],
+              "showDamageText": "",
+              "useMutiPlayerFixData": true,
+              "barElementType": "Fire"
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "target": "Owner",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_Fruit_Normal",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "SetFollowMove",
+              "canBeHandledOnRecover": true,
+              "attachPoint": "Fruit_CorePos",
+              "followRotation": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox_Core"]
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox_Fruit"],
+              "setEnable": true
+            },
+            {
+              "$type": "HideUIBillBoard"
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByAny",
+                  "predicates": [
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Water"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Electric"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Ice"
+                    },
+                    {
+                      "$type": "ByHitElement",
+                      "element": "Wind"
+                    }
+                  ]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_Hit_Weakness",
+                  "born": {
+                    "$type": "PNCLIHNAPNL"
+                  },
+                  "effectTempleteID": -1.0
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BlazeSeed_Hit_Ineffective",
+                  "born": {
+                    "$type": "PNCLIHNAPNL",
+                    "direction": {
+                      "$type": "CDNKHFEKHNH"
+                    }
+                  },
+                  "effectTempleteID": -1.0
+                }
+              ]
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "target": "Owner",
+              "minValue": "FruitWeaknessBeHit",
+              "mpTriggerOnRemote": true
+            }
+          ],
+          "onKill": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "RootCore"
+            }
+          ],
+          "onReconnect": [
+            {
+              "$type": "SetFollowMove",
+              "attachPoint": "Fruit_CorePos",
+              "followRotation": true
+            }
+          ],
+          "forceSyncToRemote": true
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_RapidFire",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["RapidFire_Attack"],
+          "modifierName": "BulletEmitter",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "BulletEmitter": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.33000001311302185,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_RapidFire_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "BulletSourceL"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_RapidFire_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "BulletSourceR"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42602051,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "direction": {
+                  "$type": "HAEIKNNFLFO",
+                  "randomAngleHor": 2.5,
+                  "randomAngleVer": 2.5,
+                  "maxAngle": 20.0,
+                  "PDKJDHJIEJB": ""
+                },
+                "useRotation": true,
+                "attachPointName": "BulletSourceL"
+              }
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42602051,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "direction": {
+                  "$type": "HAEIKNNFLFO",
+                  "randomAngleHor": 2.5,
+                  "randomAngleVer": 2.5,
+                  "maxAngle": 20.0,
+                  "PDKJDHJIEJB": ""
+                },
+                "useRotation": true,
+                "attachPointName": "BulletSourceR"
+              }
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_RapidFire_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "BulletSourceL"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_RapidFire_02",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "BulletSourceR"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42602051,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "direction": {
+                  "$type": "HAEIKNNFLFO",
+                  "randomAngleHor": 2.5,
+                  "randomAngleVer": 2.5,
+                  "maxAngle": 60.0,
+                  "PDKJDHJIEJB": ""
+                },
+                "useRotation": true,
+                "attachPointName": "BulletSourceL"
+              }
+            },
+            {
+              "$type": "TriggerBullet",
+              "bulletID": 42602051,
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "direction": {
+                  "$type": "HAEIKNNFLFO",
+                  "randomAngleHor": 2.5,
+                  "randomAngleVer": 2.5,
+                  "maxAngle": 60.0,
+                  "PDKJDHJIEJB": ""
+                },
+                "useRotation": true,
+                "attachPointName": "BulletSourceR"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_RapidFire_BulletLogic",
+      "modifiers": {
+        "Bullet_VFX": {
+          "modifierName": "",
+          "elementType": "Fire",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_FireBullet_Trail",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Bullet_VFX"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_FireBullet_Explode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint"
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 0.75
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.20000000298023224,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 25.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3"
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "Bullet_VFX"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_LavaBlast_BulletLogic",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_LavaBlast_Attack",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint"
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "shakeRange": 1.2000000476837158,
+            "shakeTime": 0.10000000149011612,
+            "shakeDistance": 50.0,
+            "extension": {
+              "baseCycle": 0.10000000149011612,
+              "cycleDamping": 0.0,
+              "rangeAttenuation": 0.4000000059604645
+            }
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "radius": 5.25
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "LavaBlast",
+              "attenuationGroup": "SeaHorse_Primo_HitProtection_Multi",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV6",
+                "retreatType": "ByAttackerForward"
+              },
+              "canBeModifiedBy": "Owner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Regisvine_Fire_BossEvent_SurroundingFire_Gadget",
+      "abilityMixins": [
+        {
+          "$type": "AttachModifierToGlobaltriggerIDMixin",
+          "globaltriggerIDTarget": "Owner",
+          "globalValueKey": "_FIRE_STORM_DESTROY",
+          "valueSteps": [-0.5, 0.5, 1.5],
+          "modifierNameSteps": ["GadgetLogic", "Destroy"]
+        }
+      ],
+      "modifiers": {
+        "Destroy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "GadgetLogic": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.6000000238418579,
+          "onThinkInterval": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Pos0"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "useRotation": true,
+                    "attachPointName": "Pos0"
+                  },
+                  "size": {
+                    "x": 2.055999994277954,
+                    "y": 2.240000009536743,
+                    "z": 14.510000228881836
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "attenuationRedirect": "Owner",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 201.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 620.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Pos1"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "useRotation": true,
+                    "attachPointName": "Pos1"
+                  },
+                  "size": {
+                    "x": 2.055999994277954,
+                    "y": 2.240000009536743,
+                    "z": 14.510000228881836
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "attenuationRedirect": "Owner",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 201.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 620.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Pos2"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "useRotation": true,
+                    "attachPointName": "Pos2"
+                  },
+                  "size": {
+                    "x": 2.055999994277954,
+                    "y": 2.240000009536743,
+                    "z": 14.510000228881836
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "attenuationRedirect": "Owner",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 201.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 620.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Pos3"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "useRotation": true,
+                    "attachPointName": "Pos3"
+                  },
+                  "size": {
+                    "x": 2.055999994277954,
+                    "y": 2.240000009536743,
+                    "z": 14.510000228881836
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "attenuationRedirect": "Owner",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 201.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 620.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Pos4"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "useRotation": true,
+                    "attachPointName": "Pos4"
+                  },
+                  "size": {
+                    "x": 2.055999994277954,
+                    "y": 2.240000009536743,
+                    "z": 14.510000228881836
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "attenuationRedirect": "Owner",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 201.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 620.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Pos5"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "useRotation": true,
+                    "attachPointName": "Pos5"
+                  },
+                  "size": {
+                    "x": 2.055999994277954,
+                    "y": 2.240000009536743,
+                    "z": 14.510000228881836
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "attenuationRedirect": "Owner",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 201.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 620.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Regisvine_Fire_BossEvent_FireStorm_Blast",
+              "born": {
+                "$type": "ConfigBornByAttachPoint",
+                "useRotation": true,
+                "attachPointName": "Pos6"
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "GGBJACPDDCM",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 1.1200000047683716,
+                      "z": 3.450000047683716
+                    },
+                    "useRotation": true,
+                    "attachPointName": "Pos6"
+                  },
+                  "size": {
+                    "x": 2.055999994277954,
+                    "y": 2.240000009536743,
+                    "z": 14.510000228881836
+                  }
+                },
+                "attackInfo": {
+                  "attackTag": "Regisvine_SurroundingFire",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Regisvine_SurroundingFire",
+                  "attenuationRedirect": "Owner",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 201.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 0.0,
+                      "hitImpulseY": 620.0
+                    }
+                  }
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      }
+    }
+  }
+]

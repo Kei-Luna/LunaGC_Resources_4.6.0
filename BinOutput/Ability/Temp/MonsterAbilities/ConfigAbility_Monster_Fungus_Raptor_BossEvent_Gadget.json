@@ -1,0 +1,791 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Fungus_Raptor_BossEvent_CastPumpkinBullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42611019,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffsetCorrect": {
+                "y": -80.0
+              }
+            },
+            "useRotation": true,
+            "attachPointName": "BackBulletSource02"
+          },
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42611019,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffsetCorrect": {
+                "y": -40.0
+              }
+            },
+            "useRotation": true,
+            "attachPointName": "BackBulletSource02"
+          },
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42611019,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffsetCorrect": {
+                "y": 0.0
+              }
+            },
+            "useRotation": true,
+            "attachPointName": "BackBulletSource02"
+          },
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42611019,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffsetCorrect": {
+                "y": 40.0
+              }
+            },
+            "useRotation": true,
+            "attachPointName": "BackBulletSource02"
+          },
+          "lifeByOwnerV2": true
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42611019,
+          "born": {
+            "$type": "ConfigBornByAttachPoint",
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffsetCorrect": {
+                "y": 80.0
+              }
+            },
+            "useRotation": true,
+            "attachPointName": "BackBulletSource02"
+          },
+          "lifeByOwnerV2": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Fungus_Raptor_BossEvent_Bullet_CreatePumpkinGadget",
+      "modifiers": {
+        "Bullet_VFX": {
+          "modifierName": "",
+          "elementType": "Grass",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Fungus_Raptor_DecayedSummonAttack_Bullet",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Fungus_Raptor_DecayedSummonAttack_Bullet_Trail",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Bullet_VFX"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "CreateGadget",
+          "target": "OriginOwner",
+          "ownerIsTarget": true,
+          "ownerIs": "OriginOwner",
+          "propOwnerIs": "OriginOwner",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "onGround": true,
+            "alongGround": true
+          },
+          "sightGroupWithOwner": true,
+          "lifeByOwnerV2": true,
+          "gadgetID": 42611020,
+          "byServer": true
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "Bullet_VFX"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Fungus_Raptor_DecayedSummonAttack_Bullet_Hit",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "onGround": true,
+            "alongGround": true
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "onGround": true,
+                "alongGround": true
+              },
+              "radius": 2.25
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.30000001192092896,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Grass",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 100.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3"
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Fungus_Raptor_BossEvent_PumpkinGadget",
+      "abilityMixins": [
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "modifierName": "PumpkinBomb"
+        },
+        {
+          "$type": "AttachToGadgetStateMixin",
+          "gadgetState": 201,
+          "modifierName": "CoreLogic"
+        }
+      ],
+      "abilitySpecials": {
+        "bomb_timer": 0.0
+      },
+      "modifiers": {
+        "PumpkinBomb": {
+          "modifierName": "",
+          "duration": "bomb_timer",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetRandomOverrideMaptriggerID",
+              "triggerIDRangeMax": 55.0,
+              "triggerIDRangeMin": 30.0,
+              "overrideMapKey": "bomb_timer"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Duration_Timer"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "BeHitFire",
+              "ratio": true
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "PumpkinBomb_Explode"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "CoreLogic"
+            },
+            {
+              "$type": "ExecuteGadgetLua",
+              "param1": 201
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "ExecuteGadgetLua",
+              "param1": 201
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "PumpkinBomb"
+            }
+          ]
+        },
+        "Duration_Timer": {
+          "modifierName": "",
+          "duration": "bomb_timer",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "PumpkinBomb"
+            }
+          ]
+        },
+        "CoreLogic": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalDir",
+                  "target": "Target",
+                  "key": "_ABILITY_DANDELION_HIT",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "direction": {
+                      "$type": "KPKEFLCHOHD",
+                      "angleOffset": {
+                        "y": 180.0
+                      },
+                      "namedTransform": ""
+                    },
+                    "useRotation": true
+                  },
+                  "setTarget": false
+                },
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 42611021,
+                  "born": {
+                    "$type": "ConfigBornByAttachPoint",
+                    "direction": {
+                      "$type": "AIJHOFHPJJB",
+                      "directionKey": "_ABILITY_DANDELION_HIT"
+                    },
+                    "useRotation": true,
+                    "attachPointName": "Flower"
+                  }
+                },
+                {
+                  "$type": "EnableSceneTransformByName",
+                  "transformNames": ["Flower"]
+                },
+                {
+                  "$type": "RemoveModifier",
+                  "modifierName": "PumpkinBomb_Explode"
+                },
+                {
+                  "$type": "KillSelf",
+                  "duration": 7.0,
+                  "hideEntity": true
+                }
+              ]
+            }
+          ]
+        },
+        "PumpkinBomb_Explode": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 3.0,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackSphere",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "y": 1.2000000476837158
+                    },
+                    "useRotation": true
+                  },
+                  "radius": 5.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.5,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 50.0,
+                    "strikeType": "Blunt",
+                    "damage": 200.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV5"
+                  },
+                  "forceCameraShake": true,
+                  "cameraShake": {
+                    "shakeRange": 0.36000001430511475,
+                    "shakeTime": 0.36000001430511475
+                  }
+                }
+              },
+              "targetType": "All"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PumpkinBomb_04_01",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR4",
+                "campTargetType": "Enemy",
+                "SelectTargetsByShape": 1.0
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PumpkinBomb_04_02",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            },
+            {
+              "$type": "KillSelf",
+              "duration": 7.0,
+              "hideEntity": true
+            }
+          ]
+        }
+      },
+      "onFieldEnter": [
+        {
+          "$type": "ExecuteGadgetLua",
+          "param1": 201
+        },
+        {
+          "$type": "RemoveModifier",
+          "modifierName": "PumpkinBomb"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Fungus_Raptor_BossEvent_PumpkinGadget_Bullet",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "y": 1.2000000476837158
+                },
+                "useRotation": true
+              },
+              "radius": 5.0
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.5,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Grass",
+                "bonusCritical": 50.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV5"
+              },
+              "forceCameraShake": true,
+              "cameraShake": {
+                "shakeRange": 0.36000001430511475,
+                "shakeTime": 0.36000001430511475
+              }
+            }
+          },
+          "targetType": "All"
+        },
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_SceneObj_PumpkinBomb_04_01",
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "KillSelf",
+          "duration": 1.0,
+          "hideEntity": true
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Fungus_Raptor_BossEvent_DecayExplode",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": ["SporeAttack"],
+          "enterActions": [
+            {
+              "$type": "SetGlobalPos",
+              "key": "_Ex_Pos",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "useRotation": true
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "SporeContaminate"
+            }
+          ],
+          "exitActions": [
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [301, 401]
+            }
+          ],
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "SporeContaminate": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "SporeContaminate_Large"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "MKLCDCJFOHO",
+                    "positionKey": "_Ex_Pos",
+                    "directionKey": ""
+                  },
+                  "height": 1.5,
+                  "radius": 7.0
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.05999999865889549,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV1"
+                  },
+                  "canBeModifiedBy": "Owner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "SporeContaminate_Large": {
+          "modifierName": "",
+          "duration": 4.099999904632568,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onThinkInterval": [
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "MKLCDCJFOHO",
+                    "positionKey": "_Ex_Pos",
+                    "directionKey": ""
+                  },
+                  "height": 1.5,
+                  "radius": 11.5
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "",
+                  "attenuationGroup": "default",
+                  "attackProperty": {
+                    "damagePercentage": 0.05999999865889549,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Default",
+                    "damage": 0.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV1"
+                  },
+                  "canBeModifiedBy": "Owner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        },
+        "SecondExplodeTimer": {
+          "modifierName": "",
+          "duration": 0.23999999463558197,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Fungus_Raptor_BossEvent_SporeAttack_02",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "_Ex_Pos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "MKLCDCJFOHO",
+                    "positionKey": "_Ex_Pos",
+                    "directionKey": ""
+                  },
+                  "height": 1.0,
+                  "radius": 9.149999618530273,
+                  "innerRadius": 5.75
+                },
+                "attackInfo": {
+                  "attackTag": "DecayExplode",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Fungus_Raptor_BossEvent_DecayExplode",
+                  "attackProperty": {
+                    "damagePercentage": 1.0,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 200.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 700.0,
+                      "hitImpulseY": 1050.0
+                    }
+                  },
+                  "canBeModifiedBy": "Owner"
+                }
+              },
+              "targetType": "Enemy"
+            },
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "ThirdExplodeTimer"
+            }
+          ]
+        },
+        "ThirdExplodeTimer": {
+          "modifierName": "",
+          "duration": 0.23999999463558197,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Fungus_Raptor_BossEvent_SporeAttack_03",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "_Ex_Pos",
+                "directionKey": ""
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "MKLCDCJFOHO",
+                    "positionKey": "_Ex_Pos",
+                    "directionKey": ""
+                  },
+                  "height": 1.0,
+                  "radius": 11.5,
+                  "innerRadius": 9.149999618530273
+                },
+                "attackInfo": {
+                  "attackTag": "DecayExplode",
+                  "attenuationTag": "",
+                  "attenuationGroup": "Fungus_Raptor_BossEvent_DecayExplode",
+                  "attackProperty": {
+                    "damagePercentage": 1.0,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Grass",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 200.0,
+                    "attackType": "Range",
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "",
+                    "overrideHitImpulse": {
+                      "hitLevel": "Air",
+                      "BLHKKKALNDK": 700.0,
+                      "hitImpulseY": 1050.0
+                    }
+                  },
+                  "canBeModifiedBy": "Owner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Fungus_Raptor_BossEvent_SporeAttack",
+          "born": {
+            "$type": "MKLCDCJFOHO",
+            "positionKey": "_Ex_Pos",
+            "directionKey": ""
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "positionKey": "_Ex_Pos",
+                "directionKey": ""
+              },
+              "height": 3.5,
+              "radius": 7.0
+            },
+            "attackInfo": {
+              "attackTag": "DecayExplode",
+              "attenuationTag": "",
+              "attenuationGroup": "Fungus_Raptor_BossEvent_DecayExplode",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Grass",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "attackType": "Range",
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "",
+                "overrideHitImpulse": {
+                  "hitLevel": "Air",
+                  "BLHKKKALNDK": 700.0,
+                  "hitImpulseY": 1050.0
+                }
+              },
+              "canBeModifiedBy": "Owner"
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "SecondExplodeTimer"
+        }
+      ]
+    }
+  }
+]

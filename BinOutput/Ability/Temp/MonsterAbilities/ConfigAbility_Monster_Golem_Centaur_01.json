@@ -1,0 +1,5423 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_AbyssVersion",
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 1.0,
+          "key": "_AbyssVersion_",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetAnimatorBool",
+          "boolID": "AbyssVersion",
+          "ratio": true
+        },
+        {
+          "$type": "UseSkillEliteSet",
+          "skillEliteSetID": 1
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_WQStage1",
+      "modifiers": {
+        "UNIQUE_Centaur_WQStage1_Limbo": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToHPPercentMixin",
+              "valueSteps": [0.75],
+              "modifierNameSteps": [
+                "Centaur_WQStage1_Empty",
+                "Centaur_WQStage1End_Trigger"
+              ]
+            }
+          ],
+          "properties": {
+            "Actor_HpThresholdRatio": 0.7490000128746033
+          },
+          "state": "Limbo"
+        },
+        "Centaur_WQStage1_Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Centaur_WQStage1End_Trigger": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_CentaurWQ_Stage1End",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 1.0,
+          "key": "_WQStage_",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Centaur_WQStage1_Limbo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_WQStage2",
+      "modifiers": {
+        "UNIQUE_Centaur_WQStage2_Limbo": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToHPPercentMixin",
+              "valueSteps": [0.20000000298023224],
+              "modifierNameSteps": [
+                "Centaur_WQStage2_Empty",
+                "Centaur_WQStage2End_Trigger"
+              ]
+            }
+          ],
+          "properties": {
+            "Actor_HpThresholdRatio": 0.19900000095367432
+          },
+          "state": "Limbo"
+        },
+        "Centaur_WQStage2_Empty": {
+          "modifierName": "",
+          "bonusCritical": 100.0
+        },
+        "Centaur_WQStage2End_Trigger": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "WeakTrigger",
+              "mpTriggerOnRemote": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 2.0,
+          "key": "_WQStage_",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Centaur_WQStage2_Limbo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_WQStage3",
+      "modifiers": {
+        "UNIQUE_Centaur_WQStage3_Limbo": {
+          "modifierName": "",
+          "isUnique": true,
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_HpThresholdRatio": 0.0010000000474974513
+          },
+          "state": "Limbo"
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 3.0,
+          "key": "_WQStage_",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Centaur_WQStage3_Limbo"
+        }
+      ],
+      "isDynamicAbility": true
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_InitialPos",
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 1.0,
+          "key": "Golem_Centaur",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachAbilityStateResistance",
+          "resistanceListID": 13002
+        },
+        {
+          "$type": "CreateGadget",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "useRotation": true
+          },
+          "sightGroupWithOwner": true,
+          "lifeByOwnerV2": true,
+          "gadgetID": 42004006,
+          "byServer": true
+        },
+        {
+          "$type": "SetGlobalPos",
+          "key": "InitialPos",
+          "born": {
+            "$type": "ConfigBornByTarget"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_KillGadget",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "RunTurn",
+            "WalkForward",
+            "TurnBack",
+            "TurnLeft",
+            "TurnRight",
+            "Skill_RunLeave",
+            "Attack08_Run_BS",
+            "Attack08_Run",
+            "Attack08_Run_AS",
+            "Attack04_Loop"
+          ],
+          "modifierName": "ClearArea",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "ClearArea": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5H5",
+                "campTargetType": "Enemy",
+                "SelectTargetsByShape": 1.0
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_COMMON_GADGET_ISSUMMON",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "modifierName": "Kill_Summon_Gadget"
+                }
+              ]
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "otherTargets": {
+                "$type": "SelectTargetsByShape",
+                "shapeName": "CircleR5H5",
+                "campTargetType": "Enemy",
+                "SelectTargetsByShape": 1.0
+              },
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_COMMON_GADGET_ISSUMMON",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "ApplyModifier",
+                  "target": "Target",
+                  "modifierName": "Kill_Summon_Gadget"
+                }
+              ]
+            }
+          ]
+        },
+        "Kill_Summon_Gadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_ShaderDie",
+      "onAbilityStart": [
+        {
+          "$type": "SetAnimatorInt",
+          "intID": "Skin",
+          "ratio": 0.0
+        },
+        {
+          "$type": "SendEffectTrigger",
+          "parameter": "Skin",
+          "attachPoint": "",
+          "type": "Int",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Violin"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_WeaponDie",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerSetRenderersEnableV2",
+          "renderNames": [
+            "EffectWater",
+            "MonEquip_Golem_Centaur_SwordShield_02"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Die",
+      "onAbilityStart": [
+        {
+          "$type": "SetLockingV3Config",
+          "enable": true,
+          "specialCameraName": "DieCamera",
+          "frameDelay": 1,
+          "lockTrans": ""
+        },
+        {
+          "$type": "TriggerSetRenderersEnableV2",
+          "renderNames": [
+            "EffectWater",
+            "Body",
+            "Weapon",
+            "MonEquip_Golem_Centaur_SwordShield_01",
+            "MonEquip_Golem_Centaur_SwordShield_02"
+          ]
+        }
+      ],
+      "onKill": [
+        {
+          "$type": "KillMultiBullet",
+          "gadgetInfo": {
+            "configID": 42614004
+          },
+          "forceKillTime": 0.009999999776482582
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_ReturnToBorn",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [901, 902, 903],
+          "modifierName": "ReturnToBorn_Start"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [101],
+          "modifierName": "ReturnToBorn_Start"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [101],
+          "modifierName": "SurroundAnchorSet"
+        }
+      ],
+      "modifiers": {
+        "SurroundAnchorSet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 2.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "SetSurroundAnchor",
+                  "actionPointType": "SurroundPoint"
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "SetSurroundAnchor",
+                  "setPoint": false
+                }
+              ]
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetSurroundAnchor",
+              "actionPointType": "SurroundPoint"
+            }
+          ]
+        },
+        "ReturnToBorn_Start": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "canBeHandledOnRecover": true,
+              "intID": "StateFlag",
+              "minValue": 1
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "CentaurWeakRecover",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "_Golem_Centaur_ReviveCout_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "Attack08Watcher",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "renderNames": [
+                "EffectWater",
+                "MonEquip_Golem_Centaur_SwordShield_02"
+              ]
+            },
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "renderNames": [
+                "MonEquip_Golem_Centaur_SwordShield_01",
+                "MonEquip_Golem_Centaur_SwordShield_02"
+              ],
+              "setEnable": true
+            },
+            {
+              "$type": "KillSelf",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42614001
+              }
+            },
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42614001
+              },
+              "modifierName": "GadgetForceDisappear"
+            },
+            {
+              "$type": "KillSelf",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42614002
+              }
+            }
+          ]
+        },
+        "GadgetForceDisappear": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkAS1",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf",
+              "duration": 0.009999999776482582
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Golem_Centaur_OverCharge_CircleFire"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Alert",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Alert_BS"],
+          "modifierName": "CentaurAlert",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [111],
+          "modifierName": "CentaurBase"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["StandbyStatue", "Alert_BS"],
+          "modifierName": "StatueHitBox",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["StandbyStatue"],
+          "modifierName": "StatueBillboard",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["StandbyStatue", "Alert_BS", "Alert_Loop"],
+          "modifierName": "StatueSubHurt",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["StandbyStatue", "Alert_BS"],
+          "modifierName": "StatueCollider1",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Alert_Loop"],
+          "modifierName": "StatueCollider2",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["StandbyStatue", "Alert_BS", "Alert_Loop", "Alert_AS"],
+          "modifierName": "BaseEffect",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "sub_hurt_delta_positive_before_battle": 2.0
+      },
+      "modifiers": {
+        "BaseEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Alert_Base",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "StatueHitBox": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnableHitBoxByName",
+                  "hitBoxNames": ["HitBox_Base"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnableHitBoxByName",
+                  "hitBoxNames": ["HitBox_Base"]
+                }
+              ]
+            }
+          ]
+        },
+        "StatueCollider1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider", "PushColliderUpperBody"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderStatue"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": [
+                    "PushCollider",
+                    "PushColliderUpperBody"
+                  ],
+                  "setEnable": true
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderStatue"]
+                }
+              ]
+            }
+          ]
+        },
+        "StatueCollider2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider", "PushColliderUpperBody"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderJump"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderJump"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": [
+                    "PushCollider",
+                    "PushColliderUpperBody"
+                  ],
+                  "setEnable": true
+                }
+              ]
+            }
+          ]
+        },
+        "StatueBillboard": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "HideUIBillBoard",
+                  "hide": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "HideUIBillBoard"
+                }
+              ]
+            }
+          ]
+        },
+        "StatueSubHurt": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Entity_MassRatio": 1000.0,
+            "Entity_WeightRatio": 5.0,
+            "Actor_EndureDelta": 0.0010000000474974513,
+            "Actor_PhysicalSubHurtDelta": "sub_hurt_delta_positive_before_battle",
+            "Actor_FireSubHurtDelta": "sub_hurt_delta_positive_before_battle",
+            "Actor_ElecSubHurtDelta": "sub_hurt_delta_positive_before_battle",
+            "Actor_IceSubHurtDelta": "sub_hurt_delta_positive_before_battle",
+            "Actor_WaterSubHurtDelta": "sub_hurt_delta_positive_before_battle",
+            "Actor_GrassSubHurtDelta": "sub_hurt_delta_positive_before_battle",
+            "Actor_WindSubHurtDelta": "sub_hurt_delta_positive_before_battle",
+            "Actor_RockSubHurtDelta": "sub_hurt_delta_positive_before_battle"
+          }
+        },
+        "CentaurBase": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "Skin",
+              "ratio": 0.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Skin",
+              "attachPoint": "",
+              "type": "Int",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Violin"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "Skin",
+              "ratio": 1.0
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "Skin",
+              "attachPoint": "",
+              "type": "Int",
+              "minValue": 1,
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Violin"
+            }
+          ]
+        },
+        "CentaurAlert": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Statue"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "canBeHandledOnRecover": true,
+              "parameter": "Break",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Alert_Base"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "FireEffect",
+          "predicates": [
+            {
+              "$type": "ByNot",
+              "predicates": [
+                {
+                  "$type": "ByAnimatorFloat",
+                  "logic": "Equal",
+                  "ratio": 111.0,
+                  "parameter": "PoseID"
+                }
+              ]
+            }
+          ],
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Violin",
+          "effectTempleteID": -1.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_WQSpecialWeak",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack05_Special_Weak_BS", "Attack05_Special_Weak_AS"],
+          "modifierName": "WQSPecialWeak05",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack06_Special_Weak_BS", "Attack06_Special_Weak_AS"],
+          "modifierName": "WQSPecialWeak06",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack08_Special_Weak_BS", "Attack08_Special_Weak_AS"],
+          "modifierName": "WQSPecialWeak08",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "alertness": [2],
+          "modifierName": "WQSPecialWeak"
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Attack05_Special_Weak_BS",
+            "Attack06_Special_Weak_BS",
+            "Attack08_Special_Weak_BS"
+          ],
+          "modifierName": "WQSpecialWeakReminder",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack05"],
+          "modifierName": "WQSpecialWarningReminder05",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack06"],
+          "modifierName": "WQSpecialWarningReminder06",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack08_AS"],
+          "modifierName": "WQSpecialWarningReminder08",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "WQSpecialWarningReminder05": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "WQSpecialWeakCount",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "BCJCFHPMKLB",
+                  "ratio": true,
+                  "parameter": "SpecialWeak05"
+                }
+              ],
+              "id": 741960801
+            },
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "WQSpecialWeakCount",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "BCJCFHPMKLB",
+                  "ratio": true,
+                  "parameter": "SpecialWeak05"
+                }
+              ],
+              "id": 741960803
+            }
+          ]
+        },
+        "WQSpecialWarningReminder06": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "WQSpecialWeakCount",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "BCJCFHPMKLB",
+                  "ratio": true,
+                  "parameter": "SpecialWeak06"
+                }
+              ],
+              "id": 741960801
+            },
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "WQSpecialWeakCount",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "BCJCFHPMKLB",
+                  "ratio": true,
+                  "parameter": "SpecialWeak06"
+                }
+              ],
+              "id": 741960803
+            }
+          ]
+        },
+        "WQSpecialWarningReminder08": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "WQSpecialWeakCount",
+                  "ratio": 0.0
+                },
+                {
+                  "$type": "BCJCFHPMKLB",
+                  "ratio": true,
+                  "parameter": "SpecialWeak08"
+                }
+              ],
+              "id": 741960801
+            },
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "WQSpecialWeakCount",
+                  "ratio": 1.0
+                },
+                {
+                  "$type": "BCJCFHPMKLB",
+                  "ratio": true,
+                  "parameter": "SpecialWeak08"
+                }
+              ],
+              "id": 741960803
+            }
+          ]
+        },
+        "WQSpecialWeakReminder": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "WQSpecialWeakCount",
+              "useLimitRange": true,
+              "maxValue": 2.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "WQSpecialWeakCount",
+                  "ratio": 1.0
+                }
+              ],
+              "id": 741960802
+            },
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "WQSpecialWeakCount",
+                  "ratio": 2.0
+                }
+              ],
+              "id": 741960804
+            }
+          ]
+        },
+        "WQSPecialWeak": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "WQSpecialWeakCount",
+              "useLimitRange": true,
+              "maxValue": 2.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_WQStage_",
+                  "ratio": 2.0
+                }
+              ],
+              "boolID": "SpecialWeak05",
+              "ratio": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_WQStage_",
+                  "ratio": 2.0
+                }
+              ],
+              "boolID": "SpecialWeak06",
+              "ratio": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_WQStage_",
+                  "ratio": 2.0
+                }
+              ],
+              "boolID": "SpecialWeak08",
+              "ratio": true
+            }
+          ]
+        },
+        "WQSPecialWeak05": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "TriggerSetRenderersEnableV2",
+                  "renderNames": ["EffectWater"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "TriggerSetRenderersEnableV2",
+                  "renderNames": ["EffectWater"]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "SpecialWeak05"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "SpecialWeak06"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBehit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillMultiBullet",
+              "gadgetInfo": {
+                "configID": 42614004
+              },
+              "forceKillTime": 0.009999999776482582
+            }
+          ]
+        },
+        "WQSPecialWeak06": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "TriggerSetRenderersEnableV2",
+                  "renderNames": ["EffectWater"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "TriggerSetRenderersEnableV2",
+                  "renderNames": ["EffectWater"]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "SpecialWeak06"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "SpecialWeak05"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBehit",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "WQSPecialWeak08": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "TriggerSetRenderersEnableV2",
+                  "renderNames": ["EffectWater"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "TriggerSetRenderersEnableV2",
+                  "renderNames": ["EffectWater"]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "SpecialWeak08"
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBehit",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_WeakAS",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": ["Weak_AS"],
+          "enterActions": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_WQStage_",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "WQEffect"
+            }
+          ],
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "WQEffect": {
+          "modifierName": "",
+          "duration": 10.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ServerLuaCall",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_WQStage_",
+                  "ratio": 1.0
+                }
+              ],
+              "luaCallType": "FromGroup",
+              "funcName": "SLC_CentaurWQ_Stage1End",
+              "param1": 0.0,
+              "KEEFCBAAODF": 0.0,
+              "LABHKHBCHFB": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_WQStage_",
+                  "ratio": 1.0
+                }
+              ],
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_EnhanceWQ",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "WeakRecoverSpeicalSkill": {
+          "modifierName": "",
+          "duration": 5.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "CentaurWeakRecover",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "CentaurWeakRecover",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetPoseInt",
+          "canBeHandledOnRecover": true,
+          "intID": "StateFlag",
+          "minValue": 1
+        },
+        {
+          "$type": "TriggerSetRenderersEnableV2",
+          "canBeHandledOnRecover": true,
+          "renderNames": ["EffectWater"]
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "WeakRecoverSpeicalSkill"
+        },
+        {
+          "$type": "HealHP",
+          "cdDelta": true,
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_WQStage_",
+              "ratio": 1.0
+            }
+          ],
+          "OLMENJCGGJJ": 1.0,
+          "cdRatio": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Weak",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByStateIDMixin",
+          "stateIDs": ["Weak_BS"],
+          "enterActions": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "WeakeState_BS"
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "paramList": [0, 0, 0]
+            }
+          ],
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Weak_Loop"],
+          "modifierName": "WeakPushCollider",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Weak_Loop", "Weak_Die"],
+          "modifierName": "WeakDieState",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Weak_BS"],
+          "modifierName": "WeakBulletCleaner",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [203, 204],
+          "modifierName": "WeakSubHurt"
+        }
+      ],
+      "abilitySpecials": {
+        "WeakTime": 12.0,
+        "sub_hurt_delta_negative_weak_state": -0.800000011920929
+      },
+      "modifiers": {
+        "WeakSubHurt": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "properties": {
+            "Actor_PhysicalSubHurtDelta": "sub_hurt_delta_negative_weak_state",
+            "Actor_FireSubHurtDelta": "sub_hurt_delta_negative_weak_state",
+            "Actor_ElecSubHurtDelta": "sub_hurt_delta_negative_weak_state",
+            "Actor_IceSubHurtDelta": "sub_hurt_delta_negative_weak_state",
+            "Actor_WaterSubHurtDelta": "sub_hurt_delta_negative_weak_state",
+            "Actor_GrassSubHurtDelta": "sub_hurt_delta_negative_weak_state",
+            "Actor_WindSubHurtDelta": "sub_hurt_delta_negative_weak_state",
+            "Actor_RockSubHurtDelta": "sub_hurt_delta_negative_weak_state"
+          }
+        },
+        "WeakeState_BS": {
+          "modifierName": "",
+          "duration": "WeakTime",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseInt",
+              "intID": "StateFlag",
+              "minValue": 3
+            },
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "renderNames": ["EffectWater"],
+              "setEnable": true
+            },
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [111]
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAISkillCDAvailableNow",
+              "skillIDs": [111]
+            }
+          ]
+        },
+        "GadgetForceDisappear": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkAS1",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf",
+              "duration": 0.009999999776482582
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Golem_Centaur_OverCharge_CircleFire"
+            }
+          ]
+        },
+        "WeakBulletCleaner": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42614001
+              },
+              "modifierName": "GadgetForceDisappear"
+            },
+            {
+              "$type": "KillSelf",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42614001
+              }
+            },
+            {
+              "$type": "KillSelf",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42614002
+              }
+            },
+            {
+              "$type": "KillMultiBullet",
+              "gadgetInfo": {
+                "configID": 42614004
+              },
+              "forceKillTime": 0.009999999776482582
+            }
+          ]
+        },
+        "WeakPushCollider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderUpperBody"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderWeak"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderUpperBody"],
+                  "setEnable": true
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderWeak"]
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "renderNames": ["EffectWater"],
+              "setEnable": true
+            }
+          ]
+        },
+        "RecoverRendererManager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onReconnect": [
+            {
+              "$type": "TriggerSetRenderersEnableV2",
+              "canBeHandledOnRecover": true,
+              "predicates": [
+                {
+                  "$type": "ByNot",
+                  "predicates": [
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "ratio": 202.0,
+                      "parameter": "poseID"
+                    },
+                    {
+                      "$type": "ByAnimatorFloat",
+                      "logic": "Lesser",
+                      "ratio": 205.0,
+                      "parameter": "poseID"
+                    }
+                  ]
+                }
+              ],
+              "renderNames": ["EffectWater"]
+            }
+          ]
+        },
+        "WeakDieState": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "DiePatternSwitchMixin",
+              "hasAnimatorDie": true,
+              "dieEndTime": 1.0,
+              "dieForceDisappearTime": 4.0,
+              "dieDisappearEffect": "",
+              "muteHitBox": true,
+              "dieDenyLockOn": true,
+              "dieIsGhostToEnemy": true,
+              "dieIgnoreTriggerBullet": true,
+              "muteBillboard": true,
+              "mutePushCollider": true
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Weak",
+              "ratio": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Weak"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "RecoverRendererManager"
+        },
+        {
+          "$type": "SetOverrideMaptriggerID",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_WQStage_",
+              "ratio": 1.0
+            }
+          ],
+          "ratio": 3.0,
+          "overrideMapKey": "WeakTime",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetOverrideMaptriggerID",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "key": "_WQStage_",
+              "ratio": 1.0
+            }
+          ],
+          "ratio": 99999.0,
+          "overrideMapKey": "sub_hurt_delta_negative_weak_state",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_ShieldManager",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [901, 902, 903],
+          "modifierName": "FactorReset"
+        },
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [101],
+          "modifierName": "FactorReset"
+        }
+      ],
+      "abilitySpecials": {
+        "InCombat_SubHurtDelta": 0.6000000238418579,
+        "ShieldReductionFactor": 1.0
+      },
+      "modifiers": {
+        "FactorReset": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetOverrideMaptriggerID",
+              "ratio": 1.0,
+              "overrideMapKey": "ShieldReductionFactor",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "CentaurShieldManager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToPoseIDMixin",
+              "poseIDs": [101, 201],
+              "modifierName": "UNIQUE_Centaurs_Shield"
+            }
+          ]
+        },
+        "UNIQUE_Centaurs_Shield": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "elementType": "Rock",
+          "bonusCritical": [800.0, "ShieldReductionFactor", "MUL"],
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "onShieldBroken": [
+                {
+                  "$type": "DoWatcherSystemAction",
+                  "predicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "_WQStage_",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "target": "Self",
+                      "key": "Attack08Watcher",
+                      "ratio": 1.0
+                    }
+                  ],
+                  "watcherId": 82193,
+                  "inThreatListOnly": true
+                },
+                {
+                  "$type": "AddGlobaltriggerID",
+                  "ratio": 1.0,
+                  "key": "_Golem_Centaur_ReviveCout_",
+                  "useLimitRange": true,
+                  "maxValue": 2.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Golem_Centaur_ReviveCout_",
+                      "ratio": 1.0
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_AbyssVersion_",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetOverrideMaptriggerID",
+                      "ratio": 0.5,
+                      "overrideMapKey": "ShieldReductionFactor",
+                      "maxValue": 0.0,
+                      "minValue": 0.0
+                    }
+                  ]
+                },
+                {
+                  "$type": "Predicated",
+                  "targetPredicates": [
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_Golem_Centaur_ReviveCout_",
+                      "ratio": 2.0
+                    },
+                    {
+                      "$type": "ByTargetGlobalValue",
+                      "key": "_AbyssVersion_",
+                      "ratio": 0.0,
+                      "compareType": "NoneOrEqual"
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetOverrideMaptriggerID",
+                      "ratio": 0.25,
+                      "overrideMapKey": "ShieldReductionFactor",
+                      "maxValue": 0.0,
+                      "minValue": 0.0
+                    }
+                  ]
+                },
+                {
+                  "$type": "ActCameraShake",
+                  "cameraShake": {
+                    "shakeRange": 0.20000000298023224,
+                    "shakeTime": 0.11999999731779099,
+                    "shakeDistance": 30.0,
+                    "extension": {
+                      "baseOnCamera": true
+                    }
+                  }
+                },
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Weak",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "DamageByAttacktriggerID",
+                  "attackInfo": {
+                    "attackTag": "",
+                    "attenuationTag": "",
+                    "attenuationGroup": "default",
+                    "hitPattern": {
+                      "onHitEffectName": "default",
+                      "hitImpulseType": "LV0",
+                      "hitHaltTime": 0.10000000149011612,
+                      "hitHaltTimeScale": 0.05000000074505806
+                    }
+                  }
+                },
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "minValue": "WeakTrigger",
+                  "mpTriggerOnRemote": true
+                }
+              ],
+              "showDamageText": "",
+              "useMutiPlayerFixData": true
+            }
+          ],
+          "properties": {
+            "Actor_PhysicalSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_FireSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_ElecSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_WaterSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_GrassSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_WindSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_IceSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_RockSubHurtDelta": "InCombat_SubHurtDelta"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 0.0,
+          "key": "_Golem_Centaur_ReviveCout_",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "SetOverrideMaptriggerID",
+          "predicates": [
+            {
+              "$type": "ByTargetGlobalValue",
+              "target": "Self",
+              "key": "_AbyssVersion_",
+              "ratio": 1.0
+            }
+          ],
+          "ratio": 0.800000011920929,
+          "overrideMapKey": "InCombat_SubHurtDelta",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CentaurShieldManager"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_ShieldManager_WQ",
+      "abilitySpecials": {
+        "InCombat_SubHurtDelta": 1.0
+      },
+      "modifiers": {
+        "CentaurShieldManager": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachToPoseIDMixin",
+              "poseIDs": [101, 201],
+              "modifierName": "UNIQUE_Centaurs_Shield_WQ"
+            }
+          ]
+        },
+        "UNIQUE_Centaurs_Shield_WQ": {
+          "stacking": "Unique",
+          "modifierName": "",
+          "isUnique": true,
+          "elementType": "Rock",
+          "bonusCritical": 800.0,
+          "modifierMixins": [
+            {
+              "$type": "ShieldBarMixin",
+              "onShieldBroken": [
+                {
+                  "$type": "ActCameraShake",
+                  "cameraShake": {
+                    "shakeRange": 0.20000000298023224,
+                    "shakeTime": 0.11999999731779099,
+                    "shakeDistance": 30.0,
+                    "extension": {
+                      "baseOnCamera": true
+                    }
+                  }
+                },
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Weak",
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "DamageByAttacktriggerID",
+                  "attackInfo": {
+                    "attackTag": "",
+                    "attenuationTag": "",
+                    "attenuationGroup": "default",
+                    "hitPattern": {
+                      "onHitEffectName": "default",
+                      "hitImpulseType": "LV0",
+                      "hitHaltTime": 0.10000000149011612,
+                      "hitHaltTimeScale": 0.05000000074505806
+                    }
+                  }
+                },
+                {
+                  "$type": "SetAnimatorTrigger",
+                  "minValue": "WeakTrigger",
+                  "mpTriggerOnRemote": true
+                }
+              ],
+              "showDamageText": "",
+              "useMutiPlayerFixData": true
+            }
+          ],
+          "properties": {
+            "Actor_PhysicalSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_FireSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_ElecSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_WaterSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_GrassSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_WindSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_IceSubHurtDelta": "InCombat_SubHurtDelta",
+            "Actor_RockSubHurtDelta": "InCombat_SubHurtDelta"
+          }
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "CentaurShieldManager"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_SteerAttack",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack01_B1"],
+          "startNormalizedTime": 0.41999998688697815,
+          "endNormalizedTime": 0.6299999952316284,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack01_B2"],
+          "startNormalizedTime": 0.30000001192092896,
+          "endNormalizedTime": 0.4000000059604645,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack01_B3"],
+          "startNormalizedTime": 0.17000000178813934,
+          "endNormalizedTime": 0.30000001192092896,
+          "angularSpeed": 360.0,
+          "attackAngle": 7.5,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack01_T1_L"],
+          "startNormalizedTime": 0.07999999821186066,
+          "endNormalizedTime": 0.4699999988079071,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack01_T1_R"],
+          "startNormalizedTime": 0.07999999821186066,
+          "endNormalizedTime": 0.4699999988079071,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack01_T2"],
+          "startNormalizedTime": 0.07000000029802322,
+          "endNormalizedTime": 0.25,
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack02_T1_L"],
+          "startNormalizedTime": 0.07999999821186066,
+          "endNormalizedTime": 0.4699999988079071,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack02_T1_R"],
+          "startNormalizedTime": 0.07999999821186066,
+          "endNormalizedTime": 0.4699999988079071,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack02_T2"],
+          "startNormalizedTime": 0.07000000029802322,
+          "endNormalizedTime": 0.25,
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack02_B3"],
+          "startNormalizedTime": 0.17000000178813934,
+          "endNormalizedTime": 0.30000001192092896,
+          "angularSpeed": 360.0,
+          "attackAngle": 7.5,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack03"],
+          "startNormalizedTime": 0.05999999865889549,
+          "endNormalizedTime": 0.12999999523162842,
+          "angularSpeed": 80.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack03"],
+          "startNormalizedTime": 0.46000000834465027,
+          "endNormalizedTime": 0.4830000102519989,
+          "angularSpeed": 280.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack032"],
+          "startNormalizedTime": 0.05999999865889549,
+          "endNormalizedTime": 0.12999999523162842,
+          "angularSpeed": 80.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack032"],
+          "startNormalizedTime": 0.46000000834465027,
+          "endNormalizedTime": 0.4830000102519989,
+          "angularSpeed": 280.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack04_BS"],
+          "startNormalizedTime": 0.800000011920929,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack04_Loop"],
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack04_Loop"],
+          "startNormalizedTime": 1.0,
+          "endNormalizedTime": 2.0,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack04_Loop"],
+          "startNormalizedTime": 2.0,
+          "endNormalizedTime": 3.0,
+          "angularSpeed": 360.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack04_Loop"],
+          "startNormalizedTime": 3.0,
+          "endNormalizedTime": 4.0,
+          "angularSpeed": 360.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack04_Loop"],
+          "startNormalizedTime": 4.0,
+          "endNormalizedTime": 99.0,
+          "angularSpeed": 480.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack04_AS"],
+          "endNormalizedTime": 0.18000000715255737,
+          "angularSpeed": 60.0,
+          "attackAngle": -10.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack05"],
+          "startNormalizedTime": 0.5299999713897705,
+          "endNormalizedTime": 0.6000000238418579,
+          "angularSpeed": 20.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack06"],
+          "startNormalizedTime": 0.10999999940395355,
+          "endNormalizedTime": 0.36000001430511475,
+          "angularSpeed": 30.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack06"],
+          "startNormalizedTime": 0.5299999713897705,
+          "endNormalizedTime": 0.5799999833106995,
+          "angularSpeed": 30.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack06"],
+          "startNormalizedTime": 0.6299999952316284,
+          "endNormalizedTime": 0.6800000071525574,
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "remoteSteerToLocalTarget": false,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack07"],
+          "endNormalizedTime": 0.05999999865889549,
+          "angularSpeed": 30.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["TurnLeft"],
+          "startNormalizedTime": 0.1679999977350235,
+          "endNormalizedTime": 0.38999998569488525,
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["TurnRight"],
+          "startNormalizedTime": 0.1679999977350235,
+          "endNormalizedTime": 0.38999998569488525,
+          "angularSpeed": 240.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Skill_RunLeave_BS"],
+          "angularSpeed": 100.0,
+          "attackAngle": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Skill_RunLeave"],
+          "angularSpeed": 200.0,
+          "attackAngle": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackTraceToPosMixin",
+          "steerStateIDs": ["Attack08_Run"],
+          "endNormalizedTime": 99.0,
+          "angularSpeed": 200.0,
+          "attackTrigger": "Attack08Stop",
+          "attackDistance": 6.0,
+          "BILMCNCKIAO": "",
+          "LOGMPCCLAHE": false,
+          "globalPosKey": "InitialPos"
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack08_Run_AS"],
+          "startNormalizedTime": 0.25999999046325684,
+          "endNormalizedTime": 0.47999998927116394,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack08_BS"],
+          "startNormalizedTime": 0.44999998807907104,
+          "endNormalizedTime": 0.5400000214576721,
+          "angularSpeed": 75.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack08_BS"],
+          "startNormalizedTime": 0.5400000214576721,
+          "endNormalizedTime": 0.699999988079071,
+          "angularSpeed": 150.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack08_BS"],
+          "startNormalizedTime": 0.8600000143051147,
+          "endNormalizedTime": 0.9200000166893005,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack08_AS"],
+          "endNormalizedTime": 0.05000000074505806,
+          "angularSpeed": 60.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack08_AS"],
+          "startNormalizedTime": 0.17000000178813934,
+          "endNormalizedTime": 0.1899999976158142,
+          "angularSpeed": 120.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack08_AS"],
+          "startNormalizedTime": 0.1899999976158142,
+          "endNormalizedTime": 0.2199999988079071,
+          "angularSpeed": 270.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Attack08_AS"],
+          "startNormalizedTime": 0.4830000102519989,
+          "endNormalizedTime": 0.5049999952316284,
+          "angularSpeed": 975.0,
+          "attackAngle": -3.5,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackTraceToPosMixin",
+          "steerStateIDs": ["Attack05"],
+          "startNormalizedTime": 0.5099999904632568,
+          "endNormalizedTime": 0.5400000214576721,
+          "angularSpeed": 90.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": "",
+          "globalPosKey": "InitialPos"
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Standby_TurnLeft"],
+          "endNormalizedTime": 0.20000000298023224,
+          "angularSpeed": 30.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Standby_TurnLeft"],
+          "startNormalizedTime": 0.20000000298023224,
+          "angularSpeed": 60.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Standby_TurnRight"],
+          "endNormalizedTime": 0.20000000298023224,
+          "angularSpeed": 30.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["Standby_TurnRight"],
+          "startNormalizedTime": 0.20000000298023224,
+          "angularSpeed": 60.0,
+          "attackTrigger": "",
+          "BILMCNCKIAO": ""
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack01",
+      "abilityMixins": [
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "Attack01_B1",
+              "normalizeStart": 0.1850000023841858
+            },
+            {
+              "stateID": "Attack01_B2"
+            },
+            {
+              "stateID": "Attack01_B3",
+              "normalizeEnd": 0.47999998927116394
+            },
+            {
+              "stateID": "Attack04_Attack01_B1",
+              "normalizeStart": 0.1850000023841858
+            },
+            {
+              "stateID": "Attack04_Attack01_B2"
+            },
+            {
+              "stateID": "Attack04_Attack01_B3",
+              "normalizeEnd": 0.47999998927116394
+            },
+            {
+              "stateID": "Attack09_Attack01_B1",
+              "normalizeStart": 0.1850000023841858
+            },
+            {
+              "stateID": "Attack09_Attack01_B2"
+            },
+            {
+              "stateID": "Attack09_Attack01_B3",
+              "normalizeEnd": 0.47999998927116394
+            }
+          ],
+          "modifierName": "Attack01FireEffect",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack01_B2", "Attack02_T1_L", "Attack02_T1_R"],
+          "modifierName": "Attack01B3Checker",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Attack01B3Checker": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.009999999776482582,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "GreaterOrEqual",
+                  "ratio": 5.0,
+                  "PHMALDNHHLD": ""
+                },
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "ratio": 8.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "Attack01B3Trigger",
+                  "ratio": true
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "Attack01B3Trigger"
+                }
+              ]
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        },
+        "Attack01FireEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_BladeCombo_SwordFire",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_BladeCombo_SwordFireAS",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_RushMove",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack01_B1",
+          "modifierName": "Attack01B1_RushMove",
+          "normalizeStart": 0.4099999964237213,
+          "normalizeEnd": 0.4699999988079071,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack01_T1_L",
+          "modifierName": "Attack01T1_RushMove",
+          "normalizeStart": 0.11999999731779099,
+          "normalizeEnd": 0.18000000715255737,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack01_T1_R",
+          "modifierName": "Attack01T1_RushMove",
+          "normalizeStart": 0.11999999731779099,
+          "normalizeEnd": 0.18000000715255737,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack02_T1_L",
+          "modifierName": "Attack01T1_RushMove",
+          "normalizeStart": 0.11999999731779099,
+          "normalizeEnd": 0.18000000715255737,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack02_T1_R",
+          "modifierName": "Attack01T1_RushMove",
+          "normalizeStart": 0.11999999731779099,
+          "normalizeEnd": 0.18000000715255737,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Attack01B1_RushMove": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "GreaterOrEqual",
+                  "ratio": 4.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FixedMonsterRushMove",
+                  "toPos": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 1.2000000476837158
+                    },
+                    "onGround": true,
+                    "useRotation": true
+                  },
+                  "MBHPLECOEKG": 0.20000000298023224,
+                  "animatorStateIDs": [
+                    "Attack01_B1",
+                    "Attack04_Attack01_B1",
+                    "Attack09_Attack01_B1"
+                  ],
+                  "overrideMoveCollider": ""
+                }
+              ]
+            }
+          ]
+        },
+        "Attack01T1_RushMove": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "GreaterOrEqual",
+                  "ratio": 4.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FixedMonsterRushMove",
+                  "toPos": {
+                    "$type": "ConfigBornBySelf",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 1.5
+                    },
+                    "onGround": true,
+                    "useRotation": true
+                  },
+                  "MBHPLECOEKG": 0.15000000596046448,
+                  "animatorStateIDs": [
+                    "Attack01_T1_L",
+                    "Attack04_Attack01_T1_L",
+                    "Attack09_Attack01_T1_L",
+                    "Attack01_T1_R",
+                    "Attack04_Attack01_T1_R",
+                    "Attack09_Attack01_T1_R",
+                    "Attack02_T1_L",
+                    "Attack04_Attack02_T1_L",
+                    "Attack09_Attack02_T1_L",
+                    "Attack02_T1_R",
+                    "Attack04_Attack02_T1_R",
+                    "Attack09_Attack02_T1_R"
+                  ],
+                  "overrideMoveCollider": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack02",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614007,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 6.0
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              }
+            },
+            "useRotation": true
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614007,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 2.0,
+              "y": 0.0,
+              "z": 6.0
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 17.5,
+                "z": 0.0
+              }
+            },
+            "useRotation": true
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614007,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": -2.0,
+              "y": 0.0,
+              "z": 6.0
+            },
+            "direction": {
+              "$type": "ConfigDirectionByEntity",
+              "angleOffset": {
+                "x": 0.0,
+                "y": -17.5,
+                "z": 0.0
+              }
+            },
+            "useRotation": true
+          }
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackCircle",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 3.0
+                },
+                "direction": {
+                  "$type": "ConfigDirectionByEntity",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "useRotation": true
+              },
+              "height": 1.5,
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "Golem_Centaur_Attack02",
+              "attenuationGroup": "Golem_Centaur_Attack02",
+              "attackProperty": {
+                "damagePercentage": 0.6000000238418579,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 25.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV5",
+                "retreatType": "ByHitDirection",
+                "hitHaltTimeScale": 0.009999999776482582
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Golem_Centaur_FireBall_MosterWave",
+      "modifiers": {
+        "Monster_Centaur_Attack02_Bullet_Damage": {
+          "modifierName": "",
+          "duration": 0.550000011920929,
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.25,
+          "onAdded": [
+            {
+              "$type": "FireSubEmitterEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TrampleCombo_Hit2_Explode",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "useRotation": true
+              }
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "height": 1.5,
+                  "radius": 1.5
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Golem_Centaur_Attack02",
+                  "attenuationGroup": "Golem_Centaur_Attack02",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 200.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV5",
+                    "retreatType": "ByHitDirection",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "FireSubEmitterEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TrampleCombo_Hit2_Explode",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "useRotation": true
+              }
+            },
+            {
+              "$type": "TriggerAttackEvent",
+              "attackEvent": {
+                "attackPattern": {
+                  "$type": "ConfigAttackCircle",
+                  "triggerType": "TriggerNoRepeat",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "useRotation": true
+                  },
+                  "height": 1.5,
+                  "radius": 1.5
+                },
+                "attackInfo": {
+                  "attackTag": "",
+                  "attenuationTag": "Golem_Centaur_Attack02",
+                  "attenuationGroup": "Golem_Centaur_Attack02",
+                  "attackProperty": {
+                    "damagePercentage": 0.6000000238418579,
+                    "damagePercentageRatio": 0.0,
+                    "elementType": "Fire",
+                    "bonusCritical": 25.0,
+                    "strikeType": "Blunt",
+                    "damage": 200.0,
+                    "FKGFPFNOJMN": 0.0
+                  },
+                  "hitPattern": {
+                    "onHitEffectName": "default",
+                    "hitImpulseType": "LV5",
+                    "retreatType": "ByHitDirection",
+                    "hitHaltTimeScale": 0.009999999776482582
+                  },
+                  "canBeModifiedBy": "OriginOwner"
+                }
+              },
+              "targetType": "Enemy"
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Centaur_Attack02_Bullet_Damage"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack04",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack04_BS"],
+          "modifierName": "Attack04CountRes",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack04_Loop"],
+          "modifierName": "Attack04RunEffect",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack04_BS"],
+          "modifierName": "Attack04BSChecker",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack04_Loop"],
+          "modifierName": "Attack04Checker",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "Attack04_BS",
+              "normalizeStart": 0.46000000834465027
+            },
+            {
+              "stateID": "Attack04_Loop",
+              "normalizeEnd": 99.0
+            },
+            {
+              "stateID": "Attack04_AS",
+              "normalizeEnd": 0.4569999873638153
+            },
+            {
+              "stateID": "Attack09_Attack04_BS",
+              "normalizeStart": 0.46000000834465027
+            },
+            {
+              "stateID": "Attack09_Attack04_Loop",
+              "normalizeEnd": 99.0
+            },
+            {
+              "stateID": "Attack09_Attack04_AS",
+              "normalizeEnd": 0.4569999873638153
+            }
+          ],
+          "modifierName": "Attack04SwordEffect",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Attack04CountRes": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Attack04BSTrigger"
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Attack04Trigger"
+            }
+          ]
+        },
+        "Attack04BSChecker": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.009999999776482582,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "ratio": 9.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "Attack04BSTrigger",
+                  "ratio": true
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "Attack04BSTrigger"
+                }
+              ]
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        },
+        "Attack04Checker": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.009999999776482582,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "ratio": 8.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "Attack04Trigger",
+                  "ratio": true
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "Attack04Trigger"
+                }
+              ]
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        },
+        "Attack04RunEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_RushAttack_Run",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Attack04SwordEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_RushAttack_SwordFire",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_BladeCombo_SwordFireAS",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack07",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack07", "Attack07_Break"],
+          "modifierName": "Attack07TGadgetCleaner",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack07", "Attack07_Break"],
+          "modifierName": "Attack07CDCheck",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack07", "Attack07_Break"],
+          "modifierName": "Attack07EffectReset",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack07",
+          "modifierName": "Attack07MonsterRingEffect",
+          "normalizeStart": 0.20800000429153442,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "Attack07",
+              "normalizeStart": 0.20999999344348907
+            },
+            {
+              "stateID": "Attack07_Break",
+              "normalizeEnd": 0.6600000262260437
+            },
+            {
+              "stateID": "Attack09_Attack07",
+              "normalizeStart": 0.20999999344348907
+            },
+            {
+              "stateID": "Attack09_Attack07_Break",
+              "normalizeEnd": 0.6600000262260437
+            }
+          ],
+          "modifierName": "Attack07LineEffectMonster",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "LocationRadius_Gadget": 8.0
+      },
+      "modifiers": {
+        "GadgetForceDisappear": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkAS1",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "KillSelf",
+              "duration": 0.009999999776482582
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Golem_Centaur_OverCharge_CircleFire"
+            }
+          ]
+        },
+        "Attack07TGadgetCleaner": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42614001
+              },
+              "modifierName": "GadgetForceDisappear"
+            },
+            {
+              "$type": "KillSelf",
+              "otherTargets": {
+                "$type": "JHKLCAELLHL",
+                "configID": 42614001
+              }
+            }
+          ]
+        },
+        "Attack07MonsterRingEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterLoop",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Attack07LineEffectMonster": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "Attack07LineEffect",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterEnd",
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "Attack07LineEffect",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Attack07EffectReset": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "Attack07LineEffect",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "Attack07LineEffect",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Attack07CDCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Attack07CD"
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Attack07CD"
+            },
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [661]
+            }
+          ]
+        },
+        "Attack07CD": {
+          "modifierName": "",
+          "duration": 32.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Attack07CD",
+              "ratio": true
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Attack07CD"
+            }
+          ]
+        },
+        "TuningFork": {
+          "modifierName": "",
+          "duration": 0.5,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "minValue": "Attack07Break"
+            },
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "ratio": 8.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobalPos",
+                  "target": "SelfAttackTarget",
+                  "key": "_FireBallPosition",
+                  "born": {
+                    "$type": "MNCJACPDDLK",
+                    "offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "bornRandom": {
+                      "$type": "OCDANLJMNNK",
+                      "minRandomRange": 0.0,
+                      "maxRandomRange": 1.0
+                    },
+                    "onGround": true,
+                    "useRotation": true,
+                    "linearOffset": 6.0,
+                    "baseOnTarget": false,
+                    "linearMin": 5.0,
+                    "linearMax": 8.0
+                  },
+                  "setTarget": false
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "Predicated",
+                  "target": "SelfAttackTarget",
+                  "targetPredicates": [
+                    {
+                      "$type": "JOLJOHDJLNF",
+                      "ratio": 8.0,
+                      "PHMALDNHHLD": ""
+                    },
+                    {
+                      "$type": "JOLJOHDJLNF",
+                      "logic": "LesserOrEqual",
+                      "ratio": 20.0,
+                      "PHMALDNHHLD": ""
+                    }
+                  ],
+                  "successActions": [
+                    {
+                      "$type": "SetGlobalPos",
+                      "target": "SelfAttackTarget",
+                      "key": "_FireBallPosition",
+                      "born": {
+                        "$type": "MNCJACPDDLK",
+                        "offset": {
+                          "x": 0.0,
+                          "y": 0.0,
+                          "z": 0.0
+                        },
+                        "bornRandom": {
+                          "$type": "OCDANLJMNNK",
+                          "minRandomRange": 1.0,
+                          "maxRandomRange": 2.0
+                        },
+                        "onGround": true,
+                        "useRotation": true,
+                        "linearOffset": -5.0,
+                        "linearMin": 5.0,
+                        "linearMax": 17.0
+                      },
+                      "setTarget": false
+                    }
+                  ],
+                  "failActions": [
+                    {
+                      "$type": "Predicated",
+                      "target": "SelfAttackTarget",
+                      "targetPredicates": [
+                        {
+                          "$type": "JOLJOHDJLNF",
+                          "ratio": 20.0,
+                          "PHMALDNHHLD": ""
+                        }
+                      ],
+                      "successActions": [
+                        {
+                          "$type": "SetGlobalPos",
+                          "target": "SelfAttackTarget",
+                          "key": "_FireBallPosition",
+                          "born": {
+                            "$type": "MNCJACPDDLK",
+                            "offset": {
+                              "x": 0.0,
+                              "y": 0.0,
+                              "z": 0.0
+                            },
+                            "bornRandom": {
+                              "$type": "OCDANLJMNNK",
+                              "minRandomRange": 0.0,
+                              "maxRandomRange": 1.0
+                            },
+                            "onGround": true,
+                            "useRotation": true,
+                            "linearOffset": 12.0,
+                            "baseOnTarget": false,
+                            "linearMin": 15.0,
+                            "linearMax": 20.0
+                          },
+                          "setTarget": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "MKLCDCJFOHO",
+                "onGround": true,
+                "direction": {
+                  "$type": "DFEHJKCDGHN",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "useRotation": true,
+                "positionKey": "_FireBallPosition",
+                "directionKey": ""
+              },
+              "lifeByOwnerV2": true,
+              "gadgetID": 42614001,
+              "campID": 4001,
+              "campTargetType": "All"
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "paramList": [0, 0, 1]
+            },
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_WQStage_",
+                  "ratio": 1.0
+                }
+              ],
+              "id": 400321
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "TuningFork"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack10",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack10_1", "Attack10_2", "Attack10_3"],
+          "modifierName": "ReminderBroadcast",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": [
+            "Attack10_1",
+            "Attack10_2",
+            "Attack10_3",
+            "Attack10_Break"
+          ],
+          "modifierName": "Attack07CDSet",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack10_1"],
+          "modifierName": "TuningForkPlus",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "Attack10_1",
+              "normalizeStart": 0.20800000429153442,
+              "normalizeEnd": 0.8999999761581421
+            },
+            {
+              "stateID": "Attack10_2",
+              "normalizeStart": 0.20800000429153442,
+              "normalizeEnd": 0.8999999761581421
+            },
+            {
+              "stateID": "Attack10_3",
+              "normalizeStart": 0.20800000429153442,
+              "normalizeEnd": 0.8999999761581421
+            }
+          ],
+          "modifierName": "Attack10MonsterRingEffect",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack10_2",
+          "modifierName": "Attack10SpeedControl2",
+          "normalizeEnd": 0.546999990940094,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack10_3",
+          "modifierName": "Attack10SpeedControl3",
+          "normalizeEnd": 0.546999990940094,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "LocationRadius_Gadget": 10.0
+      },
+      "modifiers": {
+        "ReminderBroadcast": {
+          "modifierName": "",
+          "duration": 13.0,
+          "bonusCritical": 100.0,
+          "thinkInterval": 6.309999942779541,
+          "onAdded": [
+            {
+              "$type": "ShowReminder",
+              "id": 400321
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "HitTimes",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "id": 400321
+            },
+            {
+              "$type": "ShowReminder",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "HitTimes",
+                  "ratio": 0.0,
+                  "compareType": "MoreThan"
+                }
+              ],
+              "id": 400322
+            }
+          ]
+        },
+        "Attack10SpeedControl2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "Attack10Speed",
+              "ratio": 0.5
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "Attack10Speed",
+              "ratio": 1.0
+            }
+          ]
+        },
+        "Attack10SpeedControl3": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "Attack10Speed",
+              "ratio": 0.5
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetAnimatorFloat",
+              "floatID": "Attack10Speed",
+              "ratio": 1.0
+            }
+          ]
+        },
+        "Attack07CDSet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ReTriggerAISkillInitialCD",
+              "skillIDs": [661]
+            }
+          ]
+        },
+        "Attack10MonsterRingEffect": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterLoop_WQ",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "TuningForkPlus": {
+          "modifierName": "",
+          "duration": 1.0,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ResetAnimatorTrigger",
+              "minValue": "Attack07Break"
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "HitTimes",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": [
+                    0.0,
+                    0.8659999966621399,
+                    "LocationRadius_Gadget",
+                    "MUL",
+                    "SUB"
+                  ],
+                  "y": 0.0,
+                  "z": [
+                    0.0,
+                    0.5,
+                    "LocationRadius_Gadget",
+                    "MUL",
+                    "SUB"
+                  ]
+                },
+                "onGround": true,
+                "direction": {
+                  "$type": "DFEHJKCDGHN",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": -135.0,
+                    "z": 0.0
+                  }
+                },
+                "useRotation": true
+              },
+              "lifeByOwnerV2": true,
+              "gadgetID": 42614002,
+              "campID": 4001,
+              "campTargetType": "All"
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": [
+                    0.8659999966621399,
+                    "LocationRadius_Gadget",
+                    "MUL"
+                  ],
+                  "y": 0.0,
+                  "z": [
+                    0.0,
+                    0.5,
+                    "LocationRadius_Gadget",
+                    "MUL",
+                    "SUB"
+                  ]
+                },
+                "onGround": true,
+                "direction": {
+                  "$type": "DFEHJKCDGHN",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": 115.0,
+                    "z": 0.0
+                  }
+                },
+                "useRotation": true
+              },
+              "lifeByOwnerV2": true,
+              "gadgetID": 42614002,
+              "campID": 4001,
+              "campTargetType": "All"
+            },
+            {
+              "$type": "CreateGadget",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": "LocationRadius_Gadget"
+                },
+                "onGround": true,
+                "direction": {
+                  "$type": "DFEHJKCDGHN",
+                  "angleOffset": {
+                    "x": 0.0,
+                    "y": -10.0,
+                    "z": 0.0
+                  }
+                },
+                "useRotation": true
+              },
+              "lifeByOwnerV2": true,
+              "gadgetID": 42614002,
+              "campID": 4001,
+              "campTargetType": "All"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack08",
+      "abilityMixins": [
+        {
+          "$type": "DoActionByAnimatorStateIDMixin",
+          "stateIDs": ["Attack08_AS", "Attack10_Attack08_AS"],
+          "enterActions": [
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "specialCameraName": "Attack08LockUp",
+              "frameDelay": 1,
+              "lockTrans": ""
+            },
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "Attack08Watcher",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "exitActions": [
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "specialCameraName": "default",
+              "frameDelay": 1,
+              "lockTrans": ""
+            }
+          ],
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack08_AS",
+          "modifierName": "Attack08MotionBlur",
+          "normalizeStart": 0.49000000953674316,
+          "normalizeEnd": 0.5329999923706055,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack08_AS",
+          "modifierName": "Attack08_Watcher",
+          "normalizeStart": 0.20000000298023224,
+          "normalizeEnd": 0.6100000143051147,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack08_Loop"],
+          "modifierName": "Attack08LoopCollider",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack08_AS",
+          "modifierName": "Attack08ASCollider",
+          "normalizeStart": 0.49000000953674316,
+          "normalizeEnd": 0.6100000143051147,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "Attack08_BS",
+              "normalizeStart": 0.21899999678134918
+            },
+            {
+              "stateID": "Attack08_Loop"
+            },
+            {
+              "stateID": "Attack08_AS",
+              "normalizeEnd": 0.13199999928474426
+            },
+            {
+              "stateID": "Attack10_Attack08_BS",
+              "normalizeStart": 0.21899999678134918
+            },
+            {
+              "stateID": "Attack10_Attack08_Loop"
+            },
+            {
+              "stateID": "Attack10_Attack08_AS",
+              "normalizeEnd": 0.13199999928474426
+            }
+          ],
+          "modifierName": "Attack08Effect1",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToMultiNormalizedTimeMixin",
+          "normalizedStateIDList": [
+            {
+              "stateID": "Attack08_BS",
+              "normalizeStart": 0.9179999828338623
+            },
+            {
+              "stateID": "Attack08_Loop"
+            },
+            {
+              "stateID": "Attack08_AS",
+              "normalizeEnd": 0.13199999928474426
+            },
+            {
+              "stateID": "Attack10_Attack08_BS",
+              "normalizeStart": 0.9179999828338623
+            },
+            {
+              "stateID": "Attack10_Attack08_Loop"
+            },
+            {
+              "stateID": "Attack10_Attack08_AS",
+              "normalizeEnd": 0.13199999928474426
+            }
+          ],
+          "modifierName": "Attack08Effect2",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Attack08_Loop"],
+          "modifierName": "SpecialShakeLabel",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Attack08_Watcher": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "Attack08Watcher",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "Attack08Watcher",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "SpecialShakeLabel": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "Attack08Shake",
+                  "ratio": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "canBeHandledOnRecover": true,
+                  "boolID": "Attack08Shake"
+                }
+              ]
+            }
+          ]
+        },
+        "Attack08MotionBlur": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "ActCameraRadialBlur",
+              "predicates": [
+                {
+                  "$type": "PFLCGIBIKNC",
+                  "target": "Self"
+                }
+              ],
+              "cameraRadialBlur": {
+                "power": 0.10000000149011612,
+                "blurTime": 0.029999999329447746,
+                "fadeTime": 0.20000000298023224
+              }
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetLockingV3Config",
+              "enable": true,
+              "specialCameraName": "Attack08LockUp",
+              "frameDelay": 1,
+              "lockTrans": ""
+            }
+          ]
+        },
+        "Attack08Effect1": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Excalibur_BS_R",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Attack08Effect2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_Excalibur_BS_Ground",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Attack08LoopCollider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderUpperBody"]
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderUpperBody"],
+                  "setEnable": true
+                }
+              ]
+            }
+          ]
+        },
+        "Attack08ASCollider": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushCollider", "PushColliderUpperBody"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderJump"],
+                  "setEnable": true
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": [
+                    "PushCollider",
+                    "PushColliderUpperBody"
+                  ],
+                  "setEnable": true
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderJump"]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ActCameraShake",
+          "cameraShake": {
+            "shakeType": "CustomVector",
+            "shakeRange": 2.0999999046325684,
+            "shakeTime": 0.4000000059604645,
+            "shakeDistance": 70.0,
+            "shakeDir": {
+              "y": -1.0
+            },
+            "extension": {
+              "baseCycle": 0.20000000298023224,
+              "cycleDamping": 0.4000000059604645
+            }
+          },
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 10.0
+            },
+            "useRotation": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Golem_Centaur_FireBall1",
+      "modifiers": {
+        "Golem_Centaur_Circle_OpenBillBoardDelay": {
+          "modifierName": "",
+          "duration": 1.100000023841858,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "HideUIBillBoard",
+                  "hide": true
+                },
+                {
+                  "$type": "EnableHitBoxByName",
+                  "hitBoxNames": ["HitBox"]
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "HideUIBillBoard"
+                },
+                {
+                  "$type": "EnableHitBoxByName",
+                  "hitBoxNames": ["HitBox"],
+                  "setEnable": true
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Gadget_DenyLockOn"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Gadget_IsGhostToEnemy"
+            }
+          ]
+        },
+        "Golem_Centaur_Circle_EndEffect": {
+          "modifierName": "",
+          "duration": 7.185999870300293,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "LMBGIDDHLDM",
+                  "modifierName": "UNIQUE_Golem_Centaur_OverCharge_CircleFire"
+                }
+              ],
+              "modifierName": "Golem_Centaur_OverCharge_CircleFireEnd"
+            }
+          ]
+        },
+        "Golem_Centaur_Circle_CircleEffectDelay": {
+          "modifierName": "",
+          "duration": 0.4235000014305115,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_DelayEffect_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Golem_Centaur_Circle_BulletOnGround": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CIRCLE_BROKEN",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CIRCLE_INACTIVE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddElementDurability",
+                  "ratio": -10.0,
+                  "modifierName": "Golem_Centaur_OverCharge_CircleFire_ElementDuration",
+                  "useLimitRange": true,
+                  "maxValue": 50.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkBeHit",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        },
+        "Golem_Centaur_OverCharge_CircleFire_ElementDuration": {
+          "modifierName": "",
+          "bonusCritical": 60.0,
+          "modifierMixins": [
+            {
+              "$type": "ElementShieldMixin",
+              "showDamageText": "",
+              "shieldAngle": 360.0,
+              "maxShieldByHPRatio": 1.0,
+              "shieldHP": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_CIRCLE_BROKEN",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkAS2",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "RemoveUniqueModifier",
+              "modifierName": "UNIQUE_Golem_Centaur_OverCharge_CircleFire"
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Golem_Centaur_OverCharge_CircleFire2"
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "OriginOwner",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "OriginOwner",
+                  "key": "_WQStage_",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "modifierName": "SacredEnergyRecoverLabel"
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "OriginOwner",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "OriginOwner",
+                  "key": "_WQStage_",
+                  "ratio": 1.0
+                }
+              ],
+              "modifierName": "SacredEnergyRecoverLabel1_WQ"
+            }
+          ]
+        },
+        "UNIQUE_Golem_Centaur_OverCharge_CircleFire": {
+          "modifierName": "",
+          "isUnique": true,
+          "duration": 8.0,
+          "bonusCritical": 100.0,
+          "thinkInterval": 6.317299842834473,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobaltriggerIDMixin",
+              "globalValueKey": "_DelayEffect_",
+              "valueSteps": [0.5, 1.5],
+              "modifierNameSteps": ["Golem_Centaur_OverCharge_CircleFire2"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBS",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "$type": "JLNMKCHJBEB"
+                },
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Gadget_KillSelf"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_CIRCLE_INACTIVE",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "OriginOwner",
+              "modifierName": "EffectLineMonsterEnd"
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "hide": true
+            },
+            {
+              "$type": "EnableHitBoxByName",
+              "hitBoxNames": ["HitBox"]
+            },
+            {
+              "$type": "EnablePushColliderName",
+              "pushColliderNames": ["PushColliderAvatar"]
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Gadget_DenyLockOn"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Gadget_IsGhostToEnemy"
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CIRCLE_BROKEN",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkRing",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "onGround": true,
+                    "useRotation": true
+                  },
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 42614008,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "onGround": true,
+                    "useRotation": true
+                  },
+                  "lifeByOwnerV2": true
+                }
+              ]
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        },
+        "Gadget_KillSelf": {
+          "modifierName": "",
+          "duration": 0.4000000059604645,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "EffectLineMonsterEnd": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SendEffectTriggerToLineEffect",
+              "parameter": "MonsterAS",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_Line"
+            }
+          ]
+        },
+        "Gadget_DenyLockOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        },
+        "Gadget_IsGhostToEnemy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "IsGhostToEnemy"
+        },
+        "Attack07LineEffectGadget": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_GadgetEnd",
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Golem_Centaur_OverCharge_CircleFire2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkBS",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "$type": "JLNMKCHJBEB"
+                },
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Golem_Centaur_OverCharge_CircleFireEnd": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkAS1",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "$type": "JLNMKCHJBEB"
+                },
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "SacredEnergyRecoverLabel": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DoWatcherSystemAction",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "_WQStage_",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "watcherId": 82190,
+              "inThreatListOnly": true
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBehit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AddElementDurability",
+              "ratio": -160.0,
+              "modifierName": "UNIQUE_Centaurs_Shield",
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "useMutiPlayerFixData": true,
+              "maxValue": 800.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "Attack07Break",
+              "mpTriggerOnRemote": true
+            },
+            {
+              "$type": "SendEffectTriggerToLineEffect",
+              "parameter": "PlayerAS",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_Line"
+            },
+            {
+              "$type": "ServerMonsterLog",
+              "paramList": [0, 0, 2]
+            }
+          ]
+        },
+        "SacredEnergyRecoverLabel1_WQ": {
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBehit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AddElementDurability",
+              "ratio": -160.0,
+              "modifierName": "UNIQUE_Centaurs_Shield_WQ",
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "useMutiPlayerFixData": true,
+              "maxValue": 800.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "Attack07Break",
+              "mpTriggerOnRemote": true
+            },
+            {
+              "$type": "SendEffectTriggerToLineEffect",
+              "parameter": "PlayerAS",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_Line"
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 0.0,
+          "key": "_DelayEffect_",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "UNIQUE_Golem_Centaur_OverCharge_CircleFire"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Golem_Centaur_OverCharge_CircleFire_ElementDuration"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Golem_Centaur_Circle_OpenBillBoardDelay"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Golem_Centaur_Circle_CircleEffectDelay"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Golem_Centaur_Circle_EndEffect"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Golem_Centaur_Circle_BulletOnGround"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Attack07LineEffectGadget"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Golem_Centaur_FireBall2",
+      "modifiers": {
+        "Golem_Centaur_Circle_OpenBillBoardDelay": {
+          "modifierName": "",
+          "duration": 1.100000023841858,
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "HideUIBillBoard",
+                  "hide": true
+                },
+                {
+                  "$type": "EnableHitBoxByName",
+                  "hitBoxNames": ["HitBox"]
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "HideUIBillBoard"
+                },
+                {
+                  "$type": "EnableHitBoxByName",
+                  "hitBoxNames": ["HitBox"],
+                  "setEnable": true
+                }
+              ]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Gadget_DenyLockOn"
+            },
+            {
+              "$type": "AttachModifier",
+              "modifierName": "Gadget_IsGhostToEnemy"
+            }
+          ]
+        },
+        "Golem_Centaur_Circle_EndEffect": {
+          "modifierName": "",
+          "duration": 19.809999465942383,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ForkAS",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBS_WQ"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ForkAS",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkBS_WQ"
+            },
+            {
+              "$type": "ApplyModifier",
+              "predicates": [
+                {
+                  "$type": "LMBGIDDHLDM",
+                  "modifierName": "Golem_Centaur_OverCharge_CircleFire"
+                }
+              ],
+              "modifierName": "Golem_Centaur_OverCharge_CircleFireEnd"
+            }
+          ]
+        },
+        "Golem_Centaur_Circle_CircleEffectDelay": {
+          "modifierName": "",
+          "duration": 0.4235000014305115,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_DelayEffect_",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            }
+          ]
+        },
+        "Golem_Centaur_Circle_BulletOnGround": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onBeingHit": [
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CIRCLE_BROKEN",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                },
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CIRCLE_INACTIVE",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AddElementDurability",
+                  "ratio": -10.0,
+                  "modifierName": "Golem_Centaur_OverCharge_CircleFire_ElementDuration",
+                  "useLimitRange": true,
+                  "maxValue": 50.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkBeHit",
+                  "effectTempleteID": -1.0
+                }
+              ]
+            }
+          ]
+        },
+        "Golem_Centaur_OverCharge_CircleFire_ElementDuration": {
+          "modifierName": "",
+          "bonusCritical": 50.0,
+          "modifierMixins": [
+            {
+              "$type": "ElementShieldMixin",
+              "showDamageText": "",
+              "shieldAngle": 360.0,
+              "maxShieldByHPRatio": 1.0,
+              "shieldHP": 0.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "_CIRCLE_BROKEN",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkAS2",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "RemoveModifier",
+              "modifierName": "Golem_Centaur_OverCharge_CircleFire"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ForkAS",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkBS_WQ"
+            },
+            {
+              "$type": "SendEffectTrigger",
+              "parameter": "ForkAS",
+              "attachPoint": "",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBS_WQ"
+            },
+            {
+              "$type": "ApplyModifier",
+              "target": "OriginOwner",
+              "modifierName": "SacredEnergyRecoverLabel2_WQ"
+            }
+          ]
+        },
+        "Golem_Centaur_OverCharge_CircleFire": {
+          "modifierName": "",
+          "duration": 20.6299991607666,
+          "bonusCritical": 100.0,
+          "thinkInterval": 6.317299842834473,
+          "modifierMixins": [
+            {
+              "$type": "AttachModifierToGlobaltriggerIDMixin",
+              "globalValueKey": "_DelayEffect_",
+              "valueSteps": [0.5, 1.5],
+              "modifierNameSteps": ["Golem_Centaur_OverCharge_CircleFire2"]
+            }
+          ],
+          "onAdded": [
+            {
+              "$type": "SetGlobaltriggerID",
+              "ratio": 0.0,
+              "key": "HitTimes",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkBS_WQ02",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "onGround": true,
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ],
+          "onRemoved": [
+            {
+              "$type": "ApplyModifier",
+              "modifierName": "Gadget_KillSelf"
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "HitTimes",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "key": "_CIRCLE_BROKEN",
+                  "ratio": 0.0,
+                  "compareType": "NoneOrEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "AttachEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkBS_WQ02",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "onGround": true,
+                    "useRotation": true
+                  },
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "FireEffect",
+                  "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkRing",
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "onGround": true,
+                    "useRotation": true
+                  },
+                  "effectTempleteID": -1.0
+                },
+                {
+                  "$type": "TriggerBullet",
+                  "bulletID": 42614008,
+                  "born": {
+                    "$type": "ConfigBornBySelf",
+                    "onGround": true,
+                    "useRotation": true
+                  },
+                  "lifeByOwnerV2": true
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "targetPredicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "HitTimes",
+                  "ratio": 3.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetGlobaltriggerID",
+                  "ratio": 1.0,
+                  "key": "_CIRCLE_INACTIVE",
+                  "maxValue": 0.0,
+                  "minValue": 0.0
+                },
+                {
+                  "$type": "HideUIBillBoard",
+                  "hide": true
+                },
+                {
+                  "$type": "EnableHitBoxByName",
+                  "hitBoxNames": ["HitBox"]
+                },
+                {
+                  "$type": "EnablePushColliderName",
+                  "pushColliderNames": ["PushColliderAvatar"]
+                },
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "Gadget_DenyLockOn"
+                },
+                {
+                  "$type": "AttachModifier",
+                  "modifierName": "Gadget_IsGhostToEnemy"
+                }
+              ]
+            }
+          ],
+          "onThinkIntervalIsFixedUpdate": true
+        },
+        "Gadget_KillSelf": {
+          "modifierName": "",
+          "duration": 0.4000000059604645,
+          "bonusCritical": 100.0,
+          "onRemoved": [
+            {
+              "$type": "KillSelf"
+            }
+          ]
+        },
+        "Gadget_DenyLockOn": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "DenyLockOn"
+        },
+        "Gadget_IsGhostToEnemy": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "state": "IsGhostToEnemy"
+        },
+        "Golem_Centaur_OverCharge_CircleFire2": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBS_WQ",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "$type": "JLNMKCHJBEB"
+                },
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkBS_WQ",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "$type": "JLNMKCHJBEB"
+                },
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "Golem_Centaur_OverCharge_CircleFireEnd": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_ForkAS1",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "direction": {
+                  "$type": "JLNMKCHJBEB"
+                },
+                "useRotation": true
+              },
+              "effectTempleteID": -1.0
+            }
+          ]
+        },
+        "SacredEnergyRecoverLabel2_WQ": {
+          "stacking": "Multiple",
+          "modifierName": "",
+          "duration": 0.20000000298023224,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AddGlobaltriggerID",
+              "ratio": 1.0,
+              "key": "HitTimes",
+              "maxValue": 0.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "FireEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_TuningFork_MonsterBehit",
+              "effectTempleteID": -1.0
+            },
+            {
+              "$type": "AddElementDurability",
+              "ratio": -160.0,
+              "modifierName": "UNIQUE_Centaurs_Shield_WQ",
+              "elementType": "Rock",
+              "useLimitRange": true,
+              "useMutiPlayerFixData": true,
+              "maxValue": 800.0,
+              "minValue": 0.0
+            },
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "ByTargetGlobalValue",
+                  "target": "Self",
+                  "key": "HitTimes",
+                  "ratio": 3.0,
+                  "compareType": "MoreThanAndEqual"
+                }
+              ],
+              "minValue": "Attack07Break",
+              "mpTriggerOnRemote": true
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "SetGlobaltriggerID",
+          "ratio": 0.0,
+          "key": "_DelayEffect_",
+          "maxValue": 0.0,
+          "minValue": 0.0
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Golem_Centaur_OverCharge_CircleFire"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Golem_Centaur_OverCharge_CircleFire_ElementDuration"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Golem_Centaur_Circle_OpenBillBoardDelay"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Golem_Centaur_Circle_CircleEffectDelay"
+        },
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Golem_Centaur_Circle_EndEffect"
+        },
+        {
+          "$type": "AttachModifier",
+          "modifierName": "Golem_Centaur_Circle_BulletOnGround"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Golem_Centaur_FireBall_GadgetWave",
+      "modifiers": {
+        "Golem_Centaur_ImpactAttack_Damage": {
+          "modifierName": "",
+          "duration": 0.10000000149011612,
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "DamageByAttacktriggerID",
+              "predicates": [
+                {
+                  "$type": "ByEntityTypes",
+                  "entityTypes": ["Avatar"]
+                }
+              ],
+              "attackInfo": {
+                "attackTag": "",
+                "attenuationTag": "",
+                "attenuationGroup": "default",
+                "attackProperty": {
+                  "damagePercentage": 0.8999999761581421,
+                  "damagePercentageRatio": 0.0,
+                  "elementType": "Fire",
+                  "bonusCritical": 50.0,
+                  "strikeType": "Default",
+                  "damage": 200.0,
+                  "attackType": "Range",
+                  "FKGFPFNOJMN": 0.0
+                },
+                "hitPattern": {
+                  "onHitEffectName": "default",
+                  "hitImpulseType": "LV4",
+                  "hitHaltTimeScale": 0.05000000074505806
+                },
+                "cameraShake": {
+                  "shakeRange": 0.10000000149011612,
+                  "shakeTime": 0.10000000149011612,
+                  "shakeDistance": 10.0
+                },
+                "canBeModifiedBy": "OriginOwner"
+              }
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "ApplyModifier",
+          "target": "Target",
+          "modifierName": "Golem_Centaur_ImpactAttack_Damage"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack03",
+      "abilityMixins": [
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Skill_RunLeave"],
+          "modifierName": "HitScenceCheck",
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToStateIDMixin",
+          "stateIDs": ["Skill_RunLeave_BS"],
+          "modifierName": "HitScenceReset",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "HitScenceCheck": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttackHittingSceneMixin",
+              "onHittingScene": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "HitScence",
+                  "ratio": true
+                }
+              ],
+              "animEventIDs": ["Centaur_HitScene"]
+            }
+          ]
+        },
+        "HitScenceReset": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "HitScence"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "SetGlobalDir",
+          "key": "Attack03Dir",
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "onGround": true,
+            "direction": {
+              "$type": "HAEIKNNFLFO",
+              "angleOffsetCorrect": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "maxAngleType": "Horizontal",
+              "maxAngle": 0.0,
+              "PDKJDHJIEJB": ""
+            },
+            "useRotation": true
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614003,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "onGround": true,
+            "direction": {
+              "$type": "AIJHOFHPJJB",
+              "directionKey": "Attack03Dir"
+            },
+            "useRotation": true
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614003,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "onGround": true,
+            "direction": {
+              "$type": "AIJHOFHPJJB",
+              "angleOffset": {
+                "x": 0.0,
+                "y": -35.0,
+                "z": 0.0
+              },
+              "directionKey": "Attack03Dir"
+            },
+            "useRotation": true
+          }
+        },
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614003,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "onGround": true,
+            "direction": {
+              "$type": "AIJHOFHPJJB",
+              "angleOffset": {
+                "x": 0.0,
+                "y": 35.0,
+                "z": 0.0
+              },
+              "directionKey": "Attack03Dir"
+            },
+            "useRotation": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Golem_Centaur_FireBlade",
+      "modifiers": {
+        "Monster_Golem_Centaur_WindBladeAirAttack1_Bullet": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "AttachEffect",
+              "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_MultiBladeWind_Blade",
+              "effectTempleteID": -1.0
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "ApplyModifier",
+          "modifierName": "Monster_Golem_Centaur_WindBladeAirAttack1_Bullet"
+        }
+      ],
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint"
+              },
+              "size": {
+                "x": 1.5,
+                "y": 1.5,
+                "z": 1.5
+              }
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "Golem_Centaur_Attack03",
+              "attenuationGroup": "Golem_Centaur_Attack03",
+              "attackProperty": {
+                "damagePercentage": 0.800000011920929,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 50.0,
+                "strikeType": "Slash",
+                "damage": 100.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV4"
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack05",
+      "abilityMixins": [
+        {
+          "$type": "AttachToNormalizedTimeMixin",
+          "stateID": "Attack05",
+          "modifierName": "Attack05Violin",
+          "normalizeStart": 0.009999999776482582,
+          "normalizeEnd": 0.1420000046491623,
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "Attack05Violin": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "modifierMixins": [
+            {
+              "$type": "AttachActionToModifierMixin",
+              "onAdded": [
+                {
+                  "$type": "TriggerSetRenderersEnableV2",
+                  "renderNames": ["MonEquip_Golem_Centaur_SwordShield_01"]
+                }
+              ],
+              "onRemoved": [
+                {
+                  "$type": "TriggerSetRenderersEnableV2",
+                  "renderNames": ["MonEquip_Golem_Centaur_SwordShield_01"],
+                  "setEnable": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614004,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "useRotation": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Golem_Centaur_FireNote_Near",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_MeleeMusicAttack_BulletExplode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "radius": 2.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "Golem_Centaur_Attack05",
+              "attenuationGroup": "Golem_Centaur_Attack05",
+              "attackProperty": {
+                "damagePercentage": 0.699999988079071,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 30.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV4",
+                "hitHaltTimeScale": 0.009999999776482582
+              },
+              "canBeModifiedBy": "OriginOwner"
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack06",
+      "modifiers": {
+        "Attack06Checker": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "minValue": "Attack06End",
+              "mpTriggerOnRemote": true
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614006,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "useRotation": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_Attack06Big",
+      "onAbilityStart": [
+        {
+          "$type": "TriggerBullet",
+          "bulletID": 42614005,
+          "born": {
+            "$type": "ConfigBornBySelf",
+            "useRotation": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Golem_Centaur_FireNote_Far",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_RemoteMusicAttack_BulletExplode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "onGround": true
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "radius": 0.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.4000000059604645,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 30.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV1",
+                "hitHaltTimeScale": 0.009999999776482582
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Golem_Centaur_BigFireNote_Far",
+      "onAbilityStart": [
+        {
+          "$type": "FireEffect",
+          "healLimitedByCasterMaxHPRatio": "Eff_Monster_Golem_Centaur_RemoteMusicAttack_BigBulletExplode",
+          "born": {
+            "$type": "ConfigBornByCollisionPoint",
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "onGround": true
+          },
+          "effectTempleteID": -1.0
+        },
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "ConfigAttackSphere",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornByCollisionPoint",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                }
+              },
+              "radius": 1.5
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 0.800000011920929,
+                "damagePercentageRatio": 0.0,
+                "elementType": "Fire",
+                "bonusCritical": 30.0,
+                "strikeType": "Blunt",
+                "damage": 200.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV3",
+                "hitHaltTimeScale": 0.009999999776482582
+              }
+            }
+          },
+          "targetType": "Enemy"
+        }
+      ]
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Monster_Centaur_DistanceCheck",
+      "modifiers": {
+        "DistanceChecker": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.10000000149011612,
+          "onThinkInterval": [
+            {
+              "$type": "Predicated",
+              "target": "SelfAttackTarget",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "LesserOrEqual",
+                  "ratio": 8.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "TargetNear",
+                  "ratio": true
+                }
+              ],
+              "failActions": [
+                {
+                  "$type": "SetAnimatorBool",
+                  "boolID": "TargetNear"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "onAdded": [
+        {
+          "$type": "AttachModifier",
+          "modifierName": "DistanceChecker"
+        }
+      ]
+    }
+  }
+]

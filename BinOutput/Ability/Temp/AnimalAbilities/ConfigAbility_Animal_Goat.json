@@ -1,0 +1,303 @@
+[
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Goat_StateChange",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAIAlertnessMixin",
+          "alertness": [2],
+          "modifierName": "SetPoseFalse"
+        }
+      ],
+      "modifiers": {
+        "SetPoseFalse": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "LookAround"
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "Stretch"
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "AlertCrush"
+            },
+            {
+              "$type": "HideUIBillBoard"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Goat_Random",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["Personality_103_BS"],
+          "modifierName": "Random_MoveSpeedRatio",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "abilitySpecials": {
+        "RandomTimes": 0.0
+      },
+      "modifiers": {
+        "Random_MoveSpeedRatio": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetRandomOverrideMapValue",
+              "valueRangeMax": 4.0,
+              "valueRangeMin": 2.0,
+              "overrideMapKey": "RandomTimes"
+            },
+            {
+              "$type": "SetAnimatorInt",
+              "intID": "LoopTimes",
+              "ratio": "RandomTimes"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Goat_Disappear",
+      "abilityMixins": [
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["Disappear"],
+          "modifierName": "DisappearTimer",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "DisappearTimer": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "StartDither",
+              "duration": 3.0
+            },
+            {
+              "$type": "HideUIBillBoard",
+              "hide": true
+            },
+            {
+              "$type": "SetAnimatorBool",
+              "boolID": "Disappear",
+              "ratio": true
+            },
+            {
+              "$type": "KillSelf",
+              "duration": 1.5,
+              "killSelfType": "Disappear",
+              "amountByCasterAttackRatio": true,
+              "banExp": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Goat_FleeMode",
+      "abilityMixins": [
+        {
+          "$type": "AttachToPoseIDMixin",
+          "poseIDs": [1, 2],
+          "modifierName": "FleeMode_Monitor"
+        }
+      ],
+      "modifiers": {
+        "FleeMode_Monitor": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "onAdded": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "FleeMode",
+              "ratio": true
+            }
+          ],
+          "onBeingHit": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "FleeMode"
+            },
+            {
+              "$type": "Predicated",
+              "target": "Target",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "GreaterOrEqual",
+                  "ratio": 5.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetPoseBool",
+                  "boolID": "FleeMode",
+                  "ratio": true
+                }
+              ]
+            },
+            {
+              "$type": "Predicated",
+              "target": "TargetOriginOwner",
+              "targetPredicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "logic": "GreaterOrEqual",
+                  "ratio": 5.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "successActions": [
+                {
+                  "$type": "SetPoseBool",
+                  "boolID": "FleeMode",
+                  "ratio": true
+                }
+              ]
+            },
+            {
+              "$type": "SetPoseBool",
+              "boolID": "HitFlag",
+              "ratio": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "Default": {
+      "$type": "ConfigAbility",
+      "abilityName": "Animal_Goat_CrushAtk",
+      "abilityMixins": [
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["CrushAtk"],
+          "startNormalizedTime": 0.07999999821186066,
+          "endNormalizedTime": 0.6169999837875366,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "attackDistance": 1.5,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "SteerAttackMixin",
+          "steerStateIDs": ["AlertCrush_BS"],
+          "startNormalizedTime": 0.23999999463558197,
+          "endNormalizedTime": 0.550000011920929,
+          "angularSpeed": 180.0,
+          "attackTrigger": "",
+          "attackDistance": 1.5,
+          "BILMCNCKIAO": ""
+        },
+        {
+          "$type": "AttachToAnimatorStateIDMixin",
+          "stateIDs": ["AlertCrush_Loop"],
+          "modifierName": "AlertCrush_TargetMonitor",
+          "BILMCNCKIAO": ""
+        }
+      ],
+      "modifiers": {
+        "AlertCrush_TargetMonitor": {
+          "modifierName": "",
+          "bonusCritical": 100.0,
+          "thinkInterval": 0.30000001192092896,
+          "onRemoved": [
+            {
+              "$type": "SetPoseBool",
+              "boolID": "FleeMode",
+              "ratio": true
+            }
+          ],
+          "onThinkInterval": [
+            {
+              "$type": "SetAnimatorTrigger",
+              "predicates": [
+                {
+                  "$type": "JOLJOHDJLNF",
+                  "target": "SelfAttackTarget",
+                  "logic": "LesserOrEqual",
+                  "ratio": 6.0,
+                  "PHMALDNHHLD": ""
+                }
+              ],
+              "value": "AlertCrush"
+            }
+          ]
+        }
+      },
+      "onAbilityStart": [
+        {
+          "$type": "TriggerAttackEvent",
+          "attackEvent": {
+            "attackPattern": {
+              "$type": "GGBJACPDDCM",
+              "triggerType": "TriggerNoRepeat",
+              "born": {
+                "$type": "ConfigBornBySelf",
+                "offset": {
+                  "x": 0.0,
+                  "y": 0.5,
+                  "z": 0.0
+                },
+                "useRotation": true
+              },
+              "size": {
+                "x": 1.5,
+                "y": 2.0,
+                "z": 2.5
+              }
+            },
+            "attackInfo": {
+              "attackTag": "",
+              "attenuationTag": "",
+              "attenuationGroup": "default",
+              "attackProperty": {
+                "damagePercentage": 1.0,
+                "damagePercentageRatio": 0.0,
+                "bonusCritical": 100.0,
+                "strikeType": "Blunt",
+                "damage": 1000.0,
+                "FKGFPFNOJMN": 0.0
+              },
+              "hitPattern": {
+                "onHitEffectName": "default",
+                "hitImpulseType": "LV4",
+                "canBeDefenceHalt": true
+              }
+            }
+          },
+          "targetType": "Enemy"
+        },
+        {
+          "$type": "SetPoseBool",
+          "boolID": "FleeMode",
+          "ratio": true
+        }
+      ]
+    }
+  }
+]
