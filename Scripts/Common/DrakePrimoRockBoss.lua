@@ -71,16 +71,26 @@ end
 
 --刷新时加载怪物
 function action_group_load(context, evt)
+	monsters = {
+		{ config_id = 640001, monster_id = 26050201, pos = { x = 208.324, y = 185.011, z = 1481.172 }, rot = { x = 0.000, y = 327.681, z = 0.000 }, level = 36, pose_id = 101, area_id = 6 },
+		{ config_id = 640003, monster_id = 26050101, pos = { x = 208.324, y = 185.011, z = 1481.172 }, rot = { x = 0.000, y = 327.681, z = 0.000 }, level = 36, pose_id = 101, area_id = 6 },
+		{ config_id = 640005, monster_id = 26050301, pos = { x = 208.324, y = 185.011, z = 1481.172 }, rot = { x = 0.000, y = 327.681, z = 0.000 }, level = 36, pose_id = 101, area_id = 6 },
+		{ config_id = 640006, monster_id = 26050401, pos = { x = 208.324, y = 185.011, z = 1481.172 }, rot = { x = 0.000, y = 327.681, z = 0.000 }, level = 36, pose_id = 101, area_id = 6 }
+	}
 	ScriptLib.PrintContextLog(context, "DrakePrimoRockBossGroupLoad")
 	math.randomseed(ScriptLib.GetServerTime(context))
 	local newIdx=math.random(#monsters)
 	if ScriptLib.GetGroupVariableValue(context, "current_idx") == 0 then
 		ScriptLib.SetGroupVariableValue(context, "current_idx", newIdx) 
 		--ScriptLib.CreateMonster(context, { config_id = monster[newIdx].config_id, delay_time = 0 })
-		ScriptLib.CreateMonsterByConfigIdByPos(context, monsters[newIdx].config_id, monsters[newIdx].pos, monsters[newIdx].rot)
+		ScriptLib.CreateMonster(context, { config_id = monsters[ScriptLib.GetGroupVariableValue(context, "current_idx")].config_id, delay_time = 0 })
 		return 0
 	end
 	if ScriptLib.GetGroupVariableValue(context, "killed") ~= 0 and evt.param1 ~=1 then
+		ScriptLib.SetGroupVariableValue(context, "current_idx", newIdx) 
+		ScriptLib.CreateMonster(context, { config_id = monsters[ScriptLib.GetGroupVariableValue(context, "current_idx")].config_id, delay_time = 0 })
+		ScriptLib.SetGroupVariableValue(context, "killed", 0) 
+		ScriptLib.SetGroupVariableValue(context, "boss_exist", 1)
 		return 0
 	end
 	if ScriptLib.GetGroupVariableValue(context, "killed") ~= 0 and evt.param1 ==1 then
