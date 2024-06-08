@@ -211,7 +211,7 @@
               "onGainEnergyByBall": [
                 {
                   "$type": "HealHP",
-                  "OLMENJCGGJJ": "HealHP",
+                  "amountByCasterMaxHPRatio": "HealHP",
                   "cdRatio": ""
                 }
               ]
@@ -1269,7 +1269,7 @@
             {
               "$type": "HealHP",
               "cdDelta": true,
-              "OLMENJCGGJJ": "HealRatio",
+              "amountByCasterMaxHPRatio": "HealRatio",
               "cdRatio": ""
             }
           ]
@@ -7653,13 +7653,7 @@
             {
               "$type": "SetOverrideMapValue",
               "cdDelta": true,
-              "ratio": [
-                "TotalDebts",
-                "Ratio2",
-                "MUL",
-                0.0010000000474974513,
-                "MUL"
-              ],
+              "ratio": ["TotalDebts", "Ratio2", "MUL"],
               "overrideMapKey": "Attack",
               "maxValue": 0.0,
               "minValue": 0.0
@@ -7719,7 +7713,7 @@
             {
               "$type": "AddHPDebts",
               "GFEKLPKPOIK": "",
-              "ratio": ["Debts", "FIGHT_PROP_MAX_HP", "MUL"]
+              "ratio": 0.24
             }
           ]
         },

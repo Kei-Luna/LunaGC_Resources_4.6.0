@@ -1,3 +1,4 @@
+
 [
   {
     "Default": {
@@ -962,7 +963,8 @@
                 }
               ],
               "GFEKLPKPOIK": "Arlecchino_HpDebtsMark",
-              "ratio": ["FIGHT_PROP_MAX_HP", "HpDebts_Level_1_Ratio", "MUL"]
+              "ratio": 0.65,
+              "maxValue": 1.3
             },
             {
               "$type": "ApplyModifier",
@@ -1001,7 +1003,8 @@
                 }
               ],
               "GFEKLPKPOIK": "Arlecchino_HpDebtsMark",
-              "ratio": ["FIGHT_PROP_MAX_HP", "HpDebts_Level_2_Ratio", "MUL"]
+              "ratio": 1.3,
+              "maxValue": 1.3
             },
             {
               "$type": "ApplyModifier",
@@ -2743,8 +2746,8 @@
       ],
       "abilitySpecials": {
         "Arlecchino_ElementalBurst_Ratio": 0.0,
-        "HealHp_Debt_Ratio": 0.0,
-        "HealHp_Atk_Ratio": 0.0,
+        "HealHp_Debt_Ratio": 2.0,
+        "HealHp_Atk_Ratio": 2.0,
         "_HPDebts": 0.0
       },
       "modifiers": {
@@ -3092,15 +3095,18 @@
             {
               "$type": "HealHP",
               "cdDelta": true,
-              "LKDJMGOJHAH": [
-                "_HPDebts",
-                "HealHp_Debt_Ratio",
-                "MUL",
-                "FIGHT_PROP_CUR_ATTACK",
-                "HealHp_Atk_Ratio",
-                "MUL",
-                "ADD"
-              ],
+                "target": "Self",
+                "amount": [
+                    "FIGHT_PROP_CUR_HP_DEBTS",
+                    "HealHp_Debt_Ratio",
+                    "MUL",
+                    "FIGHT_PROP_CUR_ATTACK",
+                    "HealHp_Atk_Ratio",
+                    "MUL",
+                    "ADD",
+                    "FIGHT_PROP_CUR_HP_DEBTS",
+                    "ADD"
+                ],
               "cdRatio": "Arlecchino_ElementalBurst_Heal"
             }
           ],
@@ -3329,7 +3335,8 @@
               "target": "Caster",
               "cdDelta": true,
               "GFEKLPKPOIK": "Arlecchino_HpDebtsMark",
-              "ratio": ["FIGHT_PROP_MAX_HP", "HpDebts_KillEnemy_Ratio", "MUL"]
+              "ratio": 1.3,
+              "maxValue": 1.3
             }
           ]
         },
@@ -3645,7 +3652,7 @@
             {
               "$type": "SetOverrideMapValue",
               "cdDelta": true,
-              "ratio": ["FIGHT_PROP_CUR_HP_DEBTS", "FIGHT_PROP_MAX_HP", "DIV"],
+              "ratio": 2.0,
               "overrideMapKey": "Cur_HPDebts_Ratio",
               "param2": 0.0,
               "triggerID": 0.0
@@ -3852,7 +3859,7 @@
             {
               "$type": "SetOverrideMapValue",
               "cdDelta": true,
-              "ratio": ["FIGHT_PROP_CUR_HP_DEBTS", "FIGHT_PROP_MAX_HP", "DIV"],
+              "ratio": 0.0,
               "overrideMapKey": "Cur_HPDebts_Ratio",
               "param2": 0.0,
               "triggerID": 0.0
@@ -4116,14 +4123,14 @@
             {
               "$type": "SetOverrideMapValue",
               "cdDelta": true,
-              "ratio": "FIGHT_PROP_CUR_HP_DEBTS",
+              "ratio": 0.0,
               "overrideMapKey": "Cur_HPDebts",
               "param2": 0.0,
               "triggerID": 0.0
             },
             {
               "$type": "ReduceHPDebts",
-              "ratio": ["Cur_HPDebts", "Cur_HPDebts_Reduce_Ratio", "MUL"]
+              "ratio": 0.075
             },
             {
               "$type": "ModifyAvatarSkillCD",

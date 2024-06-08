@@ -117,7 +117,7 @@
               "onGainEnergyByBall": [
                 {
                   "$type": "HealHP",
-                  "OLMENJCGGJJ": "HealHP",
+                  "amountByCasterMaxHPRatio": "HealHP",
                   "cdRatio": ""
                 }
               ]
@@ -1745,7 +1745,7 @@
           "onAdded": [
             {
               "$type": "HealHP",
-              "KECHKKGGAPF": "HealRate",
+              "amountByTargetCurrentHPRatio": "HealRate",
               "cdRatio": ""
             }
           ]
@@ -2631,7 +2631,7 @@
                 },
                 {
                   "$type": "HealHP",
-                  "KECHKKGGAPF": "H_Rate",
+                  "amountByTargetCurrentHPRatio": "H_Rate",
                   "cdRatio": ""
                 },
                 {
@@ -5651,7 +5651,7 @@
                 },
                 {
                   "$type": "HealHP",
-                  "KECHKKGGAPF": "Heal_Ratio",
+                  "amountByTargetCurrentHPRatio": "Heal_Ratio",
                   "cdRatio": ""
                 },
                 {
@@ -7705,7 +7705,7 @@
             {
               "$type": "AddHPDebts",
               "GFEKLPKPOIK": "",
-              "ratio": ["Debts", "FIGHT_PROP_MAX_HP", "MUL"]
+              "ratio": 0.25
             }
           ]
         },

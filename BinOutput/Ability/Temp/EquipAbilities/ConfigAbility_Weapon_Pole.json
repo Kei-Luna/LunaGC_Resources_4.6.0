@@ -264,7 +264,7 @@
               "successActions": [
                 {
                   "$type": "HealHP",
-                  "OLMENJCGGJJ": "HealAmount",
+                  "amountByCasterMaxHPRatio": "HealAmount",
                   "cdRatio": ""
                 }
               ]
@@ -4818,7 +4818,7 @@
             {
               "$type": "AddHPDebts",
               "GFEKLPKPOIK": "",
-              "ratio": ["Debts", "FIGHT_PROP_MAX_HP", "MUL"]
+              "ratio": 0.25
             }
           ]
         },
